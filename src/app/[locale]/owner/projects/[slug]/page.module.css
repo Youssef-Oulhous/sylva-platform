@@ -1,0 +1,75 @@
+.page {
+  display: block;
+}
+
+.head {
+  padding-bottom: var(--s-6);
+  border-bottom: var(--rule);
+}
+.lead {
+  margin-top: var(--s-3);
+  font-size: var(--text-md);
+  color: var(--ink);
+}
+
+/* Demo data is stated at the top of the page as well as in the site-wide bar:
+   this one is a form, and a form invites an entry. */
+.demoNote {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-3);
+  margin-top: var(--s-4);
+  padding: var(--s-3) var(--s-4);
+  background: var(--tint-neutral);
+  border-left: 2px solid var(--border-strong);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+.demoNoteText {
+  margin: 0;
+  max-width: var(--measure-prose);
+  font-size: var(--text-sm);
+  color: var(--ink);
+}
+
+.away {
+  margin: var(--s-4) 0 0;
+  font-size: var(--text-sm);
+}
+
+/* The readiness panel on the left, the record on the right. Strong left
+   alignment, and the panel follows the reader down a long form. */
+.layout {
+  display: grid;
+  grid-template-columns: 18rem minmax(0, 1fr);
+  gap: var(--s-7);
+  align-items: start;
+  margin-top: var(--s-7);
+}
+
+/* The panel is taller than some screens, so it scrolls inside itself rather
+   than pinning content out of reach. */
+.side {
+  position: sticky;
+  top: var(--s-5);
+  max-height: calc(100vh - var(--s-7));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.body {
+  min-width: 0;
+}
+
+@media (max-width: 64rem) {
+  /* The panel becomes the first thing on the page rather than a column beside
+     it, which is the right order on a phone: what is still open, then the form. */
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-6);
+  }
+  .side {
+    position: static;
+    max-height: none;
+    overflow: visible;
+  }
+}

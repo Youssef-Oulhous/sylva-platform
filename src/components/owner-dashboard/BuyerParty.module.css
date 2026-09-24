@@ -30,3 +30,12 @@
   font-size: var(--text-xs);
   color: var(--ink-muted);
 }
+
+/* No label has been issued for this counterparty yet. Italic prose rather than
+   the mono face, because it is a sentence about an absence and not an
+   identifier that could be quoted back. */
+.unlabelled {
+  font-size: var(--text-sm);
+  font-style: italic;
+  color: var(--ink-muted);
+}

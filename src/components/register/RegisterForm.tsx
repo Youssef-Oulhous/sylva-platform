@@ -1,4 +1,8 @@
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
+import { registerAction } from '@/lib/auth/actions';
+import { authMessage, isAuthErrorCode } from '@/lib/auth/errors';
+import { MIN_PASSWORD_LENGTH } from '@/lib/auth/password';
+import { registrationReference } from '@/lib/auth/reference';
 import Field from './Field';
 import RoleChoice from './RoleChoice';
 import styles from './RegisterForm.module.css';
@@ -13,64 +17,55 @@ import styles from './RegisterForm.module.css';
  * and nothing else, and everything else references the organisation by ID
  * (concept note §9).
  *
- * FRONTEND PASS. The form has no `action`, the submit control is a
- * `type="button"` so nothing is ever sent, and every field is uncontrolled -
- * so the whole form, radios included, stays a Server Component. There is no
- * validation here: the messages a real submission would produce depend on rules
- * that do not exist yet, and inventing them now would mean writing copy that
- * has to be thrown away.
+ * Wired to identity.register (db/migrations/0040) through a Server Action. One
+ * transaction creates org.organisation, identity.user_account,
+ * identity.person_label and identity.user_platform_role - and no approval.
+ * Registering is not being approved: R6 still refuses this organisation a deal
+ * until Sylva records a vetting decision, and the three steps above the form
+ * say so.
+ *
+ * Still a Server Component with no client JavaScript: a plain <form> with an
+ * action, uncontrolled fields and native radios.
+ *
+ * WHERE THE OPTIONS COME FROM. The three lists that also appear beside the
+ * organisation's public label - sector, country and size (concept note §8) -
+ * are read from platform.sector, platform.eu_member_state and
+ * platform.size_band. They used to be hard-coded here with codes like
+ * 'food_beverage' and '1_49'; not one of those exists in the reference tables,
+ * so every submission would have been refused by a foreign key. Reading them
+ * means the labels are translated by whoever owns the codes and a sector added
+ * later needs no code change. See src/lib/auth/reference.ts.
  */
-
-/**
- * DEMO / PROVISIONAL LISTS. Option sets for the three fields that also appear
- * beside the organisation's public label (concept note §8: sector, country and
- * size). The final lists come from the client; these are here so the form can
- * be read and reviewed. They are translated values, never stored strings.
- */
-const SECTOR_OPTIONS = [
-  { value: 'food_beverage', labelKey: 'register.sector.foodBeverage' },
-  { value: 'energy_utilities', labelKey: 'register.sector.energyUtilities' },
-  { value: 'water_utility', labelKey: 'register.sector.waterUtility' },
-  { value: 'manufacturing', labelKey: 'register.sector.manufacturing' },
-  { value: 'banking_investment', labelKey: 'register.sector.bankingInvestment' },
-  { value: 'public_sector', labelKey: 'register.sector.publicSector' },
-  { value: 'foundation', labelKey: 'register.sector.foundation' },
-  { value: 'other', labelKey: 'register.sector.other' },
-] as const;
-
-const COUNTRY_OPTIONS = [
-  { value: 'DK', labelKey: 'register.country.dk' },
-  { value: 'DE', labelKey: 'register.country.de' },
-  { value: 'ES', labelKey: 'register.country.es' },
-  { value: 'FR', labelKey: 'register.country.fr' },
-  { value: 'IE', labelKey: 'register.country.ie' },
-  { value: 'NL', labelKey: 'register.country.nl' },
-  { value: 'PL', labelKey: 'register.country.pl' },
-  { value: 'SE', labelKey: 'register.country.se' },
-  { value: 'other', labelKey: 'register.country.other' },
-] as const;
-
-/**
- * Size is a band, not a headcount: the band is what appears in public beside
- * the organisation's label, and a precise headcount would identify the
- * organisation more readily than a pseudonym is meant to allow.
- */
-const SIZE_OPTIONS = [
-  { value: '1_49', labelKey: 'register.size.s1' },
-  { value: '50_249', labelKey: 'register.size.s2' },
-  { value: '250_999', labelKey: 'register.size.s3' },
-  { value: '1000_4999', labelKey: 'register.size.s4' },
-  { value: '5000_plus', labelKey: 'register.size.s5' },
-] as const;
-
-export default async function RegisterForm({ idPrefix }: { idPrefix: string }) {
+export default async function RegisterForm({
+  idPrefix,
+  errorCode = null,
+}: {
+  idPrefix: string;
+  /** From ?error= on the page. A code, never a message. */
+  errorCode?: string | null;
+}) {
   const t = await getTranslations();
-  const submitNoteId = `${idPrefix}-submit-note`;
-  const options = (list: readonly { value: string; labelKey: string }[]) =>
-    list.map((option) => ({ value: option.value, label: t(option.labelKey) }));
+  const locale = await getLocale();
+  const reference = await registrationReference(locale);
+
+  // An unrecognised code still gets a sentence: 'invalid_input' covers "the
+  // form came back rejected" without guessing at which field, and a code this
+  // build does not know is treated the same way rather than shown raw.
+  const message = errorCode
+    ? authMessage(isAuthErrorCode(errorCode) ? errorCode : 'invalid_input')
+    : null;
+  const errorText = message
+    ? (t.has(message.key) ? t(message.key) : message.fallbackEn)
+    : null;
 
   return (
-    <form className={styles.form} aria-label={t('register.form.ariaLabel')} noValidate>
+    <form className={styles.form} action={registerAction} aria-label={t('register.form.ariaLabel')} noValidate>
+      {errorText ? (
+        <div className={styles.requiredNote} role="alert">
+          <strong>{errorText}</strong>
+        </div>
+      ) : null}
+
       <p className={styles.requiredNote}>{t('register.form.requiredNote')}</p>
 
       <div className={styles.part}>
@@ -107,7 +102,7 @@ export default async function RegisterForm({ idPrefix }: { idPrefix: string }) {
               autoComplete="country-name"
               label={t('register.org.country.label')}
               hint={t('register.org.country.hint')}
-              options={options(COUNTRY_OPTIONS)}
+              options={reference.countries}
               placeholderOption={t('register.form.selectPlaceholder')}
             />
           </div>
@@ -120,7 +115,7 @@ export default async function RegisterForm({ idPrefix }: { idPrefix: string }) {
               autoComplete="off"
               label={t('register.org.sector.label')}
               hint={t('register.org.sector.hint')}
-              options={options(SECTOR_OPTIONS)}
+              options={reference.sectors}
               placeholderOption={t('register.form.selectPlaceholder')}
             />
             <Field
@@ -130,7 +125,7 @@ export default async function RegisterForm({ idPrefix }: { idPrefix: string }) {
               autoComplete="off"
               label={t('register.org.size.label')}
               hint={t('register.org.size.hint')}
-              options={options(SIZE_OPTIONS)}
+              options={reference.sizeBands}
               placeholderOption={t('register.form.selectPlaceholder')}
             />
           </div>
@@ -184,11 +179,15 @@ export default async function RegisterForm({ idPrefix }: { idPrefix: string }) {
               label={t('register.person.email.label')}
               hint={t('register.person.email.hint')}
             />
+            {/* The only password rule is length. A composition rule makes
+                passwords shorter and more guessable, and the hint already asks
+                for a phrase. Enforced again in the Server Action. */}
             <Field
               id={`${idPrefix}-password`}
               name="password"
               kind="password"
               autoComplete="new-password"
+              minLength={MIN_PASSWORD_LENGTH}
               label={t('register.person.password.label')}
               hint={t('register.person.password.hint')}
             />
@@ -197,18 +196,9 @@ export default async function RegisterForm({ idPrefix }: { idPrefix: string }) {
       </fieldset>
 
       <div className={styles.submitRow}>
-        {/* type="button": this build has no account creation behind it, and a
-            submit control that appeared to work would be a lie about state.
-            Not aria-disabled - the control looks live to a sighted reviewer, so
-            marking it unavailable to a screen reader would describe a different
-            button. The note is tied to it with aria-describedby instead, so it
-            is read out on focus. */}
-        <button type="button" className={styles.submit} aria-describedby={submitNoteId}>
+        <button type="submit" className={styles.submit}>
           {t('register.form.submit')}
         </button>
-        <p id={submitNoteId} className={styles.submitNote}>
-          {t('register.form.submitNote')}
-        </p>
       </div>
     </form>
   );

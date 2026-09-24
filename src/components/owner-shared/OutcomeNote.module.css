@@ -1,0 +1,36 @@
+/* The outcome of the last save.
+   Never colour alone: the heading says "Recorded" or "This was not recorded" in
+   words, and the border and tint repeat it. */
+
+.note {
+  margin: var(--s-4) 0;
+  padding: var(--s-3) var(--s-4);
+  border: var(--rule);
+  border-left-width: 3px;
+  border-radius: var(--radius);
+  min-width: 0;
+}
+
+.ok {
+  background: var(--tint-bio);
+  border-left-color: var(--success);
+}
+
+.error {
+  background: var(--tint-error);
+  border-left-color: var(--error);
+}
+
+.heading {
+  margin: 0 0 var(--s-1);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--tint-error-ink);
+}
+
+.body {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  color: var(--ink);
+}

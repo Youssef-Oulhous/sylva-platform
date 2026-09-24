@@ -1,12 +1,16 @@
 import { getFormatter, getTranslations } from 'next-intl/server';
 import Badge from '@/components/ui/Badge';
+import { publishProjectAction } from '@/lib/admin/actions';
+import { resolveAdminMessage, type AdminErrorCode } from '@/lib/admin/errors';
+import { adminText } from '@/lib/admin/messages';
 import {
-  GATE_ERROR_CODE,
-  GATE_KEY,
-  gapsOf,
-  type ReviewRow,
-} from './demo-projects';
+  GATE_ITEM_KEY,
+  type AdminProject,
+  type PublicationGateCode,
+} from '@/lib/admin/types';
 import styles from './PublishAction.module.css';
+
+const GATE_ERROR_CODE = 'SY008';
 
 /**
  * The publication action.
@@ -29,32 +33,76 @@ import styles from './PublishAction.module.css';
  * WHY THIS SCREEN IS NOT THE ENFORCEMENT. The same ten items are checked inside
  * the database by `proj.publication_gaps()`, and the trigger on `proj.project`
  * refuses any change into `published` while that function returns anything,
- * raising SY008 and naming what is missing. A request that bypassed this screen
- * entirely would still be refused. That is stated on the screen, because an
- * operator should know that this control is a convenience and not the control.
- *
- * FRONTEND PASS. The form has no action, no method and no handler, and neither
- * control records anything yet.
+ * raising SY008 and naming what is missing. The action behind this form does
+ * NOT pre-check the gate: it sends the UPDATE and lets the database answer,
+ * because the database's answer is the only one that is true at the moment of
+ * writing. A refusal comes back as `error=gate_blocked` with the codes the
+ * trigger named, and they are rendered below with the same labels the checklist
+ * uses - never the raw database sentence, which also carries a table name and a
+ * project UUID.
  */
 export default async function PublishAction({
-  row,
+  project,
   headingId,
+  error,
+  refusedItems,
+  published,
 }: {
-  row: ReviewRow;
+  project: AdminProject;
   headingId: string;
+  error: AdminErrorCode | null;
+  /** The items SY008 named on the last attempt, if it was refused. */
+  refusedItems: readonly PublicationGateCode[];
+  /** True right after this project was published. */
+  published: boolean;
 }) {
   const t = await getTranslations();
   const format = await getFormatter();
-  const gaps = gapsOf(row);
+  const gaps = project.gaps;
   const blocked = gaps.length > 0;
   /** Non-null only for a project the record already holds as published. */
-  const publishedOn = row.status === 'published' ? row.publishedOn : null;
+  const publishedOn = project.status === 'published' ? project.publishedOn : null;
+
+  const itemLabel = (code: PublicationGateCode) => (
+    <>
+      <span className={styles.reasonLabel}>
+        {t(`adminProjects.gate.item.${GATE_ITEM_KEY[code]}.label`)}
+      </span>
+      <span className={styles.reasonCode}>{code}</span>
+    </>
+  );
 
   return (
     <section className={styles.wrap} aria-labelledby={headingId}>
       <div className={styles.head}>
         <h3 id={headingId}>{t('adminProjects.publish.title')}</h3>
       </div>
+
+      {published && (
+        <p className={styles.statement} role="status">
+          {adminText(t, 'publishDone')}
+        </p>
+      )}
+
+      {/* The database refused the last attempt. Its reasons, in words. */}
+      {error !== null && (
+        <div className={`${styles.state} ${styles.blocked}`} role="alert">
+          <div className={styles.stateHead}>
+            <Badge tone="error">{GATE_ERROR_CODE}</Badge>
+            <p className={styles.stateTitle}>{adminText(t, 'publishRefusedTitle')}</p>
+          </div>
+          <p className={styles.stateLead}>{resolveAdminMessage(t, error)}</p>
+          {refusedItems.length > 0 && (
+            <ul className={styles.reasons}>
+              {refusedItems.map((code) => (
+                <li key={code} className={styles.reason}>
+                  {itemLabel(code)}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )}
 
       {publishedOn !== null ? (
         <div className={styles.state}>
@@ -85,10 +133,7 @@ export default async function PublishAction({
             <ul className={styles.reasons}>
               {gaps.map((code) => (
                 <li key={code} className={styles.reason}>
-                  <span className={styles.reasonLabel}>
-                    {t(`adminProjects.gate.item.${GATE_KEY[code]}.label`)}
-                  </span>
-                  <span className={styles.reasonCode}>{code}</span>
+                  {itemLabel(code)}
                 </li>
               ))}
             </ul>
@@ -105,20 +150,19 @@ export default async function PublishAction({
       )}
 
       {publishedOn === null && (
-        /* No action, no method, no handler. */
-        <form className={styles.form} noValidate>
+        <form className={styles.form} action={publishProjectAction} noValidate>
+          <input type="hidden" name="projectId" value={project.id} />
           <button
-            type="button"
+            type="submit"
             className={blocked ? `${styles.publish} ${styles.publishOff}` : styles.publish}
-            /* Blocked: genuinely disabled, with the reasons printed above it.
-               Not blocked: still inert in this pass, so it stays focusable and
-               points at the note that says why nothing happens. */
+            /* Genuinely disabled while an item is missing, with the reasons
+               printed above it. The database would refuse it anyway; this is
+               the courtesy, not the control. */
             disabled={blocked}
-            aria-disabled={blocked ? undefined : 'true'}
-            aria-describedby={blocked ? 'publish-reasons publish-blocked-note' : 'publish-inert-note'}
+            aria-describedby={blocked ? 'publish-reasons publish-blocked-note' : 'publish-note'}
           >
             {t('adminProjects.publish.action')}
-            <span className="visually-hidden"> {row.title}</span>
+            <span className="visually-hidden"> {project.title}</span>
           </button>
 
           {blocked ? (
@@ -126,8 +170,8 @@ export default async function PublishAction({
               {t('adminProjects.publish.blockedNote')}
             </p>
           ) : (
-            <p id="publish-inert-note" className={styles.note}>
-              {t('adminProjects.publish.inertNote')}
+            <p id="publish-note" className={styles.note}>
+              {adminText(t, 'publishNote')}
             </p>
           )}
         </form>

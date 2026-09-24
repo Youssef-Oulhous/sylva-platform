@@ -1,40 +1,31 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/lib/i18n/routing';
-import Badge from '@/components/ui/Badge';
-import DraftIdentityStrip from '@/components/owner-project-edit/DraftIdentityStrip';
-import ReadinessPanel from '@/components/owner-project-edit/ReadinessPanel';
-import ProjectForm from '@/components/owner-project-edit/ProjectForm';
+import CreateProjectForm from '@/components/owner-project-edit/CreateProjectForm';
+import OutcomeNote from '@/components/owner-shared/OutcomeNote';
+import { requireRole } from '@/lib/auth/guards';
+import { getOwnerReference } from '@/lib/owner/queries';
+import { ownerText } from '@/lib/owner/messages';
 import styles from './page.module.css';
 
 /**
- * The project record, as its owner sees it: create or edit.
+ * Add a project.
  *
- * The form is the project page turned around. Its nine sections are that page's
- * nine sections, in the same order and under the same headings, so an owner can
- * tell what a buyer will read - which is the fourth of the client's UX tests,
- * "can a project owner understand how to present a project?".
+ * The concept note (section 2) says project owners put projects on the
+ * platform. Until migration 0050 they could not: every project content table
+ * was granted INSERT to sylva_operator alone. This page is the other half of
+ * that migration.
  *
- * Two things shape every field on it.
+ * It creates a DRAFT. Publication is Sylva's act, and it is refused to an owner
+ * twice over - by the row policy that admits one target status, and by the
+ * column privilege that withholds published_at, which the CHECK on proj.project
+ * makes indispensable. So a project created here appears on nobody's screen but
+ * its owner's until Sylva publishes it.
  *
- * Provenance. "Every figure on screen carries its source and date" (concept note,
- * section 9) is a rule about the published page, so it is really a rule about
- * this form: a figure can only reach the project page with its source if the
- * source is asked for in the same breath as the figure. So a figure here is not a
- * box - it is a value, a unit, a source document, a reference inside that
- * document and an as-of date, drawn as one field, and a figure missing any of it
- * is marked in words where it is missing and again in the readiness panel.
- *
- * Rule 7. Units from different projects measure different things, so no screen
- * adds them. This page holds one project, states its unit label beside every
- * volume, and contains no total of any kind - not across projects, and not even
- * across this project's own periods.
- *
- * FRONTEND PASS. No database, no fetch, no server action, no auth. The record is
- * a typed DEMO constant in src/components/owner-project-edit/project-draft-data.ts.
- * The form has no action, every control is uncontrolled, the buttons are inert
- * and described by one note that says so, and nothing on the page is a client
- * component.
+ * Everything beyond the name, the country and the summary is recorded on the
+ * draft afterwards, section by section, each with its own source and its own
+ * as-of date. That is not a staging trick: project content is append-only and
+ * versioned, and one entry with one provenance is the unit the database stores.
  */
 
 export async function generateMetadata({
@@ -47,50 +38,47 @@ export async function generateMetadata({
   return {
     title: t('title'),
     description: t('metaDescription'),
-    // An unpublished record an organisation is drafting about itself has nothing
-    // to index, and must not turn up in a search for the project's name.
+    // An unpublished record an organisation is drafting about itself has
+    // nothing to index, and must not turn up in a search for its name.
     robots: { index: false, follow: false },
   };
 }
 
+function one(value: string | string[] | undefined): string {
+  return typeof value === 'string' ? value : '';
+}
+
 export default async function NewProjectPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+
+  const viewer = await requireRole('project_owner', '/owner/projects/new');
   const t = await getTranslations();
+  const sp = await searchParams;
+
+  const reference = await getOwnerReference(viewer.actor, locale);
 
   return (
     <div className={styles.page}>
       <header className={styles.head}>
-        <h1>{t('ownerProjectForm.title')}</h1>
-        <p className={styles.lead}>{t('ownerProjectForm.lead')}</p>
-
-        <div className={styles.demoNote}>
-          <Badge tone="demo">{t('demo.badge')}</Badge>
-          <p className={styles.demoNoteText}>{t('ownerProjectForm.demoNote')}</p>
-        </div>
+        <h1>{ownerText(t, 'createTitle')}</h1>
+        <p className={styles.lead}>{ownerText(t, 'createLead')}</p>
 
         <p className={styles.away}>
-          <Link href="/projects">{t('ownerProjectForm.seePublished')}</Link>
+          <Link href="/owner">&larr; {ownerText(t, 'backToDashboard')}</Link>
         </p>
       </header>
 
-      <DraftIdentityStrip />
+      <OutcomeNote error={one(sp.error)} />
 
-      <div className={styles.layout}>
-        {/* Not an <aside>: it is the index to the document beside it, and an
-            unlabelled complementary landmark would add noise rather than
-            structure. The panel inside carries its own heading. */}
-        <div className={styles.side}>
-          <ReadinessPanel />
-        </div>
-
-        <div className={styles.body}>
-          <ProjectForm />
-        </div>
+      <div className={styles.body}>
+        <CreateProjectForm reference={reference} locale={locale} />
       </div>
     </div>
   );

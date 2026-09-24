@@ -1,15 +1,12 @@
 import { getFormatter, getTranslations } from 'next-intl/server';
 import Badge from '@/components/ui/Badge';
+import { ownerText } from '@/lib/owner/messages';
+import type { OwnerInterest } from '@/lib/owner/types';
 import BuyerParty from './BuyerParty';
-import {
-  DEAL_SHAPE_KEY,
-  ownerProject,
-  type DemoOwnerInterest,
-} from './demo-owner';
 import styles from './InterestQueue.module.css';
 
 /**
- * Expressed interest awaiting the owner's response, longest wait first.
+ * Live deals on this organisation's projects, longest wait first.
  *
  * A buyer that expresses interest opens a private room between that buyer and
  * the project (concept note section 7). Nothing is reserved and no volume is
@@ -18,23 +15,25 @@ import styles from './InterestQueue.module.css';
  * note under the table says so, because an empty column would otherwise read as
  * missing data.
  *
- * RULE 7. There is no unit figure in this table at all, so there is nothing here
- * that could be added across the two projects it lists. Volumes stay inside each
- * project's availability table, beside their own unit type.
+ * RULE 7. There is no unit figure in this table at all, so there is nothing
+ * here that could be added across the projects it lists. Volumes stay inside
+ * each project's availability table, beside their own unit type.
  *
- * FRONTEND PASS. The control in the last column is an inert type="button".
+ * The stage and the deal shape are printed with the labels the database holds
+ * for them, so a stage added to deal.deal_stage later appears here without a
+ * new translation key and without a code leaking onto the screen.
  */
 export default async function InterestQueue({
   interest,
   locale,
 }: {
-  interest: readonly DemoOwnerInterest[];
+  interest: readonly OwnerInterest[];
   locale: string;
 }) {
   const t = await getTranslations();
   const format = await getFormatter();
 
-  const rows = [...interest].sort((a, b) => b.daysWaiting - a.daysWaiting);
+  const rows = interest.slice().sort((a, b) => b.daysWaiting - a.daysWaiting);
 
   if (rows.length === 0) {
     return <p className={styles.empty}>{t('owner.interest.empty')}</p>;
@@ -55,22 +54,16 @@ export default async function InterestQueue({
                 {t('owner.interest.waiting')}
               </th>
               <th scope="col">{t('owner.interest.stage')}</th>
-              <th scope="col">
-                <span className="visually-hidden">{t('owner.interest.actions')}</span>
-              </th>
             </tr>
           </thead>
           <tbody>
             {rows.map((row) => (
               <tr key={row.id}>
-                <th scope="row" className={styles.rowHead}>
-                  {ownerProject(row.projectId)?.name ??
-                    t('owner.questions.unknownProject')}
-                </th>
+                <th scope="row" className={styles.rowHead}>{row.projectTitle}</th>
                 <td>
                   <BuyerParty party={row.buyer} locale={locale} />
                 </td>
-                <td>{t(DEAL_SHAPE_KEY[row.shapeCode])}</td>
+                <td>{row.shapeLabel ?? ownerText(t, 'notStated')}</td>
                 <td>
                   <time dateTime={row.receivedOn}>
                     {format.dateTime(new Date(row.receivedOn), 'short')}
@@ -80,12 +73,7 @@ export default async function InterestQueue({
                   {t('owner.interest.days', { days: row.daysWaiting })}
                 </td>
                 <td>
-                  <Badge tone="neutral">{t(row.stageKey)}</Badge>
-                </td>
-                <td className={styles.actionCell}>
-                  <button type="button" className={styles.action}>
-                    {t('owner.interest.respond')}
-                  </button>
+                  <Badge tone="neutral">{row.stageLabel}</Badge>
                 </td>
               </tr>
             ))}
@@ -94,7 +82,7 @@ export default async function InterestQueue({
       </div>
 
       <p className={styles.note}>{t('owner.interest.noVolumeNote')}</p>
-      <p className={styles.note}>{t('owner.buyer.pseudonymNote')}</p>
+      <p className={styles.note}>{ownerText(t, 'partyLabelNote')}</p>
     </div>
   );
 }

@@ -165,3 +165,53 @@
   font-weight: 500;
   color: var(--ink);
 }
+
+/* --- number, and the two states a question can be in ------------------- */
+
+/* A single-line field, the same box as the textarea so the two cannot drift. */
+.input {
+  display: block;
+  width: 100%;
+  max-width: 16rem;
+  margin-top: var(--s-3);
+  padding: var(--s-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  transition: border-color var(--motion-fast);
+}
+.input:hover {
+  border-color: var(--ink-muted);
+}
+.input:focus {
+  border-color: var(--water);
+}
+
+/* A required question that was left blank on the attempt just refused. The
+   word does the work; the rule and the tint are additional to it, never
+   instead of it, and the sentence is tied to the field with aria-describedby. */
+.missing {
+  margin: var(--s-3) 0 0;
+  padding: var(--s-2) var(--s-3);
+  max-width: var(--measure-prose);
+  font-size: var(--text-sm);
+  color: var(--ink);
+  background: var(--tint-error);
+  border-left: 3px solid var(--error);
+}
+
+/* A published question this release cannot collect an answer for. Stated, not
+   hidden: a hidden question makes an incomplete questionnaire look complete. */
+.unsupported {
+  margin: var(--s-3) 0 0;
+  padding: var(--s-2) var(--s-3);
+  max-width: var(--measure-prose);
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  background: var(--surface-sunk);
+  border-left: 3px solid var(--border-strong);
+}

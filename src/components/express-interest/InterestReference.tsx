@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/lib/i18n/routing';
 import Badge from '@/components/ui/Badge';
-import type { DemoInterestProject } from './demo-interest';
+import type { InterestProject } from '@/lib/interest/types';
 import styles from './InterestReference.module.css';
 
 /**
@@ -12,17 +12,26 @@ import styles from './InterestReference.module.css';
  * scheme and in which unit type - so nobody sends an enquiry about the project
  * they were reading a moment ago rather than the one in the URL.
  *
+ * Read from the database. The owner's name comes through org.v_public_party,
+ * because no public-facing role holds SELECT on org.organisation.legal_name.
+ *
  * There are no figures in this panel, which is why it carries no source stamp:
- * a source stamp belongs to a figure. The figures on this page are the remaining
- * volumes in the form, and each of those carries its own.
+ * a source stamp belongs to a figure. The figures on this page are the
+ * remaining volumes in the form, and each of those carries its own.
  */
+
+const VINTAGE_KEY: Record<InterestProject['vintageSemantics'], string> = {
+  period_of_outcome: 'project.vintageOutcome',
+  period_of_issuance: 'project.vintageIssuance',
+  undefined_by_scheme: 'project.vintageUndefined',
+};
+
 export default async function InterestReference({
   project,
 }: {
-  project: DemoInterestProject;
+  project: InterestProject;
 }) {
   const t = await getTranslations();
-  const unit = t(project.unitLabelKey);
 
   return (
     <div className={styles.panel}>
@@ -31,7 +40,7 @@ export default async function InterestReference({
           <dt className={styles.label}>{t('expressInterest.reference.project')}</dt>
           <dd className={styles.value}>
             <Link href={`/projects/${project.slug}`} className={styles.projectLink}>
-              {project.name}
+              {project.title}
             </Link>
           </dd>
         </div>
@@ -43,11 +52,10 @@ export default async function InterestReference({
 
         <div className={styles.row}>
           <dt className={styles.label}>{t('project.location')}</dt>
-          <dd className={styles.value}>
-            {t(project.countryKey)}
-            <span className={styles.sep}> · </span>
-            {t(project.catchmentKey)}
-          </dd>
+          {/* The two-letter code, as the projects index prints it. The
+              platform has no translated country names and inventing a list
+              here would be a second source of truth for them. */}
+          <dd className={styles.value}>{project.countryCode}</dd>
         </div>
 
         <div className={styles.row}>
@@ -61,19 +69,22 @@ export default async function InterestReference({
         <div className={styles.row}>
           <dt className={styles.label}>{t('project.unitType')}</dt>
           <dd className={styles.value}>
-            <span className={styles.unit}>{unit}</span>
+            <span className={styles.unit}>{project.unitMetricLabel}</span>
           </dd>
         </div>
 
         <div className={styles.row}>
           <dt className={styles.label}>{t('project.status')}</dt>
           <dd className={styles.value}>
-            <Badge tone="neutral">{t(project.statusKey)}</Badge>
+            {/* The form only ever renders for a published project - an
+                unpublished one has no row to read - so the word is fixed here
+                rather than pretending to be a variable. */}
+            <Badge tone="neutral">{t('status.published')}</Badge>
           </dd>
         </div>
       </dl>
 
-      <p className={styles.vintage}>{t(project.vintageKey)}</p>
+      <p className={styles.vintage}>{t(VINTAGE_KEY[project.vintageSemantics])}</p>
 
       {/* Stated here rather than implied by the absence of a total. */}
       <p className={styles.incomparable}>{t('project.availabilityNote')}</p>

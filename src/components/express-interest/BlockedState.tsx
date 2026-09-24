@@ -5,13 +5,20 @@ import styles from './BlockedState.module.css';
 /**
  * One reason the enquiry cannot be sent, and what to do about it.
  *
- * Two of these appear on the page: not signed in, and organisation not yet
- * approved. They are one component rather than two because they have the same
- * job - name the obstacle, say plainly what the reader does next, and never
- * leave them at a closed door with no route out of it.
+ * Four states use this: not signed in, not a buyer account, organisation not
+ * yet approved, and an interest already open on this project. They are one
+ * component rather than four because they have the same job - name the
+ * obstacle, say plainly what the reader does next, and never leave anybody at
+ * a closed door with no route out of it.
  *
  * The state is carried by a word in a badge and by the heading, never by the
  * tint alone.
+ *
+ * `exampleLabel` is optional and is now used by nothing: it labelled the
+ * rendered specimens of these states while the page was a frontend pass. The
+ * page shows the ONE state the reader is actually in, so the label would be a
+ * lie. Kept because removing a prop is a change to a component two other areas
+ * may reuse, and it costs nothing.
  */
 export interface BlockedFact {
   label: string;
@@ -33,7 +40,7 @@ export default function BlockedState({
   actions,
   note,
 }: {
-  exampleLabel: string;
+  exampleLabel?: string;
   statusWord: string;
   statusTone: BadgeTone;
   title: string;
@@ -47,7 +54,7 @@ export default function BlockedState({
 }) {
   return (
     <div className={styles.block}>
-      <p className={styles.exampleLabel}>{exampleLabel}</p>
+      {exampleLabel ? <p className={styles.exampleLabel}>{exampleLabel}</p> : null}
 
       <div className={styles.card}>
         <div className={styles.head}>

@@ -2,7 +2,8 @@ import { getFormatter, getTranslations } from 'next-intl/server';
 import { Link } from '@/lib/i18n/routing';
 import Badge from '@/components/ui/Badge';
 import SourceStamp from '@/components/ui/SourceStamp';
-import { RECORD_SOURCE, STATUS_TONE, type ReviewRow } from './demo-projects';
+import { adminText } from '@/lib/admin/messages';
+import { STATUS_TONE, type AdminProject } from '@/lib/admin/types';
 import styles from './ProjectFacts.module.css';
 
 /**
@@ -16,12 +17,18 @@ import styles from './ProjectFacts.module.css';
  * does not - but because every figure this project will ever show is denominated
  * in it, and an operator publishing a project should have read it. Where no unit
  * type is recorded the field says so rather than being left blank.
+ *
+ * THERE IS NO "SUBMITTED" DATE. `proj.project` carries `created_at` and
+ * `published_at` and nothing between them: a project moving from `draft` to
+ * `submitted_for_review` leaves no timestamp. Printing one would be inventing
+ * it, so the panel prints the status and the date of the last content change
+ * instead.
  */
 export default async function ProjectFacts({
-  row,
+  project,
   headingId,
 }: {
-  row: ReviewRow;
+  project: AdminProject;
   headingId: string;
 }) {
   const t = await getTranslations();
@@ -33,27 +40,49 @@ export default async function ProjectFacts({
     </time>
   );
 
-  const facts: readonly { key: string; value: React.ReactNode }[] = [
-    { key: 'reference', value: <span className={styles.mono}>{row.reference}</span> },
-    { key: 'owner', value: row.ownerOrgName },
-    { key: 'country', value: t(`adminProjects.country.${row.countryCode}`) },
-    { key: 'scheme', value: row.schemeName ?? t('adminProjects.notRecorded') },
+  const facts: readonly { key: string; label: string; value: React.ReactNode }[] = [
     {
-      key: 'unitType',
-      value: row.unitKey
-        ? t(`adminProjects.unit.${row.unitKey}`)
-        : t('adminProjects.unit.notRecorded'),
+      key: 'reference',
+      label: t('adminProjects.col.reference'),
+      value: <span className={styles.mono}>{project.id}</span>,
     },
     {
-      key: 'submitted',
-      value: row.submittedOn ? day(row.submittedOn) : t('adminProjects.panel.notSubmitted'),
+      key: 'owner',
+      label: t('adminProjects.col.owner'),
+      value: project.ownerOrgName,
+    },
+    {
+      key: 'country',
+      label: t('adminProjects.col.country'),
+      value: project.countryName,
+    },
+    {
+      key: 'scheme',
+      label: t('adminProjects.col.scheme'),
+      value: project.schemeName ?? t('adminProjects.notRecorded'),
+    },
+    {
+      key: 'unitType',
+      label: t('adminProjects.col.unitType'),
+      value: project.unitLabel ?? t('adminProjects.unit.notRecorded'),
     },
     {
       key: 'published',
-      value: row.publishedOn ? day(row.publishedOn) : t('adminProjects.panel.notPublished'),
+      label: t('adminProjects.col.published'),
+      value: project.publishedOn
+        ? day(project.publishedOn)
+        : t('adminProjects.panel.notPublished'),
     },
-    { key: 'lastChange', value: day(row.lastChangeOn) },
-    { key: 'slug', value: <span className={styles.mono}>{row.slug}</span> },
+    {
+      key: 'lastChange',
+      label: t('adminProjects.col.lastChange'),
+      value: day(project.lastChangeOn),
+    },
+    {
+      key: 'slug',
+      label: t('adminProjects.col.slug'),
+      value: <span className={styles.mono}>{project.slug}</span>,
+    },
   ];
 
   return (
@@ -61,18 +90,17 @@ export default async function ProjectFacts({
       <div className={styles.head}>
         <p className={styles.eyebrow}>{t('adminProjects.panel.eyebrow')}</p>
         <h2 id={headingId} className={styles.title}>
-          {row.title}
+          {project.title}
         </h2>
         <div className={styles.badges}>
-          <Badge tone="demo">{t('demo.badge')}</Badge>
-          <Badge tone={STATUS_TONE[row.status]}>{t(`status.${row.status}`)}</Badge>
+          <Badge tone={STATUS_TONE[project.status]}>{t(`status.${project.status}`)}</Badge>
         </div>
       </div>
 
       <dl className={styles.facts}>
         {facts.map((fact) => (
           <div key={fact.key} className={styles.fact}>
-            <dt className={styles.factLabel}>{t(`adminProjects.col.${fact.key}`)}</dt>
+            <dt className={styles.factLabel}>{fact.label}</dt>
             <dd className={styles.factValue}>{fact.value}</dd>
           </div>
         ))}
@@ -80,14 +108,14 @@ export default async function ProjectFacts({
 
       <SourceStamp
         source={{
-          label: t(RECORD_SOURCE.labelKey),
-          locator: RECORD_SOURCE.locator,
-          asOfDate: RECORD_SOURCE.asOfDate,
+          label: t('adminProjects.source.projectRecord'),
+          locator: null,
+          asOfDate: project.lastChangeOn,
         }}
       />
 
       <p className={styles.pageLink}>
-        <Link href={`/projects/${row.slug}`}>{t('adminProjects.panel.viewPage')}</Link>
+        <Link href={`/projects/${project.slug}`}>{t('adminProjects.panel.viewPage')}</Link>
       </p>
     </div>
   );

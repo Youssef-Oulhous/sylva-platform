@@ -1,6 +1,8 @@
 import { getTranslations } from 'next-intl/server';
 import SourceStamp from '@/components/ui/SourceStamp';
-import type { DemoProject } from './demo-data';
+import FallbackNote from './FallbackNote';
+import { label, UI } from '@/lib/projects/labels';
+import type { ProjectDetail } from '@/lib/projects/types';
 import styles from './ClaimRightsSection.module.css';
 
 /**
@@ -10,9 +12,22 @@ import styles from './ClaimRightsSection.module.css';
  * sale of credits removed its right to claim the benefit it had paid for. That
  * makes exclusions a decision input, not a footnote, so the exclusions column
  * is as wide as the permission column and is not collapsed behind a disclosure.
+ *
+ * All four cells are separate translatable fields and each falls back on its
+ * own. A German exclusions clause beside an English one is unusual but honest;
+ * quietly serving the English row for all four would not be.
  */
-export default async function ClaimRightsSection({ project }: { project: DemoProject }) {
+export default async function ClaimRightsSection({ project }: { project: ProjectDetail }) {
   const t = await getTranslations();
+
+  if (project.claimRights.length === 0) {
+    return (
+      <>
+        <h2>{t('project.claimRights')}</h2>
+        <p className={styles.lead}>{label(t, UI.noClaims)}</p>
+      </>
+    );
+  }
 
   return (
     <>
@@ -33,23 +48,31 @@ export default async function ClaimRightsSection({ project }: { project: DemoPro
             </tr>
           </thead>
           <tbody>
-            {project.claims.map((c) => (
-              <tr key={c.id}>
+            {project.claimRights.map((c) => (
+              <tr key={c.benefitKey}>
                 <th scope="row" className={styles.rowHead}>
-                  {t(c.benefitKey)}
+                  {c.benefitLabel?.body ?? c.benefitKey}
+                  <FallbackNote text={c.benefitLabel} />
                   <SourceStamp
                     source={{
-                      label: t(c.source.labelKey),
+                      label: c.source.label,
                       locator: c.source.locator,
                       asOfDate: c.source.asOfDate,
                     }}
                   />
                 </th>
-                <td>{t(c.holderKey)}</td>
-                <td>{t(c.allowedKey)}</td>
+                <td>
+                  {c.whoMayClaim?.body ?? '—'}
+                  <FallbackNote text={c.whoMayClaim} />
+                </td>
+                <td>
+                  {c.forWhat?.body ?? '—'}
+                  <FallbackNote text={c.forWhat} />
+                </td>
                 <td className={styles.exclusions}>
                   <span className={styles.exclusionsMark} aria-hidden="true" />
-                  {t(c.excludedKey)}
+                  {c.exclusions?.body ?? '—'}
+                  <FallbackNote text={c.exclusions} />
                 </td>
               </tr>
             ))}

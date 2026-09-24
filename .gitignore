@@ -8,3 +8,4 @@ node_modules/
 coverage/
 tsconfig.tsbuildinfo
 *.tsbuildinfo
+.storage-test/

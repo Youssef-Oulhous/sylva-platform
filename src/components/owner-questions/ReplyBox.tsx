@@ -1,91 +1,74 @@
 import { getTranslations } from 'next-intl/server';
+import { answerQuestionAction } from '@/lib/owner/actions';
+import { ownerText } from '@/lib/owner/messages';
 import styles from './ReplyBox.module.css';
 
 /**
- * The reply box.
+ * The reply box. It writes.
  *
- * FRONTEND PASS. There is no <form>, no action and no handler, so nothing can be
- * sent and the component stays a Server Component. The field is uncontrolled; a
- * saved draft is rendered as its defaultValue. Both controls are type="button",
- * left enabled and marked aria-disabled, and both are described by the note that
- * says why - removing them would hide from a keyboard reader that the actions
- * exist at all.
+ * A plain <form action={…}> over a Server Action, so there is no client
+ * component here and no JavaScript bundle: the page works with scripting turned
+ * off, which is what the rest of this codebase does and what a document-like
+ * interface should do.
  *
  * The two notes under the field are not decoration. An owner about to type into
- * this box needs to know, at the point of typing, that the operator reads the
- * reply and that nothing typed here is published. Putting that behind a
+ * this box needs to know, at the point of typing, that Sylva reads the reply,
+ * that nothing typed here is published, and that a reply cannot be taken back -
+ * deal.project_question_answer is append-only, so a correction is a further
+ * reply and the first one stays on the record. Putting any of that behind a
  * disclosure control would be putting it where it is not read.
+ *
+ * The question id travels in a hidden field and is validated server-side
+ * against the row policy, which admits only questions asked of this
+ * organisation. A tampered id is refused by the database, not by this form.
  */
 export default async function ReplyBox({
-  questionRef,
-  draftKey,
+  questionId,
   variant = 'reply',
 }: {
-  questionRef: string;
-  /** i18n key for an unsent draft, or null when there is none. */
-  draftKey?: string | null;
+  questionId: string;
   variant?: 'reply' | 'further';
 }) {
-  const t = await getTranslations('ownerQuestions');
+  const t = await getTranslations();
+  const tq = await getTranslations('ownerQuestions');
 
-  const fieldId = `reply-${questionRef}-${variant}`;
+  const fieldId = `reply-${questionId}-${variant}`;
   const hintId = `${fieldId}-hint`;
-  const inertId = `${fieldId}-inert`;
-  const draftId = `${fieldId}-draft`;
-
-  const describedBy = draftKey
-    ? `${hintId} ${draftId} ${inertId}`
-    : `${hintId} ${inertId}`;
+  const appendId = `${fieldId}-append`;
 
   return (
-    <div className={styles.box}>
+    <form className={styles.box} action={answerQuestionAction}>
+      <input type="hidden" name="question_id" value={questionId} />
+
       <label className={styles.label} htmlFor={fieldId}>
-        {variant === 'further' ? t('reply.furtherLabel') : t('reply.label')}
+        {variant === 'further' ? tq('reply.furtherLabel') : tq('reply.label')}
       </label>
 
       <p className={styles.hint} id={hintId}>
-        {t('reply.hint')}
+        {tq('reply.hint')}
       </p>
-
-      {draftKey && (
-        <p className={styles.draftNote} id={draftId}>
-          {t('reply.draftNote')}
-        </p>
-      )}
 
       <textarea
         className={styles.textarea}
         id={fieldId}
-        name={fieldId}
-        rows={draftKey ? 6 : 5}
-        aria-describedby={describedBy}
-        defaultValue={draftKey ? t(draftKey) : undefined}
+        name="body"
+        rows={5}
+        required
+        maxLength={8000}
+        aria-describedby={`${hintId} ${appendId}`}
       />
 
-      <p className={styles.visibility}>{t('reply.visibility')}</p>
+      <p className={styles.visibility}>{tq('reply.visibility')}</p>
 
       <div className={styles.actions}>
-        <button
-          type="button"
-          className={styles.send}
-          aria-disabled="true"
-          aria-describedby={inertId}
-        >
-          {t('reply.send')}
-        </button>
-        <button
-          type="button"
-          className={styles.secondary}
-          aria-disabled="true"
-          aria-describedby={inertId}
-        >
-          {t('reply.saveDraft')}
+        <button type="submit" className={styles.send}>
+          {ownerText(t, 'replySend')}
         </button>
       </div>
 
-      <p id={inertId} className={styles.inertNote}>
-        {t('reply.inertNote')}
+      <p id={appendId} className={styles.inertNote}>
+        {ownerText(t, 'replyAppendNote')}
       </p>
-    </div>
+    </form>
   );
 }

@@ -57,3 +57,16 @@
 @media (max-width: 30rem) {
   .blockWater, .blockBio { padding: var(--s-4); }
 }
+
+/* An indicator's own unit — "cm below ground" — printed beside every figure.
+   Not a unit of trade and never summed; see src/lib/units/qty.ts for those. */
+.unit {
+  font-size: var(--text-2xs);
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+
+/* A figure the project did not state. An empty cell would read as a zero. */
+.absent {
+  color: var(--ink-muted);
+}

@@ -66,3 +66,30 @@
 @media (max-width: 30rem) {
   .field, .apply { width: 100%; min-width: 0; }
 }
+
+/* Clearing the filter is a link, not a button: it is a different address, and
+   the address is the point of this control. Styled as a quiet action so it
+   does not compete with Apply. */
+.clear {
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  min-height: 2.25rem;
+  display: inline-flex;
+  align-items: center;
+}
+.clear:hover { color: var(--forest); }
+
+/* A filter the address asked for and the page could not apply. Not an error -
+   the page still works - but it must not be silent, because the reader was
+   promised a different view. */
+.ignored {
+  margin: var(--s-3) 0 0;
+  padding: var(--s-2) var(--s-3);
+  background: var(--tint-neutral);
+  border-left: 2px solid var(--border-strong);
+  font-size: var(--text-sm);
+  color: var(--ink);
+  max-width: var(--measure-prose);
+}

@@ -82,3 +82,29 @@
 @media (max-width: 40rem) {
   .lead { font-size: var(--text-base); }
 }
+
+/* The record could not be read. Said plainly, and never as an empty table:
+   a reader must not be left wondering whether entries were removed. */
+.failure {
+  margin: var(--s-5) 0 0;
+  padding: var(--s-4);
+  background: var(--tint-error);
+  border-left: 2px solid var(--tint-error-ink);
+  color: var(--tint-error-ink);
+  font-size: var(--text-sm);
+  max-width: var(--measure-prose);
+}
+
+/* Nothing matched. Also said plainly, and distinct from the sentence above,
+   because "there is nothing there" and "this page could not look" are
+   different facts about a permanent record. */
+.empty {
+  margin: var(--s-5) 0 0;
+  padding: var(--s-4);
+  background: var(--surface-sunk);
+  border: var(--rule);
+  border-radius: var(--radius);
+  font-size: var(--text-sm);
+  color: var(--ink);
+  max-width: var(--measure-prose);
+}

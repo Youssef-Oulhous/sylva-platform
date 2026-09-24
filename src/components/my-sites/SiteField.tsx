@@ -24,6 +24,12 @@ interface FieldCommon {
   optionalNote?: string;
   required?: boolean;
   autoComplete?: string;
+  /**
+   * Fills the control when the form edits something that already exists.
+   * `defaultValue`, never `value`: these are uncontrolled inputs in a server
+   * component, and a `value` without an onChange makes the box read-only.
+   */
+  defaultValue?: string;
 }
 
 type FieldControl =
@@ -47,7 +53,9 @@ type FieldControl =
 export type SiteFieldProps = FieldCommon & FieldControl;
 
 export default function SiteField(props: SiteFieldProps) {
-  const { id, name, label, hint, optionalNote, required = false, autoComplete } = props;
+  const {
+    id, name, label, hint, optionalNote, required = false, autoComplete, defaultValue,
+  } = props;
   const hintId = `${id}-hint`;
   const describedBy = hint ? hintId : undefined;
 
@@ -73,7 +81,7 @@ export default function SiteField(props: SiteFieldProps) {
           id={id}
           name={name}
           required={required}
-          defaultValue=""
+          defaultValue={defaultValue ?? ''}
           aria-describedby={describedBy}
           className={styles.select}
         >
@@ -92,6 +100,7 @@ export default function SiteField(props: SiteFieldProps) {
           name={name}
           rows={props.rows}
           required={required}
+          defaultValue={defaultValue}
           aria-describedby={describedBy}
           className={`${styles.input} ${styles.textarea}`}
         />
@@ -108,6 +117,7 @@ export default function SiteField(props: SiteFieldProps) {
           step={props.step}
           placeholder={props.placeholder}
           required={required}
+          defaultValue={defaultValue}
           autoComplete={autoComplete ?? 'off'}
           aria-describedby={describedBy}
           className={`${styles.input} ${styles.number}`}
@@ -118,6 +128,7 @@ export default function SiteField(props: SiteFieldProps) {
           name={name}
           type="text"
           required={required}
+          defaultValue={defaultValue}
           autoComplete={autoComplete ?? 'off'}
           spellCheck={false}
           aria-describedby={describedBy}

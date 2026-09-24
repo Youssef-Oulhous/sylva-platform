@@ -130,3 +130,62 @@
     padding: var(--s-5) var(--s-4);
   }
 }
+
+/* One disclosure per site: change the row, or remove it. Kept outside the
+   table so the table stays a table at 375px. */
+.editors {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: var(--rule);
+}
+
+.editor + .editor {
+  border-top: var(--rule);
+}
+
+.editSummary {
+  cursor: pointer;
+  padding: var(--s-3) var(--s-5);
+  font-size: var(--text-sm);
+  color: var(--forest);
+}
+
+.editSummary:hover {
+  text-decoration: underline;
+}
+
+.editBody {
+  padding: 0 var(--s-5) var(--s-4);
+}
+
+.removeForm {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-3);
+  margin-top: var(--s-4);
+  padding-top: var(--s-4);
+  border-top: 1px dashed var(--border);
+  min-width: 0;
+}
+
+.remove {
+  font: inherit;
+  font-size: var(--text-sm);
+  padding: var(--s-2) var(--s-4);
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.remove:hover {
+  border-color: var(--ink);
+}
+
+.removeNote {
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  min-width: 0;
+}

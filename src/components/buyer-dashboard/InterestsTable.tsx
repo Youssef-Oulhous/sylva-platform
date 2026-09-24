@@ -1,7 +1,7 @@
 import { getFormatter, getTranslations } from 'next-intl/server';
 import { Link } from '@/lib/i18n/routing';
 import EmptyState from './EmptyState';
-import type { ExpressedInterest } from './types';
+import type { ExpressedInterest } from '@/lib/dashboard/types';
 import styles from './InterestsTable.module.css';
 
 /**
@@ -13,7 +13,8 @@ import styles from './InterestsTable.module.css';
  * the figures would not be comparable: one project issues hectare-years,
  * another issues points on an index. What the table shows instead is the unit
  * each project issues, which is the fact that makes the comparison improper.
- * Volumes appear further down the page, one project at a time.
+ * The type it renders has no quantity field at all, so there is nothing here
+ * that could be added.
  *
  * A closed interest stays in the table. The record is append-only (concept
  * note, §8, rule 4), so an interest that led nowhere is history, not clutter,
@@ -58,51 +59,56 @@ export default async function InterestsTable({
             </tr>
           </thead>
           <tbody>
-            {interests.map((interest) => (
-              <tr key={interest.id} className={interest.state === 'closed' ? styles.closedRow : undefined}>
-                <td className={styles.dateCell}>
-                  <time dateTime={interest.expressedOn}>
-                    {format.dateTime(new Date(interest.expressedOn), 'short')}
-                  </time>
-                </td>
+            {interests.map((interest) => {
+              const state = interest.dealOpen ? 'dealOpen' : 'recorded';
+              return (
+                <tr key={interest.publicId}>
+                  <td className={styles.dateCell}>
+                    <time dateTime={interest.expressedOn}>
+                      {format.dateTime(new Date(interest.expressedOn), 'short')}
+                    </time>
+                  </td>
 
-                <th scope="row" className={styles.rowHead}>
-                  <Link href={`/projects/${interest.projectSlug}`}>{interest.projectName}</Link>
-                </th>
+                  <th scope="row" className={styles.rowHead}>
+                    <Link href={`/projects/${interest.slug}`}>
+                      {interest.projectTitle}
+                    </Link>
+                  </th>
 
-                {/* The unit travels with the project, everywhere on this page. */}
-                <td className={styles.unitsCell}>
-                  <span className={styles.scheme}>{interest.schemeName}</span>
-                  <span className={styles.unit}>{t(interest.unitLabelKey)}</span>
-                </td>
+                  {/* The unit travels with the project, everywhere on this
+                      page. A NAME, never a quantity. */}
+                  <td className={styles.unitsCell}>
+                    <span className={styles.scheme}>{interest.schemeName ?? ''}</span>
+                    <span className={styles.unit}>{interest.unitLabel ?? ''}</span>
+                  </td>
 
-                {/* Status is a word. There is no colour here carrying meaning
-                    on its own, and no icon standing in for one. */}
-                <td className={styles.stateCell}>{t(`interests.state.${interest.state}`)}</td>
+                  {/* Status is a word. There is no colour here carrying meaning
+                      on its own, and no icon standing in for one. */}
+                  <td className={styles.stateCell}>{t(`interests.state.${state}`)}</td>
 
-                <td className={styles.refCell}>
-                  <span className={styles.mono}>{interest.recordRef}</span>
-                </td>
+                  <td className={styles.refCell}>
+                    {/* The reference the public record shows. Abbreviated on
+                        screen so the column fits; the whole value is on the
+                        element for anyone who needs to copy it. */}
+                    <span className={styles.mono} title={interest.publicId}>
+                      {interest.publicId.slice(0, 8)}
+                    </span>
+                  </td>
 
-                <td className={styles.actionCell}>
-                  {interest.state === 'dealOpen' && interest.dealRef !== null ? (
-                    <button
-                      type="button"
-                      className={styles.action}
-                      aria-label={t('interests.openDealRoomFor', {
-                        project: interest.projectName,
-                      })}
-                    >
-                      {t('interests.openDealRoom')}
-                    </button>
-                  ) : interest.state === 'recorded' ? (
-                    <span className={styles.waiting}>{t('interests.awaitingOwner')}</span>
-                  ) : (
-                    <span className={styles.waiting}>{t('interests.closedNote')}</span>
-                  )}
-                </td>
-              </tr>
-            ))}
+                  <td className={styles.actionCell}>
+                    {/* No deal room in release 1 - the concept note's first
+                        release is the public side plus a way in - so this cell
+                        says where things stand rather than offering a control
+                        that opens nothing. */}
+                    <span className={styles.waiting}>
+                      {interest.dealOpen
+                        ? t('interests.state.dealOpen')
+                        : t('interests.awaitingOwner')}
+                    </span>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

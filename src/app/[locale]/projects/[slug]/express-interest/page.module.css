@@ -77,6 +77,28 @@
   color: var(--ink-muted);
 }
 
+/* The action redirected back here because the enquiry was refused. Stated as a
+   notice above the form, not as a toast that disappears: a refusal a buyer can
+   scroll back to is a refusal they can act on. */
+.errorNotice {
+  margin-top: var(--s-5);
+  padding: var(--s-4);
+  background: var(--surface-sunk);
+  border-left: 2px solid var(--error, var(--water));
+  max-width: var(--measure-prose);
+}
+.errorHeading {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ink);
+}
+.errorBody {
+  margin: var(--s-2) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ink);
+}
+
 .blockedList {
   display: grid;
   gap: var(--s-6);

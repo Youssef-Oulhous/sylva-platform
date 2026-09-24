@@ -63,3 +63,25 @@
   .panel { padding: var(--s-4); }
   .download { width: 100%; }
 }
+
+/* What has actually been assembled under each element, where the viewer may
+   see it. Indented under its element so the public list stays the outline. */
+.assembled {
+  list-style: none;
+  margin: var(--s-2) 0 0;
+  padding: 0 0 0 var(--s-4);
+  border-left: 1px solid var(--border);
+  display: grid;
+  gap: var(--s-1);
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}
+
+/* `.items li` is a descendant selector, so it would also decorate these. */
+.assembled li {
+  padding-left: 0;
+}
+
+.assembled li::before {
+  content: none;
+}

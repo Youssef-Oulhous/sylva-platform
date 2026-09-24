@@ -1,7 +1,9 @@
 import { getTranslations } from 'next-intl/server';
 import Badge from '@/components/ui/Badge';
 import SourceStamp from '@/components/ui/SourceStamp';
-import { DERIVATION_ROWS, STATE_TONE, type PermitValue } from './demo-queue';
+import { stateLabel } from '@/lib/admin/messages';
+import { STATE_TONE } from '@/lib/admin/types';
+import { DERIVATION_ROWS, type PermitValue } from './model';
 import styles from './DecisionModel.module.css';
 
 /**
@@ -10,9 +12,10 @@ import styles from './DecisionModel.module.css';
  * An operator does not set an organisation's approval state. It records a
  * decision - approve, decline or suspend - with a reason, and the state is read
  * back from the entries recorded against the application. There is no approval
- * field on this screen, in the demo data, or in the shape the data layer will
- * fill: `QueueRow` carries a log and no status, and `deriveState()` is the only
- * way a state is produced.
+ * field on this screen and none in the shape the queries return: an
+ * AdminVettingRow carries the entries recorded against the application and the
+ * status `org.org_role_approval` holds, and that status is written only by the
+ * SECURITY DEFINER trigger on `org.vetting_decision`.
  *
  * The reason that matters here rather than only in a schema: the record is
  * append-only (concept note section 8, rule 4), so a decision that could be
@@ -64,15 +67,9 @@ export default async function DecisionModel() {
                   {t(`adminVetting.entry.${row.entryKey}`)}
                 </th>
                 <td>
-                  {row.state === 'recomputed' ? (
-                    <span className={styles.recomputed}>
-                      {t('adminVetting.model.recomputedState')}
-                    </span>
-                  ) : (
-                    <Badge tone={STATE_TONE[row.state]}>
-                      {t(`adminVetting.state.${row.state}`)}
-                    </Badge>
-                  )}
+                  <Badge tone={STATE_TONE[row.state]}>
+                    {stateLabel(t, row.state)}
+                  </Badge>
                 </td>
                 <td>{permit(row.mayDeal)}</td>
                 <td className={styles.effectCell}>

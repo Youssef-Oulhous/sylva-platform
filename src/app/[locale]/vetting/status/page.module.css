@@ -113,3 +113,33 @@
     padding-left: var(--s-4);
   }
 }
+
+/* The decision chain. A table, because the reader's question is comparative -
+   what changed, and when - and a table is this platform's instrument for data.
+   Wide on purpose: the recorded reason is a sentence, not a label. */
+.history {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+.history th,
+.history td {
+  padding: var(--s-3) var(--s-4);
+  text-align: left;
+  vertical-align: top;
+  border-bottom: var(--rule);
+}
+.history thead th {
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  background: var(--surface-sunk);
+  white-space: nowrap;
+}
+.history tbody td:first-child {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}

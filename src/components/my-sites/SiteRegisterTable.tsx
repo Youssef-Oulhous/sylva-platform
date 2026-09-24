@@ -1,14 +1,22 @@
 import { getFormatter, getTranslations } from 'next-intl/server';
 import SourceStamp from '@/components/ui/SourceStamp';
-import { formatDegrees, type RegisteredSite } from './demo-sites';
+import type { BuyerSite } from '@/lib/sites/types';
+import { removeSiteAction, updateSiteAction } from '@/lib/sites/actions';
+import AddSiteForm from './AddSiteForm';
+import { formatDegrees } from './format';
 import styles from './SiteRegisterTable.module.css';
 
 /**
- * The organisation's registered sites.
+ * The organisation's registered sites, with the two controls that make the
+ * register maintainable: change and remove.
  *
- * Four columns, the ones the client asked for: name, country, coordinates, date
- * added. Region and the organisation's own note sit inside the name cell rather
- * than becoming columns of their own, so the table still reads at 375px.
+ * Both are FORMS, not links. They write, and a link that writes is a link a
+ * crawler, a prefetch or a browser's "open in new tab" can fire. Each posts to
+ * a Server Action with the site id and nothing else; which rows that id is
+ * allowed to touch is decided by geo.buyer_site's policy, not here.
+ *
+ * The edit form lives inside a native <details> so the table still reads as a
+ * table, one row per site, with no client JavaScript and no modal.
  *
  * With no rows it renders the empty state instead of an empty table. An empty
  * table with four headers and no body tells a reader nothing about what to do
@@ -16,11 +24,11 @@ import styles from './SiteRegisterTable.module.css';
  */
 export default async function SiteRegisterTable({
   sites,
-  asOfDate,
+  countries,
 }: {
-  sites: readonly RegisteredSite[];
-  /** The date the register was read. Carried by the source stamp. */
-  asOfDate: string;
+  sites: readonly BuyerSite[];
+  /** The country list, read from platform.eu_member_state by the page. */
+  countries: readonly { readonly value: string; readonly label: string }[];
 }) {
   const t = await getTranslations();
   const format = await getFormatter();
@@ -34,6 +42,16 @@ export default async function SiteRegisterTable({
       </div>
     );
   }
+
+  // The register as a whole was read now; each row carries its own as-of date
+  // underneath its name, which is the date that actually belongs to the figure.
+  const latest = sites
+    .map((s) => s.source.asOfDate)
+    .sort()
+    .at(-1)!;
+
+  const countryLabel = (code: string) =>
+    countries.find((c) => c.value === code)?.label ?? code;
 
   return (
     <div className={styles.panel}>
@@ -57,18 +75,17 @@ export default async function SiteRegisterTable({
             {sites.map((site) => (
               <tr key={site.id}>
                 <th scope="row" className={styles.rowHead}>
-                  {site.name}
-                  <span className={styles.region}>{site.regionLabel}</span>
-                  {site.notes !== null && (
-                    <span className={styles.note}>
-                      <span className="visually-hidden">
-                        {t('mySites.form.notes')}:{' '}
-                      </span>
-                      {site.notes}
-                    </span>
-                  )}
+                  {site.label}
+                  {/* Every figure carries its source and its date. The
+                      coordinates in this row are a figure. */}
+                  <span className={styles.region}>
+                    <SourceStamp
+                      inline
+                      source={{ label: site.source.label, asOfDate: site.source.asOfDate }}
+                    />
+                  </span>
                 </th>
-                <td>{t(`mySites.country.${site.countryCode}`)}</td>
+                <td>{countryLabel(site.countryCode)}</td>
                 {/* Latitude and longitude are two figures in one cell, so each
                     carries its own label for a reader who cannot see that the
                     first number is the northern one. */}
@@ -84,8 +101,8 @@ export default async function SiteRegisterTable({
                   {formatDegrees(site.longitude)}
                 </td>
                 <td>
-                  <time dateTime={site.addedOn}>
-                    {format.dateTime(new Date(site.addedOn), 'short')}
+                  <time dateTime={site.registeredOn}>
+                    {format.dateTime(new Date(site.registeredOn), 'short')}
                   </time>
                 </td>
               </tr>
@@ -93,6 +110,42 @@ export default async function SiteRegisterTable({
           </tbody>
         </table>
       </div>
+
+      {/* One editor per site, outside the table: a form inside a <td> that
+          spans a row is a layout fight nobody wins, and a details element is
+          announced as a disclosure either way. */}
+      <ul className={styles.editors}>
+        {sites.map((site) => (
+          <li key={site.id} className={styles.editor}>
+            <details>
+              <summary className={styles.editSummary}>
+                {t('mySites.register.editSummary', { site: site.label })}
+              </summary>
+              <div className={styles.editBody}>
+                <AddSiteForm
+                  idPrefix={`edit-${site.id}`}
+                  formLabel={t('mySites.register.editSummary', { site: site.label })}
+                  action={updateSiteAction}
+                  countries={countries}
+                  site={site}
+                  submitLabel={t('mySites.register.saveChanges')}
+                />
+                {/* A separate form, so "save" and "remove" cannot be confused
+                    for each other by a stray Enter key in a text box. */}
+                <form action={removeSiteAction} className={styles.removeForm}>
+                  <input type="hidden" name="id" value={site.id} />
+                  <button type="submit" className={styles.remove}>
+                    {t('mySites.register.remove')}
+                  </button>
+                  <span className={styles.removeNote}>
+                    {t('mySites.register.removeNote')}
+                  </span>
+                </form>
+              </div>
+            </details>
+          </li>
+        ))}
+      </ul>
 
       <div className={styles.panelFoot}>
         <p className={styles.count}>
@@ -102,7 +155,7 @@ export default async function SiteRegisterTable({
           source={{
             label: t('mySites.source.register'),
             locator: null,
-            asOfDate,
+            asOfDate: latest,
           }}
         />
       </div>

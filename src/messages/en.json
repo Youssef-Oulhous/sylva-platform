@@ -12,7 +12,9 @@
     "about": "About",
     "signIn": "Sign in",
     "register": "Register",
-    "language": "Language"
+    "language": "Language",
+    "myArea": "My area",
+    "signOut": "Sign out"
   },
   "eu": {
     "coFunded": "Co-funded by the European Union",
@@ -483,7 +485,15 @@
       "project": "Project",
       "eventType": "Event type",
       "apply": "Apply",
-      "notConnected": "These filters are not connected yet. The full extract is shown below."
+      "notConnected": "These filters are not connected yet. The full extract is shown below.",
+      "applyNow": "Apply filter",
+      "clear": "Clear filter",
+      "allProjects": "All projects",
+      "allEvents": "All event types",
+      "proposedSuffix": "proposed",
+      "inUrlNote": "The filter is part of the address of this page, so a filtered view can be sent to somebody and will open the same way for them.",
+      "ignoredProject": "The address asked for a project that is not in this record, so the project filter was not applied.",
+      "ignoredEvent": "The address asked for an event type that does not exist, so the event filter was not applied."
     },
     "table": {
       "caption": "Transaction record entries, newest first. Superseded entries stay in place and are marked. No unit volumes and no prices appear in this table."
@@ -497,7 +507,8 @@
       "sector": "Sector",
       "country": "Country",
       "sizeBand": "Size band",
-      "entryStatus": "Entry status"
+      "entryStatus": "Entry status",
+      "entryFull": "Full entry reference"
     },
     "entryStatus": {
       "current": "Current",
@@ -510,7 +521,9 @@
     "party": {
       "label": "Label",
       "named": "Named",
-      "owner": "Project owner"
+      "owner": "Project owner",
+      "withheld": "Label not available",
+      "withheldNote": "This entry’s counterparty has no published label. It is not named here and nothing else on this page identifies it."
     },
     "sector": {
       "food_bev": "Food and beverage",
@@ -581,6 +594,19 @@
     },
     "demo": {
       "correctionReason": "The entry stated the 2028 period. The signed letter of intent states the 2029 period."
+    },
+    "empty": "No entry in this record matches that filter. Nothing has been hidden; there is nothing there.",
+    "emptyAll": "There is no entry in the public record yet. Entries appear here as transactions progress.",
+    "page": {
+      "label": "Record pages",
+      "previous": "Previous",
+      "next": "Next",
+      "position": "Page {page} of {pageCount}",
+      "showing": "Showing entries {from} to {to} of {total}"
+    },
+    "error": {
+      "unavailable": "The public record cannot be read at the moment. Nothing has been changed or removed; this page could not reach the record. Please try again shortly.",
+      "denied": "You don’t have access to this information."
     }
   },
   "howItWorks": {
@@ -1438,7 +1464,11 @@
       "emptyBody": "Add your company sites to see how far each one is from a restoration project.",
       "emptyPrivacy": "Nothing is published when you add a site. The register is visible to your organisation only.",
       "emptySummary": "Show the empty register",
-      "emptyNote": "What an organisation sees before it has added its first site."
+      "emptyNote": "What an organisation sees before it has added its first site.",
+      "editSummary": "Change or remove {site}",
+      "saveChanges": "Save changes",
+      "remove": "Remove this site",
+      "removeNote": "The site is deleted from your register. It was never published, so nothing is withdrawn."
     },
     "form": {
       "title": "Add a site",
@@ -1475,7 +1505,10 @@
       "methodLine": "A straight line from the site coordinates to the nearest point on the published project boundary. It is not a road or travel distance.",
       "methodCatchment": "A short distance does not mean the site and the project are in the same catchment. The catchment column states that separately.",
       "methodUnits": "Distances are in kilometres and can be compared between rows. Unit volumes cannot: each project issues units under its own scheme and its own unit type, so this table shows no volumes.",
-      "browseProjects": "View restoration projects"
+      "browseProjects": "View restoration projects",
+      "noSites": "Register a site to see how far it is from each published project.",
+      "noProjects": "There is no published project to measure this site against yet.",
+      "catchmentUnknown": "No catchment published"
     },
     "source": {
       "register": "Site register, entered by your organisation",
@@ -1490,6 +1523,11 @@
       "FR": "France",
       "NL": "Netherlands",
       "PL": "Poland"
+    },
+    "status": {
+      "added": "The site was added to your register.",
+      "updated": "The site was updated.",
+      "removed": "The site was removed from your register."
     }
   },
   "register": {
@@ -1769,7 +1807,10 @@
       "submit": "Submit for review",
       "saveDraft": "Save draft",
       "inertNote": "This is the frontend build. Neither control saves or submits anything yet.",
-      "footNote": "You can save a draft and return to it later. Questions you have not answered stay in the list on the left."
+      "footNote": "You can save a draft and return to it later. Questions you have not answered stay in the list on the left.",
+      "savedNote": "Draft saved. Nothing has been sent to Sylva yet.",
+      "submittedNote": "This questionnaire has been submitted. The answers above are the ones Sylva is reading. They cannot be edited, because the record is append-only, but a new application can be submitted; it supersedes this one and this one stays on record.",
+      "notApprovalNote": "Submitting is not approval. Sylva reads the answers and records a decision; until it does, this organisation cannot express interest in a project."
     },
     "next": {
       "title": "What happens after you submit",
@@ -1781,12 +1822,72 @@
       "backToBuyers": "Read what buyers can do on this platform"
     },
     "source": {
-      "questionnaire": "Vetting questionnaire"
+      "questionnaire": "Vetting questionnaire",
+      "submission": "Your submitted application"
     },
     "demoAnswers": {
       "benefit": "DEMO ANSWER. We would claim the water outcome - the retention volume and the summer low-flow indicator - for the 2028 period, for the catchment that supplies our Lüneburg bottling site. We would not claim the biodiversity condition result.",
       "publication": "DEMO ANSWER. In our annual sustainability statement, in the water section, and in the environmental annex we give to trade customers on request. Not on packaging and not in advertising.",
       "operations": "DEMO ANSWER. We bottle and distribute mineral water and soft drinks from three sites in northern Germany. Two of the three draw groundwater under abstraction permits. Our exposure is to summer low flow and to falling groundwater levels around the Lüneburg and Uelzen sites."
+    },
+    "notApplicable": "This questionnaire is for organisations that want to buy, own a project or invest. Your account is not one of those, so there is nothing here to fill in.",
+    "questionsCountTitle": "{count, plural, one {The one question} other {The # questions}}",
+    "question": {
+      "intended_claim": {
+        "short": "Intended claim",
+        "label": "What environmental benefit do you intend to claim?",
+        "hint": "Name the benefit itself - for example a water outcome in a named catchment, or a biodiversity condition result - and the period you would claim it for. If you intend to claim more than one benefit, list each one separately.",
+        "why": "Claim rights are set per project and per benefit, and each project states who may claim what and what is excluded. We cannot tell you whether a project's claim rights allow what you have in mind unless you describe it."
+      },
+      "claim_publication": {
+        "short": "Where published",
+        "label": "Where would that claim be published?",
+        "hint": "For example an annual report, a sustainability statement, a product or packaging label, customer communications, a tender response, or internal reporting only. Name the documents and the audiences.",
+        "why": "A claim in a public report is read by more people than one kept inside the organisation, and its wording is held to more scrutiny. Where the claim appears is the question our funder asks us about most often, so we ask it before a deal rather than after one."
+      },
+      "operations": {
+        "short": "How you operate",
+        "label": "How does your organisation operate?",
+        "hint": "What you make or do, where your main sites are, and which parts of your activity depend on or affect water, land and habitats. A plain description is enough; no strategy language is needed.",
+        "why": "We read this answer together with what you intend to claim. A restoration project upstream of your own sites supports a different claim from one with no connection to them, and the project owner needs to know who is asking."
+      },
+      "water_dependence": {
+        "short": "Water dependence",
+        "label": "Do you depend on water in specific catchments?",
+        "hint": "A catchment is the area of land that drains into a particular river or aquifer. Name the catchments and the sites that depend on them, or state that your activity has no catchment-specific water dependence.",
+        "why": "Two of the companies we interviewed want a project in the same catchment as their own sites, and they rank water outcomes ahead of biodiversity. Naming the catchments lets us point you at the projects that sit in them, and tells the project owner which water indicators you will read first. Sites you register stay visible only to you."
+      },
+      "sustainability": {
+        "short": "Sustainability approach",
+        "label": "What is your approach to sustainability?",
+        "hint": "How decisions about nature and water are taken in your organisation, who is accountable for them, what you already measure, and what you report. Include work that is under way as well as work that is finished.",
+        "why": "This is the question we weigh most heavily. We are looking at whether a purchase here sits inside a wider approach or stands alone in place of one. An honest answer about work in progress is more useful to us than a polished one."
+      },
+      "onward_sale_intent": {
+        "short": "Resale or retirement",
+        "label": "Do you intend to resell units rather than retire them?",
+        "hint": "Retiring a unit takes it out of circulation so that nobody else can claim the same benefit. Reselling keeps it in circulation for another party.",
+        "why": "Retirement and resale are different products and they lead to different terms. A co-investor may hold more volume than it needs and sell the remainder, which is a normal arrangement here. We ask so that it is agreed openly rather than discovered later."
+      },
+      "offset_use": {
+        "short": "Offset framing",
+        "label": "Would you present the benefit as an offset?",
+        "hint": "An offset framing presents the benefit as compensating for an impact elsewhere.",
+        "why": "One company we interviewed does not want its investment used by others as an offset. Project owners and other participants take different positions on this, so the framing has to be on the table before terms are drafted. We are asking what you intend; we are not deciding whether such a claim is permitted."
+      },
+      "exclusivity_needed": {
+        "short": "Exclusivity",
+        "label": "Do you require that no other party may claim the same benefit?",
+        "hint": "That is, whether exclusive claim rights over the benefit you pay for are a condition of your participation.",
+        "why": "One company told us it would not fund a project if the onward sale of units removed its right to claim the benefit it had paid for, and compared that to signing away the renewable attributes in a power purchase agreement. Exclusivity has to be agreed with the project owner, so we ask whether it is a condition for you before you are matched to a project."
+      }
+    },
+    "error": {
+      "incomplete": "Some required questions have not been answered yet. They are marked below, and your other answers have been kept.",
+      "alreadySubmitted": "This application has already been replaced by a newer one, probably from another person in your organisation. Reload the page to see the current application.",
+      "noQuestionnaire": "There is no published questionnaire for this kind of account yet. Sylva publishes it; nothing is wrong with your account.",
+      "questionMissing": "This question has to be answered before the questionnaire can be submitted.",
+      "unsupportedKind": "This question cannot be answered on this page yet. Sylva will ask for it directly."
     }
   },
   "vettingStatus": {
@@ -1818,13 +1919,19 @@
       "submitted": "Submitted",
       "under_review": "Under review",
       "approved": "Approved",
-      "declined": "Declined"
+      "declined": "Declined",
+      "not_started": "Not started",
+      "suspended": "Suspended",
+      "revoked": "Revoked"
     },
     "stateMeaning": {
       "submitted": "The answers have been recorded and are waiting to be read. Nothing further is needed from the organisation at this point.",
       "under_review": "Sylva is reading the application. The organisation can use the public side of the platform in the meantime; it cannot yet express interest in a project.",
       "approved": "The organisation can express interest in a project, which opens a private room between it and that project.",
-      "declined": "No deal can be created for the organisation. The public project pages stay open to it."
+      "declined": "No deal can be created for the organisation. The public project pages stay open to it.",
+      "not_started": "This organisation has not yet sent a questionnaire. Until it does, and until Sylva records a decision on it, the organisation cannot express interest in a project.",
+      "suspended": "An earlier approval is suspended, with the reason below. No new deal can be created while it is; deals that already exist are untouched.",
+      "revoked": "An earlier approval has been withdrawn, with the reason below. No new deal can be created. Nothing already on the record is retracted."
     },
     "field": {
       "organisation": "Organisation",
@@ -1838,7 +1945,8 @@
       "decidedOn": "Decision recorded",
       "decisionDueOn": "Decision due",
       "notSet": "Not set",
-      "notSetNote": "No target decision time is published for this pilot. This page does not estimate one."
+      "notSetNote": "No target decision time is published for this pilot. This page does not estimate one.",
+      "unknownOrganisation": "Your organisation"
     },
     "role": {
       "buyer": "Buyer",
@@ -1917,6 +2025,14 @@
         "projectsBody": "A declined decision does not close the public project pages to the organisation.",
         "ask": "Ask Sylva about the decision",
         "askBody": "Quote the application reference. Whether an application may be made again is not set out here, so this is the way to find out."
+      },
+      "start": {
+        "title": "Answer the questionnaire",
+        "body": "Sylva cannot record a decision until it has the answers. You can save a draft and come back to it."
+      },
+      "approved": {
+        "title": "Express interest in a project",
+        "body": "Approval is what rule 6 asks for, so a private room can now be opened between this organisation and a project."
       }
     },
     "limit": {
@@ -1928,6 +2044,22 @@
       "sylva": "Sylva, the platform operator, which reads the application and records the decision.",
       "auditors": "Auditors, who have read-only access for the funder and for external audit.",
       "notRecord": "The application does not appear on the public transaction record. That record holds deal events — listed, offered, interest expressed, terms proposed, agreed and what follows — and no deal exists for an organisation that has not been approved."
+    },
+    "notApplicable": "This page is for organisations that want to buy, own a project or invest. Your account is not one of those, so there is no application to show.",
+    "reapply": "Submit a new application",
+    "decisionKind": {
+      "approved": "Approved",
+      "declined": "Declined",
+      "suspended": "Suspended",
+      "reinstated": "Reinstated after suspension",
+      "revoked": "Revoked"
+    },
+    "history": {
+      "title": "Every decision on record",
+      "lead": "The decision record is append-only. A later decision does not replace an earlier one; both stay here, newest first.",
+      "colDate": "Decided",
+      "colDecision": "Decision",
+      "colReason": "Recorded reason"
     }
   },
   "expressInterest": {
@@ -1976,7 +2108,9 @@
       "disclosureHint": "Participation is pseudonymous unless you choose otherwise, and the choice is made deal by deal. The project owner and Sylva always see who you are.",
       "disclosureOptIn": "Name our organisation on the public record for this interest event.",
       "disclosureDefault": "Left unticked, the record shows a label such as Buyer 014 with your sector, country and size.",
-      "submitNote": "This button does not submit: the pages are built before the functions behind them."
+      "submitNote": "This button does not submit: the pages are built before the functions behind them.",
+      "volumeHint": "Whole numbers only. A decimal point means different things in different countries, so the form does not accept one; if you need a fraction, say so in the message below.",
+      "sendNote": "Sending this records an interest event in the permanent record and opens a private conversation with the project owner. It is not an offer and it commits you to nothing."
     },
     "confirmation": {
       "exampleLabel": "Example of the confirmation screen",
@@ -2004,7 +2138,13 @@
       "signingBody": "Agreements are signed outside the platform in any case, and the signed document is uploaded here as evidence. Sylva does not handle payments or settlement.",
       "permanentNote": "The interest event is written to the permanent record. Entries there are never edited or deleted: a mistake is corrected by a new entry that points at the wrong one, and the wrong one stays visible.",
       "backToProject": "Back to the project",
-      "viewRecord": "View the public record"
+      "viewRecord": "View the public record",
+      "projectOwner": "Project owner",
+      "stage": "Stage",
+      "stageInterestExpressed": "Interest expressed — the first of four stages, ending at signed.",
+      "shapeUndecided": "Not decided yet — the project owner will walk you through the three shapes.",
+      "messageSent": "Your message went to the project owner and to Sylva. It is not published.",
+      "noMessage": "You sent no message with this enquiry. The project owner will be in touch anyway."
     },
     "blocked": {
       "exampleSignedOut": "Example: you are not signed in",
@@ -2026,7 +2166,23 @@
         "asks2": "How your organisation operates.",
         "asks3": "Your approach to sustainability.",
         "vettingAction": "How vetting works",
-        "note": "While you wait you can read every project page, the evidence behind it and the public record. Approving or declining an organisation is Sylva's decision, and it is a condition of the funding behind this pilot."
+        "note": "While you wait you can read every project page, the evidence behind it and the public record. Approving or declining an organisation is Sylva's decision, and it is a condition of the funding behind this pilot.",
+        "notSubmitted": "We have not received your vetting questionnaire yet."
+      },
+      "wrongRole": {
+        "statusWord": "Not a buyer account",
+        "title": "This account cannot express interest",
+        "body": "Express interest is for buyer accounts. Your account is registered for a different role on the platform, so there is nothing for Sylva to record an interest event against.",
+        "note": "Every project page, the evidence behind it and the public record stay readable to you."
+      },
+      "alreadyOpen": {
+        "statusWord": "Already open",
+        "title": "You already have an open interest in this project",
+        "body": "Expressing interest opens one private conversation between your organisation and this project. Yours is already open, so a second enquiry would duplicate it rather than add to it. Anything further — periods, volumes, questions — belongs in the conversation you already have.",
+        "openedLabel": "Interest recorded",
+        "pseudonymLabel": "On the public record",
+        "viewAction": "See what was recorded",
+        "note": "Interest in a different project is a separate conversation and is not affected by this one."
       }
     },
     "event": {
@@ -2041,6 +2197,18 @@
       "unitLabel": "hectare-years",
       "buyerSector": "Food and beverage",
       "buyerCountry": "Germany"
+    },
+    "error": {
+      "heading": "This enquiry was not sent",
+      "notSignedIn": "An interest event is recorded against an organisation, so you need to be signed in to send this enquiry.",
+      "wrongRole": "Express interest is for buyer accounts. This account is registered for something else.",
+      "notApproved": "Sylva has not yet approved your organisation as a buyer, and no deal is created for an organisation we have not approved.",
+      "alreadyOpen": "You already have an open interest in this project. Everything from here happens in that conversation rather than in a second one.",
+      "projectNotOpen": "This project is not open to enquiries at the moment. Its page stays readable, and the public record shows why its status changed.",
+      "noAccess": "You don't have access to this information.",
+      "invalidInput": "A volume was not accepted. Give each period a whole number of units, or leave it blank.",
+      "noPeriods": "Tell the project owner which period you are interested in: at least one period needs a volume.",
+      "unavailable": "This service is not available at the moment. Try again shortly."
     }
   },
   "ownerQuestions": {
@@ -2403,7 +2571,8 @@
       "state": {
         "approved": "Approved",
         "submitted": "With Sylva",
-        "declined": "Declined"
+        "declined": "Declined",
+        "none": "Not submitted"
       },
       "submittedOn": "Submitted on",
       "decidedOn": "Decided on",
@@ -2422,7 +2591,9 @@
       "limits": {
         "investor": "It is not access to financing information. Access to financial information is a separate vetting decision for investors.",
         "registry": "It is not an issuance, an allocation or a retirement. Units are issued by the credit scheme and recorded in that scheme's own registry, not here."
-      }
+      },
+      "noneBody": "Your organisation has not yet submitted the vetting questionnaire. Until Sylva records a decision, no deal can be created for it.",
+      "decidedBySylva": "Sylva"
     },
     "disclosure": {
       "title": "How your organisation appears on the public record",
@@ -2439,7 +2610,8 @@
       "specimenNote": "Reproduced as the public record renders it.",
       "event": {
         "interestExpressed": "Interest expressed"
-      }
+      },
+      "noLabels": "No label has been allocated yet. One is allocated per project, the first time your organisation appears on the public record for that project."
     },
     "interests": {
       "caption": "Interests expressed by your organisation, newest first.",
@@ -2542,8 +2714,10 @@
         "draftWithYou": "Draft with you",
         "superseded": "Superseded",
         "agreed": "Agreed",
-        "referenceCopy": "Reference copy"
-      }
+        "referenceCopy": "Reference copy",
+        "notAvailable": "Not available"
+      },
+      "storageNote": "Document files are not yet served from this platform. The version and the date are the record; the file itself follows once document storage is in place."
     },
     "deals": {
       "dealRef": "Deal reference",
@@ -2595,5 +2769,867 @@
       "termSheetDraft": "Term sheet draft",
       "letterOfIntent": "Letter of intent"
     }
-  }
+  },
+  "owner": {
+    "title": "Your projects",
+    "metaDescription": "The projects you run on the platform: what each still needs before publication, the questions buyers are waiting on, and the interest awaiting a response.",
+    "lead": "What each project still needs before it can be published, what buyers are waiting for an answer to, and what interest is waiting for a response.",
+    "dashboardFor": "Records held for",
+    "demoNote": "Every project, figure, question and buyer on this page is demonstration data. No row describes a real wetland, a real verification or a real buyer.",
+    "countNote": "These figures count projects, questions and expressions of interest. None of them is a volume: units from different projects measure different things and are never added.",
+    "source": {
+      "dashboard": "Your project records"
+    },
+    "projects": {
+      "title": "Projects",
+      "count": "{count, plural, =0 {No projects} one {# project} other {# projects}}",
+      "published": "{count, plural, =0 {none published} one {# published} other {# published}}",
+      "blocked": "{count, plural, =0 {none blocked} one {# blocked from publication} other {# blocked from publication}}",
+      "empty": "You have no projects on the platform yet.",
+      "lastChange": "Last change",
+      "notPublic": "This project is not on the public index. Only your organisation and Sylva can see it.",
+      "noAvailability": "No availability is recorded for this project yet.",
+      "availabilityCaption": "Availability for {project}, period {period}. Figures in this project's own unit type only.",
+      "lineItem": "Line",
+      "gateTitle": "Publication gate",
+      "viewPublicPage": "View the public project page"
+    },
+    "gate": {
+      "missing": "Missing",
+      "recorded": "Recorded",
+      "complete": "Everything the publication gate checks is recorded.",
+      "blocking": "{count, plural, one {# item is still missing} other {# items are still missing}}",
+      "recordedSummary": "{count} of {total} items already recorded",
+      "openDecision": "The database refuses to publish a project while any of these ten items is missing. Which of them should block publication and which should only warn is an open decision for Sylva.",
+      "publishedNote": "This project is published. The same ten items are checked again on every change.",
+      "source": "Publication gate, checked in the database",
+      "item": {
+        "englishPageText": {
+          "label": "English page text",
+          "note": "The summary and body a buyer reads, in English. German may follow."
+        },
+        "boundary": {
+          "label": "Project boundary",
+          "note": "The site boundary as GeoJSON, so the map and the download have something to show."
+        },
+        "claimRights": {
+          "label": "Claim rights",
+          "note": "For each benefit: who may claim it, for what, and what is excluded."
+        },
+        "outcomes": {
+          "label": "Environmental outcomes",
+          "note": "At least one measured outcome, with its metric, method and monitoring period."
+        },
+        "outcomeBaseline": {
+          "label": "Outcome baseline",
+          "note": "The measured starting point each outcome is judged against."
+        },
+        "durability": {
+          "label": "Long-term protection",
+          "note": "Who controls the land, who maintains it, and for how long after the contract ends."
+        },
+        "verifier": {
+          "label": "Verifier",
+          "note": "The independent body that will verify the result."
+        },
+        "projectIdeaNote": {
+          "label": "Project idea note",
+          "note": "The idea note as a document version a buyer can download."
+        },
+        "projectDesignDocument": {
+          "label": "Project design document",
+          "note": "The design document as a document version a buyer can download."
+        },
+        "availability": {
+          "label": "Availability",
+          "note": "At least one period with an expected issuance and a buffer, in this project's unit type."
+        }
+      }
+    },
+    "questions": {
+      "title": "Questions from buyers",
+      "lead": "A question goes to you and to Sylva. It is never a public comment.",
+      "awaiting": "{count, plural, =0 {No questions are awaiting an answer} one {# question is awaiting an answer} other {# questions are awaiting an answer}}",
+      "answeredCount": "{count, plural, =0 {none answered} one {# answered} other {# answered}}",
+      "source": "The private question box",
+      "noneWaiting": "No question is waiting for an answer.",
+      "waiting": "{days, plural, =0 {Asked today} one {Waiting # day} other {Waiting # days}}",
+      "asked": "Asked",
+      "reply": "Reply",
+      "answeredSummary": "{count, plural, one {# answered question} other {# answered questions}}",
+      "answeredBy": "Answered by",
+      "unknownProject": "Project not found",
+      "openInbox": "Open the question inbox"
+    },
+    "interest": {
+      "title": "Expressed interest",
+      "lead": "A buyer that expresses interest opens a private room between that buyer and the project. Nothing is reserved and no volume is agreed at this point.",
+      "count": "{count, plural, =0 {No expressions of interest} one {# expression of interest} other {# expressions of interest}}",
+      "source": "Interest recorded against your projects",
+      "empty": "No buyer is waiting for a response.",
+      "caption": "Expressed interest awaiting your response, longest wait first.",
+      "project": "Project",
+      "buyer": "Buyer",
+      "shape": "Deal shape",
+      "received": "Received",
+      "waiting": "Waiting",
+      "stage": "Stage",
+      "actions": "Actions",
+      "days": "{days, plural, =0 {today} one {# day} other {# days}}",
+      "respond": "Respond",
+      "noVolumeNote": "There is no volume column and no price column here: a deal at first interest carries neither."
+    },
+    "buyer": {
+      "namedForDeal": "Named by the buyer",
+      "pseudonymNote": "A buyer appears under its label for that deal unless it chose to be named."
+    },
+    "sector": {
+      "foodBeverage": "Food and beverages",
+      "utilities": "Utilities",
+      "chemicals": "Chemicals",
+      "finance": "Finance"
+    },
+    "sizeBand": {
+      "sme": "SME",
+      "large": "Large company"
+    },
+    "dealShape": {
+      "spot": "Spot volume",
+      "forward": "Forward contract",
+      "coInvestment": "Co-investment"
+    },
+    "stage": {
+      "interestExpressed": "Interest expressed"
+    },
+    "unit": {
+      "hectareYears": "hectare-years",
+      "indexPoints": "index points"
+    },
+    "doc": {
+      "ideaNote": "Project idea note",
+      "designDocument": "Project design document"
+    },
+    "demo": {
+      "question": {
+        "claimRight": "If we take a forward volume for 2028, does an onward sale by another buyer take away our right to claim the water benefit we paid for?",
+        "monitoringPoint": "Where exactly are the monitoring points, and is the sampling interval the same in winter as in the growing season?",
+        "verifier": "Which body will verify the 2029 result, and has it verified a project under this scheme before?",
+        "afterContract": "What happens to the site after the five-year contract ends? Our board asked about the position thirty years out."
+      },
+      "answer": {
+        "afterContract": "The lease runs to 2067 and the water board has committed to maintain the weirs for its full term. Clause 3 of the lease is in the documents, and the long-term protection section states who controls the land after the contract ends."
+      }
+    }
+  },
+  "ownerProjectForm": {
+    "title": "Project record",
+    "metaDescription": "Create or edit the record a buyer will read as a project page.",
+    "lead": "The nine sections below are the nine sections of the project page, in the same order and under the same headings, so you can tell what a buyer will read.",
+    "demoNote": "This record is demonstration data. Nothing you change here is saved: the form has no action and every control is inert in this pass.",
+    "seePublished": "See how a published project reads",
+    "formLabel": "Project record",
+    "record": {
+      "heading": "This record",
+      "ref": "Reference",
+      "lastSaved": "Last saved",
+      "draftNote": "A draft is visible only to your organisation and to Sylva. It reaches the public index only after Sylva publishes it."
+    },
+    "labels": {
+      "required": "Required",
+      "optional": "Optional",
+      "uploadedOn": "Uploaded"
+    },
+    "provenance": {
+      "label": "Source of this figure",
+      "value": "Value",
+      "source": "Source document",
+      "sourceUnset": "No source stated",
+      "locator": "Where in the document",
+      "locatorPlaceholder": "§ 4.2, table 2, page 11",
+      "asOf": "Stated as of",
+      "missing": "This figure has no source document or no date yet. It cannot be published until both are stated."
+    },
+    "actions": {
+      "submit": "Submit for review",
+      "saveDraft": "Save draft",
+      "inertNote": "Nothing on this form is saved yet. The controls are shown so the record can be read and reviewed before the data layer is wired in.",
+      "submitNote": "Saving keeps the record at {draft}. Submitting moves it to {review} and hands it to Sylva.",
+      "reviewNote": "Sylva publishes the project. Submitting is not a publication and is not an approval."
+    },
+    "readiness": {
+      "title": "Publication readiness",
+      "summary": "{met} of {required} requirements met",
+      "barLabel": "{met} of {required} requirements met",
+      "source": "This record",
+      "limitTitle": "What this panel is not",
+      "limitBody": "It reports what the record contains, and nothing more. A complete record is not a claim that the project has been approved, verified or accepted by anyone.",
+      "state": {
+        "complete": "Complete",
+        "incomplete": "Incomplete",
+        "optional": "Optional",
+        "withOperator": "With Sylva"
+      },
+      "gate": {
+        "identity": {
+          "title": "Identity",
+          "requirement": "A name, an owner organisation, a scheme, what a period refers to, and at least one deal shape.",
+          "detail": "Something in this section is still missing."
+        },
+        "geometry": {
+          "title": "Location and geometry",
+          "requirement": "A region, a catchment, and both geometries uploaded as GeoJSON.",
+          "detail": "A region, a catchment or one of the two geometry files is still missing."
+        },
+        "summary": {
+          "title": "Summary",
+          "requirement": "English is published first. German is optional, and is marked once it has been read.",
+          "detail": "The German text is not marked as read, so the German page falls back to English field by field."
+        },
+        "outcomes": {
+          "title": "Environmental outcomes",
+          "requirement": "Every outcome needs a verifier, a monitoring period, and a baseline, an expected result and a stated uncertainty, each with its source.",
+          "detail": "An outcome is missing its verifier or one of its three figures."
+        },
+        "claims": {
+          "title": "Claim rights",
+          "requirement": "At least one claim right, each stating the document and the date it comes from.",
+          "detail": "A claim right has no source document or no date."
+        },
+        "durability": {
+          "title": "Long-term protection",
+          "requirement": "Who maintains the site, how long the commitment runs, and what happens after the contract ends.",
+          "detail": "What happens after the contract ends has not been written yet."
+        },
+        "partners": {
+          "title": "Project partners",
+          "requirement": "A developer, a land owner and a verifier, each named.",
+          "detail": "One of the three required roles has no organisation named."
+        },
+        "periods": {
+          "title": "Availability",
+          "requirement": "Every period needs an expected issuance and a buffer, each with its source and date.",
+          "detail": "A period holds a figure without a source or without a date."
+        },
+        "documents": {
+          "title": "Documents",
+          "requirement": "The project idea note, the project design document and the monitoring plan, each with a file.",
+          "detail": "One of the three required documents has no file."
+        },
+        "provenance": {
+          "title": "Sources for every figure",
+          "requirement": "Every figure on the record carries the document it comes from and the date it is stated as of.",
+          "detail": "{count, plural, one {# figure has no source or no date.} other {# figures have no source or no date.}}"
+        },
+        "review": {
+          "title": "Review by Sylva",
+          "requirement": "Sylva reviews the record and publishes the project. This line is not one you can close yourself."
+        }
+      }
+    },
+    "section": {
+      "identity": {
+        "title": "Identity",
+        "lead": "What the project is called, who answers for it, and under which scheme its units are issued."
+      },
+      "location": {
+        "title": "Location and geometry",
+        "lead": "Location is what the water-dependent buyers rank first, and the catchment is how they search."
+      },
+      "summary": {
+        "title": "Summary",
+        "lead": "English first, German second. The two are shown side by side, so a gap in one is visible while the other is being written."
+      },
+      "outcomes": {
+        "lead": "Water and biodiversity are entered separately and stay separate. The platform never combines unrelated metrics into a single score."
+      },
+      "claims": {
+        "lead": "Buyers told us this section can decide whether they take part at all, so it is four plain statements per benefit rather than a paragraph of contract language."
+      },
+      "durability": {
+        "lead": "Who controls the land, who maintains it, how long the commitment lasts, and what happens when it ends."
+      },
+      "partners": {
+        "lead": "Who develops the project, who owns the land, who verifies it, and who maintains it afterwards."
+      },
+      "periods": {
+        "lead": "What the project expects to issue in each period, and how much of that is held back as a buffer."
+      },
+      "documents": {
+        "lead": "The documents behind the record. A document added here becomes a source that every figure on this form can cite."
+      }
+    },
+    "field": {
+      "nameEn": "Project name (English)",
+      "nameEnHint": "The name a buyer sees on the public page.",
+      "nameDe": "Project name (German)",
+      "nameDeHint": "Left empty, the German page shows the English name.",
+      "slug": "Page address",
+      "slugHint": "The last part of the project page's address. Lower case, words separated by hyphens.",
+      "ownerHint": "The organisation that answers for the project and for the questions buyers ask about it.",
+      "schemeHint": "The scheme the units are issued under. It decides what a unit measures.",
+      "unitHint": "The label printed beside every volume on this project. Spell it as the scheme spells it.",
+      "unitRule": "Units of different projects are never added together. This label is what makes that visible on every figure below.",
+      "vintage": "What a period refers to",
+      "vintageHint": "Confusing the period of the outcome with the period of issuance misdates every forward contract, so it is asked once, here.",
+      "dealShapes": "Deal shapes offered",
+      "dealShapesHint": "The shapes a buyer may ask for on this project. They are offered side by side on the project page.",
+      "region": "Region",
+      "regionHint": "The region as the project documents write it.",
+      "catchmentHint": "The catchment the site drains into. Water-dependent buyers search by it.",
+      "gauge": "Gauge reference",
+      "gaugeHint": "The gauging station the water figures are read from, where there is one.",
+      "area": "Site area",
+      "areaHint": "The area under restoration, as stated in the design document.",
+      "catchmentArea": "Catchment area",
+      "catchmentAreaHint": "The area of the catchment the site sits in.",
+      "boundaryFile": "Project boundary (GeoJSON)",
+      "boundaryFileHint": "Offered as a download on the project page, so a buyer can check it in its own tools.",
+      "catchmentFile": "Catchment boundary (GeoJSON)",
+      "catchmentFileHint": "Used to show the distance from a buyer's own sites to the project.",
+      "noFile": "No file uploaded",
+      "geometryNote": "Both files are read as GeoJSON in WGS 84. A file the platform cannot read is refused at upload rather than shown as an empty map.",
+      "summaryLeadEn": "Lead paragraph (English)",
+      "summaryLeadDe": "Lead paragraph (German)",
+      "summaryLeadHint": "Two or three sentences: what is being restored, where, and what changes.",
+      "summaryBodyEn": "Body (English)",
+      "summaryBodyDe": "Body (German)",
+      "summaryBodyHint": "The condition of the site, what the works do, and what is measured. A finance analyst should be able to read it in a few minutes.",
+      "deReviewed": "German text",
+      "deReviewedLabel": "The German text has been read and is ready to publish",
+      "deReviewedHint": "Until this is marked, the German page falls back to English for the fields that are not ready.",
+      "summaryFallback": "The fallback is per field, so one untranslated section does not turn the whole German page into English.",
+      "outcomeDomain": "What it measures",
+      "outcomeDomainHint": "Water and biodiversity are reported separately and are never combined into one score.",
+      "metricHint": "The indicator as the monitoring plan names it.",
+      "baselineHint": "The measured starting point this outcome is judged against.",
+      "expectedHint": "The result the project expects at the end of the monitoring period.",
+      "uncertaintyHint": "The uncertainty the monitoring plan states. Leave it out and a reader assumes there is none.",
+      "methodHint": "How the indicator is measured, and how often.",
+      "monitoringPeriod": "Monitoring period",
+      "monitoringPeriodHint": "The years over which the indicator is measured, as the monitoring plan writes them.",
+      "verifierHint": "The independent body that will verify this outcome.",
+      "outcomesRule": "Every figure here carries its own source and date, because the project page prints them beside it.",
+      "benefitHint": "The benefit this claim right covers, in one sentence.",
+      "holderHint": "Who may claim it: the buyer, the project owner, or someone else.",
+      "allowedHint": "What the holder may claim it for.",
+      "excludedHint": "What is excluded. A buyer told us this is what decides whether it takes part at all.",
+      "claimsRule": "A claim right with no document and no date behind it cannot be published.",
+      "landControlHint": "Who holds the land, on what basis, and until when.",
+      "maintenance": "Who maintains the site",
+      "maintenanceHint": "The organisation that has committed to maintain the works.",
+      "commitmentLength": "Length of the commitment",
+      "commitmentLengthHint": "How long the maintenance commitment runs, from the lease or the agreement that sets it.",
+      "afterContract": "What happens after the contract ends",
+      "afterContractHint": "Buyers asked about two horizons: the years just after a short contract, and thirty to forty years out.",
+      "timelineHeading": "Timeline",
+      "timelineWhen": "When",
+      "timelineWhenHint": "A year or a range, as the documents write it.",
+      "timelineNote": "What happens",
+      "timelineRule": "The timeline is read alongside the commitment, not instead of it.",
+      "partnerName": "Organisation",
+      "partnerNameHint": "The legal name, as it appears on the organisation record.",
+      "partnerPlace": "Place",
+      "partnerRef": "Registry reference",
+      "partnerRefHint": "The organisation's reference in a public register, where it has one.",
+      "partnerNote": "Note",
+      "partnerNoteHint": "What this partner does on this project. One sentence.",
+      "periodStarts": "Period starts",
+      "periodEnds": "Period ends",
+      "expectedIssuanceHint": "What the project expects to issue in this period, before the buffer is held back.",
+      "bufferHint": "The margin of unsold units held back in case the project delivers less than expected.",
+      "bufferRule": "Committed volume can never exceed the expected issuance less the buffer. The database refuses a period that breaks that.",
+      "periodUnitNote": "Every figure in this section is in {unit}, this project's own unit type.",
+      "committedSource": "Recorded deals",
+      "remainingNote": "Expected issuance less the buffer and everything committed, for this period.",
+      "remainingUnknown": "Not shown: a figure this period needs has no source yet, and a remaining volume derived from it would be a number the record cannot stand behind.",
+      "periodsRule": "There is no total row here, and none across periods or across projects. Each period stands on its own.",
+      "versionHint": "The version as the document itself states it.",
+      "documentDateHint": "The date on the document, not the date it was uploaded.",
+      "documentFile": "File",
+      "visibility": "Who may read it",
+      "visibilityHint": "An investor document is shown only to investors Sylva has vetted.",
+      "uploadedBy": "Uploaded by",
+      "documentsRule": "A document added here becomes a source that every figure on this form can cite."
+    },
+    "repeat": {
+      "remove": "Remove",
+      "outcome": "Outcome {n}",
+      "claim": "Claim right {n}",
+      "partner": "Partner {n}",
+      "timeline": "Timeline entry {n}",
+      "addOutcome": "Add an outcome",
+      "addOutcomeNote": "Water and biodiversity are separate outcomes.",
+      "addClaim": "Add a claim right",
+      "addClaimNote": "One entry per benefit the project produces.",
+      "addPartner": "Add a partner",
+      "addPartnerNote": "A developer, a land owner and a verifier are required before publication.",
+      "addTimeline": "Add a timeline entry",
+      "addTimelineNote": "Works, monitoring, verification, and the end of the commitment.",
+      "addPeriod": "Add a period",
+      "addPeriodNote": "One entry per period the scheme issues in.",
+      "addDocument": "Add a document",
+      "addDocumentNote": "The idea note, the design document and the monitoring plan are required before publication."
+    },
+    "option": {
+      "deal": {
+        "spot": "Spot volume",
+        "spotHint": "Units already exist; the buyer takes some and retires them when ready.",
+        "forward": "Forward contract",
+        "forwardHint": "The buyer commits now to take a volume in a future year at agreed terms.",
+        "coInvestment": "Co-investment",
+        "coInvestmentHint": "The buyer funds a share of the project, and the volume it does not need is sold to other buyers."
+      },
+      "domain": {
+        "other": "Other"
+      },
+      "role": {
+        "developer": "Developer",
+        "landOwner": "Land owner",
+        "verifier": "Verifier",
+        "maintenance": "Maintenance",
+        "other": "Other"
+      },
+      "visibility": {
+        "public": "Everyone",
+        "investors": "Vetted investors only"
+      }
+    },
+    "country": {
+      "DE": "Germany",
+      "DK": "Denmark",
+      "EE": "Estonia",
+      "NL": "Netherlands",
+      "PL": "Poland",
+      "SE": "Sweden"
+    },
+    "doc": {
+      "ideaNote": "Project idea note",
+      "designDocument": "Project design document",
+      "monitoringPlan": "Monitoring plan",
+      "verificationReport": "Verification report",
+      "baselineSurvey": "Baseline survey",
+      "catchmentAssessment": "Catchment assessment",
+      "lease": "Lease",
+      "claimAnnex": "Claim rights annex",
+      "financialModel": "Financial model"
+    },
+    "unit": {
+      "hectares": "ha",
+      "km2": "km²",
+      "metres": "m",
+      "years": "years",
+      "scorePoints": "score points",
+      "indexPoints": "index points"
+    },
+    "draft": {
+      "outcome": {
+        "watertable": {
+          "metric": "Growing-season water table depth",
+          "method": "Manual dip readings at six piezometers, monthly from March to October, against the 2026 baseline survey."
+        },
+        "condition": {
+          "metric": "Mire condition score, Part C",
+          "method": "Vegetation survey on twelve fixed quadrats, once a year in July, scored under Part C of the scheme."
+        }
+      },
+      "claim": {
+        "water": {
+          "benefit": "Improved water retention in the Peene catchment during the growing season.",
+          "holder": "The buyer named on the deal, for the volume it holds.",
+          "allowed": "Reporting on water stewardship in the buyer's own sustainability reporting, naming this project and this period.",
+          "excluded": "Use as an offset against the buyer's own water consumption, and any onward sale of the claim."
+        },
+        "condition": {
+          "benefit": "Improvement in mire condition across 268 hectares, measured under Part C of the scheme.",
+          "holder": "The buyer named on the deal, for the volume it holds.",
+          "allowed": "Reporting the biodiversity result alongside the water result, for the same period.",
+          "excluded": "Any claim that the project compensates for biodiversity loss elsewhere."
+        }
+      },
+      "durability": {
+        "landControl": "The site is held on a lease to 2067 from DEMO Kreis Vorpommern-Nord. Clause 3 binds the lessee to maintain the weirs for the full term."
+      },
+      "partner": {
+        "developer": "Plans and carries out the works, and answers buyers' questions about the project.",
+        "landOwner": "Owns the site and granted the lease that runs to 2067.",
+        "verifier": "Verifies the water result independently of the developer.",
+        "maintenance": "Maintains the weirs and the blocked ditches for the term of the lease."
+      },
+      "timeline": {
+        "works": "Ditches blocked and both weirs rebuilt over one winter season.",
+        "monitoring": "First full monitoring year under the monitoring plan.",
+        "verification": "First independent verification of the water result.",
+        "leaseEnds": "The lease ends, and the maintenance commitment with it."
+      },
+      "doc": {
+        "monitoringNote": "No monitoring plan has been uploaded yet. Publication needs one.",
+        "verificationNote": "A verification report exists only after an independent body has verified a result, which comes later.",
+        "financialNote": "Shown only to investors Sylva has vetted. Buyers never see it."
+      }
+    }
+  },
+  "adminProjects": {
+    "area": "Operator",
+    "title": "Project review and publication",
+    "lead": "The projects waiting, what each one still needs, and the one control that puts a project on the public index.",
+    "rule7Note": "This is the one table that puts projects from different schemes side by side, so it carries no volume column: a hectare-year and an index point measure different things and are never added. Every row states its own unit type.",
+    "notRecorded": "Not recorded",
+    "openDecisionNote": "All ten items currently block publication, which is what the database does. Which of them should block and which should only warn is an open decision for Sylva.",
+    "col": {
+      "project": "Project",
+      "country": "Country",
+      "scheme": "Scheme and unit",
+      "status": "Status",
+      "gate": "Publication gate",
+      "lastChange": "Last change",
+      "review": "Review",
+      "reference": "Reference",
+      "owner": "Project owner",
+      "unitType": "Unit type",
+      "submitted": "Submitted",
+      "published": "Published",
+      "slug": "Page address"
+    },
+    "country": {
+      "DE": "Germany",
+      "FR": "France",
+      "PL": "Poland",
+      "IE": "Ireland",
+      "ES": "Spain",
+      "LV": "Latvia",
+      "HU": "Hungary"
+    },
+    "unit": {
+      "hectareYears": "hectare-years",
+      "indexPoints": "index points",
+      "notRecorded": "No unit type recorded"
+    },
+    "queue": {
+      "title": "The queue",
+      "lead": "What is waiting, in the order an operator reads it: what needs attention first.",
+      "count": "{count, plural, =0 {No projects} one {# project} other {# projects}}",
+      "countNote": "This counts projects. It is never a volume.",
+      "caption": "Projects in the review queue, with how much of the publication gate each one has met.",
+      "open": "Review",
+      "openInPanel": "Open below",
+      "inertNote": "This control does nothing yet: in this pass the review panel below is fixed to one project."
+    },
+    "panel": {
+      "eyebrow": "In review",
+      "notSubmitted": "Not submitted",
+      "notPublished": "Not published",
+      "viewPage": "Open the project page"
+    },
+    "gate": {
+      "title": "Publication gate",
+      "lead": "The ten items the database checks, in the order it checks them. An item becomes recorded when the information is entered against the project, which happens on the project's own screens and not here.",
+      "caption": "Publication gate for {project}.",
+      "colItem": "Item",
+      "colRequires": "What it requires",
+      "colState": "State",
+      "colDetail": "What is recorded",
+      "codeLabel": "Database code",
+      "summary": "{recorded} of {total} recorded",
+      "missingSummary": "{count, plural, one {# missing} other {# missing}}",
+      "complete": "Gate complete",
+      "state": {
+        "recorded": "Recorded",
+        "missing": "Missing"
+      },
+      "detail": {
+        "nothing": "Nothing recorded"
+      },
+      "count": {
+        "fields": "{count, plural, one {# text field} other {# text fields}}",
+        "geometries": "{count, plural, one {# geometry} other {# geometries}}",
+        "rights": "{count, plural, one {# claim right} other {# claim rights}}",
+        "indicators": "{count, plural, one {# indicator} other {# indicators}}",
+        "baselines": "{count, plural, one {# baseline} other {# baselines}}",
+        "commitments": "{count, plural, one {# commitment} other {# commitments}}",
+        "periods": "{count, plural, one {# period} other {# periods}}"
+      },
+      "item": {
+        "englishPageText": {
+          "label": "English page text",
+          "requires": "A summary and a body in English, recorded against the project."
+        },
+        "boundary": {
+          "label": "Project boundary",
+          "requires": "A boundary geometry for the site."
+        },
+        "claimRights": {
+          "label": "Claim rights",
+          "requires": "At least one claim right, with holder, allowed use and exclusions."
+        },
+        "outcomes": {
+          "label": "Environmental outcomes",
+          "requires": "At least one outcome indicator."
+        },
+        "outcomeBaseline": {
+          "label": "Outcome baseline",
+          "requires": "A baseline value for every outcome indicator."
+        },
+        "durability": {
+          "label": "Long-term protection",
+          "requires": "A maintenance commitment with the term it runs for."
+        },
+        "verifier": {
+          "label": "Verifier",
+          "requires": "A named independent verifier."
+        },
+        "projectIdeaNote": {
+          "label": "Project idea note",
+          "requires": "A document version of the project idea note."
+        },
+        "projectDesignDocument": {
+          "label": "Project design document",
+          "requires": "A document version of the project design document."
+        },
+        "availability": {
+          "label": "Availability",
+          "requires": "At least one period with an expected issuance and a buffer."
+        }
+      }
+    },
+    "others": {
+      "title": "Every other project",
+      "lead": "The same gate list for each of the other projects, without leaving this page.",
+      "blocked": "{count, plural, one {The database would refuse to publish this project: # item is missing.} other {The database would refuse to publish this project: # items are missing.}}",
+      "complete": "Nothing is missing. The database would accept a change into published."
+    },
+    "publish": {
+      "title": "Publication",
+      "action": "Publish this project",
+      "blockedBadge": "Blocked",
+      "blockedTitle": "Publication is blocked",
+      "blockedLead": "{count, plural, one {# item of the publication gate is still missing.} other {# items of the publication gate are still missing.}}",
+      "reasonsLabel": "Still missing",
+      "blockedNote": "The control stays disabled until every item is recorded. Recording them happens on the project's own screens, not here.",
+      "readyTitle": "Ready to publish",
+      "readyLead": "Nothing the publication gate checks is missing. Publishing is still a judgement, and it is yours.",
+      "publishedTitle": "Already published",
+      "publishedLead": "This project has been on the public index since {date}.",
+      "inertNote": "This control does nothing yet: nothing on this screen writes to the record in this pass.",
+      "enforcedNote": "This screen is a convenience, not the control. The database checks the same ten items and refuses any change into published with {code}, whatever sent the request.",
+      "notRegistry": "Publishing puts the project page on the public index. It issues nothing and registers nothing: each scheme runs its own registry."
+    },
+    "source": {
+      "projectRecord": "The platform's project record",
+      "gateFunction": "The publication gate function"
+    }
+  },
+  "authError": {
+    "invalidCredentials": "That email address and password do not match an account.",
+    "invalidInput": "Some of the details were not accepted. Check the highlighted section and try again.",
+    "accountNotActive": "This account is not active. Contact Sylva to have it reopened.",
+    "emailTaken": "An account already exists for this email address. Sign in instead.",
+    "unknownReference": "One of the selected values is not one this platform recognises. Choose again.",
+    "roleNotRegistrable": "Accounts for that role are created by Sylva, not through this form.",
+    "notSignedIn": "Sign in to see this page.",
+    "wrongRole": "This page belongs to a different kind of account.",
+    "notApproved": "Sylva has not yet approved this organisation, so this step is not open to it. Approval follows the vetting questionnaire.",
+    "noAccess": "You don't have access to this information.",
+    "ruleViolation": "The platform refused this change because it would break one of its rules.",
+    "unavailable": "This service is not available at the moment. Try again shortly."
+  },
+  "projectPage.docKind.projectIdeaNote": "Project idea note",
+  "projectPage.docKind.projectDesignDocument": "Project design document",
+  "projectPage.docKind.monitoringPlan": "Monitoring plan",
+  "projectPage.docKind.verificationReport": "Verification report",
+  "projectPage.docKind.boundaryGeojson": "Project boundary (GeoJSON)",
+  "projectPage.docKind.catchmentGeojson": "Catchment (GeoJSON)",
+  "projectPage.docKind.registryEvidence": "Scheme registry evidence",
+  "projectPage.docKind.reportingEvidencePack": "Reporting evidence pack",
+  "projectPage.docKind.financialModel": "Financial model",
+  "projectPage.docKind.termSheet": "Term sheet",
+  "projectPage.docKind.letterOfIntent": "Letter of intent",
+  "projectPage.docKind.signedAgreement": "Signed agreement",
+  "projectPage.docKind.vettingEvidence": "Vetting evidence",
+  "projectPage.docKind.other": "Other document",
+  "projectPage.documents.visibility.public": "Public",
+  "projectPage.documents.visibility.vettedBuyer": "Vetted buyers",
+  "projectPage.documents.visibility.vettedInvestor": "Vetted investors",
+  "projectPage.documents.visibility.dealParticipants": "Parties to the deal",
+  "projectPage.documents.visibility.admin": "Sylva only",
+  "projectPage.documents.visibility.auditor": "Auditors only",
+  "projectPage.documents.none": "No document is on the platform for this project yet.",
+  "projectPage.partner.other": "Other partner",
+  "projectPage.dealType.spot": "Spot volume",
+  "projectPage.textField.catchmentContext": "Catchment context",
+  "projectPage.textField.durabilityNote": "Note on long-term protection",
+  "projectPage.textField.partnersNote": "Note on the partners",
+  "projectPage.keyFacts.periodOfIssuance": "period of issuance",
+  "projectPage.keyFacts.periodUndefined": "not defined by the scheme",
+  "projectPage.timeline.kind.published": "Recorded on the platform",
+  "projectPage.timeline.kind.outcomePeriod": "Outcome period",
+  "projectPage.timeline.kind.commitment": "Committed management",
+  "projectPage.timeline.platformRecord": "Recorded by the platform, not quoted from a document.",
+  "projectPage.fallbackNotice": "Shown in English. No reviewed translation of this text exists yet.",
+  "projectPage.map.areaComputedNote": "Areas are computed by the platform from the boundary and catchment polygons above, not quoted from the documents.",
+  "projectPage.map.catchmentArea": "Catchment area",
+  "projectPage.map.sites.distance": "Straight-line distance",
+  "projectPage.map.sites.inCatchment": "In this catchment",
+  "projectPage.map.sites.notInCatchment": "Not in this catchment",
+  "projectPage.map.sites.noCatchment": "This project has published no catchment polygon, so the question has no answer here.",
+  "projectPage.map.sites.levelNote": "Answered against the catchment polygon supplied by the project, named below. It is not a hydrological judgement made by the platform.",
+  "projectPage.verification.outcomeVerified": "A verification report is on the platform. See the documents below.",
+  "projectPage.verification.notYetVerified": "No verification report yet. Only the project’s own documents are on the platform; the ecological result has not been independently verified.",
+  "projectPage.outcomes.none": "No indicator has been recorded for this domain.",
+  "projectPage.claims.none": "No claim terms have been recorded for this project yet.",
+  "projectPage.durability.none": "No long-term commitment has been recorded for this project yet.",
+  "projectPage.availability.noForecast": "No forecast has been recorded for this period yet.",
+  "projectPage.availability.none": "No period has been declared for this project yet.",
+  "projectPage.evidence.notAssembled": "The pack has not been assembled for this project yet. The list above is what it will contain.",
+  "projectPage.evidence.restricted": "The assembled contents are shown to buyers Sylva has vetted. The list of what the pack contains is public.",
+  "projectPage.evidence.assembledOn": "Assembled",
+  "projectPage.questions.signIn": "Sign in to send a question. It goes to the project owner and to Sylva, and is not published.",
+  "projectPage.questions.yours": "Your questions about this project",
+  "projectPage.questions.none": "You have not asked anything about this project yet.",
+  "projectPage.questions.awaiting": "Awaiting an answer",
+  "projectPage.questions.answeredBy": "Answered by",
+  "projectPage.questions.sent": "Your question has been sent.",
+  "projectPage.questions.identityNote": "The project owner and Sylva see which organisation asked. They do not see which person asked, and there is no reply address to give: the answer appears here.",
+  "projectPage.investor.asOf": "As at",
+  "projectPage.investor.modelOnPlatform": "The financial model is on the platform, in the documents below.",
+  "projectPage.investor.modelAbsent": "No financial model has been filed yet.",
+  "projectPage.header.notPublished": "This project is no longer offered. The page is kept so that links to it keep working and the record stays readable.",
+  "projectPage.header.unitDefinition": "What one unit is",
+  "ownerError": {
+    "alreadyRecorded": "That entry is already on the record. Nothing was changed.",
+    "bufferAboveExpected": "The buffer cannot be larger than the expected issuance.",
+    "gateIncomplete": "Sylva could not publish this project because part of the record is still missing. The readiness list says which part.",
+    "geometryInvalid": "That boundary could not be read as a valid polygon. It must be GeoJSON holding one Polygon or MultiPolygon in WGS 84, with no self-intersections.",
+    "noUnitType": "Record the scheme and unit type for this project before recording a volume. A volume means nothing without the unit it is measured in.",
+    "notEditable": "This project cannot be changed in that way at the moment. A project can be sent for review while it is a draft or after Sylva has asked for changes; publication is Sylva's step, not yours.",
+    "notFound": "No project of yours has that address.",
+    "nothingToSave": "Nothing was changed, so nothing was recorded.",
+    "periodOverlaps": "That period overlaps one this project already has. Periods may not overlap.",
+    "slugInvalid": "A web address may hold lower-case letters, digits and hyphens only, and must be between 3 and 80 characters.",
+    "slugTaken": "Another project already uses that web address. Choose a different one."
+  },
+  "ownerUi": {
+    "addProject": "Add a project",
+    "alreadyRecorded": "Already recorded",
+    "appendNote": "Each save records a new version. Nothing is overwritten and the previous version stays on the record.",
+    "backToDashboard": "Back to your projects",
+    "baselineAsOf": "Baseline as of",
+    "boundary": {
+      "dataset": "Reference dataset",
+      "datasetHint": "Required for a catchment: name the layer it was taken from and the level it is stated at.",
+      "geojson": "GeoJSON",
+      "geojsonHint": "One Polygon or MultiPolygon in WGS 84. Paste the geometry object, not a whole FeatureCollection.",
+      "kind": "What this polygon is",
+      "kindBoundary": "The project boundary",
+      "kindCatchment": "The catchment",
+      "lead": "The project supplies its own polygon, with the licence it is published under and the date it is stated as of. Sylva does not derive a boundary or a catchment for a project: that would be making an environmental claim on its behalf.",
+      "licence": "Licence",
+      "licenceHint": "Under what terms this polygon may be republished on the project page.",
+      "title": "Boundary and catchment",
+      "versions": "Versions recorded"
+    },
+    "contentLocale": "Language of this entry",
+    "create": {
+      "action": "Create the draft",
+      "country": "Country",
+      "lead": "A project starts as a draft holding its name, its country and its summary. Everything else is recorded on the draft afterwards, one section at a time, each with its own source.",
+      "title": "Add a project"
+    },
+    "documentsNotBuilt": "Document upload is not built yet. Two of the items the publication list checks are documents, so a project cannot be published until it is - send the idea note and the design document to Sylva in the meantime.",
+    "endsOn": "Ends",
+    "entryKey": "Reference",
+    "entryKeyHint": "A short stable reference of your own, in lower case. Recording the same reference again replaces the entry with a new version and keeps the old one on the record.",
+    "entryVersion": "Version",
+    "horizon": "For how many years",
+    "liveNote": "Everything on this page is read from the database as this organisation, now. The publication list is the list the database itself checks.",
+    "measureUnit": "What it is measured in",
+    "measureUnitHint": "Free text, printed beside every value. An indicator is deliberately not a tradeable unit and can never enter an availability figure.",
+    "needsUnitTypeFirst": "Record the scheme and unit type before a period. A volume means nothing without the unit it is measured in.",
+    "notSaved": "This was not recorded",
+    "notStated": "Not stated",
+    "nothingRecorded": "Nothing recorded yet.",
+    "openRecord": "Open the record",
+    "party": {
+      "labelNote": "The label belongs to one deal, not to the organisation. The same organisation carries a different label on a different deal, and two labels cannot be matched to each other.",
+      "unlabelled": "Not yet labelled",
+      "unlabelledNote": "A label is issued when a deal opens. Until then this organisation is shown by its sector, country and size band only."
+    },
+    "partyDescription": "Description",
+    "partyOrg": "Organisation",
+    "partyOrgHint": "Chosen from the organisations this platform may name publicly. Where a landowner is a private individual, leave this and describe the arrangement below without naming anyone.",
+    "partyRole": "What they do",
+    "periodLabel": "Period",
+    "periodLabelHint": "As the scheme names it - a vintage year, or a stated window.",
+    "periodsRecorded": "Periods recorded",
+    "questionRef": "Reference",
+    "recordThis": "Record this",
+    "reply": {
+      "appendNote": "A reply cannot be edited or withdrawn once sent. A correction is a further reply.",
+      "recorded": "Sent. A reply is a new entry; it does not change the question and it does not change an earlier reply.",
+      "send": "Send reply"
+    },
+    "responsible": "Who has committed to it",
+    "saved": "Recorded.",
+    "savedCreated": "The project was created as a draft. Its record is below.",
+    "source": {
+      "heading": "Where this comes from",
+      "kind": {
+        "calculated": "Calculated by Sylva",
+        "document": "A document",
+        "external": "A published dataset or report",
+        "operator": "Stated by Sylva",
+        "owner": "Stated by this project"
+      },
+      "kindLabel": "Kind of source",
+      "labelField": "Source",
+      "labelHint": "Name the document or the statement, as a reader would cite it.",
+      "lead": "Every figure and every statement on a project page carries its source and the date it is stated as of. Both are recorded with the entry, not afterwards.",
+      "urlField": "Link to the source"
+    },
+    "startsOn": "Starts",
+    "statement": "The commitment",
+    "submit": {
+      "action": "Send for review",
+      "done": "Sent. Sylva has it, and will either publish it or ask for changes.",
+      "lead": "Sylva reviews the record and publishes it. Publication is not a step you can take yourself, and the database refuses it on any account but Sylva's.",
+      "onlyFromDraft": "A project can be sent for review while it is a draft, or after Sylva has asked for changes. This one is neither.",
+      "title": "Send to Sylva"
+    },
+    "translation": {
+      "humanDraft": "Draft",
+      "machineDraft": "Machine draft",
+      "published": "Ready for the page",
+      "reviewed": "Reviewed"
+    },
+    "translationStatus": "State of this text",
+    "translationStatusHint": "Only text marked ready for the page is shown to a reader. The publication list will not pass until the English title and summary are.",
+    "unit": {
+      "alreadySet": "Recorded. A project keeps the unit type it was declared under.",
+      "field": "Unit type",
+      "lead": "What this project issues, and under whose rules. Every volume recorded below is measured in this unit and is never added to a volume of another project.",
+      "title": "Scheme and unit type"
+    }
+  },
+  "adminUi.liveNote": "Everything on this page is read from the database now, as a Sylva operator. Nothing on it is a stored summary.",
+  "adminUi.accessNote": "This screen belongs to Sylva operators. The database enforces that, not the page: every query here runs as the operator role, and no other role holds the privilege to read another organisation’s answers.",
+  "adminUi.notRecorded": "Not recorded",
+  "adminUi.queue.empty": "No applications have been submitted yet. An application appears here the moment an organisation submits the questionnaire.",
+  "adminUi.submissionCount": "Applications from this organisation for this role",
+  "adminUi.state.revoked": "Revoked",
+  "adminUi.entry.reinstated": "Reinstatement recorded",
+  "adminUi.entry.revoked": "Revocation recorded",
+  "adminUi.log.superseded": "Superseded",
+  "adminUi.log.correctionNote": "A decision recorded in error is corrected by recording a later one. The earlier entry keeps its row and its reason and is marked superseded; the state is then read again from the whole chain. Nothing here is edited and nothing is removed.",
+  "adminUi.notAnswered": "Not answered",
+  "adminUi.answerRequired": "Required question",
+  "adminUi.decisionRecorded": "Recorded. The state above was read again from the entries, this one included.",
+  "adminUi.reinstatementNote": "This organisation is currently suspended, so approving it records a reinstatement rather than a first approval. Both read as approved; the record keeps which one happened.",
+  "adminUi.projects.empty": "No projects are recorded yet.",
+  "adminUi.publish.note": "This puts the project on the public index straight away. The database checks the ten items again as it does so.",
+  "adminUi.publish.done": "Published. The gate accepted the project and it is now on the public index.",
+  "adminUi.publish.refusedTitle": "The database refused this publication",
+  "adminUi.gate.evaluatedNote": "This list is what proj.publication_gaps() returned for this project a moment ago, not a copy of it kept elsewhere.",
+  "adminUi.error.gateBlocked": "The database refused to publish this project because the publication gate is not complete. The items still missing are listed below. Recording them happens on the project’s own screens.",
+  "adminUi.error.alreadyPublished": "This project is already on the public index, so nothing was changed. Reload the page to see its current state.",
+  "adminUi.error.reasonRequired": "A decision needs a reason of at least ten characters. The record is append-only, so an entry recorded without one can never be edited to explain itself.",
+  "adminUi.error.unknownApplication": "That application is not one this queue holds. It may have been replaced by a newer application from the same organisation."
 }

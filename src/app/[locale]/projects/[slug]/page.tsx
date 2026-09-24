@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { DEMO_PROJECT } from '@/components/project-detail/demo-data';
+import { getActor } from '@/lib/auth/session';
+import { getBuyerSiteProximity, getProjectDetail } from '@/lib/projects/queries';
 import ProjectHeader from '@/components/project-detail/ProjectHeader';
 import SectionNav from '@/components/project-detail/SectionNav';
 import CatchmentMapPanel from '@/components/project-detail/CatchmentMapPanel';
@@ -25,40 +27,75 @@ import styles from './page.module.css';
  * header answers "what and where", and each numbered section answers one
  * question, in the order a reader asks them.
  *
- * FRONTEND PASS. No database, no fetch, no auth, no server actions. The page
- * renders DEMO_PROJECT, a typed fictional project, and every download and form
- * points at the route it will use later without calling anything now. The slug
- * in the URL is not yet used to select a project; that arrives with the data
- * layer, together with notFound() for an unknown or unpublished slug.
+ * WIRED TO THE DATABASE. Two reads, both through readAs():
+ *
+ *   getProjectDetail()        everything the page shows, as the viewer's own
+ *                             database role. What comes back differs by role
+ *                             because the row-level policies differ, not
+ *                             because this file branches on one.
+ *   getBuyerSiteProximity()   a signed-in buyer's OWN sites, measured against
+ *                             this project. Null for everybody else.
+ *
+ * `dynamic = 'force-dynamic'` is load-bearing, not a precaution. This page
+ * embeds the viewer's own site names and distances, their own question threads,
+ * and documents that only a vetted buyer or investor may see. A cached render
+ * would serve one organisation's private data to the next visitor, and no
+ * database policy can undo that once the cache has it. Reading the session
+ * cookie already opts the route out of static rendering; saying so explicitly
+ * means a later refactor that stops reading the cookie in some branch cannot
+ * silently make the page cacheable again.
+ *
+ * notFound() is the database's answer, not this file's opinion: an unpublished
+ * project is invisible to proj.is_publicly_visible() inside the policy, so
+ * getProjectDetail() returns null for it exactly as it does for a slug that
+ * names nothing. A stranger cannot tell the two apart, which is the point.
  */
+
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale, slug } = await params;
   const t = await getTranslations({ locale });
+  // Metadata is read as the CURRENT viewer too. A draft project must not leak a
+  // title into a <title> tag for a visitor who cannot open the page.
+  const project = await getProjectDetail(await getActor(), slug, locale);
+  if (!project) return { title: t('errors.notFound') };
+
   return {
-    title: DEMO_PROJECT.name,
+    title: project.title.body,
     description: t('projectPage.meta.description', {
-      catchment: t('projectPage.demo.catchment'),
-      scheme: DEMO_PROJECT.schemeName,
+      catchment: project.catchment?.datasetName ?? project.countryNameEn,
+      scheme: project.scheme.name,
     }),
   };
 }
 
 export default async function ProjectDetailPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string; slug: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  const { locale } = await params;
+  const { locale, slug } = await params;
   setRequestLocale(locale);
   const t = await getTranslations();
+  const query = await searchParams;
 
-  // DEMO data. Nothing on this page is read from the database in this pass.
-  const project = DEMO_PROJECT;
+  const actor = await getActor();
+  const project = await getProjectDetail(actor, slug, locale);
+  if (!project) notFound();
+
+  // Private to the signed-in buyer. Null for anyone else, including an operator
+  // - the operator has no sites of its own to measure.
+  const proximity = await getBuyerSiteProximity(actor, project.id);
+
+  const questionError = typeof query.qerror === 'string' ? query.qerror : null;
+  const questionSent = query.qsent === '1';
 
   return (
     <article className={styles.page}>
@@ -72,7 +109,7 @@ export default async function ProjectDetailPage({
         <div className={styles.sections}>
           <section id="map" className={styles.section}>
             <SectionMarker n={1} label={t('project.map')} />
-            <CatchmentMapPanel project={project} />
+            <CatchmentMapPanel project={project} proximity={proximity} />
           </section>
 
           <section id="summary" className={styles.section}>
@@ -117,7 +154,11 @@ export default async function ProjectDetailPage({
 
           <section id="questions" className={styles.section}>
             <SectionMarker n={10} label={t('projectPage.questions.title')} />
-            <PrivateQuestionsSection project={project} />
+            <PrivateQuestionsSection
+              project={project}
+              sent={questionSent}
+              error={questionError}
+            />
           </section>
 
           {/* Set apart from the buyer's document, as the brief requires: an

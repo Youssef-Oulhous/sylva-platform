@@ -5,17 +5,18 @@ import {
   GATE_ITEM_KEY,
   PUBLICATION_GATE_CODES,
   type PublicationGateCode,
-} from './demo-owner';
+} from '@/lib/owner/types';
 import styles from './PublicationGateList.module.css';
 
 /**
  * What is still blocking publication, for one project.
  *
- * The list is the list the database checks. proj.publication_gaps() builds an
- * array of exactly these ten codes in exactly this order, and the trigger on
- * proj.project refuses the change to 'published' while the array is not empty.
- * Rendering the same ten in the same order is the point: an owner is never told
- * a project is ready while the database would decline to publish it.
+ * The list is the list the database checks. `gaps` is the array
+ * proj.publication_gaps() returned for this project a moment ago - not a copy
+ * of its logic - and the trigger on proj.project refuses the change to
+ * 'published' while that array is not empty. Rendering the same ten codes in
+ * the same order is the point: an owner is never told a project is ready while
+ * the database would decline to publish it.
  *
  * What is missing is expanded, because it is the thing the owner came to read.
  * What is already recorded is folded into a native <details> - present, but not

@@ -1,0 +1,23 @@
+/* A submit button that reads as the plain text link beside it. The control is
+   a button because signing out writes; it should not look like one. */
+.form { display: inline; }
+
+.button {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.button:hover { text-decoration-thickness: 2px; }
+
+.button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}

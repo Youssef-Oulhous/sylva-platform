@@ -23,9 +23,14 @@ import styles from './page.module.css';
  * be created for an organisation Sylva has not approved. The three steps say so
  * twice, once as what you can do and once as what is still closed.
  *
- * FRONTEND PASS. No database, no fetch, no auth, no server actions. The form
- * renders and does nothing. No client component: the role choice is native
- * radios and every field is uncontrolled, so nothing here needs "use client".
+ * Wired to the database. The form posts to a Server Action which calls
+ * identity.register (db/migrations/0040): the organisation, the account, the
+ * person's record label and the role applied for, in one transaction, and NO
+ * approval - rule 6 is untouched by registering. The new account is signed in
+ * straight away, which is what the three steps above the form promise.
+ *
+ * Still no client component: the role choice is native radios and every field
+ * is uncontrolled, so nothing here needs "use client".
  *
  * Rule 7: this page shows no unit volumes of any kind. Volumes belong to one
  * project and one period and are stated on that project's page, where the unit
@@ -48,19 +53,24 @@ export async function generateMetadata({
 
 export default async function RegisterPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations();
+  const query = await searchParams;
+  // A code, never a message and never anything the person typed: this value
+  // travels in the URL and the URL ends up in access logs.
+  const errorCode = typeof query.error === 'string' ? query.error : null;
 
   return (
     <div className={styles.page}>
       <header className={styles.head}>
         <h1>{t('nav.register')}</h1>
         <p className={styles.lead}>{t('register.lead')}</p>
-        <p className={styles.buildNote}>{t('register.buildNote')}</p>
       </header>
 
       <section className={styles.section} aria-labelledby="next-steps-title">
@@ -75,7 +85,7 @@ export default async function RegisterPage({
           <h2 id="form-title" className={styles.sectionTitle}>
             {t('register.form.title')}
           </h2>
-          <RegisterForm idPrefix="reg" />
+          <RegisterForm idPrefix="reg" errorCode={errorCode} />
         </section>
 
         <div className={styles.aside}>

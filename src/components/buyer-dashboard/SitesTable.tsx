@@ -1,7 +1,8 @@
 import { getFormatter, getTranslations } from 'next-intl/server';
 import { Link } from '@/lib/i18n/routing';
+import SourceStamp from '@/components/ui/SourceStamp';
 import EmptyState from './EmptyState';
-import type { RegisteredSite } from './types';
+import type { BuyerSite } from '@/lib/sites/types';
 import styles from './SitesTable.module.css';
 
 /**
@@ -9,24 +10,23 @@ import styles from './SitesTable.module.css';
  *
  * "This information must remain private." (Master prompt, §28.) The privacy
  * note under the table is not reassurance copy: it states who can see these
- * rows, because a buyer registering the location of its production sites is
- * entitled to know that before it types one in.
+ * rows, and it is true because geo.buyer_site's policy makes it true - a buyer
+ * reads `org_id = sylva.actor_org_id()` and a project owner holds no grant on
+ * the table at all. tests/db/sites.test.ts asserts both.
  *
  * There is no distance column here. A distance is measured to a particular
- * project, so it belongs on that project's page, not in a register that would
- * then have to pick one project to measure against.
+ * project, so it belongs on that project's page or on /dashboard/sites, not in
+ * a register that would then have to pick one project to measure against.
  */
 export default async function SitesTable({
   sites,
   locale,
 }: {
-  sites: readonly RegisteredSite[];
+  sites: readonly BuyerSite[];
   locale: string;
 }) {
   const t = await getTranslations('buyerDashboard');
-  // Location, country and catchment are the platform's existing field labels,
-  // used on the project pages. This table borrows them rather than restating
-  // them, so the two screens cannot end up with different words for a catchment.
+  // Country is the platform's existing field label, used on the project pages.
   const tRoot = await getTranslations();
   const format = await getFormatter();
 
@@ -44,13 +44,15 @@ export default async function SitesTable({
     }
   };
 
-  const degrees = (value: number) =>
-    format.number(value, { minimumFractionDigits: 4, maximumFractionDigits: 4 });
+  // Not format.number(): a coordinate is closer to an identifier than to a
+  // quantity, and a reader comparing this column with a GeoJSON file should
+  // see the same characters in both. See src/components/my-sites/format.ts.
+  const degrees = (value: number) => value.toFixed(4);
 
   const registerAction = (
-    <button type="button" className={styles.action}>
+    <Link href="/dashboard/sites" className={styles.action}>
       {t('sites.registerAction')}
-    </button>
+    </Link>
   );
 
   return (
@@ -68,9 +70,7 @@ export default async function SitesTable({
             <thead>
               <tr>
                 <th scope="col">{t('sites.col.site')}</th>
-                <th scope="col">{tRoot('project.location')}</th>
                 <th scope="col">{tRoot('projects.filters.country')}</th>
-                <th scope="col">{tRoot('project.catchment')}</th>
                 <th scope="col" className="num">{t('sites.col.latitude')}</th>
                 <th scope="col" className="num">{t('sites.col.longitude')}</th>
                 <th scope="col">{t('sites.col.registeredOn')}</th>
@@ -80,11 +80,17 @@ export default async function SitesTable({
               {sites.map((site) => (
                 <tr key={site.id}>
                   <th scope="row" className={styles.rowHead}>
-                    {site.name}
+                    {site.label}
+                    {/* Every figure carries its source and its date. */}
+                    <SourceStamp
+                      inline
+                      source={{
+                        label: site.source.label,
+                        asOfDate: site.source.asOfDate,
+                      }}
+                    />
                   </th>
-                  <td>{site.locationLabel}</td>
                   <td>{countryName(site.countryCode)}</td>
-                  <td>{site.catchmentLabel}</td>
                   <td className="num">
                     <span className={styles.mono}>{degrees(site.latitude)}</span>
                   </td>
@@ -116,7 +122,7 @@ export default async function SitesTable({
         {sites.length === 0 ? null : (
           <div className={styles.actions}>
             {registerAction}
-            <Link href="/projects" className={styles.link}>
+            <Link href="/dashboard/sites" className={styles.link}>
               {t('sites.compareLink')}
             </Link>
           </div>

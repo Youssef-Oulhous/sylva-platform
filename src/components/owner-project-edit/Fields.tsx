@@ -1,16 +1,21 @@
 import type { ReactNode } from 'react';
-import { getFormatter, getTranslations } from 'next-intl/server';
-import type { DemoUpload } from './project-draft-data';
+import { getTranslations } from 'next-intl/server';
 import styles from './Fields.module.css';
 
 /**
- * The form primitives, in one module so the nine sections of the record cannot
- * drift apart: one label weight, one field border, one hint style, one way of
- * saying "required".
+ * The form primitives, in one module so the sections of the record cannot drift
+ * apart: one label weight, one field border, one hint style, one way of saying
+ * "required".
  *
- * FRONTEND PASS. Every control here is uncontrolled - a defaultValue and no
- * handler - so all of it stays a Server Component. Nothing is a client
- * component and nothing submits.
+ * Every control here is uncontrolled - a defaultValue and no handler - so all
+ * of it stays a Server Component. The forms these build are plain
+ * <form action={serverAction}> elements, so the record can be filled in with
+ * scripting turned off.
+ *
+ * `id` and `name` are separate. The record page carries several forms at once
+ * and each posts its own section, so two forms legitimately hold a field called
+ * `source_label` while the two <label for=…> targets must still be unique on
+ * the page. `name` defaults to `id` for the single-form case.
  */
 
 /* -------------------------------------------------------------------------- */
@@ -49,6 +54,8 @@ export function Note({
 
 interface BaseFieldProps {
   id: string;
+  /** The submitted field name. Defaults to `id`. */
+  name?: string;
   label: string;
   hint?: string;
   note?: ReactNode;
@@ -63,6 +70,7 @@ function describedBy(...ids: (string | undefined)[]): string | undefined {
 
 export async function TextField({
   id,
+  name,
   label,
   hint,
   note,
@@ -109,8 +117,9 @@ export async function TextField({
       {rows ? (
         <textarea
           id={id}
-          name={id}
+          name={name ?? id}
           rows={rows}
+          required={required}
           className={styles.textarea}
           defaultValue={defaultValue}
           placeholder={placeholder}
@@ -120,8 +129,9 @@ export async function TextField({
         <span className={styles.inputWrap}>
           <input
             id={id}
-            name={id}
+            name={name ?? id}
             type={type}
+            required={required}
             className={mono ? `${styles.input} ${styles.inputMono}` : styles.input}
             defaultValue={defaultValue}
             placeholder={placeholder}
@@ -146,6 +156,7 @@ export async function TextField({
 
 export async function SelectField({
   id,
+  name,
   label,
   hint,
   note,
@@ -180,7 +191,8 @@ export async function SelectField({
 
       <select
         id={id}
-        name={id}
+        name={name ?? id}
+        required={required}
         className={styles.select}
         defaultValue={defaultValue}
         aria-describedby={describedBy(hintId, noteId)}
@@ -259,75 +271,6 @@ export async function ChoiceGroup({
         ))}
       </div>
     </fieldset>
-  );
-}
-
-/**
- * A file field that states what is already attached. An upload control with no
- * account of the current file makes the owner guess whether anything is there.
- */
-export async function FileField({
-  id,
-  label,
-  hint,
-  required,
-  optional,
-  accept,
-  file,
-  emptyNote,
-}: BaseFieldProps & {
-  accept: string;
-  file: DemoUpload | null;
-  emptyNote: string;
-}) {
-  const t = await getTranslations('ownerProjectForm');
-  const format = await getFormatter();
-  const hintId = hint ? `${id}-hint` : undefined;
-  const stateId = `${id}-state`;
-
-  return (
-    <div className={styles.field}>
-      <label className={styles.label} htmlFor={id}>
-        {label}
-        {required && <span className={styles.marker}>{t('labels.required')}</span>}
-        {optional && <span className={styles.marker}>{t('labels.optional')}</span>}
-      </label>
-
-      {hint && (
-        <p className={styles.hint} id={hintId}>
-          {hint}
-        </p>
-      )}
-
-      <div className={styles.fileState} id={stateId}>
-        {file ? (
-          <p className={styles.fileLine}>
-            <span className={styles.fileName}>{file.name}</span>
-            {file.sizeNote && <span className={styles.fileMeta}>{file.sizeNote}</span>}
-            {file.uploadedOn && (
-              <span className={styles.fileMeta}>
-                {t('labels.uploadedOn')}{' '}
-                <time dateTime={file.uploadedOn}>
-                  {format.dateTime(new Date(file.uploadedOn), 'short')}
-                </time>
-              </span>
-            )}
-          </p>
-        ) : (
-          /* "No file" is a word, not an absence a reader has to infer. */
-          <p className={styles.fileEmpty}>{emptyNote}</p>
-        )}
-      </div>
-
-      <input
-        id={id}
-        name={id}
-        type="file"
-        accept={accept}
-        className={styles.file}
-        aria-describedby={describedBy(hintId, stateId)}
-      />
-    </div>
   );
 }
 

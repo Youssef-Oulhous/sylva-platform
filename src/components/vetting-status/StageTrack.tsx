@@ -1,19 +1,21 @@
 import { getFormatter, getTranslations } from 'next-intl/server';
-import type { DemoStage } from './demo-vetting';
+import type { Stage } from './states';
 import styles from './StageTrack.module.css';
 
 /**
- * Submitted, under review, decision.
+ * Submitted, then decision.
  *
- * Three stages and no more. The concept note says Sylva collects the answers
- * and approves or declines (section 7); it does not describe an internal
- * pipeline, so this track does not invent one.
+ * Two stages and no more. The concept note says Sylva collects the answers and
+ * approves or declines (section 7); it does not describe an internal pipeline,
+ * so this track does not invent one - and the database records exactly these
+ * two events, org.vetting_submission and org.vetting_decision. The "under
+ * review" stage this track used to show was not backed by any row.
  *
  * The position of each stage is printed as a word - Completed, Current stage,
  * Not yet reached - above its label. The marker and the weight repeat that
  * visually, but a reader who cannot see either still reads the state.
  */
-export default async function StageTrack({ stages }: { stages: readonly DemoStage[] }) {
+export default async function StageTrack({ stages }: { stages: readonly Stage[] }) {
   const t = await getTranslations();
   const format = await getFormatter();
 

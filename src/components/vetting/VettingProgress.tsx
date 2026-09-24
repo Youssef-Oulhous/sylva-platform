@@ -1,30 +1,54 @@
 import { getTranslations } from 'next-intl/server';
 import SourceStamp from '@/components/ui/SourceStamp';
-import {
-  DEMO_DRAFT_SOURCE,
-  QUESTIONS_ANSWERED,
-  QUESTION_TOTAL,
-  VETTING_QUESTIONS,
-} from './vetting-data';
+import { isAnswered, type AnswerMap, type Questionnaire } from '@/lib/vetting/types';
+import { questionLabels } from './labels';
 import styles from './VettingProgress.module.css';
 
 /**
- * Progress through the questionnaire, and an index of the eight questions.
+ * Progress through the questionnaire, and an index of its questions.
  *
- * The bar is the least important part of this: what a buyer returning to a
- * half-finished questionnaire needs is to see WHICH questions are still open and
- * to reach one in a single click. So the panel is an index with a status word
+ * The bar is the least important part: what a buyer returning to a
+ * half-finished questionnaire needs is to see WHICH questions are still open
+ * and reach one in a single click. So the panel is an index with a status word
  * against each line, and the bar sits above it as a summary.
  *
  * The status is never carried by the tick colour alone - every line states
- * "Answered" or "Not answered" in words, and the bar itself is given an
- * accessible label rather than left as decoration.
+ * "Answered" or "Not answered" in words, and the bar carries an accessible
+ * label rather than being left as decoration.
  *
- * FRONTEND PASS. The counts are derived from the DEMO question statuses in
- * vetting-data.ts, so the figure and the index cannot disagree.
+ * Both the count and the index are computed from the SAME answers the form
+ * renders, so the figure and the list cannot disagree. "Answered" means what
+ * the database means by it - src/lib/vetting/types.ts isAnswered(), which is
+ * also what the submit path checks a required question against.
  */
-export default async function VettingProgress() {
+export default async function VettingProgress({
+  questionnaire,
+  answers,
+  savedAt,
+  savedLabel,
+  missing,
+}: {
+  questionnaire: Questionnaire;
+  answers: AnswerMap;
+  savedAt: string | null;
+  /** What the date beside the progress figure IS. A draft and a submitted
+      application are different things and must not share a label. */
+  savedLabel: string;
+  missing: readonly string[];
+}) {
   const t = await getTranslations('vettingForm');
+  const missingSet = new Set(missing);
+
+  const rows = questionnaire.questions.map((question, index) => ({
+    question,
+    n: index + 1,
+    answered: isAnswered(answers[question.questionCode]),
+    labels: questionLabels(t, question),
+    flagged: missingSet.has(question.questionCode),
+  }));
+
+  const total = rows.length;
+  const answered = rows.filter((r) => r.answered).length;
 
   return (
     <section className={styles.panel} aria-labelledby="vetting-progress-title">
@@ -33,56 +57,50 @@ export default async function VettingProgress() {
       </h2>
 
       <p className={styles.summary}>
-        {t('progress.summary', { answered: QUESTIONS_ANSWERED, total: QUESTION_TOTAL })}
+        {t('progress.summary', { answered, total })}
       </p>
 
-      {/* One tick per question, in document order. It is an image of the index
+      {/* One tick per question, in document order. It is a picture of the index
           below it, so it carries a label and nothing else depends on it. */}
       <div
         className={styles.bar}
         role="img"
-        aria-label={t('progress.barLabel', {
-          answered: QUESTIONS_ANSWERED,
-          total: QUESTION_TOTAL,
-        })}
+        aria-label={t('progress.barLabel', { answered, total })}
       >
-        {VETTING_QUESTIONS.map((question) => (
+        {rows.map((r) => (
           <span
-            key={question.id}
-            className={
-              question.status === 'answered' ? `${styles.tick} ${styles.tickDone}` : styles.tick
-            }
+            key={r.question.questionCode}
+            className={r.answered ? `${styles.tick} ${styles.tickDone}` : styles.tick}
           />
         ))}
       </div>
 
-      <SourceStamp
-        source={{
-          label: t(DEMO_DRAFT_SOURCE.labelKey),
-          locator: DEMO_DRAFT_SOURCE.locator,
-          asOfDate: DEMO_DRAFT_SOURCE.asOfDate,
-        }}
-      />
+      {savedAt && (
+        <SourceStamp
+          source={{
+            label: savedLabel,
+            locator: null,
+            asOfDate: savedAt,
+          }}
+        />
+      )}
 
       <h3 className={styles.indexTitle}>{t('progress.indexLabel')}</h3>
       <ol className={styles.index}>
-        {VETTING_QUESTIONS.map((question) => {
-          const answered = question.status === 'answered';
-          return (
-            <li key={question.id} className={styles.item}>
-              <a className={styles.link} href={`#${question.id}`}>
-                <span className={styles.num} aria-hidden="true">
-                  {t('labels.questionShort')}
-                  {question.n}
-                </span>
-                <span className={styles.short}>{t(`q.${question.key}.short`)}</span>
-              </a>
-              <span className={answered ? styles.statusDone : styles.statusOpen}>
-                {answered ? t('progress.answered') : t('progress.notAnswered')}
+        {rows.map((r) => (
+          <li key={r.question.questionCode} className={styles.item}>
+            <a className={styles.link} href={`#${r.question.questionCode}`}>
+              <span className={styles.num} aria-hidden="true">
+                {t('labels.questionShort')}
+                {r.n}
               </span>
-            </li>
-          );
-        })}
+              <span className={styles.short}>{r.labels.short}</span>
+            </a>
+            <span className={r.answered ? styles.statusDone : styles.statusOpen}>
+              {r.answered ? t('progress.answered') : t('progress.notAnswered')}
+            </span>
+          </li>
+        ))}
       </ol>
     </section>
   );

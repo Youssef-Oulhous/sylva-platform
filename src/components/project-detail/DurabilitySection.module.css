@@ -75,3 +75,13 @@
   .fact:last-child { border-bottom: none; }
   .entry, .entryOpen { grid-template-columns: 1fr; gap: var(--s-1); }
 }
+
+/* A secondary line inside a fact: the land-control note, or the recorded
+   dates. Block-level so it never runs into the statement above it. */
+.factNote {
+  display: block;
+  margin-top: var(--s-2);
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  line-height: var(--leading-body);
+}

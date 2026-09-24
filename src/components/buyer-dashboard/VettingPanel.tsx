@@ -1,7 +1,7 @@
 import { getFormatter, getTranslations } from 'next-intl/server';
 import Badge, { type BadgeTone } from '@/components/ui/Badge';
 import SourceStamp from '@/components/ui/SourceStamp';
-import type { VettingRecord, VettingState } from './types';
+import type { VettingRecord, VettingState } from '@/lib/dashboard/types';
 import styles from './VettingPanel.module.css';
 
 /**
@@ -15,6 +15,17 @@ import styles from './VettingPanel.module.css';
  * an allocation or an entry in a scheme's registry, and a screen that shows
  * only the word "Approved" invites exactly that reading.
  *
+ * `state` is read from the decision row; `approvedNow` is read from
+ * sylva.is_vetted(), the trigger-maintained cache R6 itself consults. They can
+ * legitimately disagree - an approval that was later suspended has an approved
+ * decision and an unapproved organisation - and where they do, the effective
+ * answer is the one that decides whether a deal may exist, so it is the one
+ * shown.
+ *
+ * Who decided is shown as "Sylva" rather than as an organisation name: a buyer
+ * holds no column grant on org.organisation.legal_name and must not, and
+ * inventing a way around that for a label would be undoing R5 for cosmetics.
+ *
  * The status is never colour alone: the badge carries the word, and the word is
  * repeated in the row label beside it. Green is reserved on this platform for
  * biodiversity and for the primary action, so an approved status is neutral
@@ -24,6 +35,7 @@ const TONE: Record<VettingState, BadgeTone> = {
   approved: 'neutral',
   submitted: 'warning',
   declined: 'error',
+  none: 'warning',
 };
 
 const ALLOWS = ['interest', 'dealRoom', 'sites'] as const;
@@ -39,6 +51,10 @@ export default async function VettingPanel({ vetting }: { vetting: VettingRecord
     <time dateTime={iso}>{format.dateTime(new Date(iso), 'short')}</time>
   );
 
+  // The decision on the record, narrowed by what the approval cache says is
+  // true right now.
+  const effective: VettingState = vetting.approvedNow ? 'approved' : vetting.state;
+
   return (
     <section className={styles.panel} aria-labelledby="vetting-status">
       <h3 id="vetting-status" className={styles.panelTitle}>
@@ -49,7 +65,7 @@ export default async function VettingPanel({ vetting }: { vetting: VettingRecord
         <div className={styles.fact}>
           <dt className={styles.factLabel}>{tRoot('project.status')}</dt>
           <dd className={styles.factValue}>
-            <Badge tone={TONE[vetting.state]}>{t(`vetting.state.${vetting.state}`)}</Badge>
+            <Badge tone={TONE[effective]}>{t(`vetting.state.${effective}`)}</Badge>
           </dd>
         </div>
 
@@ -71,29 +87,31 @@ export default async function VettingPanel({ vetting }: { vetting: VettingRecord
 
         <div className={styles.fact}>
           <dt className={styles.factLabel}>{t('vetting.decidedBy')}</dt>
-          <dd className={styles.factValue}>{vetting.decidedByOrgName}</dd>
+          <dd className={styles.factValue}>{t('vetting.decidedBySylva')}</dd>
         </div>
 
         <div className={styles.fact}>
           <dt className={styles.factLabel}>{t('vetting.questionnaire')}</dt>
           <dd className={styles.factValue}>
-            <span className={styles.mono}>{vetting.questionnaireVersion}</span>
+            <span className={styles.mono}>v{vetting.questionnaireVersion}</span>
           </dd>
         </div>
 
-        {vetting.reasonKey === null ? null : (
+        {/* The operator's own words, shown as written. This is free text from
+            org.vetting_decision.reason and is not a translatable string. */}
+        {vetting.reason === null ? null : (
           <div className={styles.fact}>
             <dt className={styles.factLabel}>{t('vetting.reason')}</dt>
-            <dd className={styles.factValue}>{t(vetting.reasonKey)}</dd>
+            <dd className={styles.factValue}>{vetting.reason}</dd>
           </div>
         )}
       </dl>
 
       <SourceStamp
         source={{
-          label: t(vetting.source.labelKey),
-          locator: vetting.source.locator,
-          asOfDate: vetting.source.asOfDate,
+          label: t('source.vettingDecision'),
+          locator: null,
+          asOfDate: vetting.decidedOn ?? vetting.submittedOn,
         }}
       />
 

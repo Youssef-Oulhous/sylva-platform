@@ -85,3 +85,67 @@
   .form { padding: var(--s-4); }
   .submit { width: 100%; }
 }
+
+/* --- Outcome of the last submission ------------------------------------- */
+.sent {
+  margin: 0 0 var(--s-4);
+  padding: var(--s-3) var(--s-4);
+  background: var(--tint-bio);
+  color: var(--tint-bio-ink);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+}
+
+.error {
+  margin: 0 0 var(--s-4);
+  padding: var(--s-3) var(--s-4);
+  background: var(--tint-error);
+  color: var(--tint-error-ink);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+}
+
+/* --- The viewer's own threads. Nobody else's ever appear here. ----------- */
+.threads {
+  margin-top: var(--s-6);
+  padding-top: var(--s-5);
+  border-top: var(--rule);
+}
+
+.threadList {
+  list-style: none;
+  margin: var(--s-3) 0 0;
+  padding: 0;
+  display: grid;
+  gap: var(--s-4);
+}
+
+.thread {
+  padding: var(--s-4);
+  border: var(--rule);
+  border-radius: var(--radius-sm);
+  background: var(--surface-sunk);
+  min-width: 0;
+}
+
+.threadBody {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: var(--leading-body);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.threadMeta {
+  margin: var(--s-2) 0 0;
+  font-size: var(--text-2xs);
+  color: var(--ink-muted);
+}
+
+.answer {
+  margin-top: var(--s-3);
+  padding-top: var(--s-3);
+  padding-left: var(--s-4);
+  border-top: var(--rule);
+  border-left: 2px solid var(--forest);
+}

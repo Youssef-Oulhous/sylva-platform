@@ -1,14 +1,13 @@
 import { getTranslations } from 'next-intl/server';
 import Badge from '@/components/ui/Badge';
 import SourceStamp from '@/components/ui/SourceStamp';
+import { adminText } from '@/lib/admin/messages';
 import {
-  GATE_KEY,
-  GATE_SOURCE,
-  gapsOf,
+  GATE_ITEM_KEY,
   recordedCount,
+  type AdminProject,
   type GateDetail,
-  type ReviewRow,
-} from './demo-projects';
+} from '@/lib/admin/types';
 import styles from './GateChecklist.module.css';
 
 /**
@@ -19,6 +18,11 @@ import styles from './GateChecklist.module.css';
  * `proj.publication_gaps()` returns, in that function's own order, and each row
  * prints that code beneath its label: an operator reading a refusal from the
  * database sees the same words there as here.
+ *
+ * This list is not a copy kept somewhere. `project.gaps` is what the database
+ * function returned for this project a moment ago, on this request, and the
+ * counts beside each item were read with the same predicates that function
+ * uses - so the detail column and the pass/fail column cannot disagree.
  *
  * The state cell is not a control. Nothing on this screen records or clears a
  * gate item - an item becomes recorded when the underlying information is
@@ -36,18 +40,18 @@ import styles from './GateChecklist.module.css';
  * a column (rule 7).
  */
 export default async function GateChecklist({
-  row,
+  project,
   variant = 'panel',
   headingId,
 }: {
-  row: ReviewRow;
+  project: AdminProject;
   variant?: 'panel' | 'compact';
   headingId?: string;
 }) {
   const t = await getTranslations();
-  const gaps = gapsOf(row);
-  const recorded = recordedCount(row);
-  const total = row.gate.length;
+  const gaps = project.gaps;
+  const recorded = recordedCount(project);
+  const total = project.gate.length;
   const compact = variant === 'compact';
 
   const detailCell = (d: GateDetail) => {
@@ -90,7 +94,7 @@ export default async function GateChecklist({
 
       <div className="table-scroll">
         <table>
-          <caption>{t('adminProjects.gate.caption', { project: row.title })}</caption>
+          <caption>{t('adminProjects.gate.caption', { project: project.title })}</caption>
           <thead>
             <tr>
               <th scope="col">{t('adminProjects.gate.colItem')}</th>
@@ -100,8 +104,8 @@ export default async function GateChecklist({
             </tr>
           </thead>
           <tbody>
-            {row.gate.map((item) => {
-              const key = GATE_KEY[item.code];
+            {project.gate.map((item) => {
+              const key = GATE_ITEM_KEY[item.code];
               return (
                 <tr
                   key={item.code}
@@ -140,14 +144,17 @@ export default async function GateChecklist({
 
       <SourceStamp
         source={{
-          label: t(GATE_SOURCE.labelKey),
-          locator: GATE_SOURCE.locator,
-          asOfDate: GATE_SOURCE.asOfDate,
+          label: t('adminProjects.source.gateFunction'),
+          locator: 'proj.publication_gaps()',
+          asOfDate: project.gateCheckedOn,
         }}
       />
 
       {!compact && (
-        <p className={styles.openDecision}>{t('adminProjects.openDecisionNote')}</p>
+        <>
+          <p className={styles.openDecision}>{adminText(t, 'gateEvaluatedNote')}</p>
+          <p className={styles.openDecision}>{t('adminProjects.openDecisionNote')}</p>
+        </>
       )}
     </section>
   );

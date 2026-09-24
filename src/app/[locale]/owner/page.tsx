@@ -1,53 +1,45 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/lib/i18n/routing';
-import Badge from '@/components/ui/Badge';
 import SourceStamp from '@/components/ui/SourceStamp';
 import OwnerProjectRow from '@/components/owner-dashboard/OwnerProjectRow';
 import QuestionQueue from '@/components/owner-dashboard/QuestionQueue';
 import InterestQueue from '@/components/owner-dashboard/InterestQueue';
+import { requireRole } from '@/lib/auth/guards';
 import {
-  DEMO_OWNER_AS_OF,
-  DEMO_OWNER_INTEREST,
-  DEMO_OWNER_ORG,
-  DEMO_OWNER_PROJECTS,
-  DEMO_OWNER_QUESTIONS,
-  questionsAnswered,
-  questionsAwaitingAnswer,
-} from '@/components/owner-dashboard/demo-owner';
+  getOwnerOrganisationName, listOwnerInterest, listOwnerProjects, listOwnerQuestions,
+} from '@/lib/owner/queries';
+import { isAnswered } from '@/lib/owner/types';
+import { ownerText } from '@/lib/owner/messages';
 import styles from './page.module.css';
 
 /**
- * The project owner dashboard.
+ * The project owner dashboard, read from the database as this organisation.
  *
  * Three things, in the order an owner needs them: what each project still needs
- * before it can be published, what buyers are waiting for an answer to, and what
- * interest is waiting for a response. Nothing is summarised into a score and
- * nothing is charted. A project owner opening this page should be able to say
- * what to do next after reading one screen.
+ * before it can be published, what buyers are waiting for an answer to, and
+ * what interest is waiting for a response. Nothing is summarised into a score
+ * and nothing is charted. A project owner opening this page should be able to
+ * say what to do next after reading one screen.
  *
- * The publication gate is the centre of it. proj.publication_gaps() in
- * db/migrations/0013_a11_publication_gate.sql builds an array of ten codes and
- * the trigger on proj.project refuses a change to 'published' while that array
- * is not empty. PublicationGateList renders the same ten codes in the same
- * order, so the screen and the database never disagree about whether a project
- * is ready. Which of the ten are hard blockers and which are warnings is an open
- * decision for the client - stated on the page as an open decision rather than
- * quietly resolved here.
+ * The publication gate is the centre of it, and it is the database's own
+ * answer: each row's `gaps` is the array proj.publication_gaps() returned a
+ * moment ago, not a reimplementation of it. The trigger on proj.project refuses
+ * a change to 'published' while that array is not empty, so the screen and the
+ * gate cannot disagree about whether a project is ready. Which of the ten items
+ * are hard blockers and which are warnings is an open decision for the client -
+ * stated on the page as an open decision rather than quietly resolved here.
  *
- * FRONTEND PASS. No database, no fetch, no auth, no server actions. Every value
- * comes from the typed DEMO constants in
- * src/components/owner-dashboard/demo-owner.ts. There is no form on the page,
- * every control is an inert type="button", and there is no client component: the
- * only thing that opens and closes is a native <details>.
+ * WHAT THIS PAGE IS NOT ALLOWED TO DO. It runs as sylva_project_owner with the
+ * HMAC-signed organisation context, so every query is already narrowed to this
+ * organisation by row-level security. requireRole() below decides what is
+ * shown; it is not the boundary. See docs/FINDING-001.
  *
  * RULE 7. Every unit figure on this page sits inside one project's availability
- * table, for one period, rendered through formatQty() so the unit type is
- * printed beside the number. Two of these projects sell hectare-years and two
- * sell index points; nothing on this page adds across them, and no figure here
- * spans more than one project. The counts near the top count projects,
- * questions and expressions of interest - and say so, so they cannot be read as
- * volume.
+ * table, for one period, rendered through formatQty() with that project's own
+ * unit label. Nothing here adds across projects, and no figure spans more than
+ * one project. The counts near the top count projects, questions and
+ * expressions of interest - and say so, so they cannot be read as volume.
  */
 
 export async function generateMetadata({
@@ -73,29 +65,41 @@ export default async function OwnerDashboardPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+
+  const viewer = await requireRole('project_owner', '/owner');
   const t = await getTranslations();
 
-  const published = DEMO_OWNER_PROJECTS.filter((p) => p.isPublished);
-  const blocked = DEMO_OWNER_PROJECTS.filter((p) => p.gaps.length > 0);
-  const awaitingAnswer = questionsAwaitingAnswer(DEMO_OWNER_QUESTIONS);
-  const answered = questionsAnswered(DEMO_OWNER_QUESTIONS);
+  const [orgName, projects, questions, interest] = await Promise.all([
+    getOwnerOrganisationName(viewer.actor),
+    listOwnerProjects(viewer.actor, locale),
+    listOwnerQuestions(viewer.actor, locale),
+    listOwnerInterest(viewer.actor, locale),
+  ]);
+
+  const published = projects.filter((p) => p.isPublished);
+  const blocked = projects.filter((p) => p.gaps.length > 0);
+  const awaitingAnswer = questions.filter((q) => !isAnswered(q));
+  const answered = questions.filter(isAnswered);
+
+  // The date the page was rendered. Every figure below was read then, so that
+  // is what the source stamps state.
+  const asOf = new Date().toISOString().slice(0, 10);
 
   return (
     <div className={styles.page}>
       <header className={styles.head}>
         <div className={styles.headTop}>
           <h1>{t('owner.title')}</h1>
-          <Badge tone="demo">{t('demo.badge')}</Badge>
         </div>
 
         <p className={styles.lead}>{t('owner.lead')}</p>
 
         <p className={styles.org}>
           {t('owner.dashboardFor')}{' '}
-          <span className={styles.orgName}>{DEMO_OWNER_ORG}</span>
+          <span className={styles.orgName}>{orgName ?? ''}</span>
         </p>
 
-        <p className={styles.demoNote}>{t('owner.demoNote')}</p>
+        <p className={styles.demoNote}>{ownerText(t, 'liveNote')}</p>
       </header>
 
       <section className={styles.section} aria-labelledby="owner-projects">
@@ -103,7 +107,7 @@ export default async function OwnerDashboardPage({
           <h2 id="owner-projects">{t('owner.projects.title')}</h2>
 
           <p className={styles.counts}>
-            {t('owner.projects.count', { count: DEMO_OWNER_PROJECTS.length })}{' '}
+            {t('owner.projects.count', { count: projects.length })}{' '}
             {t('source.separator')}{' '}
             {t('owner.projects.published', { count: published.length })}{' '}
             {t('source.separator')}{' '}
@@ -114,20 +118,24 @@ export default async function OwnerDashboardPage({
             source={{
               label: t('owner.source.dashboard'),
               locator: null,
-              asOfDate: DEMO_OWNER_AS_OF,
+              asOfDate: asOf,
             }}
           />
 
           {/* Said once, at the top, so the absence of a platform-wide figure
               reads as a decision rather than as something not built yet. */}
           <p className={styles.countNote}>{t('owner.countNote')}</p>
+
+          <p className={styles.sectionFoot}>
+            <Link href="/owner/projects/new">{ownerText(t, 'addProject')} &rarr;</Link>
+          </p>
         </div>
 
-        {DEMO_OWNER_PROJECTS.length === 0 ? (
+        {projects.length === 0 ? (
           <p className={styles.empty}>{t('owner.projects.empty')}</p>
         ) : (
           <div className={styles.projects}>
-            {DEMO_OWNER_PROJECTS.map((project) => (
+            {projects.map((project) => (
               <OwnerProjectRow key={project.id} project={project} locale={locale} />
             ))}
           </div>
@@ -150,12 +158,12 @@ export default async function OwnerDashboardPage({
             source={{
               label: t('owner.questions.source'),
               locator: null,
-              asOfDate: DEMO_OWNER_AS_OF,
+              asOfDate: asOf,
             }}
           />
         </div>
 
-        <QuestionQueue questions={DEMO_OWNER_QUESTIONS} locale={locale} />
+        <QuestionQueue questions={questions} locale={locale} />
 
         <p className={styles.sectionFoot}>
           <Link href="/owner/questions">{t('owner.questions.openInbox')} &rarr;</Link>
@@ -167,7 +175,7 @@ export default async function OwnerDashboardPage({
           <h2 id="owner-interest">{t('owner.interest.title')}</h2>
 
           <p className={styles.counts}>
-            {t('owner.interest.count', { count: DEMO_OWNER_INTEREST.length })}
+            {t('owner.interest.count', { count: interest.length })}
           </p>
 
           <p className={styles.sectionLead}>{t('owner.interest.lead')}</p>
@@ -176,12 +184,12 @@ export default async function OwnerDashboardPage({
             source={{
               label: t('owner.interest.source'),
               locator: null,
-              asOfDate: DEMO_OWNER_AS_OF,
+              asOfDate: asOf,
             }}
           />
         </div>
 
-        <InterestQueue interest={DEMO_OWNER_INTEREST} locale={locale} />
+        <InterestQueue interest={interest} locale={locale} />
       </section>
     </div>
   );

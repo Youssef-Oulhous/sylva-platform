@@ -1,12 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import Badge from '@/components/ui/Badge';
 import GateChecklist from './GateChecklist';
-import {
-  STATUS_TONE,
-  gapsOf,
-  recordedCount,
-  type ReviewRow,
-} from './demo-projects';
+import { STATUS_TONE, recordedCount, type AdminProject } from '@/lib/admin/types';
 import styles from './OtherProjects.module.css';
 
 /**
@@ -22,7 +17,7 @@ import styles from './OtherProjects.module.css';
  * count of items recorded out of ten and the count of items missing, both
  * labelled.
  */
-export default async function OtherProjects({ rows }: { rows: readonly ReviewRow[] }) {
+export default async function OtherProjects({ rows }: { rows: readonly AdminProject[] }) {
   const t = await getTranslations();
 
   if (rows.length === 0) return null;
@@ -36,17 +31,16 @@ export default async function OtherProjects({ rows }: { rows: readonly ReviewRow
 
       <div className={styles.list}>
         {rows.map((row) => {
-          const gaps = gapsOf(row);
           const recorded = recordedCount(row);
           return (
-            <details key={row.reference} className={styles.item}>
+            <details key={row.id} className={styles.item}>
               <summary className={styles.summary}>
                 <span className={styles.summaryTitle}>{row.title}</span>
                 <span className={styles.summaryBadges}>
                   <Badge tone={STATUS_TONE[row.status]}>{t(`status.${row.status}`)}</Badge>
-                  {gaps.length > 0 ? (
+                  {row.gaps.length > 0 ? (
                     <Badge tone="warning">
-                      {t('adminProjects.gate.missingSummary', { count: gaps.length })}
+                      {t('adminProjects.gate.missingSummary', { count: row.gaps.length })}
                     </Badge>
                   ) : (
                     <Badge tone="bio">{t('adminProjects.gate.complete')}</Badge>
@@ -55,19 +49,17 @@ export default async function OtherProjects({ rows }: { rows: readonly ReviewRow
                 <span className={styles.summaryMeta}>
                   {t('adminProjects.gate.summary', { recorded, total: row.gate.length })}
                   {' · '}
-                  {row.unitKey
-                    ? t(`adminProjects.unit.${row.unitKey}`)
-                    : t('adminProjects.unit.notRecorded')}
+                  {row.unitLabel ?? t('adminProjects.unit.notRecorded')}
                 </span>
               </summary>
 
               <div className={styles.body}>
                 <p className={styles.statement}>
-                  {gaps.length > 0
-                    ? t('adminProjects.others.blocked', { count: gaps.length })
+                  {row.gaps.length > 0
+                    ? t('adminProjects.others.blocked', { count: row.gaps.length })
                     : t('adminProjects.others.complete')}
                 </p>
-                <GateChecklist row={row} variant="compact" />
+                <GateChecklist project={row} variant="compact" />
               </div>
             </details>
           );

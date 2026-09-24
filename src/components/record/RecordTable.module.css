@@ -3,11 +3,13 @@
   border: var(--rule);
   border-radius: var(--radius);
 }
-/* Nine columns of dense data: it scrolls rather than reflows, because a
+/* Ten columns of dense data: it scrolls rather than reflows, because a
    reflowed record loses the date order that makes it a record. The global
    .table-scroll rule sets a 34rem floor for ordinary tables; this record needs
-   more, and the scoped selector is what outranks it. */
-:global(.table-scroll) .table { min-width: 62rem; }
+   more, and the scoped selector is what outranks it. The tenth column is the
+   per-entry source, added when the record stopped carrying one stamp for the
+   whole page. */
+:global(.table-scroll) .table { min-width: 74rem; }
 
 .caption { max-width: var(--measure-prose); }
 
@@ -77,6 +79,19 @@
 .reasonLabel {
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  color: var(--ink-muted);
+}
+
+/* Provenance for one entry. Narrow and quiet - it is beside every row, so it
+   must not compete with the row - but never truncated: a source that cannot be
+   read in full is not a source. */
+.sourceCell {
+  min-width: 15rem;
+  max-width: 22rem;
+  vertical-align: top;
+}
+.sourceMissing {
+  font-size: var(--text-2xs);
   color: var(--ink-muted);
 }
 

@@ -2,46 +2,49 @@ import { getFormatter, getTranslations } from 'next-intl/server';
 import { Link } from '@/lib/i18n/routing';
 import Badge from '@/components/ui/Badge';
 import SourceStamp from '@/components/ui/SourceStamp';
-import type { DemoInterestProject, DemoRecordedInterest } from './demo-interest';
+import { DEAL_SHAPE_LABEL_KEY, type RecordedInterest } from '@/lib/interest/types';
+import { c } from './copy';
 import styles from './InterestConfirmation.module.css';
 
 /**
- * The confirmation screen, rendered here as a specimen.
+ * The confirmation screen.
  *
  * This is the screen that stops the main call to action dead-ending. It answers
- * the four questions a buyer has the moment the enquiry leaves their hands: what
- * exactly was recorded, who now knows about it, how they appear on the public
- * record, and what happens next.
+ * the four questions a buyer has the moment the enquiry leaves their hands:
+ * what exactly was recorded, who now knows about it, how they appear on the
+ * public record, and what happens next.
  *
- * It is labelled as an example because the enquiry above it does not submit. The
- * label matters: without it, a reader could take the reference below for one of
- * their own.
+ * EVERY FIELD BELOW IS READ BACK FROM THE DATABASE, not echoed from the form.
+ * If the buyer asked to be named and the disclosure event did not land, this
+ * screen says "pseudonymous", because that is what the record says. A
+ * confirmation that repeated the POST body would be a screenshot of an
+ * intention rather than evidence of a fact.
  *
- * Rule 7. The volumes are listed per period, each with the project's unit label,
- * and no total is printed. Both lines happen to be the same unit type of the same
+ * Rule 7. The volumes are listed per period, each with the project's unit
+ * label, and no total is printed. Two lines are the same unit type of the same
  * project - so a sum would be arithmetically valid - and it is still not shown,
- * because 2028 and 2029 are different deliverables and a single figure would read
- * as one quantity.
+ * because 2028 and 2029 are different deliverables and a single figure would
+ * read as one quantity.
  */
 export default async function InterestConfirmation({
-  project,
-  interest,
+  recorded,
 }: {
-  project: DemoInterestProject;
-  interest: DemoRecordedInterest;
+  recorded: RecordedInterest;
 }) {
   const t = await getTranslations();
   const format = await getFormatter();
-  const unit = t(project.unitLabelKey);
-  const recordedOn = new Date(interest.recordedOn);
+  const unit = recorded.unitMetricLabel;
+  const occurredAt = new Date(recorded.occurredAt);
+
+  const shapeKey = recorded.intendedShape
+    ? DEAL_SHAPE_LABEL_KEY[recorded.intendedShape]
+    : null;
 
   return (
     <div className={styles.wrap}>
-      <p className={styles.exampleLabel}>{t('expressInterest.confirmation.exampleLabel')}</p>
-
       <div className={styles.card}>
         <div className={styles.head}>
-          <h3 className={styles.title}>{t('expressInterest.confirmation.title')}</h3>
+          <h2 className={styles.title}>{t('expressInterest.confirmation.title')}</h2>
           {/* The word carries the state. Neutral, not green: on this platform
               green means biodiversity or a primary action, and a confirmation is
               neither. */}
@@ -53,34 +56,37 @@ export default async function InterestConfirmation({
         <dl className={styles.rows}>
           <div className={styles.row}>
             <dt className={styles.label}>{t('expressInterest.reference.project')}</dt>
-            <dd className={styles.value}>{project.name}</dd>
+            <dd className={styles.value}>
+              <Link href={`/projects/${recorded.projectSlug}`}>{recorded.projectTitle}</Link>
+            </dd>
+          </div>
+          <div className={styles.row}>
+            <dt className={styles.label}>{c(t, 'ownerLabel')}</dt>
+            <dd className={styles.value}>{recorded.ownerOrgName}</dd>
           </div>
           <div className={styles.row}>
             <dt className={styles.label}>{t('expressInterest.confirmation.event')}</dt>
-            <dd className={styles.value}>{t(interest.eventKey)}</dd>
+            <dd className={styles.value}>{t('expressInterest.event.interestExpressed')}</dd>
           </div>
           <div className={styles.row}>
             <dt className={styles.label}>
               {t('expressInterest.confirmation.organisation')}
             </dt>
-            <dd className={styles.value}>{interest.buyerOrgName}</dd>
+            {/* org.actor_organisation_name() returns the caller's OWN name.
+                null only if the signed context did not resolve, in which case
+                the screen says nothing rather than guessing. */}
+            <dd className={styles.value}>{recorded.organisationName ?? '—'}</dd>
           </div>
           <div className={styles.row}>
             <dt className={styles.label}>{t('expressInterest.confirmation.publicRecord')}</dt>
             <dd className={styles.value}>
-              {interest.disclosed ? (
-                interest.buyerOrgName
+              {recorded.disclosed ? (
+                recorded.organisationName ?? '—'
               ) : (
-                <>
-                  <span className={styles.mono}>{interest.buyerPseudonym}</span>
-                  <span className={styles.sep}> · </span>
-                  {t(interest.buyerSectorKey)}
-                  <span className={styles.sep}> · </span>
-                  {t(interest.buyerCountryKey)}
-                </>
+                <span className={styles.mono}>{recorded.pseudonym ?? '—'}</span>
               )}
               <span className={styles.valueNote}>
-                {interest.disclosed
+                {recorded.disclosed
                   ? t('expressInterest.confirmation.publicRecordNamed')
                   : t('expressInterest.confirmation.publicRecordPseudonym')}
               </span>
@@ -89,62 +95,76 @@ export default async function InterestConfirmation({
           <div className={styles.row}>
             <dt className={styles.label}>{t('expressInterest.confirmation.date')}</dt>
             <dd className={styles.value}>
-              <time dateTime={interest.recordedOn} className={styles.mono}>
-                {format.dateTime(recordedOn, 'long')}
+              <time dateTime={recorded.occurredAt} className={styles.mono}>
+                {format.dateTime(occurredAt, 'long')}
               </time>
             </dd>
           </div>
           <div className={styles.row}>
             <dt className={styles.label}>{t('expressInterest.confirmation.reference')}</dt>
             <dd className={styles.value}>
-              <span className={styles.mono}>{interest.reference}</span>
+              <span className={styles.mono}>{recorded.reference}</span>
             </dd>
           </div>
           <div className={styles.row}>
+            <dt className={styles.label}>{c(t, 'stageLabel')}</dt>
+            <dd className={styles.value}>{c(t, 'stageInterest')}</dd>
+          </div>
+          <div className={styles.row}>
             <dt className={styles.label}>{t('expressInterest.confirmation.dealShape')}</dt>
-            <dd className={styles.value}>{t(interest.dealShapeKey)}</dd>
+            <dd className={styles.value}>
+              {shapeKey ? t(shapeKey) : c(t, 'shapeUndecided')}
+            </dd>
           </div>
         </dl>
 
-        <div className={styles.volumes}>
-          <table className={styles.volumeTable}>
-            <caption>{t('expressInterest.confirmation.volumesCaption')}</caption>
-            <thead>
-              <tr>
-                <th scope="col">{t('project.period')}</th>
-                <th scope="col" className="num">
-                  {t('expressInterest.confirmation.volumeHeader')}
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {interest.requested.map((line) => (
-                <tr key={line.periodLabel}>
-                  <th scope="row" className={styles.periodCell}>
-                    {line.periodLabel}
+        {recorded.volumes.length > 0 ? (
+          <div className={styles.volumes}>
+            <table className={styles.volumeTable}>
+              <caption>{t('expressInterest.confirmation.volumesCaption')}</caption>
+              <thead>
+                <tr>
+                  <th scope="col">{t('project.period')}</th>
+                  <th scope="col" className="num">
+                    {t('expressInterest.confirmation.volumeHeader')}
                   </th>
-                  <td className="num">
-                    {format.number(line.amount, 'volume')}{' '}
-                    <span className={styles.unitInline}>{unit}</span>
-                  </td>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-          {/* These figures came from the buyer, so the buyer's own enquiry is
-              their source. Saying so is more useful than omitting the stamp. */}
-          <SourceStamp
-            source={{
-              label: t('expressInterest.confirmation.volumeSource'),
-              locator: interest.reference,
-              asOfDate: interest.recordedOn,
-            }}
-          />
-          <p className={styles.note}>{t('expressInterest.confirmation.noTotalNote')}</p>
-        </div>
+              </thead>
+              <tbody>
+                {recorded.volumes.map((line) => (
+                  <tr key={line.periodId}>
+                    <th scope="row" className={styles.periodCell}>
+                      {line.periodLabel}
+                    </th>
+                    <td className="num">
+                      {format.number(line.requested.amount, 'volume')}{' '}
+                      <span className={styles.unitInline}>{unit}</span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            {/* These figures came from the buyer, so the buyer's own enquiry is
+                their source - and the database says so: deal.interest_volume
+                carries source_label and as_of_date as NOT NULL columns, so a
+                volume cannot be stored without them. */}
+            <SourceStamp
+              source={{
+                label: recorded.volumes[0]!.source.label,
+                locator: recorded.reference,
+                asOfDate: recorded.volumes[0]!.source.asOfDate,
+              }}
+            />
+            <p className={styles.note}>{t('expressInterest.confirmation.noTotalNote')}</p>
+          </div>
+        ) : null}
+
+        <p className={styles.note}>
+          {recorded.hasMessage ? c(t, 'messageSent') : c(t, 'noMessage')}
+        </p>
 
         <div className={styles.next}>
-          <h4 className={styles.nextTitle}>{t('expressInterest.confirmation.nextTitle')}</h4>
+          <h3 className={styles.nextTitle}>{t('expressInterest.confirmation.nextTitle')}</h3>
           <ol className={styles.steps}>
             <li>{t('expressInterest.confirmation.next1')}</li>
             <li>{t('expressInterest.confirmation.next2')}</li>
@@ -155,7 +175,7 @@ export default async function InterestConfirmation({
         {/* The release-1 boundary, stated plainly rather than as a disabled
             "Open deal room" button that would promise a room there is none. */}
         <div className={styles.later}>
-          <h4 className={styles.nextTitle}>{t('expressInterest.confirmation.dealRoomTitle')}</h4>
+          <h3 className={styles.nextTitle}>{t('expressInterest.confirmation.dealRoomTitle')}</h3>
           <p className={styles.laterBody}>{t('expressInterest.confirmation.dealRoomBody')}</p>
           <p className={styles.laterBody}>{t('expressInterest.confirmation.signingBody')}</p>
         </div>
@@ -163,7 +183,7 @@ export default async function InterestConfirmation({
         <p className={styles.permanent}>{t('expressInterest.confirmation.permanentNote')}</p>
 
         <div className={styles.actions}>
-          <Link href={`/projects/${project.slug}`} className={styles.primaryLink}>
+          <Link href={`/projects/${recorded.projectSlug}`} className={styles.primaryLink}>
             {t('expressInterest.confirmation.backToProject')}
           </Link>
           <Link href="/record" className={styles.secondaryLink}>

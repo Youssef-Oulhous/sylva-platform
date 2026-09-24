@@ -1,0 +1,99 @@
+/* One section of the record, as a form that posts on its own.
+   The record page carries several of these. Each is separated by whitespace and
+   a rule - never a card inside a card inside a card. */
+
+.form {
+  display: block;
+  min-width: 0;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-3);
+  margin-top: var(--s-5);
+}
+
+/* One filled control per form, and it is the one the form exists for. */
+.submit {
+  padding: var(--s-2) var(--s-5);
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--forest-on);
+  background: var(--forest);
+  border: 1px solid var(--forest);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+.submit:hover { background: var(--forest-hover); border-color: var(--forest-hover); }
+.submit:focus-visible { outline: 2px solid var(--forest); outline-offset: 2px; }
+
+.note {
+  margin: var(--s-3) 0 0;
+  max-width: var(--measure-prose);
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}
+
+/* What is already on the record for this section. A list, not a table: these
+   entries have a label, a version and a source, and a table of three columns
+   would be a table pretending to be a list. */
+.recorded {
+  margin-top: var(--s-5);
+  padding-top: var(--s-4);
+  border-top: var(--rule);
+}
+
+.recordedTitle {
+  margin: 0 0 var(--s-3);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  padding: var(--s-3) 0;
+  border-top: var(--rule);
+  min-width: 0;
+}
+.item:first-child { border-top: none; }
+
+.itemHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-3);
+}
+
+.itemLabel {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.itemVersion {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+}
+
+.itemDetail {
+  margin: var(--s-1) 0 var(--s-2);
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}
+
+.empty {
+  margin: 0;
+  font-size: var(--text-sm);
+  font-style: italic;
+  color: var(--ink-muted);
+}

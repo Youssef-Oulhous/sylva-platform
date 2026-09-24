@@ -104,3 +104,26 @@
     margin-top: var(--s-6);
   }
 }
+
+/* The outcome of the last write. One line, in the flow of the document, above
+   the thing it is about - not a floating toast that a screen reader meets
+   after the fact and a slow connection never shows at all. */
+.notice,
+.noticeOk {
+  margin: 0 0 var(--s-5);
+  padding: var(--s-3) var(--s-4);
+  border: var(--rule);
+  font-size: var(--text-sm);
+  max-width: var(--measure-prose);
+}
+
+.notice {
+  background: var(--tint-error);
+  border-color: var(--tint-error-ink);
+  color: var(--tint-error-ink);
+}
+
+.noticeOk {
+  background: var(--tint-neutral);
+  color: var(--tint-neutral-ink);
+}

@@ -120,3 +120,39 @@ export async function readAs<T>(
     return work(tx);
   });
 }
+
+/**
+ * The one unit of work that runs BEFORE an actor exists.
+ *
+ * Authentication has a chicken-and-egg problem: withActor() needs an
+ * organisation and a person to mint a context for, and the whole point of
+ * signing in is that we do not have them yet. So this opens a transaction on
+ * the public pool, sets no context, and does NOT SET LOCAL ROLE - the work runs
+ * as sylva_login_public itself.
+ *
+ * That is deliberately the weakest principal in the system, not a privileged
+ * one. sylva_login_public is a member of sylva_web_anon and of nothing else, so
+ * this transaction can read published pages and call the handful of
+ * SECURITY DEFINER functions in db/migrations/0040 that were granted to it. It
+ * cannot read identity.user_account, cannot become a buyer, and cannot mint an
+ * actor context - sylva.mint_actor_ctx is granted to sylva_login_app,
+ * sylva_login_operator and sylva_login_auditor, never to this one.
+ *
+ * Nothing outside src/lib/auth may call this. Every other read and write in the
+ * application goes through withActor() or readAs(), and a query that needs a
+ * privilege this principal lacks is telling you it belongs behind a session.
+ */
+export async function withLoginRole<T>(work: (tx: Tx) => Promise<T>): Promise<T> {
+  const client = await poolFor('public').connect();
+  try {
+    await client.query('BEGIN');
+    const out = await work(wrap(client));
+    await client.query('COMMIT');
+    return out;
+  } catch (err) {
+    try { await client.query('ROLLBACK'); } catch { /* connection already gone */ }
+    throw err;
+  } finally {
+    client.release();
+  }
+}

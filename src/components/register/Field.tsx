@@ -14,8 +14,11 @@ import styles from './Field.module.css';
  * rather than repeated as an asterisk on every row - an asterisk is a legend the
  * reader has to look up.
  *
- * FRONTEND PASS. Every control is uncontrolled, so this stays a Server
- * Component: there is no state, no handler and no validation.
+ * Every control is uncontrolled, so this stays a Server Component: there is no
+ * state and no handler. `required` and `minLength` are a convenience for the
+ * person typing and nothing more - the checks that matter run server-side in
+ * src/lib/auth/actions.ts, and the ones that matter most are constraints in the
+ * database.
  */
 
 export type FieldKind = 'text' | 'email' | 'password' | 'select' | 'textarea';
@@ -41,6 +44,8 @@ export interface FieldProps {
   placeholderOption?: string;
   /** Textarea only. */
   rows?: number;
+  /** Text-like fields only. Mirrors the server-side rule, never replaces it. */
+  minLength?: number;
 }
 
 export default function Field({
@@ -54,6 +59,7 @@ export default function Field({
   options,
   placeholderOption,
   rows = 3,
+  minLength,
 }: FieldProps) {
   const hintId = `${id}-hint`;
   const shared = {
@@ -91,7 +97,13 @@ export default function Field({
       ) : kind === 'textarea' ? (
         <textarea {...shared} rows={rows} />
       ) : (
-        <input {...shared} type={kind} inputMode={inputMode} spellCheck={false} />
+        <input
+          {...shared}
+          type={kind}
+          inputMode={inputMode}
+          minLength={minLength}
+          spellCheck={false}
+        />
       )}
     </div>
   );

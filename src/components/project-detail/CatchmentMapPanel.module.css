@@ -137,6 +137,72 @@
 @media (max-width: 64rem) {
   .layout { grid-template-columns: 1fr; }
 }
+
+/* --- The signed-in buyer's own sites -------------------------------------
+   Private to that buyer. Laid out as a register, not as a chart: three facts
+   per site, each labelled, each legible on a phone. */
+.siteList {
+  list-style: none;
+  margin: 0 0 var(--s-3);
+  padding: 0;
+  display: grid;
+  gap: var(--s-3);
+}
+
+.site {
+  display: grid;
+  gap: var(--s-1);
+  padding-bottom: var(--s-3);
+  border-bottom: var(--rule);
+  min-width: 0;
+}
+
+.site:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.siteName {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  align-items: baseline;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--ink);
+  min-width: 0;
+}
+
+.siteCountry {
+  font-size: var(--text-2xs);
+  color: var(--ink-muted);
+}
+
+.siteDistance {
+  font-size: var(--text-sm);
+  color: var(--ink);
+}
+
+.siteInCatchment {
+  font-size: var(--text-2xs);
+  color: var(--tint-water-ink);
+}
+
+.siteOutCatchment {
+  font-size: var(--text-2xs);
+  color: var(--ink-muted);
+}
+
+/* The project's own catchment prose, below the figure. */
+.context {
+  margin-top: var(--s-5);
+  padding-top: var(--s-4);
+  border-top: var(--rule);
+  max-width: var(--measure-prose);
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+}
+
 @media (max-width: 30rem) {
   .frame { aspect-ratio: 1; }
   .insetWrap { width: 34%; }

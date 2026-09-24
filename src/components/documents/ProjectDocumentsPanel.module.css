@@ -1,0 +1,145 @@
+/* The owner's document register and its two forms.
+
+   Tables for data, one rule between rows, no card inside a card. The withdraw
+   control sits in the row it acts on rather than behind a menu, because it is
+   a permanent act and hiding it would make it feel reversible. */
+
+.panel {
+  display: block;
+  min-width: 0;
+}
+
+.heading {
+  margin: var(--s-6) 0 var(--s-3);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--ink);
+}
+.heading:first-child { margin-top: 0; }
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+  min-width: 0;
+}
+
+.table th,
+.table td {
+  padding: var(--s-3) var(--s-3) var(--s-3) 0;
+  border-bottom: var(--rule);
+  text-align: left;
+  vertical-align: top;
+}
+
+.table thead th {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--ink-muted);
+  border-bottom: 1px solid var(--border-strong);
+  white-space: nowrap;
+}
+
+.rowHead {
+  font-weight: 500;
+  color: var(--ink);
+  min-width: 0;
+}
+
+.meta {
+  display: block;
+  margin-top: var(--s-1);
+  font-size: var(--text-2xs);
+  color: var(--ink-muted);
+}
+
+/* Figures line up under each other. Tabular, as everywhere else on the site. */
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.actionsCell {
+  min-width: 0;
+}
+
+.action {
+  display: inline-block;
+  margin-right: var(--s-3);
+  color: var(--forest);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.action:focus-visible { outline: 2px solid var(--forest); outline-offset: 2px; }
+
+/* Withdrawal: a reason and a button, on one line where there is room. */
+.withdraw {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  margin-top: var(--s-3);
+  min-width: 0;
+}
+
+.reason {
+  flex: 1 1 12rem;
+  min-width: 0;
+  padding: var(--s-2);
+  font: inherit;
+  font-size: var(--text-sm);
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+}
+.reason:focus-visible { outline: 2px solid var(--forest); outline-offset: 1px; }
+
+.withdrawButton {
+  padding: var(--s-2) var(--s-4);
+  font: inherit;
+  font-size: var(--text-sm);
+  color: var(--error);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.withdrawButton:hover { border-color: var(--error); }
+.withdrawButton:focus-visible { outline: 2px solid var(--error); outline-offset: 2px; }
+
+/* The file input, matching the other fields without pretending to be one. */
+.fileField {
+  display: block;
+  min-width: 0;
+}
+
+.fileLabel {
+  display: block;
+  margin-bottom: var(--s-1);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.fileHint {
+  margin: 0 0 var(--s-2);
+  max-width: var(--measure-prose);
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+}
+
+.file {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: var(--s-2);
+  font: inherit;
+  font-size: var(--text-sm);
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-sm);
+}
+.file:focus-visible { outline: 2px solid var(--forest); outline-offset: 1px; }

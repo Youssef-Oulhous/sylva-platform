@@ -1,10 +1,12 @@
 import { getTranslations } from 'next-intl/server';
+import { orFallback } from '@/components/vetting/labels';
+import type { VettingState } from '@/lib/vetting/types';
 import {
-  DEMO_ACTIONS,
+  STATE_FALLBACK_EN,
+  VETTING_ACTIONS,
   VETTING_STATES,
   type CellValue,
-  type VettingState,
-} from './demo-vetting';
+} from './states';
 import styles from './PermissionMatrix.module.css';
 
 /**
@@ -45,7 +47,7 @@ export default async function PermissionMatrix({
             <th scope="col">{t('vettingStatus.action.heading')}</th>
             {VETTING_STATES.map((state) => (
               <th key={state} scope="col" className={styles.stateCol}>
-                {t(`vettingStatus.state.${state}`)}
+                {orFallback(t, `vettingStatus.state.${state}`, STATE_FALLBACK_EN[state])}
                 {state === currentState && (
                   <span className={styles.here}>
                     {t('vettingStatus.section.thisApplicationMark')}
@@ -56,7 +58,7 @@ export default async function PermissionMatrix({
           </tr>
         </thead>
         <tbody>
-          {DEMO_ACTIONS.map((action) => (
+          {VETTING_ACTIONS.map((action) => (
             <tr key={action.id}>
               <th scope="row" className={styles.rowHead}>
                 <span className={styles.actionLabel}>{t(action.labelKey)}</span>

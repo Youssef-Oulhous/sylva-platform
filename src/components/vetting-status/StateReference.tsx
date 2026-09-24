@@ -1,10 +1,14 @@
 import { getTranslations } from 'next-intl/server';
 import Badge from '@/components/ui/Badge';
-import { STATE_TONE, VETTING_STATES, type VettingState } from './demo-vetting';
+import { orFallback } from '@/components/vetting/labels';
+import type { VettingState } from '@/lib/vetting/types';
+import {
+  STATE_FALLBACK_EN, STATE_MEANING_FALLBACK_EN, STATE_TONE, VETTING_STATES,
+} from './states';
 import styles from './StateReference.module.css';
 
 /**
- * The four states, defined once.
+ * The six states, defined once.
  *
  * An application is in exactly one of them. Each row names the state in words
  * and says what that state means for the organisation - which is the only
@@ -30,14 +34,22 @@ export default async function StateReference({
         {VETTING_STATES.map((state) => (
           <tr key={state}>
             <th scope="row" className={styles.rowHead}>
-              <Badge tone={STATE_TONE[state]}>{t(`vettingStatus.state.${state}`)}</Badge>
+              <Badge tone={STATE_TONE[state]}>
+                {orFallback(t, `vettingStatus.state.${state}`, STATE_FALLBACK_EN[state])}
+              </Badge>
               {state === currentState && (
                 <span className={styles.here}>
                   {t('vettingStatus.section.thisApplicationMark')}
                 </span>
               )}
             </th>
-            <td>{t(`vettingStatus.stateMeaning.${state}`)}</td>
+            <td>
+              {orFallback(
+                t,
+                `vettingStatus.stateMeaning.${state}`,
+                STATE_MEANING_FALLBACK_EN[state],
+              )}
+            </td>
           </tr>
         ))}
       </tbody>
