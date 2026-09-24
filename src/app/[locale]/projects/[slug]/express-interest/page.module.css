@@ -1,0 +1,105 @@
+/* One column, narrower than a project page. This is a task, not a document to
+   read across: the enquiry, what follows it, and what stops it. */
+.page {
+  max-width: 54rem;
+}
+
+.breadcrumb {
+  padding-bottom: var(--s-4);
+}
+.crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+}
+.crumbs a {
+  color: var(--ink-muted);
+  text-decoration: none;
+}
+.crumbs a:hover {
+  color: var(--forest);
+  text-decoration: underline;
+}
+.crumbs li + li::before {
+  content: '/';
+  margin-right: var(--s-2);
+  color: var(--border-strong);
+}
+.crumbs li[aria-current='page'] {
+  color: var(--ink);
+}
+
+.head {
+  padding-bottom: var(--s-6);
+  border-bottom: var(--rule);
+}
+.headTop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-3);
+}
+.lead {
+  margin: var(--s-4) 0 0;
+  font-size: var(--text-md);
+  color: var(--ink);
+}
+
+/* What this page is not. A buyer should not have to guess whether clicking a
+   button has committed them to anything. */
+.notAnOffer {
+  margin: var(--s-4) 0 0;
+  padding: var(--s-3) var(--s-4);
+  background: var(--surface-sunk);
+  border-left: 2px solid var(--water);
+  font-size: var(--text-sm);
+  color: var(--ink);
+  max-width: var(--measure-prose);
+}
+
+.section {
+  margin-top: var(--s-7);
+}
+.sectionTitle {
+  padding-bottom: var(--s-3);
+  border-bottom: var(--rule);
+  margin-bottom: var(--s-4);
+}
+.sectionLead {
+  margin: 0 0 var(--s-4);
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}
+
+.blockedList {
+  display: grid;
+  gap: var(--s-6);
+}
+
+.actionPrimary {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--forest);
+}
+.actionSecondary {
+  font-size: var(--text-sm);
+  color: var(--ink);
+}
+
+.foot {
+  margin-top: var(--s-7);
+  padding-top: var(--s-4);
+  border-top: var(--rule);
+}
+.footNote {
+  margin: 0;
+  font-size: var(--text-2xs);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}

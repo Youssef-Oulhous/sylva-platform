@@ -1,0 +1,30 @@
+/* The row header carries the shape name and, where it applies, the word that
+   says this is the usual case. Normal case, not the uppercase of a column
+   header: it is a name, not a label. */
+.shape {
+  background: var(--surface);
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: var(--text-sm);
+  color: var(--ink);
+  border-bottom: var(--rule);
+  white-space: normal;
+  vertical-align: top;
+  width: 12rem;
+}
+.shapeName { font-weight: 600; display: block; }
+.shapeMark { display: block; margin-top: var(--s-2); }
+
+.why {
+  margin: var(--s-5) 0 0;
+  padding: var(--s-4);
+  background: var(--surface-sunk);
+  border-left: 2px solid var(--water);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: var(--text-sm);
+  max-width: var(--measure-prose);
+}
+
+/* globals.css drops the bottom rule on the last body row; the row header is a
+   th, so it needs the same treatment. */
+tr:last-child .shape { border-bottom: none; }

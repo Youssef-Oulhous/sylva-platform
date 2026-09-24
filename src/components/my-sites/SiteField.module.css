@@ -1,0 +1,78 @@
+.field {
+  display: block;
+}
+
+.labelRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-4);
+}
+
+.label {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+/* "Optional" is a word, not a convention the reader has to know. */
+.optional {
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+}
+
+.hint {
+  margin: var(--s-1) 0 0;
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+/* One field style, one border weight, one radius. A form field on this platform
+   is a box, not a pill. */
+.input,
+.select {
+  display: block;
+  width: 100%;
+  margin-top: var(--s-2);
+  padding: var(--s-3);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: 1.4;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  transition: border-color var(--motion-fast);
+}
+
+.input:hover,
+.select:hover {
+  border-color: var(--ink-muted);
+}
+
+/* The visible focus ring comes from :focus-visible in globals.css. This border
+   change is in addition to it, never instead of it. */
+.input:focus,
+.select:focus {
+  border-color: var(--water);
+}
+
+/* A coordinate is typed and read digit by digit, so the box it is typed into
+   uses the figure face. */
+.number {
+  font-family: var(--font-mono);
+  max-width: 14rem;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 4.5rem;
+}
+
+.select {
+  /* The native control, with room for its own arrow. No custom dropdown: a
+     native select is keyboard- and screen-reader-correct for free. */
+  max-width: 22rem;
+  appearance: auto;
+}

@@ -1,0 +1,42 @@
+.table { background: var(--surface); border: var(--rule); border-radius: var(--radius); }
+
+.rowHead {
+  background: transparent;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ink);
+  white-space: normal;
+  padding: var(--s-3);
+  border-bottom: var(--rule);
+  vertical-align: top;
+  min-width: 15rem;
+}
+.meta { color: var(--ink-muted); white-space: nowrap; }
+.version {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+
+.action {
+  font-family: inherit;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--forest);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.action:hover { color: var(--forest-hover); text-decoration: underline; }
+
+.note {
+  margin: var(--s-3) 0 0;
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}

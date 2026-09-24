@@ -1,0 +1,95 @@
+/* A record panel, not a card stack: one surface, ruled rows, labels in a narrow
+   left column so the values align down the page. */
+.panel {
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius);
+}
+
+.rows {
+  margin: 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 13rem 1fr;
+  gap: var(--s-4);
+  padding: var(--s-3) var(--s-5);
+  border-bottom: var(--rule);
+}
+.row:last-child {
+  border-bottom: none;
+}
+
+.label {
+  margin: 0;
+  font-size: var(--text-xs);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  /* Aligns the label's cap height with the value beside it. */
+  padding-top: 0.15em;
+}
+
+.value {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--ink);
+}
+
+.projectLink {
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--ink);
+}
+.projectLink:hover {
+  color: var(--forest);
+}
+
+.sep {
+  color: var(--ink-muted);
+}
+
+.unit {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+}
+
+.vintage {
+  margin: 0;
+  padding: var(--s-3) var(--s-5);
+  border-top: var(--rule);
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  max-width: none;
+}
+
+/* The one sentence that stops two projects' figures being read as comparable.
+   Water blue: this is a statement about how to read the data, not a warning. */
+.incomparable {
+  margin: 0;
+  padding: var(--s-3) var(--s-5) var(--s-3) calc(var(--s-5) - 2px);
+  border-top: var(--rule);
+  border-left: 2px solid var(--water);
+  background: var(--surface-sunk);
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+  font-size: var(--text-xs);
+  color: var(--ink);
+  max-width: none;
+}
+
+@media (max-width: 40rem) {
+  .row {
+    grid-template-columns: 1fr;
+    gap: var(--s-1);
+    padding-inline: var(--s-4);
+  }
+  .label {
+    padding-top: 0;
+  }
+  .vintage,
+  .incomparable {
+    padding-inline: var(--s-4);
+  }
+}

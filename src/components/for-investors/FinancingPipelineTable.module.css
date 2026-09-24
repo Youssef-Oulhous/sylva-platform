@@ -1,0 +1,34 @@
+.table { background: var(--surface); border: var(--rule); border-radius: var(--radius); }
+
+.rowHead {
+  background: transparent;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ink);
+  white-space: normal;
+  padding: var(--s-3);
+  border-bottom: var(--rule);
+  vertical-align: top;
+  min-width: 15rem;
+}
+.projectLink { color: var(--ink); text-decoration: none; }
+.projectLink:hover { text-decoration: underline; text-decoration-color: var(--forest); }
+.demoMark { display: block; margin-top: var(--s-2); }
+
+.place { color: var(--ink-muted); }
+.dealTypes { list-style: none; margin: 0; padding: 0; }
+.dealTypes li { white-space: nowrap; }
+
+/* The reason a column of volumes is missing, stated where the volumes would
+   otherwise be. */
+.noVolumes {
+  margin: var(--s-4) 0 0;
+  padding: var(--s-3) var(--s-4);
+  background: var(--tint-neutral);
+  border-left: 2px solid var(--water);
+  font-size: var(--text-sm);
+  color: var(--ink);
+  max-width: var(--measure-prose);
+}

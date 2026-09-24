@@ -1,0 +1,45 @@
+.page { max-width: var(--measure-page); }
+
+.head { padding-bottom: var(--s-6); border-bottom: var(--rule); }
+.eyebrow {
+  margin: 0 0 var(--s-2); font-size: var(--text-2xs);
+  text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-muted);
+}
+.lead { font-size: var(--text-md); color: var(--ink); margin: var(--s-3) 0 0; }
+
+.demoNote {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-3);
+  margin-top: var(--s-5); padding: var(--s-4);
+  background: var(--surface); border: var(--rule); border-radius: var(--radius);
+}
+.demoNoteText {
+  margin: 0; flex: 1 1 22rem; font-size: var(--text-sm); color: var(--ink);
+  max-width: var(--measure-prose);
+}
+.accessNote {
+  margin: var(--s-4) 0 0; font-size: var(--text-sm); color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+/* The review panel. One border around the whole application, so the queue above
+   and the application below are visibly different objects. */
+.panel {
+  margin-top: var(--s-7);
+  padding: var(--s-6);
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius-lg);
+}
+
+.related { margin-top: var(--s-7); padding-top: var(--s-5); border-top: var(--rule); }
+.relatedTitle {
+  font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--ink-muted); font-weight: 500; margin-bottom: var(--s-3);
+}
+.relatedList { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-3); }
+.relatedList li { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-3); }
+.relatedNote { font-size: var(--text-sm); color: var(--ink-muted); }
+
+@media (max-width: 40rem) {
+  .panel { padding: var(--s-4); border-radius: var(--radius); }
+}

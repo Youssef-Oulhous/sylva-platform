@@ -1,0 +1,26 @@
+/* A dashed rule, not a card: an empty list should read as a gap in a document
+   rather than as a panel with nothing in it. */
+.empty {
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: var(--s-5);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.body {
+  margin: var(--s-2) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+.action {
+  margin-top: var(--s-4);
+}

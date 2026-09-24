@@ -1,0 +1,72 @@
+/* The page width and the side gutters come from .main in SiteChrome, which
+   every page shares. Nothing here re-declares them. */
+.head {
+  padding-bottom: var(--s-5);
+}
+.headTop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-4);
+}
+.lead {
+  margin-top: var(--s-4);
+  font-size: var(--text-md);
+  color: var(--ink);
+}
+
+.owner {
+  margin: var(--s-4) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}
+.ownerName {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.demoNote {
+  margin: var(--s-4) 0 0;
+  max-width: var(--measure-prose);
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}
+
+.inbox {
+  margin-top: var(--s-7);
+  padding-top: var(--s-6);
+  border-top: 1px solid var(--border-strong);
+}
+
+.countRow {
+  margin: var(--s-4) 0 var(--s-5);
+}
+/* The one prominent figure on the page counts questions awaiting a reply, and
+   the note under it says that is what it counts. */
+.count {
+  margin: 0;
+  font-size: var(--text-md);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+.scope {
+  margin: var(--s-1) 0 var(--s-2);
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}
+.countNote {
+  margin: var(--s-3) 0 0;
+  padding: var(--s-3) var(--s-4);
+  max-width: var(--measure-prose);
+  background: var(--tint-neutral);
+  border-left: 2px solid var(--water);
+  font-size: var(--text-sm);
+  color: var(--ink);
+}
+
+@media (max-width: 40rem) {
+  .lead {
+    font-size: var(--text-base);
+  }
+}

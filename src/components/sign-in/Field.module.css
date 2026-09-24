@@ -1,0 +1,75 @@
+.field {
+  display: block;
+}
+
+.labelRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-4);
+}
+
+.label {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.action {
+  font-size: var(--text-xs);
+}
+
+.hint {
+  margin: var(--s-1) 0 0;
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+/* One field style, one border weight. The field is a box on the page, not a
+   floating pill: nothing on this platform is a pill except a status badge. */
+.input {
+  display: block;
+  width: 100%;
+  margin-top: var(--s-2);
+  padding: var(--s-3);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: 1.4;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  transition: border-color var(--motion-fast);
+}
+
+.input:hover {
+  border-color: var(--ink-muted);
+}
+
+/* The visible focus ring comes from :focus-visible in globals.css. The border
+   change is additional, not a replacement for it. */
+.input:focus {
+  border-color: var(--water);
+}
+
+.input[readonly] {
+  background: var(--surface-sunk);
+  color: var(--ink-muted);
+}
+
+.inputError {
+  border-color: var(--error);
+}
+
+.error {
+  margin: var(--s-2) 0 0;
+  font-size: var(--text-xs);
+  color: var(--error);
+  max-width: var(--measure-prose);
+}
+
+/* The word carries the state; the colour only reinforces it. */
+.errorWord {
+  font-weight: 600;
+}

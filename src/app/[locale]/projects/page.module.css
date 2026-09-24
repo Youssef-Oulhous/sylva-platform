@@ -1,0 +1,16 @@
+.head { padding-bottom: var(--s-6); border-bottom: var(--rule); margin-bottom: var(--s-6); }
+.lead { font-size: var(--text-md); color: var(--ink); margin-top: var(--s-3); }
+.count { font-size: var(--text-sm); color: var(--ink-muted); margin-top: var(--s-4); }
+
+/* The rule that stops the index becoming a comparison table. Stated once,
+   visibly, rather than implied by the absence of a total. */
+.incomparable {
+  margin-top: var(--s-4); padding: var(--s-3) var(--s-4);
+  background: var(--tint-neutral); border-left: 2px solid var(--water);
+  font-size: var(--text-sm); color: var(--ink); max-width: var(--measure-prose);
+}
+.list { display: grid; gap: var(--s-4); }
+.empty {
+  border: 1px dashed var(--border-strong); border-radius: var(--radius);
+  padding: var(--s-7); text-align: center; color: var(--ink-muted);
+}

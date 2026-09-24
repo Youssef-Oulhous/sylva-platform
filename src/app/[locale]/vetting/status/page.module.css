@@ -1,0 +1,115 @@
+/* Narrower than a project page: this is a short document about one
+   organisation, and the widest thing on it is one table. */
+.page {
+  max-width: 62rem;
+}
+
+.head {
+  padding-bottom: var(--s-6);
+  border-bottom: var(--rule);
+}
+/* Smaller than a project name. The largest type on this platform belongs to a
+   project, not to a status screen. */
+.title {
+  font-size: var(--text-xl);
+}
+.lead {
+  margin: var(--s-3) 0 0;
+  font-size: var(--text-md);
+  color: var(--ink);
+}
+/* The rule that makes this page necessary, stated once and visibly. */
+.gate {
+  margin: var(--s-4) 0 0;
+  padding: var(--s-3) var(--s-4);
+  background: var(--tint-neutral);
+  border-left: 2px solid var(--forest);
+  font-size: var(--text-sm);
+  color: var(--ink);
+  max-width: var(--measure-prose);
+}
+
+.section {
+  margin-top: var(--s-7);
+}
+.sectionLead {
+  margin: var(--s-3) 0 var(--s-5);
+  font-size: var(--text-base);
+  color: var(--ink);
+}
+
+.legend {
+  margin: var(--s-3) 0 0;
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+}
+
+.limits,
+.who {
+  margin: 0;
+  padding-left: var(--s-5);
+  display: grid;
+  gap: var(--s-3);
+  font-size: var(--text-base);
+  max-width: var(--measure-prose);
+}
+
+.contact {
+  margin: var(--s-5) 0 0;
+  padding-top: var(--s-4);
+  border-top: var(--rule);
+}
+.contactCta {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--forest);
+}
+.contactAddress {
+  display: block;
+  margin-top: var(--s-1);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--ink-muted);
+}
+
+.notRecord {
+  margin: var(--s-5) 0 0;
+  padding: var(--s-3) var(--s-4);
+  background: var(--surface-sunk);
+  border: var(--rule);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  max-width: var(--measure-prose);
+}
+
+.foot {
+  margin-top: var(--s-8);
+  padding-top: var(--s-4);
+  border-top: var(--rule);
+}
+.footNote {
+  margin: 0;
+  font-size: var(--text-2xs);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+.footLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-5);
+  margin: var(--s-4) 0 0;
+  font-size: var(--text-sm);
+  max-width: none;
+}
+
+@media (max-width: 30rem) {
+  .gate,
+  .notRecord {
+    padding-inline: var(--s-3);
+  }
+  .limits,
+  .who {
+    padding-left: var(--s-4);
+  }
+}

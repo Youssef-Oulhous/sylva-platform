@@ -1,0 +1,39 @@
+/* A section of the record. Separated by a rule and whitespace, never by a card
+   inside a card. */
+
+.section {
+  padding-top: var(--s-7);
+  margin-top: var(--s-7);
+  border-top: 1px solid var(--border-strong);
+  /* The readiness panel links to each section; the offset keeps the heading
+     clear of the top of the viewport when the anchor is followed. */
+  scroll-margin-top: var(--s-5);
+}
+.section:first-of-type {
+  padding-top: 0;
+  margin-top: var(--s-6);
+  border-top: none;
+}
+
+.title {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-3);
+  font-size: var(--text-lg);
+  color: var(--ink);
+}
+
+/* The section number, mono, as a reference rather than as decoration. */
+.num {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--ink-muted);
+}
+
+.lead {
+  margin: var(--s-3) 0 0;
+  max-width: var(--measure-prose);
+  font-size: var(--text-base);
+  color: var(--ink-muted);
+}

@@ -1,0 +1,82 @@
+.nav {
+  position: sticky;
+  top: var(--s-5);
+  align-self: start;
+  /* A grid item defaults to min-width:auto, which means "as wide as my
+     content". Without this the nav refuses to shrink and pushes the page wider
+     than the viewport instead of letting the strip below scroll. */
+  min-width: 0;
+  max-width: 100%;
+}
+
+.heading {
+  margin: 0 0 var(--s-3);
+  font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--ink-muted);
+  padding-bottom: var(--s-2); border-bottom: var(--rule);
+}
+
+.list {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: grid; gap: 1px;
+}
+
+.link {
+  display: grid; grid-template-columns: 1.75rem 1fr;
+  gap: var(--s-2);
+  padding: var(--s-2) var(--s-2) var(--s-2) 0;
+  font-size: var(--text-sm);
+  color: var(--ink);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  padding-left: var(--s-3);
+  transition: border-color var(--motion-fast), color var(--motion-fast);
+}
+.link:hover { border-left-color: var(--forest); color: var(--forest); }
+/* :target-within is not reliable across browsers, so the active state is the
+   focus state - which is honest: the nav marks where the reader last acted. */
+.link:focus-visible { border-left-color: var(--water); }
+
+.index {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--ink-muted);
+  padding-top: 0.15em;
+}
+
+/* Below the two-column breakpoint the nav becomes a scrollable strip pinned to
+   the top of the viewport: still one tap to any section, no wall of links. */
+@media (max-width: 64rem) {
+  .nav {
+    position: sticky; top: 0; z-index: 5;
+    background: var(--canvas);
+    border-bottom: var(--rule);
+    padding: var(--s-2) 0;
+    margin-bottom: var(--s-5);
+  }
+  .heading { display: none; }
+  .list {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: var(--s-1);
+    /* The two that make it actually scroll rather than stretch: a definite
+       maximum, and permission to be narrower than its contents. */
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: var(--s-1);
+    scrollbar-width: thin;
+  }
+  .list > li { flex: 0 0 auto; }
+  .link {
+    grid-template-columns: max-content max-content;
+    white-space: nowrap;
+    border-left: none;
+    border-bottom: 2px solid transparent;
+    padding: var(--s-2) var(--s-3);
+  }
+  .link:hover, .link:focus-visible { border-left: none; }
+}

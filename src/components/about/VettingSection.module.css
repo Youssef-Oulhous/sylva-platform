@@ -1,0 +1,36 @@
+.steps {
+  list-style: none;
+  counter-reset: step;
+  margin: var(--s-4) 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  border: var(--rule);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.step {
+  counter-increment: step;
+  padding: var(--s-4);
+  border-right: var(--rule);
+  border-bottom: var(--rule);
+}
+.step::before {
+  content: counter(step, decimal-leading-zero);
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--forest);
+  margin-bottom: var(--s-1);
+}
+
+.stepTitle { margin: 0; font-size: var(--text-sm); font-weight: 600; }
+.stepBody {
+  margin: var(--s-1) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}

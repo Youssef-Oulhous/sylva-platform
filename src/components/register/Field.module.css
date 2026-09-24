@@ -1,0 +1,57 @@
+.field {
+  display: block;
+  min-width: 0;
+}
+
+.label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.hint {
+  margin: var(--s-1) 0 0;
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+/* One control style for input, select and textarea. A field is a box on the
+   page, not a pill: nothing in this system is a pill except a status badge. */
+.control {
+  display: block;
+  width: 100%;
+  margin-top: var(--s-2);
+  padding: var(--s-3);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: 1.4;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  transition: border-color var(--motion-fast);
+}
+
+.control:hover {
+  border-color: var(--ink-muted);
+}
+
+/* The visible focus ring comes from :focus-visible in globals.css. This border
+   change is additional to it, never a replacement for it. */
+.control:focus {
+  border-color: var(--water);
+}
+
+textarea.control {
+  resize: vertical;
+  min-height: 5.5rem;
+}
+
+/* The select keeps the platform's own arrow. A hand-drawn one would be a
+   decoration, and it would drift from the native control on every OS. */
+select.control {
+  appearance: auto;
+  padding-right: var(--s-2);
+}

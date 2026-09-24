@@ -1,0 +1,74 @@
+.page {
+  display: block;
+}
+
+.head {
+  padding-bottom: var(--s-6);
+  border-bottom: var(--rule);
+}
+
+.lead {
+  margin: var(--s-4) 0 0;
+  font-size: var(--text-md);
+  color: var(--ink);
+}
+
+/* Stated plainly rather than as a floating notice: the form is part of the
+   frontend build and creates nothing. */
+.buildNote {
+  margin: var(--s-5) 0 0;
+  padding: var(--s-3) var(--s-4);
+  background: var(--tint-neutral);
+  border-left: 2px solid var(--water);
+  font-size: var(--text-sm);
+  color: var(--ink);
+  max-width: var(--measure-prose);
+}
+
+.section {
+  margin-top: var(--s-8);
+  min-width: 0;
+}
+
+.sectionTitle {
+  padding-bottom: var(--s-2);
+  border-bottom: var(--rule);
+}
+
+/* The form is the work; the panel beside it is the context the form needs.
+   Both are left aligned to the same grid, and the panel does not float. */
+.columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 21rem;
+  gap: var(--s-7);
+  align-items: start;
+  margin-top: var(--s-8);
+}
+
+.formCol {
+  min-width: 0;
+}
+
+.aside {
+  min-width: 0;
+  display: grid;
+  gap: var(--s-4);
+  position: sticky;
+  top: var(--s-5);
+}
+
+.haveAccount {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}
+
+@media (max-width: 64rem) {
+  .columns {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-6);
+  }
+  .aside {
+    position: static;
+  }
+}

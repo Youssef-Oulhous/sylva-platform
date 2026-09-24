@@ -1,0 +1,56 @@
+.hero { padding-block: var(--s-6) var(--s-8); border-bottom: var(--rule); }
+.heroTitle { max-width: 22ch; font-size: var(--text-2xl); }
+.heroLead {
+  font-size: var(--text-md); color: var(--ink); margin-top: var(--s-4);
+  max-width: var(--measure-prose);
+}
+.ctas { display: flex; flex-wrap: wrap; gap: var(--s-3); margin-top: var(--s-6); }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 0.55rem var(--s-5); border-radius: var(--radius);
+  font-size: var(--text-sm); font-weight: 500; text-decoration: none;
+  border: 1px solid transparent; cursor: pointer;
+  transition: background var(--motion-fast), border-color var(--motion-fast);
+}
+.btnPrimary { background: var(--forest); color: var(--forest-on); }
+.btnPrimary:hover { background: var(--forest-hover); color: var(--forest-on); }
+.btnPrimary:active { transform: scale(0.99); }
+.btnSecondary { background: var(--surface); color: var(--ink); border-color: var(--border-strong); }
+.btnSecondary:hover { border-color: var(--ink-muted); color: var(--ink); }
+
+.section { padding-block: var(--s-7); border-bottom: var(--rule); }
+.sectionHead { margin-bottom: var(--s-5); }
+.sectionIntro { color: var(--ink-muted); margin-top: var(--s-2); }
+
+/* The process is a numbered sequence, not a decorated flow diagram: it reads
+   top to bottom on a phone and left to right on a desk, with no artwork. */
+.steps {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: 0;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  border: var(--rule); border-radius: var(--radius); overflow: hidden;
+  background: var(--surface);
+}
+.step { padding: var(--s-4); border-right: var(--rule); border-bottom: var(--rule); }
+.stepNum {
+  font-family: var(--font-mono); font-size: var(--text-2xs);
+  color: var(--ink-muted); display: block; margin-bottom: var(--s-1);
+}
+.stepName { font-size: var(--text-sm); font-weight: 600; margin: 0 0 var(--s-1); }
+.stepNote { font-size: var(--text-xs); color: var(--ink-muted); margin: 0; max-width: none; }
+
+.grid {
+  display: grid; gap: var(--s-5);
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  list-style: none; margin: 0; padding: 0;
+}
+.item { border-top: 2px solid var(--border-strong); padding-top: var(--s-3); }
+.itemWater { border-top-color: var(--water); }
+.itemBio { border-top-color: var(--forest); }
+.itemName { font-size: var(--text-sm); font-weight: 600; margin: 0 0 var(--s-1); }
+.itemNote { font-size: var(--text-xs); color: var(--ink-muted); margin: 0; max-width: none; }
+
+.twoUp { display: grid; gap: var(--s-6); grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); }
+.panel { border: var(--rule); border-radius: var(--radius); padding: var(--s-5); background: var(--surface); }
+.panelTitle { margin-bottom: var(--s-3); }

@@ -1,0 +1,59 @@
+.header {
+  border-bottom: var(--rule);
+  background: var(--surface);
+}
+.headerInner, .footerInner, .main {
+  max-width: var(--measure-page);
+  margin: 0 auto;
+  padding-inline: var(--s-5);
+}
+.headerInner {
+  display: flex; align-items: center; gap: var(--s-6);
+  min-height: 3.5rem;
+}
+.brand {
+  display: flex; align-items: baseline; gap: var(--s-2);
+  font-weight: 600; letter-spacing: -0.02em; color: var(--ink);
+  text-decoration: none; flex: 0 0 auto;
+}
+.brandMark { font-size: var(--text-md); }
+.brandNote {
+  font-size: var(--text-2xs); font-weight: 400; color: var(--ink-muted);
+  letter-spacing: 0; text-transform: none;
+}
+.nav { display: flex; gap: var(--s-5); flex: 1 1 auto; font-size: var(--text-sm); }
+.nav a { color: var(--ink); text-decoration: none; }
+.nav a:hover { color: var(--forest); text-decoration: underline; }
+.actions { display: flex; align-items: center; gap: var(--s-3); flex: 0 0 auto; }
+
+.main { padding-block: var(--s-7) var(--s-8); min-height: 60vh; }
+
+.footer { border-top: var(--rule); background: var(--surface); margin-top: var(--s-8); }
+.footerInner { padding-block: var(--s-6); }
+.footerNav {
+  display: flex; flex-wrap: wrap; gap: var(--s-5);
+  font-size: var(--text-sm); padding-bottom: var(--s-5);
+}
+.footerNav a { color: var(--ink); text-decoration: none; }
+.footerNav a:hover { text-decoration: underline; }
+.notRegistry {
+  max-width: var(--measure-prose); font-size: var(--text-xs);
+  color: var(--ink-muted); margin: 0 0 var(--s-5);
+}
+
+/* The demo notice is a page-level statement of fact, not decoration. */
+.demoBar {
+  background: var(--tint-error); color: var(--tint-error-ink);
+  border-bottom: 1px solid #F3D3D5; font-size: var(--text-xs);
+}
+.demoBarInner {
+  max-width: var(--measure-page); margin: 0 auto;
+  padding: var(--s-2) var(--s-5);
+  display: flex; gap: var(--s-3); align-items: baseline;
+}
+.demoBarText { margin: 0; max-width: none; }
+
+@media (max-width: 52rem) {
+  .headerInner { flex-wrap: wrap; gap: var(--s-3); padding-block: var(--s-3); }
+  .nav { order: 3; flex-basis: 100%; gap: var(--s-4); overflow-x: auto; }
+}

@@ -1,0 +1,51 @@
+/* A panel, not a banner. It is the first thing under the page heading because
+   it is the thing a buyer wants answered before typing a coordinate into a
+   website - so it is set on the surface, ruled, and given room. */
+.notice {
+  margin-top: var(--s-6);
+  padding: var(--s-5);
+  background: var(--surface);
+  border: var(--rule);
+  border-left: 3px solid var(--border-strong);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.title {
+  font-size: var(--text-base);
+  font-weight: 600;
+}
+
+.lead {
+  margin: var(--s-2) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ink);
+}
+
+/* Each line names a party and then says what that party sees. The party is the
+   thing being scanned for, so it carries the weight. */
+.list {
+  margin: var(--s-4) 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: var(--s-3);
+  max-width: var(--measure-prose);
+  font-size: var(--text-sm);
+}
+
+.list li {
+  padding-left: var(--s-4);
+  border-left: var(--rule);
+}
+
+.who {
+  display: block;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+@media (max-width: 30rem) {
+  .notice {
+    padding: var(--s-4);
+  }
+}

@@ -1,0 +1,78 @@
+.page { display: block; }
+
+.head { padding-bottom: var(--s-6); border-bottom: var(--rule); }
+.lead {
+  margin-top: var(--s-4);
+  font-size: var(--text-md);
+  color: var(--ink);
+  max-width: var(--measure-prose);
+}
+
+/* Two columns: the index, and the document. Same proportions as the project
+   detail page, so the two long documents on this platform read the same way. */
+.body {
+  display: grid;
+  grid-template-columns: 13rem minmax(0, 1fr);
+  gap: var(--s-8);
+  margin-top: var(--s-7);
+  align-items: start;
+}
+.sections { min-width: 0; display: grid; gap: var(--s-9); }
+.section { scroll-margin-top: var(--s-5); }
+
+/* --- The index ----------------------------------------------------------- */
+.index { position: sticky; top: var(--s-5); min-width: 0; }
+.indexTitle {
+  margin: 0 0 var(--s-3);
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-muted);
+  padding-bottom: var(--s-2);
+  border-bottom: var(--rule);
+}
+.indexList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--s-2);
+}
+.indexLink {
+  display: grid;
+  grid-template-columns: 1.6rem 1fr;
+  gap: var(--s-2);
+  font-size: var(--text-sm);
+  color: var(--ink);
+  text-decoration: none;
+  line-height: 1.35;
+}
+.indexLink:hover { color: var(--forest); text-decoration: underline; }
+.indexNum { font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--ink-muted); }
+
+/* --- Section markers ----------------------------------------------------- */
+.marker {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-3);
+  margin: 0 0 var(--s-3);
+  padding-bottom: var(--s-2);
+  border-bottom: var(--rule);
+  max-width: none;
+}
+.markerNum { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--forest); }
+.markerLabel {
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-muted);
+}
+
+@media (max-width: 64rem) {
+  .body { grid-template-columns: 1fr; gap: var(--s-5); margin-top: var(--s-5); }
+  .sections { gap: var(--s-8); }
+  /* Not sticky on a narrow screen: an index pinned over a document this dense
+     costs more reading room than it saves. */
+  .index { position: static; }
+  .section { scroll-margin-top: var(--s-4); }
+}

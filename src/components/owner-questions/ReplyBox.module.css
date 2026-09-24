@@ -1,0 +1,127 @@
+.box {
+  margin-top: var(--s-5);
+  padding-top: var(--s-5);
+  border-top: var(--rule);
+}
+
+/* The label is a real label bound to a real control, and it is the heaviest
+   thing in the block. */
+.label {
+  display: block;
+  max-width: var(--measure-prose);
+  font-size: var(--text-base);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+  color: var(--ink);
+}
+
+.hint {
+  margin: var(--s-2) 0 0;
+  max-width: var(--measure-prose);
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}
+
+/* An unsent draft says so in words above the field, so the text in the box can
+   never be read as something the buyer has already received. */
+.draftNote {
+  margin: var(--s-3) 0 0;
+  padding: var(--s-2) var(--s-3);
+  max-width: var(--measure-prose);
+  background: var(--tint-warning);
+  color: var(--tint-warning-ink);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+}
+
+/* One field style across the platform: a box on the page, one border weight. */
+.textarea {
+  display: block;
+  width: 100%;
+  max-width: var(--measure-prose);
+  margin-top: var(--s-3);
+  padding: var(--s-3);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  resize: vertical;
+  transition: border-color var(--motion-fast);
+}
+.textarea:hover {
+  border-color: var(--ink-muted);
+}
+/* The visible focus ring comes from :focus-visible in globals.css. This border
+   change is additional to it, never a replacement for it. */
+.textarea:focus {
+  border-color: var(--water);
+}
+
+.visibility {
+  margin: var(--s-3) 0 0;
+  padding-left: var(--s-3);
+  max-width: var(--measure-prose);
+  border-left: 2px solid var(--water);
+  font-size: var(--text-sm);
+  color: var(--ink);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  flex-wrap: wrap;
+  margin-top: var(--s-4);
+}
+
+/* The one filled control on this page. Forest is the primary fill in this
+   system and nothing else here uses it as one. */
+.send {
+  padding: var(--s-3) var(--s-5);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--forest-on);
+  background: var(--forest);
+  border: 1px solid var(--forest);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color var(--motion-fast);
+}
+.send:hover {
+  background: var(--forest-hover);
+  border-color: var(--forest-hover);
+}
+
+.secondary {
+  padding: var(--s-3) var(--s-5);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color var(--motion-fast);
+}
+.secondary:hover {
+  border-color: var(--ink-muted);
+}
+
+.inertNote {
+  margin: var(--s-3) 0 0;
+  max-width: var(--measure-prose);
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}
+
+@media (max-width: 40rem) {
+  .actions > .send,
+  .actions > .secondary {
+    flex: 1 1 100%;
+  }
+}

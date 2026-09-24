@@ -1,0 +1,68 @@
+.table {
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius);
+}
+/* Five columns, four of them narrow: the matrix scrolls rather than reflows,
+   because a reflowed matrix loses the state columns that make it a matrix. The
+   global .table-scroll rule sets a 34rem floor for ordinary tables; this one
+   needs more, and the scoped selector is what outranks it. */
+:global(.table-scroll) .table { min-width: 50rem; }
+
+.stateCol {
+  width: 8.5rem;
+  vertical-align: bottom;
+}
+.here {
+  display: block;
+  margin-top: var(--s-1);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.05em;
+  color: var(--ink);
+  text-transform: uppercase;
+  white-space: normal;
+}
+
+/* The action, then what it is, in the row header. Keeping the explanation in
+   the header rather than in a fifth column stops the table growing wider than
+   a reader can follow. */
+.rowHead {
+  background: var(--surface);
+  border-bottom: var(--rule);
+  text-transform: none;
+  letter-spacing: 0;
+  white-space: normal;
+  vertical-align: top;
+  min-width: 16rem;
+}
+.table tbody tr:last-child .rowHead {
+  border-bottom: none;
+}
+.actionLabel {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--ink);
+}
+.actionNote {
+  display: block;
+  margin-top: var(--s-1);
+  font-size: var(--text-2xs);
+  font-weight: 400;
+  color: var(--ink-muted);
+  line-height: 1.45;
+  max-width: 34ch;
+}
+
+/* Words carry the answer. Weight and ink separate the three cases for a reader
+   scanning the column, and neither is the only signal. */
+.yes {
+  color: var(--ink);
+  font-weight: 500;
+}
+.no {
+  color: var(--ink-muted);
+}
+.notSet {
+  color: var(--warning);
+}

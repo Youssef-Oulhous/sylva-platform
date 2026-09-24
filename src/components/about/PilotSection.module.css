@@ -1,0 +1,66 @@
+.tableWrap {
+  margin-top: var(--s-4);
+  border: var(--rule);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+/* This table is narrow: a label and a count. It does not need the 34rem floor
+   the shared .table-scroll rule applies to availability tables. */
+.tableWrap table { min-width: 20rem; }
+
+.rowHead {
+  background: transparent;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--ink);
+  border-bottom: var(--rule);
+  white-space: normal;
+  padding: var(--s-3);
+}
+
+.totalHead {
+  background: transparent;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--ink);
+  border-top: 1px solid var(--border-strong);
+  border-bottom: none;
+  white-space: normal;
+  padding: var(--s-3);
+}
+.totalValue {
+  font-weight: 500;
+  border-top: 1px solid var(--border-strong);
+  border-bottom: none;
+}
+
+.releases {
+  display: grid;
+  gap: var(--s-5);
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  margin-top: var(--s-4);
+}
+.release {
+  border: var(--rule);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: var(--s-4);
+}
+.releaseTitle { margin: 0; font-size: var(--text-sm); font-weight: 600; }
+.releaseTarget {
+  margin: var(--s-1) 0 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--ink-muted);
+}
+.releaseList {
+  margin: var(--s-3) 0 0;
+  padding-left: var(--s-4);
+  font-size: var(--text-sm);
+  display: grid;
+  gap: var(--s-2);
+}

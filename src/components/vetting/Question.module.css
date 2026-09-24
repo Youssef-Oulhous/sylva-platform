@@ -1,0 +1,167 @@
+/* One question. Shared by the long-form question and the yes/no question so the
+   two cannot drift apart: same kicker, same label weight, same field border. */
+
+.question {
+  padding-top: var(--s-6);
+  border-top: var(--rule);
+  /* The progress index links to each question; the offset keeps the kicker
+     clear of a sticky header when the anchor is followed. */
+  scroll-margin-top: var(--s-5);
+}
+.question:first-of-type {
+  padding-top: var(--s-5);
+  border-top: none;
+}
+
+/* A fieldset carries the browser's own box. This system has one border weight
+   and one border colour, so the box is removed and the rules do the work. */
+.group {
+  margin: 0;
+  padding: var(--s-6) 0 0;
+  border: none;
+  border-top: var(--rule);
+  scroll-margin-top: var(--s-5);
+}
+.group:first-of-type {
+  padding-top: var(--s-5);
+  border-top: none;
+}
+
+.kicker {
+  margin: 0 0 var(--s-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.06em;
+  color: var(--ink-muted);
+}
+
+/* The label is the question. It is the largest thing in the block, and it is a
+   real label bound to a real control. */
+.label {
+  display: block;
+  max-width: var(--measure-prose);
+  font-size: var(--text-md);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+  letter-spacing: -0.012em;
+  color: var(--ink);
+}
+
+/* A legend cannot be a flex or block container in every engine, so the yes/no
+   question's legend keeps the default display and takes its width from the
+   parent instead. */
+.legend {
+  padding: 0;
+  max-width: var(--measure-prose);
+  font-size: var(--text-md);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+  letter-spacing: -0.012em;
+  color: var(--ink);
+}
+
+/* "Required" is a word inside the label, so it is announced with the field and
+   is not carried by a colour or a glyph. */
+.marker {
+  margin-left: var(--s-3);
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+
+/* Inside a legend the kicker stays inline: a legend's box model is unreliable
+   across engines, so nothing inside it is asked to be a block. */
+.kickerInline {
+  margin-right: var(--s-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--ink-muted);
+}
+
+.hint {
+  margin: var(--s-2) 0 0;
+  max-width: var(--measure-prose);
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}
+
+/* One field style across the platform: a box on the page, one border weight.
+   Nothing here is a pill except a status badge. */
+.textarea {
+  display: block;
+  width: 100%;
+  max-width: var(--measure-prose);
+  margin-top: var(--s-3);
+  padding: var(--s-3);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  resize: vertical;
+  transition: border-color var(--motion-fast);
+}
+.textarea:hover {
+  border-color: var(--ink-muted);
+}
+/* The visible focus ring comes from :focus-visible in globals.css. This border
+   change is additional to it, never a replacement for it. */
+.textarea:focus {
+  border-color: var(--water);
+}
+
+/* --- yes / no ----------------------------------------------------------- */
+
+.choices {
+  display: flex;
+  gap: var(--s-3);
+  flex-wrap: wrap;
+  margin-top: var(--s-3);
+}
+
+/* The whole box is the label, so the target is the size of the answer rather
+   than the size of the radio. */
+.choice {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--s-2);
+  padding: var(--s-3) var(--s-5) var(--s-3) var(--s-4);
+  min-width: 7rem;
+  font-size: var(--text-base);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color var(--motion-fast);
+}
+.choice:hover {
+  border-color: var(--ink-muted);
+}
+.choice input {
+  margin: 0;
+  accent-color: var(--forest);
+}
+/* The checked box takes a stronger border as well as the radio's own mark: the
+   state is never carried by the tint alone. */
+.choice:has(input:checked) {
+  border-color: var(--forest);
+  background: var(--tint-bio);
+}
+
+.followUp {
+  margin-top: var(--s-4);
+}
+.followUpLabel {
+  display: block;
+  max-width: var(--measure-prose);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--ink);
+}

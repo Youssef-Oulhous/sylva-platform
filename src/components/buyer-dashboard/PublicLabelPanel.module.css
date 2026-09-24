@@ -1,0 +1,87 @@
+.panel {
+  margin-top: var(--s-4);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 24rem);
+  gap: var(--s-6);
+  align-items: start;
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius);
+  padding: var(--s-5);
+}
+
+.panelTitle {
+  margin: 0 0 var(--s-3);
+  font-size: var(--text-base);
+  font-weight: 600;
+}
+
+/* The explanation column. Constrained to the prose measure so the sentences
+   beside the specimen stay readable on a wide screen. */
+.text { max-width: var(--measure-prose); }
+.text > p:last-of-type { margin-bottom: 0; }
+
+.body {
+  margin: 0 0 var(--s-3);
+  font-size: var(--text-sm);
+  color: var(--ink);
+}
+
+.link { margin: 0; font-size: var(--text-sm); }
+
+/* The published line, set in mono and inset, so it reads as a quotation of the
+   record rather than as more prose about it. */
+.specimen {
+  background: var(--surface-sunk);
+  border: var(--rule);
+  border-radius: var(--radius-sm);
+  padding: var(--s-4);
+}
+
+.specimenLabel {
+  margin: 0 0 var(--s-3);
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-muted);
+}
+
+.record { margin: 0; display: grid; gap: var(--s-2); }
+
+.recordRow {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: var(--s-3);
+}
+
+.recordKey {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-muted);
+  padding-top: 0.1em;
+}
+
+.recordValue {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.specimenNote {
+  margin: var(--s-4) 0 0;
+  font-size: var(--text-2xs);
+  color: var(--ink-muted);
+}
+
+@media (max-width: 56rem) {
+  .panel { grid-template-columns: 1fr; gap: var(--s-5); }
+}
+
+@media (max-width: 34rem) {
+  .recordRow { grid-template-columns: 1fr; gap: var(--s-1); }
+  .recordKey { padding-top: 0; }
+}

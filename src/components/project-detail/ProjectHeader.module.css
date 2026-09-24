@@ -1,0 +1,108 @@
+.header {
+  padding-bottom: var(--s-6);
+  border-bottom: 1px solid var(--border-strong);
+}
+
+.breadcrumb {
+  display: flex; flex-wrap: wrap; gap: var(--s-2);
+  font-size: var(--text-sm); color: var(--ink-muted);
+  margin-bottom: var(--s-4);
+}
+.breadcrumb a { color: var(--ink-muted); text-decoration: none; }
+.breadcrumb a:hover { color: var(--forest); text-decoration: underline; }
+
+.badges { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-bottom: var(--s-3); }
+
+.title { max-width: 22ch; }
+@media (min-width: 48rem) { .title { max-width: 30ch; } }
+
+.place {
+  margin: var(--s-3) 0 0;
+  font-size: var(--text-md);
+  color: var(--ink-muted);
+}
+
+/* Who owns it and what state it is in, as a definition list: the reader is
+   looking these up, not reading them as a sentence. */
+.identity {
+  display: grid; gap: var(--s-2);
+  margin: var(--s-5) 0 0; padding: 0;
+  max-width: var(--measure-prose);
+}
+.identityRow { display: grid; grid-template-columns: 12rem 1fr; gap: var(--s-3); }
+.identityRow dt {
+  font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--ink-muted);
+  padding-top: 0.15em;
+}
+.identityRow dd { margin: 0; font-size: var(--text-base); }
+
+.actions {
+  display: flex; flex-wrap: wrap; gap: var(--s-3);
+  margin-top: var(--s-6);
+}
+.primary {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 2.5rem; padding: 0 var(--s-5);
+  background: var(--forest); color: var(--forest-on);
+  border: 1px solid var(--forest);
+  border-radius: var(--radius);
+  font-size: var(--text-sm); font-weight: 500;
+  text-decoration: none;
+  transition: background var(--motion-fast);
+}
+.primary:hover { background: var(--forest-hover); color: var(--forest-on); }
+.secondary {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 2.5rem; padding: 0 var(--s-5);
+  background: var(--surface); color: var(--ink);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  font-size: var(--text-sm); font-weight: 500;
+  text-decoration: none;
+  transition: border-color var(--motion-fast);
+}
+.secondary:hover { border-color: var(--ink-muted); color: var(--ink); }
+
+.actionNote {
+  margin: var(--s-3) 0 0;
+  font-size: var(--text-xs); color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+/* The key-facts strip. Four facts, no more: scheme, unit, nearest period,
+   deal types. Everything else is a section further down. */
+.facts {
+  display: grid; gap: 0;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: var(--s-6) 0 0; padding: 0;
+  border: var(--rule); border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+}
+.fact {
+  padding: var(--s-4);
+  border-right: var(--rule);
+}
+.fact:last-child { border-right: none; }
+.factLabel {
+  font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--ink-muted);
+}
+.factValue { margin: var(--s-2) 0 0; font-size: var(--text-sm); }
+.factNote { color: var(--ink-muted); font-size: var(--text-xs); }
+.mono { font-family: var(--font-mono); font-weight: 500; }
+
+@media (max-width: 60rem) {
+  .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fact { border-bottom: var(--rule); }
+  .fact:nth-child(2n) { border-right: none; }
+  .fact:nth-last-child(-n + 2) { border-bottom: none; }
+}
+@media (max-width: 30rem) {
+  .facts { grid-template-columns: 1fr; }
+  .fact { border-right: none; }
+  .fact:last-child { border-bottom: none; }
+  .identityRow { grid-template-columns: 1fr; gap: 0; }
+  .primary, .secondary { width: 100%; }
+}

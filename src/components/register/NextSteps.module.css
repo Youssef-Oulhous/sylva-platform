@@ -1,0 +1,119 @@
+.wrap {
+  display: block;
+  min-width: 0;
+}
+
+.intro {
+  margin: var(--s-3) 0 0;
+  font-size: var(--text-base);
+  color: var(--ink);
+  max-width: var(--measure-prose);
+}
+
+/* Three steps side by side on a wide screen, stacked on a narrow one. The
+   numbers are rendered as text, so list-style is not needed. */
+.stages {
+  list-style: none;
+  margin: var(--s-5) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--s-4);
+}
+
+.stage {
+  min-width: 0;
+  padding: var(--s-4);
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius);
+  border-top: 2px solid var(--border-strong);
+}
+
+.stageHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+}
+
+.stageNum {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-muted);
+}
+
+.stageName {
+  margin: var(--s-3) 0 0;
+  font-size: var(--text-md);
+}
+
+.stageBody {
+  margin: var(--s-2) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ink);
+  max-width: var(--measure-prose);
+}
+
+/* One figure on this page, and it carries its source and date like every other
+   figure on the platform. */
+.figure {
+  margin-top: var(--s-4);
+  padding: var(--s-3);
+  background: var(--surface-sunk);
+  border-radius: var(--radius-sm);
+}
+
+.figureLabel {
+  display: block;
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-muted);
+}
+
+.figureValue {
+  display: block;
+  margin-top: 1px;
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+.figureLink {
+  display: inline-block;
+  margin-top: var(--s-2);
+  font-size: var(--text-xs);
+}
+
+.detail {
+  margin: var(--s-4) 0 0;
+  padding-top: var(--s-3);
+  border-top: var(--rule);
+}
+
+.detailTerm {
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-muted);
+}
+
+.detailValue {
+  margin: var(--s-1) 0 var(--s-3);
+  font-size: var(--text-sm);
+  color: var(--ink);
+}
+
+.detailValue:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 60rem) {
+  .stages {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

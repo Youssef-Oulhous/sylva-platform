@@ -1,0 +1,81 @@
+/* The gate list is a checklist, not a figure table: rules separate the rows,
+   nothing is boxed, and the state word sits in a fixed left column so the eye
+   can run down it. */
+.gate {
+  margin-top: var(--s-4);
+}
+
+.headline {
+  margin: 0;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  max-width: var(--measure-prose);
+}
+
+.list {
+  list-style: none;
+  margin: var(--s-3) 0 0;
+  padding: 0;
+  border-top: var(--rule);
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  gap: var(--s-3);
+  align-items: baseline;
+  padding: var(--s-3) 0;
+  border-bottom: var(--rule);
+}
+
+.state {
+  display: block;
+}
+
+.body {
+  display: block;
+}
+
+.itemLabel {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+.itemNote {
+  display: block;
+  margin-top: var(--s-1);
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+/* Recorded items stay on the page and stay out of the way. */
+.recorded {
+  margin-top: var(--s-4);
+}
+
+.recordedSummary {
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  cursor: pointer;
+}
+.recordedSummary:hover {
+  color: var(--ink);
+}
+
+.rule {
+  margin: var(--s-4) 0 0;
+  padding-left: var(--s-3);
+  border-left: 2px solid var(--border-strong);
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+@media (max-width: 30rem) {
+  .item {
+    grid-template-columns: 1fr;
+    gap: var(--s-2);
+  }
+}

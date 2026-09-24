@@ -1,0 +1,148 @@
+/* A project is a filed item: one surface, one rule around it, no nesting of
+   cards inside cards. The two panels inside it are separated by a rule, not by
+   a second border. */
+.project {
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius);
+  padding: var(--s-5);
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-3);
+}
+
+.name {
+  font-size: var(--text-md);
+  margin: 0;
+}
+.name a {
+  color: var(--ink);
+  text-decoration: none;
+}
+.name a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--forest);
+}
+
+/* Metadata reads as a row of labelled facts, left aligned, label above value. */
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3) var(--s-6);
+  margin: var(--s-4) 0 0;
+}
+.metaItem dt {
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-muted);
+}
+.metaItem dd {
+  margin: var(--s-1) 0 0;
+  font-size: var(--text-sm);
+}
+
+/* The unit type is an identifier, set in the mono face like every other one. */
+.unit {
+  font-family: var(--font-mono);
+}
+
+.notPublic {
+  margin: var(--s-4) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+.panels {
+  display: grid;
+  grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+  gap: var(--s-6);
+  margin-top: var(--s-5);
+  padding-top: var(--s-5);
+  border-top: var(--rule);
+}
+
+.panel {
+  min-width: 0;
+}
+
+.panelTitle {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-muted);
+}
+
+.availability {
+  margin-top: var(--s-3);
+}
+.rowHead {
+  /* A row header in a data table, not a column header: sentence case, not the
+     uppercase treatment globals.css gives th. */
+  background: transparent;
+  border-bottom: var(--rule);
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: var(--text-sm);
+  color: var(--ink);
+  font-weight: 400;
+  white-space: normal;
+}
+.availability td {
+  font-variant-numeric: tabular-nums;
+}
+.remaining {
+  font-weight: 500;
+  color: var(--forest);
+}
+
+.panelNote {
+  margin: var(--s-3) 0 var(--s-2);
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+.emptyPanel {
+  margin: var(--s-3) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+.foot {
+  margin: var(--s-5) 0 0;
+  padding-top: var(--s-4);
+  border-top: var(--rule);
+  font-size: var(--text-sm);
+}
+.foot a {
+  font-weight: 500;
+  text-decoration: none;
+}
+.foot a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 62rem) {
+  .panels {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-5);
+  }
+}
+
+@media (max-width: 30rem) {
+  .project {
+    padding: var(--s-4);
+  }
+  .meta {
+    gap: var(--s-3) var(--s-5);
+  }
+}

@@ -1,0 +1,90 @@
+/* The unit type is stated before the table, not only inside it. */
+.unitStrip {
+  display: flex; flex-wrap: wrap; gap: var(--s-6);
+  margin: var(--s-4) 0 var(--s-5);
+  padding: var(--s-4);
+  background: var(--surface-sunk);
+  border: var(--rule); border-radius: var(--radius);
+}
+.unitStrip > div { display: grid; gap: var(--s-1); }
+.unitLabel {
+  font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--ink-muted);
+}
+.unitValue { font-size: var(--text-sm); font-weight: 500; }
+
+.periodMeaning {
+  margin: 0 0 var(--s-5);
+  padding: var(--s-4);
+  border: var(--rule); border-left: 2px solid var(--water);
+  border-radius: var(--radius);
+  background: var(--surface);
+  max-width: var(--measure-prose);
+}
+.periodMeaningTitle {
+  margin: 0 0 var(--s-2);
+  font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--ink-muted);
+}
+.periodMeaningBody { margin: 0 0 var(--s-2); font-size: var(--text-sm); }
+.periodMeaningBody:last-child { margin-bottom: 0; }
+
+.table {
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius);
+}
+
+.rowHead {
+  background: transparent;
+  text-transform: none; letter-spacing: normal;
+  font-weight: 500; color: var(--ink);
+  white-space: normal;
+  display: table-cell;
+  min-width: 10rem;
+}
+.period { display: block; font-family: var(--font-mono); font-size: var(--text-md); }
+.periodRange { display: block; font-size: var(--text-2xs); color: var(--ink-muted); font-weight: 400; }
+
+.cell { font-family: var(--font-mono); font-size: var(--text-sm); line-height: 1.35; }
+/* The unit sits under its number in every single cell. Verbose on purpose:
+   a bare column of figures is what invites a cross-project comparison. */
+.unit {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: var(--text-2xs);
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+.remaining { font-weight: 500; color: var(--forest); }
+.remaining .unit { color: var(--ink-muted); }
+
+.glossary {
+  margin: var(--s-5) 0 0; padding: 0;
+  display: grid; gap: var(--s-3);
+  max-width: var(--measure-prose);
+}
+.glossary > div { display: grid; grid-template-columns: 11rem 1fr; gap: var(--s-4); }
+.glossary dt {
+  font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--ink-muted); padding-top: 0.2em;
+}
+.glossary dd { margin: 0; font-size: var(--text-sm); }
+
+.incomparable {
+  margin: var(--s-5) 0 0;
+  padding: var(--s-3) var(--s-4);
+  background: var(--tint-warning); color: var(--tint-warning-ink);
+  border-left: 2px solid var(--warning);
+  font-size: var(--text-sm);
+  max-width: var(--measure-prose);
+}
+.notIssued {
+  margin: var(--s-3) 0 0;
+  font-size: var(--text-sm); color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+@media (max-width: 40rem) {
+  .glossary > div { grid-template-columns: 1fr; gap: var(--s-1); }
+}

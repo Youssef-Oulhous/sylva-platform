@@ -1,0 +1,45 @@
+/* Shared section furniture. Every section of this page uses the same lead
+   paragraph, subheading and note, so they are defined once rather than seven
+   times with drifting values. */
+
+.lead {
+  margin-top: var(--s-3);
+  font-size: var(--text-md);
+  color: var(--ink);
+  max-width: var(--measure-prose);
+}
+
+.subhead {
+  margin-top: var(--s-6);
+  font-size: var(--text-base);
+}
+
+.body { margin-top: var(--s-4); max-width: var(--measure-prose); }
+
+.note {
+  margin: var(--s-4) 0 0;
+  padding: var(--s-3) var(--s-4);
+  background: var(--tint-neutral);
+  border-left: 2px solid var(--water);
+  font-size: var(--text-sm);
+  color: var(--ink);
+  max-width: var(--measure-prose);
+}
+
+.footNote {
+  margin: var(--s-4) 0 0;
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  margin-top: var(--s-4);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--forest);
+  text-decoration: none;
+}
+.cta:hover { text-decoration: underline; }

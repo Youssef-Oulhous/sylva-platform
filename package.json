@@ -1,0 +1,44 @@
+{
+  "name": "sylva-platform",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A platform for European wetland restoration projects. EU-funded pilot operated by Sylva.",
+  "engines": { "node": ">=20.9" },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "db:start": "scripts/dev-db.sh start",
+    "db:stop": "scripts/dev-db.sh stop",
+    "db:apply": "db/apply.sh",
+    "db:reset": "db/apply.sh --fresh && npm run db:seed",
+    "db:seed": "tsx db/seed/seed.ts",
+    "db:psql": "scripts/dev-db.sh psql -d sylva_dev",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:rls": "vitest run tests/rls",
+    "test:rules": "vitest run tests/rules",
+    "check:rule7": "tsx scripts/check-rule7.ts"
+  },
+  "dependencies": {
+    "next": "^15.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "next-intl": "^3.26.0",
+    "pg": "^8.13.1",
+    "zod": "^3.24.1",
+    "maplibre-gl": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/pg": "^8.11.10",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8",
+    "tsx": "^4.19.2",
+    "dotenv": "^16.4.7"
+  }
+}

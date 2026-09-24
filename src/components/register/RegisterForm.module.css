@@ -1,0 +1,95 @@
+.form {
+  display: block;
+  min-width: 0;
+  max-width: 46rem;
+}
+
+.requiredNote {
+  margin: 0;
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+}
+
+/* Each part is separated by a rule, the way a form in a document is: no nested
+   cards, no shadow, no panel inside a panel. */
+.part {
+  margin: var(--s-6) 0 0;
+  padding: var(--s-6) 0 0;
+  border: none;
+  border-top: var(--rule);
+  min-width: 0;
+}
+
+.legend {
+  padding: 0;
+  font-size: var(--text-md);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+  letter-spacing: -0.014em;
+  color: var(--ink);
+}
+
+.intro {
+  margin: var(--s-2) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+.rows {
+  display: grid;
+  gap: var(--s-5);
+  margin-top: var(--s-5);
+}
+
+.pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-5);
+}
+
+.submitRow {
+  margin-top: var(--s-6);
+  padding-top: var(--s-6);
+  border-top: 1px solid var(--border-strong);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-4);
+}
+
+/* The single primary action on the page, in the single accent colour. */
+.submit {
+  padding: var(--s-3) var(--s-5);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--forest-on);
+  background: var(--forest);
+  border: 1px solid var(--forest);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color var(--motion-fast);
+}
+
+.submit:hover {
+  background: var(--forest-hover);
+  border-color: var(--forest-hover);
+}
+
+.submitNote {
+  margin: 0;
+  flex: 1 1 18rem;
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+@media (max-width: 40rem) {
+  .pair {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .submit {
+    width: 100%;
+  }
+}

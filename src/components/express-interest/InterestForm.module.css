@@ -1,0 +1,249 @@
+.form {
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius);
+}
+
+/* Each part of the enquiry is a ruled band of one surface rather than a card of
+   its own: a form of nested cards reads as four unrelated tasks. */
+.block {
+  margin: 0;
+  padding: var(--s-5);
+  border: none;
+  border-bottom: var(--rule);
+}
+.block:last-of-type {
+  border-bottom: none;
+}
+
+/* A legend inside a fieldset does not inherit the h2 scale, and should not: it
+   labels a group of fields, it is not a heading in the document outline. */
+.legend {
+  padding: 0;
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.label {
+  display: block;
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.hint {
+  margin: var(--s-2) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+.unitNote {
+  margin: var(--s-3) 0 0;
+  padding: var(--s-2) var(--s-3);
+  background: var(--surface-sunk);
+  border-left: 2px solid var(--water);
+  font-size: var(--text-xs);
+  color: var(--ink);
+  max-width: var(--measure-prose);
+}
+
+.footnote {
+  margin: var(--s-2) 0 0;
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+/* ---- The period table ---------------------------------------------------- */
+.table {
+  margin-top: var(--s-4);
+}
+.table caption {
+  padding-bottom: var(--s-2);
+}
+.periodCell {
+  /* A row header, which globals.css sets as an uppercase column label. A period
+     is an identifier rather than a label, so it is set in mono at body case and
+     the uppercase treatment is undone here. */
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink);
+  background: transparent;
+  border-bottom: var(--rule);
+  /* Matches the td padding beside it, so the period and its figure sit on one
+     baseline rather than two. */
+  padding: var(--s-3);
+  vertical-align: middle;
+}
+.unitInline {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  font-weight: 400;
+  color: var(--ink-muted);
+}
+.inputCell {
+  vertical-align: middle;
+  width: 16rem;
+}
+.inputRow {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+.input {
+  width: 8rem;
+  padding: var(--s-2) var(--s-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  transition: border-color var(--motion-fast);
+}
+.input:hover {
+  border-color: var(--ink-muted);
+}
+/* The visible focus ring comes from :focus-visible in globals.css. The border
+   change is additional, not a replacement for it. */
+.input:focus {
+  border-color: var(--water);
+}
+.inputUnit {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--ink-muted);
+}
+
+/* ---- Radios and the disclosure checkbox ---------------------------------- */
+.choices {
+  list-style: none;
+  margin: var(--s-4) 0 0;
+  padding: 0;
+  display: grid;
+  gap: var(--s-3);
+}
+.choice,
+.checkRow {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--s-3);
+  align-items: start;
+  padding: var(--s-3);
+  border: var(--rule);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.checkRow {
+  margin-top: var(--s-4);
+}
+.choice:hover,
+.checkRow:hover {
+  border-color: var(--border-strong);
+}
+.control {
+  /* Native control, native semantics. Sized up a little because a 13px label
+     beside a 13px control is a hard target on a phone. */
+  width: 1.05rem;
+  height: 1.05rem;
+  margin: 0.2rem 0 0;
+  accent-color: var(--forest);
+  flex: 0 0 auto;
+}
+.choiceText {
+  display: block;
+}
+.choiceLabel {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--ink);
+  cursor: pointer;
+}
+.choiceNote {
+  display: block;
+  margin-top: var(--s-1);
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+/* ---- Message ------------------------------------------------------------- */
+.textarea {
+  display: block;
+  width: 100%;
+  margin-top: var(--s-3);
+  padding: var(--s-3);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  resize: vertical;
+  transition: border-color var(--motion-fast);
+}
+.textarea:hover {
+  border-color: var(--ink-muted);
+}
+.textarea:focus {
+  border-color: var(--water);
+}
+
+/* ---- Actions ------------------------------------------------------------- */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-4);
+  padding: var(--s-5);
+  border-top: var(--rule);
+  background: var(--surface-sunk);
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+}
+.submit {
+  padding: var(--s-3) var(--s-5);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--forest-on);
+  background: var(--forest);
+  border: 1px solid var(--forest);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color var(--motion-fast);
+}
+.submit:hover {
+  background: var(--forest-hover);
+  border-color: var(--forest-hover);
+}
+.submitNote {
+  margin: 0;
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+@media (max-width: 40rem) {
+  .block,
+  .actions {
+    padding: var(--s-4);
+  }
+  .inputCell {
+    width: auto;
+  }
+  .input {
+    width: 6.5rem;
+  }
+  .submit {
+    width: 100%;
+  }
+}

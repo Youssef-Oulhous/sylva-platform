@@ -1,0 +1,87 @@
+.lead { margin-top: var(--s-3); color: var(--ink-muted); }
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(16rem, 1fr);
+  gap: var(--s-5);
+  margin-top: var(--s-5);
+  align-items: start;
+}
+
+.form {
+  border: var(--rule); border-radius: var(--radius);
+  background: var(--surface);
+  padding: var(--s-5);
+}
+
+.field { margin-bottom: var(--s-5); }
+.label {
+  display: block;
+  font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--ink-muted);
+  margin-bottom: var(--s-2);
+}
+
+.input, .select, .textarea {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: var(--s-2) var(--s-3);
+  min-height: 2.5rem;
+}
+.textarea { min-height: 8rem; resize: vertical; line-height: var(--leading-body); }
+.input:focus, .select:focus, .textarea:focus { border-color: var(--water); }
+
+.hint { margin: var(--s-2) 0 0; font-size: var(--text-xs); color: var(--ink-muted); }
+
+.submit {
+  min-height: 2.5rem; padding: 0 var(--s-5);
+  background: var(--forest); color: var(--forest-on);
+  border: 1px solid var(--forest); border-radius: var(--radius);
+  font-family: var(--font-sans); font-size: var(--text-sm); font-weight: 500;
+  cursor: pointer;
+  transition: background var(--motion-fast);
+}
+.submit:hover { background: var(--forest-hover); }
+
+.pending { margin: var(--s-3) 0 0; font-size: var(--text-xs); color: var(--ink-muted); }
+
+.side { display: grid; gap: var(--s-4); }
+
+.panel {
+  border: var(--rule); border-radius: var(--radius);
+  background: var(--surface);
+  padding: var(--s-4);
+}
+.panelTitle {
+  margin: 0 0 var(--s-3);
+  font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--ink-muted); font-weight: 500;
+}
+.recipients { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-3); }
+.recipients li { display: grid; gap: 1px; font-size: var(--text-sm); }
+.recipientRole {
+  font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--ink-muted);
+}
+
+.noPublic {
+  padding: var(--s-4);
+  background: var(--tint-neutral);
+  border-left: 2px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+}
+.noPublicTitle { margin: 0 0 var(--s-2); font-size: var(--text-sm); font-weight: 500; }
+.noPublicBody { margin: 0; font-size: var(--text-sm); color: var(--ink); }
+
+@media (max-width: 64rem) {
+  .grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 30rem) {
+  .form { padding: var(--s-4); }
+  .submit { width: 100%; }
+}

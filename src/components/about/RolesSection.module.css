@@ -1,0 +1,24 @@
+.tableWrap {
+  margin-top: var(--s-4);
+  border: var(--rule);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.tableWrap table { min-width: 42rem; }
+
+.colRole { width: 12rem; }
+
+/* A row header, not a column header: same left alignment, but it reads as a
+   name rather than as a label, so it keeps sentence case and body weight. */
+.rowHead {
+  background: transparent;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ink);
+  border-bottom: var(--rule);
+  white-space: normal;
+  vertical-align: top;
+  padding: var(--s-3);
+}

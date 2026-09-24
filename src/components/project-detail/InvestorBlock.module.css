@@ -1,0 +1,82 @@
+.head {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-3);
+}
+.badges { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+
+.lead {
+  margin-top: var(--s-3);
+  color: var(--ink);
+  max-width: var(--measure-prose);
+}
+
+/* Visibly locked: a hatched surface and a plain word in every value cell. The
+   hatch is structure, not decoration - it marks the whole block as withheld even
+   in a greyscale print of the page. */
+.locked {
+  margin-top: var(--s-4);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  background-image: repeating-linear-gradient(
+    135deg,
+    var(--surface-sunk) 0 6px,
+    var(--surface) 6px 12px
+  );
+  padding: var(--s-5);
+}
+
+.lockedTitle {
+  margin: 0 0 var(--s-4);
+  display: flex; align-items: center; gap: var(--s-3);
+  font-size: var(--text-sm); font-weight: 500;
+}
+.lockMark {
+  width: 0.7rem; height: 0.55rem;
+  border: 1px solid var(--ink-muted);
+  border-radius: 1px;
+  position: relative;
+  flex: 0 0 auto;
+}
+.lockMark::before {
+  content: '';
+  position: absolute;
+  left: 50%; transform: translateX(-50%);
+  top: -0.32rem;
+  width: 0.4rem; height: 0.32rem;
+  border: 1px solid var(--ink-muted);
+  border-bottom: none;
+  border-radius: 0.25rem 0.25rem 0 0;
+}
+
+.fields {
+  list-style: none; margin: 0; padding: 0;
+  border-top: var(--rule);
+  max-width: none;
+}
+.field {
+  display: grid; grid-template-columns: minmax(0, 1fr) 10rem;
+  gap: var(--s-4);
+  padding: var(--s-3) 0;
+  border-bottom: var(--rule);
+  align-items: baseline;
+}
+.fieldName { font-size: var(--text-sm); }
+.fieldValue {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--ink-muted);
+  text-align: right;
+}
+
+.lockedNote {
+  margin: var(--s-4) 0 0;
+  font-size: var(--text-sm); color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+@media (max-width: 40rem) {
+  .locked { padding: var(--s-4); }
+  .field { grid-template-columns: 1fr; gap: var(--s-1); }
+  .fieldValue { text-align: left; }
+}

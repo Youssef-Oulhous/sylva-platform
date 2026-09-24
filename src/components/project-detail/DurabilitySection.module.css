@@ -1,0 +1,77 @@
+.lead { margin-top: var(--s-3); color: var(--ink-muted); }
+
+.facts {
+  display: grid; gap: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: var(--s-5) 0 0; padding: 0;
+  border: var(--rule); border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+}
+.fact { padding: var(--s-4); border-right: var(--rule); border-bottom: var(--rule); }
+.fact:nth-child(2n) { border-right: none; }
+.fact:nth-last-child(-n + 2) { border-bottom: none; }
+.factLabel {
+  font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--ink-muted);
+}
+.factValue { margin: var(--s-2) 0 0; font-size: var(--text-sm); }
+
+.timelineTitle { margin-top: var(--s-6); font-size: var(--text-md); }
+.timelineNote {
+  margin: var(--s-2) 0 var(--s-5);
+  font-size: var(--text-sm); color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+/* A vertical rule with a marker per entry, drawn from list markup. The rule is
+   a border on the list; the markers are pseudo-elements on each item. */
+.timeline {
+  list-style: none;
+  margin: 0; padding: 0 0 0 var(--s-5);
+  border-left: 1px solid var(--border-strong);
+  max-width: var(--measure-prose);
+}
+.entry, .entryOpen {
+  position: relative;
+  display: grid; grid-template-columns: 5.5rem 1fr;
+  gap: var(--s-4);
+  padding-bottom: var(--s-5);
+}
+.entry:last-child, .entryOpen:last-child { padding-bottom: 0; }
+
+.entry::before, .entryOpen::before {
+  content: '';
+  position: absolute;
+  left: calc(-1 * var(--s-5) - 4px);
+  top: 0.45em;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--forest);
+}
+/* An entry the documents leave open is hollow - and also says so in words. */
+.entryOpen::before { background: var(--canvas); border: 1px solid var(--ink-muted); }
+
+.when {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--ink);
+  padding-top: 0.05em;
+}
+.entryBody { display: grid; gap: var(--s-1); }
+.entryTitle {
+  font-size: var(--text-sm); font-weight: 500;
+  display: flex; flex-wrap: wrap; gap: var(--s-3); align-items: baseline;
+}
+.state {
+  font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--ink-muted); font-weight: 400;
+}
+.entryText { font-size: var(--text-sm); color: var(--ink-muted); }
+
+@media (max-width: 40rem) {
+  .facts { grid-template-columns: 1fr; }
+  .fact { border-right: none; }
+  .fact:last-child { border-bottom: none; }
+  .entry, .entryOpen { grid-template-columns: 1fr; gap: var(--s-1); }
+}

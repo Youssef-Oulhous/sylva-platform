@@ -1,0 +1,65 @@
+.lead { margin-top: var(--s-3); color: var(--ink-muted); }
+
+.panel {
+  margin-top: var(--s-4);
+  padding: var(--s-5);
+  border: var(--rule); border-radius: var(--radius);
+  background: var(--surface);
+}
+.panelTitle {
+  margin: 0 0 var(--s-3);
+  font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--ink-muted); font-weight: 500;
+}
+
+.items {
+  margin: 0; padding: 0;
+  list-style: none;
+  display: grid; gap: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: var(--rule);
+  max-width: none;
+}
+.items li {
+  padding: var(--s-3) var(--s-4) var(--s-3) 0;
+  border-bottom: var(--rule);
+  font-size: var(--text-sm);
+}
+.items li::before {
+  content: '·';
+  font-family: var(--font-mono);
+  color: var(--ink-muted);
+  margin-right: var(--s-3);
+}
+
+.actions {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-4);
+  margin-top: var(--s-5);
+}
+.download {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 2.5rem; padding: 0 var(--s-5);
+  background: var(--surface); color: var(--ink);
+  border: 1px solid var(--border-strong); border-radius: var(--radius);
+  font-size: var(--text-sm); font-weight: 500; text-decoration: none;
+  transition: border-color var(--motion-fast);
+}
+.download:hover { border-color: var(--ink-muted); color: var(--ink); }
+.format { font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--ink-muted); }
+
+/* The caveat is a statement of limits, not a warning, so it carries no status
+   colour. Amber would read as "something is wrong with this project". */
+.caveat {
+  margin: var(--s-4) 0 0;
+  padding: var(--s-4);
+  background: var(--tint-neutral);
+  border-left: 2px solid var(--border-strong);
+  font-size: var(--text-sm);
+  max-width: var(--measure-prose);
+}
+
+@media (max-width: 40rem) {
+  .items { grid-template-columns: 1fr; }
+  .panel { padding: var(--s-4); }
+  .download { width: 100%; }
+}

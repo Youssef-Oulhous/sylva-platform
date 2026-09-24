@@ -1,0 +1,118 @@
+/* Publication readiness. An index with a status word against each line. */
+
+.panel {
+  padding: var(--s-5);
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-raised);
+}
+
+.title {
+  font-size: var(--text-md);
+  color: var(--ink);
+}
+
+.summary {
+  margin: var(--s-3) 0 var(--s-3);
+  font-size: var(--text-sm);
+  color: var(--ink);
+}
+
+/* One tick per requirement. A picture of the list below, nothing more. */
+.bar {
+  display: flex;
+  gap: 3px;
+  margin-bottom: var(--s-2);
+}
+.tick {
+  flex: 1 1 0;
+  height: 4px;
+  background: var(--border-strong);
+  border-radius: 1px;
+}
+.tickDone { background: var(--forest); }
+
+.list {
+  margin: var(--s-5) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  padding: var(--s-3) 0;
+  border-top: var(--rule);
+}
+.item:first-child { border-top: none; padding-top: 0; }
+
+.itemHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-3);
+}
+
+.link {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-strong);
+}
+.link:hover { color: var(--forest); border-bottom-color: var(--forest); }
+
+.plain {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+/* Status words. Each is a word first; the tint only repeats what it says. */
+.state {
+  flex: none;
+  padding: 0.1em 0.5em;
+  border-radius: var(--radius-lg);
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.stateComplete   { background: var(--tint-bio);     color: var(--tint-bio-ink); }
+.stateIncomplete { background: var(--tint-warning); color: var(--tint-warning-ink); }
+.stateOptional   { background: var(--tint-neutral); color: var(--tint-neutral-ink); }
+.stateOperator   { background: var(--tint-water);   color: var(--tint-water-ink); }
+
+.requirement {
+  margin: var(--s-2) 0 0;
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  color: var(--ink-muted);
+}
+
+/* What is still missing, in the words of the record itself. */
+.detail {
+  margin: var(--s-2) 0 0;
+  padding-left: var(--s-3);
+  border-left: 2px solid var(--warning);
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.limit {
+  margin-top: var(--s-5);
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--border-strong);
+}
+.limitTitle {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ink);
+}
+.limitBody {
+  margin: var(--s-2) 0 0;
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  color: var(--ink-muted);
+}

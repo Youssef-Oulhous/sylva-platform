@@ -1,0 +1,49 @@
+.lead {
+  margin-top: var(--s-3) ;
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+.table {
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius);
+  table-layout: fixed;
+}
+.table th, .table td { vertical-align: top; }
+.table col { width: auto; }
+
+.rowHead {
+  background: transparent;
+  text-transform: none; letter-spacing: normal;
+  font-size: var(--text-sm); font-weight: 500; color: var(--ink);
+  white-space: normal;
+  width: 22%;
+}
+
+/* Exclusions get the same width as permissions and a tinted cell, because a
+   buyer told the client this column decides whether it takes part. The tint is
+   never the only signal: the column keeps its heading and each cell is marked. */
+.exclusionsHead { background: var(--tint-warning); color: var(--tint-warning-ink); }
+.exclusions {
+  background: var(--tint-warning);
+  color: var(--tint-warning-ink);
+}
+.exclusionsMark {
+  display: inline-block;
+  width: 0.55rem; height: 1px;
+  background: currentColor;
+  vertical-align: 0.35em;
+  margin-right: var(--s-2);
+}
+
+.note {
+  margin: var(--s-4) 0 0;
+  font-size: var(--text-sm); color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+@media (max-width: 48rem) {
+  .table { table-layout: auto; }
+  .rowHead { width: auto; min-width: 11rem; }
+}

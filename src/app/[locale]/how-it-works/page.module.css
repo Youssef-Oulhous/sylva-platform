@@ -1,0 +1,82 @@
+.head { padding-bottom: var(--s-6); border-bottom: var(--rule); }
+.lead {
+  font-size: var(--text-md);
+  color: var(--ink);
+  margin-top: var(--s-4);
+  max-width: var(--measure-prose);
+}
+
+/* The one fact everything else on the page depends on. Water blue, because it
+   is information rather than a warning. */
+.issuanceNote {
+  margin-top: var(--s-4);
+  padding: var(--s-3) var(--s-4);
+  background: var(--tint-neutral);
+  border-left: 2px solid var(--water);
+  font-size: var(--text-sm);
+  max-width: var(--measure-prose);
+}
+
+/* An in-page index, not a sticky sidebar: the page is long and a reader who
+   came for the deal shapes should not have to scroll past the seven steps. */
+.toc { padding-block: var(--s-5); border-bottom: var(--rule); }
+.tocTitle {
+  margin: 0 0 var(--s-3);
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-muted);
+}
+.tocList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--s-2) var(--s-6);
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  font-size: var(--text-sm);
+  counter-reset: toc;
+}
+.tocList li { counter-increment: toc; }
+.tocList li::before {
+  content: counter(toc, decimal-leading-zero) '  ';
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--ink-muted);
+}
+.tocList a { color: var(--ink); text-decoration: none; }
+.tocList a:hover { color: var(--forest); text-decoration: underline; }
+
+.section { padding-block: var(--s-7); border-bottom: var(--rule); }
+/* Anchor targets clear the site header when a reader jumps to them. */
+.section, .next { scroll-margin-top: var(--s-5); }
+.sectionHead { margin-bottom: var(--s-5); }
+.sectionLead {
+  margin: var(--s-3) 0 0;
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+.body { font-size: var(--text-base); max-width: var(--measure-prose); }
+.sectionHead .body { margin-top: var(--s-4); margin-bottom: 0; }
+
+.next { padding-block: var(--s-7); }
+.ctas { display: flex; flex-wrap: wrap; gap: var(--s-3); margin-top: var(--s-5); }
+
+/* Same button geometry as the landing page. Forest is the primary action; the
+   two secondary links are outlined so the page has one obvious next step. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem var(--s-5);
+  border-radius: var(--radius);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: background var(--motion-fast), border-color var(--motion-fast);
+}
+.btnPrimary { background: var(--forest); color: var(--forest-on); }
+.btnPrimary:hover { background: var(--forest-hover); color: var(--forest-on); }
+.btnSecondary { background: var(--surface); color: var(--ink); border-color: var(--border-strong); }
+.btnSecondary:hover { border-color: var(--ink-muted); color: var(--ink); }

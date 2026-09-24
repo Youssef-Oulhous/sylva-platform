@@ -1,0 +1,60 @@
+.queue {
+  margin-top: var(--s-4);
+}
+
+/* A row header naming the project, in sentence case: globals.css styles th for
+   column headers, and this one is a row header. */
+.rowHead {
+  background: transparent;
+  border-bottom: var(--rule);
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--ink);
+  white-space: normal;
+  min-width: 12rem;
+}
+
+.waiting {
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+.actionCell {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.action {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--forest-on);
+  background: var(--forest);
+  border: 1px solid var(--forest);
+  border-radius: var(--radius);
+  padding: var(--s-2) var(--s-4);
+  cursor: pointer;
+  transition: background-color var(--motion-fast);
+}
+.action:hover {
+  background: var(--forest-hover);
+  border-color: var(--forest-hover);
+}
+
+.note {
+  margin: var(--s-3) 0 0;
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+.empty {
+  margin: var(--s-4) 0 0;
+  padding: var(--s-5);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius);
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}

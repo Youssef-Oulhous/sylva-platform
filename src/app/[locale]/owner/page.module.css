@@ -1,0 +1,113 @@
+/* The page width and the side gutters come from .main in SiteChrome, which
+   every page shares. Nothing here re-declares them. */
+.page {
+  display: block;
+}
+
+.head {
+  padding-bottom: var(--s-5);
+}
+
+.headTop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-4);
+}
+
+.lead {
+  margin-top: var(--s-4);
+  font-size: var(--text-md);
+  color: var(--ink);
+}
+
+.org {
+  margin: var(--s-4) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}
+.orgName {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.demoNote {
+  margin: var(--s-4) 0 0;
+  max-width: var(--measure-prose);
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}
+
+/* One heavier rule per section: the page is read as a document with parts, and
+   the parts are separated by a rule rather than by a coloured band. */
+.section {
+  margin-top: var(--s-7);
+  padding-top: var(--s-6);
+  border-top: 1px solid var(--border-strong);
+}
+
+.sectionHead {
+  margin-bottom: var(--s-5);
+}
+
+.counts {
+  margin: var(--s-3) 0 0;
+  font-size: var(--text-md);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+.sectionLead {
+  margin: var(--s-3) 0;
+  max-width: var(--measure-prose);
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}
+
+/* The Rule 7 statement. Stated visibly, once, near the first figures. */
+.countNote {
+  margin: var(--s-4) 0 0;
+  padding: var(--s-3) var(--s-4);
+  max-width: var(--measure-prose);
+  background: var(--tint-neutral);
+  border-left: 2px solid var(--water);
+  font-size: var(--text-sm);
+  color: var(--ink);
+}
+
+.projects {
+  display: grid;
+  gap: var(--s-4);
+}
+
+.empty {
+  margin: 0;
+  padding: var(--s-7);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius);
+  text-align: center;
+  color: var(--ink-muted);
+}
+
+.sectionFoot {
+  margin: var(--s-5) 0 0;
+  font-size: var(--text-sm);
+}
+.sectionFoot a {
+  font-weight: 500;
+  text-decoration: none;
+}
+.sectionFoot a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 40rem) {
+  .lead {
+    font-size: var(--text-base);
+  }
+  .section {
+    margin-top: var(--s-6);
+    padding-top: var(--s-5);
+  }
+}

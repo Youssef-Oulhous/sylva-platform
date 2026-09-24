@@ -1,0 +1,48 @@
+/* The record's own identity: reference, status, owner, last saved. */
+
+.strip {
+  margin-top: var(--s-5);
+  padding: var(--s-4) var(--s-5);
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius);
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: var(--s-4) var(--s-5);
+  margin: 0;
+}
+
+.cell { min-width: 0; }
+
+.key {
+  margin: 0 0 var(--s-1);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.value {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--ink);
+}
+
+.valueMono {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--ink);
+}
+
+.note {
+  margin: var(--s-4) 0 0;
+  padding-top: var(--s-3);
+  border-top: var(--rule);
+  max-width: var(--measure-prose);
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}

@@ -1,0 +1,60 @@
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: var(--rule);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.step { padding: var(--s-5); border-bottom: var(--rule); }
+.steps > .step:last-child { border-bottom: none; }
+
+.head { display: flex; gap: var(--s-4); align-items: baseline; }
+.num {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  flex: 0 0 2.5rem;
+}
+.headText { flex: 1 1 auto; }
+.name { font-size: var(--text-md); }
+.note {
+  margin: var(--s-1) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+/* Four labelled facts per step, laid out as a definition list: the label
+   column stays fixed so a reader can scan one question down all seven steps
+   without reading the rest. */
+.detail {
+  margin: var(--s-4) 0 0;
+  padding-left: calc(2.5rem + var(--s-4));
+  display: grid;
+  gap: 0;
+}
+.row {
+  display: grid;
+  grid-template-columns: 13rem 1fr;
+  gap: var(--s-4);
+  padding: var(--s-3) 0;
+  border-top: var(--rule);
+}
+.dt {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-muted);
+}
+.dd { margin: 0; font-size: var(--text-sm); max-width: var(--measure-prose); }
+
+/* The limit is set apart by a rule on the left, not by a colour that would
+   read as an error state. */
+.rowLimit .dd { border-left: 2px solid var(--border-strong); padding-left: var(--s-4); }
+.rowLimit .dt { color: var(--ink); }
+
+@media (max-width: 52rem) {
+  .detail { padding-left: 0; }
+  .row { grid-template-columns: 1fr; gap: var(--s-1); }
+}

@@ -1,0 +1,125 @@
+.block {
+  display: block;
+}
+
+.exampleLabel {
+  margin: 0 0 var(--s-2);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  max-width: none;
+}
+
+/* Inset rather than raised: these are specimens of states, and must never
+   compete with the live form above them. */
+.card {
+  padding: var(--s-5);
+  background: var(--surface-sunk);
+  border: var(--rule);
+  border-radius: var(--radius);
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-3);
+}
+.title {
+  font-size: var(--text-md);
+}
+
+.body {
+  margin: var(--s-3) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ink);
+}
+
+.facts {
+  margin: var(--s-4) 0 0;
+  padding: var(--s-3) var(--s-4);
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius);
+}
+.fact {
+  display: grid;
+  grid-template-columns: 13rem 1fr;
+  gap: var(--s-4);
+  padding: var(--s-2) 0;
+  border-bottom: var(--rule);
+}
+.fact:last-child {
+  border-bottom: none;
+}
+.factLabel {
+  margin: 0;
+  font-size: var(--text-xs);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.factValue {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--ink);
+}
+.mono {
+  font-family: var(--font-mono);
+}
+
+.list {
+  margin-top: var(--s-4);
+}
+.subTitle {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ink);
+}
+.items {
+  margin: var(--s-2) 0 0;
+  padding-left: var(--s-5);
+  font-size: var(--text-sm);
+  color: var(--ink);
+  max-width: var(--measure-prose);
+}
+.items li {
+  margin-bottom: var(--s-1);
+}
+.items li:last-child {
+  margin-bottom: 0;
+}
+
+.actionsWrap {
+  margin-top: var(--s-4);
+  padding-top: var(--s-4);
+  border-top: var(--rule);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-5);
+  margin-top: var(--s-3);
+}
+
+.note {
+  margin: var(--s-4) 0 0;
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+@media (max-width: 40rem) {
+  .card {
+    padding: var(--s-4);
+  }
+  .fact {
+    grid-template-columns: 1fr;
+    gap: var(--s-1);
+  }
+  .actions {
+    gap: var(--s-3);
+  }
+}

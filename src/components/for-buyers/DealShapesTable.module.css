@@ -1,0 +1,38 @@
+.lead { margin-top: var(--s-3); color: var(--ink); max-width: var(--measure-prose); }
+
+.table {
+  margin-top: var(--s-5);
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius);
+  table-layout: fixed;
+}
+.table th, .table td { vertical-align: top; }
+.rowHead {
+  background: transparent;
+  text-transform: none; letter-spacing: normal; white-space: normal;
+  font-size: var(--text-sm); font-weight: 500; color: var(--ink);
+  width: 18%;
+}
+.units { color: var(--ink-muted); }
+
+/* The three things a buyer most often gets wrong about this product, answered
+   as a short glossary rather than as a warning box. */
+.clarifications {
+  margin: var(--s-6) 0 0;
+  display: grid;
+  gap: var(--s-4);
+  max-width: var(--measure-prose);
+}
+.clarification { display: grid; gap: var(--s-1); }
+.clarificationTerm {
+  font-size: var(--text-2xs);
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--ink-muted);
+}
+.clarificationBody { margin: 0; font-size: var(--text-sm); color: var(--ink); }
+
+@media (max-width: 48rem) {
+  .table { table-layout: auto; }
+  .rowHead { width: auto; min-width: 9rem; }
+}

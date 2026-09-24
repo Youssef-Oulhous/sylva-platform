@@ -1,0 +1,22 @@
+/* A dashed rule says "nothing here yet" without a tint, an icon or a drawing. */
+.empty {
+  margin-top: var(--s-4);
+  padding: var(--s-6) var(--s-5);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.body {
+  margin: var(--s-2) 0 0;
+  max-width: var(--measure-prose);
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}

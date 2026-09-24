@@ -1,0 +1,78 @@
+.panel {
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius);
+  padding: var(--s-5);
+}
+
+.panelTitle {
+  margin: 0 0 var(--s-4);
+  font-size: var(--text-base);
+  font-weight: 600;
+  padding-bottom: var(--s-3);
+  border-bottom: 1px solid var(--border-strong);
+}
+
+/* A two-column definition list: label left, value right, one rule per row.
+   It reads as a record rather than as a form. */
+.facts {
+  margin: 0;
+  display: grid;
+  gap: 0;
+}
+
+.fact {
+  display: grid;
+  grid-template-columns: 11rem 1fr;
+  gap: var(--s-4);
+  padding: var(--s-2) 0;
+  border-bottom: var(--rule);
+}
+.fact:last-child { border-bottom: none; }
+
+.factLabel {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-muted);
+  padding-top: 0.15em;
+}
+
+.factValue {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--ink);
+}
+
+/* Mono for identifiers only. */
+.mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+}
+
+.amend {
+  margin: var(--s-4) 0 0;
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+/* A text control, not a filled button: nothing on this panel is the primary
+   action of the page. */
+.action {
+  margin-top: var(--s-2);
+  font-family: inherit;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--forest);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.action:hover { color: var(--forest-hover); text-decoration: underline; }
+
+@media (max-width: 34rem) {
+  .fact { grid-template-columns: 1fr; gap: var(--s-1); }
+  .factLabel { padding-top: 0; }
+}

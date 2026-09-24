@@ -1,0 +1,102 @@
+.table {
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius);
+}
+/* Nine columns of dense data: it scrolls rather than reflows, because a
+   reflowed record loses the date order that makes it a record. The global
+   .table-scroll rule sets a 34rem floor for ordinary tables; this record needs
+   more, and the scoped selector is what outranks it. */
+:global(.table-scroll) .table { min-width: 62rem; }
+
+.caption { max-width: var(--measure-prose); }
+
+.dateCell {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  white-space: nowrap;
+}
+
+/* The entry reference is the row's identity, so it is the row header. */
+.refCell {
+  background: transparent;
+  text-transform: none;
+  letter-spacing: normal;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--ink);
+  white-space: nowrap;
+  vertical-align: top;
+  padding: var(--s-3);
+  border-bottom: var(--rule);
+}
+
+.projectCell { min-width: 15rem; }
+.projectCell a { color: var(--ink); text-decoration-color: var(--border-strong); }
+.projectCell a:hover { color: var(--forest); text-decoration-color: var(--forest); }
+
+.eventCell { font-weight: 500; white-space: nowrap; }
+
+.partyCell { min-width: 12rem; }
+/* A pseudonym is an identifier, so it is set in the mono face. A legal name is
+   a name, so it is not: the two can be told apart before the label is read. */
+.partyLabel {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+.partyName { display: block; font-weight: 500; }
+.partyKind {
+  display: block;
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-muted);
+}
+
+.countryCell { white-space: nowrap; }
+
+.statusCell { min-width: 16rem; }
+.statusCurrent { color: var(--ink-muted); font-size: var(--text-sm); }
+.statusNote {
+  display: block;
+  margin-top: var(--s-1);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--ink-muted);
+}
+.statusReason {
+  display: block;
+  margin-top: var(--s-2);
+  font-size: var(--text-2xs);
+  color: var(--ink);
+  max-width: 24rem;
+}
+.reasonLabel {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-muted);
+}
+
+/* An entry that a later correction points at. It is not removed, not moved out
+   of date order and not greyed into illegibility: it is marked. The mark is
+   amber and the word "Superseded", never one without the other. */
+.supersededRow td,
+.supersededRow th {
+  background: var(--tint-warning);
+}
+.supersededRow td:first-child { box-shadow: inset 2px 0 0 0 var(--warning); }
+
+/* The entry doing the correcting. Neutral, not amber: it is not the problem. */
+.correctionRow td,
+.correctionRow th {
+  background: var(--surface-sunk);
+}
+.correctionRow td:first-child { box-shadow: inset 2px 0 0 0 var(--border-strong); }
+
+/* The global reset drops the border on the last row's <td> only; the row
+   header is a <th>, so it needs the same treatment or the table ends on a
+   half-drawn rule. */
+.table tbody tr:last-child th { border-bottom: none; }

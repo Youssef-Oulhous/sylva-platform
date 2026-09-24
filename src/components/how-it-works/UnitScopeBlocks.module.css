@@ -1,0 +1,69 @@
+/* Two columns on a desk, one under the other on a phone. Never one table with
+   both projects in it: a shared column is an invitation to compare. */
+.pair {
+  display: grid;
+  gap: var(--s-5);
+  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+}
+
+.block {
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius);
+  padding: var(--s-5);
+}
+.blockHead {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  align-items: baseline;
+  justify-content: space-between;
+}
+.projectName { font-size: var(--text-md); }
+
+.meta { margin: var(--s-4) 0; display: grid; gap: var(--s-2); }
+.metaRow { display: grid; grid-template-columns: 8rem 1fr; gap: var(--s-3); }
+.metaRow dt {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-muted);
+}
+.metaRow dd { margin: 0; font-size: var(--text-sm); }
+.unit { font-family: var(--font-mono); font-size: var(--text-xs); }
+.period { font-family: var(--font-mono); }
+
+.figLabel {
+  background: transparent;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--ink);
+  border-bottom: var(--rule);
+  white-space: normal;
+  padding-left: 0;
+}
+tr:last-child .figLabel { border-bottom: none; }
+.figValue { font-size: var(--text-md); font-weight: 500; padding-right: 0; }
+.figUnit {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  font-weight: 400;
+  color: var(--ink-muted);
+  white-space: normal;
+}
+
+.noTotal {
+  margin: var(--s-5) 0 0;
+  padding: var(--s-4);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius);
+  font-size: var(--text-sm);
+  max-width: var(--measure-prose);
+}
+
+@media (max-width: 30rem) {
+  .metaRow { grid-template-columns: 1fr; gap: var(--s-1); }
+}

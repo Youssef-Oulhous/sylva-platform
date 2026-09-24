@@ -1,0 +1,58 @@
+.section { margin-top: var(--s-7); }
+
+.panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-4);
+  margin-top: var(--s-4);
+}
+
+.isPanel,
+.isNotPanel {
+  padding: var(--s-5);
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius);
+}
+/* The two panels are equal in weight and differ only in the rule that opens
+   them. Neither is a warning: both are statements of fact. */
+.isPanel { border-left: 2px solid var(--forest); }
+.isNotPanel { border-left: 2px solid var(--border-strong); }
+
+.panelTitle {
+  font-size: var(--text-base);
+  margin-bottom: var(--s-3);
+}
+.panelBody {
+  margin: 0 0 var(--s-3);
+  font-size: var(--text-sm);
+}
+.panelBody:last-child { margin-bottom: 0; }
+
+.howTitle { margin-top: var(--s-6); font-size: var(--text-base); }
+
+.how {
+  margin: var(--s-4) 0 0;
+  padding: 0;
+  display: grid;
+  gap: var(--s-4);
+}
+.how > div {
+  display: grid;
+  grid-template-columns: 17rem 1fr;
+  gap: var(--s-5);
+  padding-bottom: var(--s-4);
+  border-bottom: var(--rule);
+}
+.how > div:last-child { border-bottom: none; padding-bottom: 0; }
+.how dt { font-size: var(--text-sm); font-weight: 500; }
+.how dd {
+  margin: 0;
+  font-size: var(--text-sm);
+  max-width: var(--measure-prose);
+}
+
+@media (max-width: 52rem) {
+  .panels { grid-template-columns: 1fr; }
+  .how > div { grid-template-columns: 1fr; gap: var(--s-2); }
+}

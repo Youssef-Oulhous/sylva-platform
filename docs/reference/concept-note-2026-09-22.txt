@@ -1,0 +1,210 @@
+A platform for European wetland restoration projects
+Concept note for the development partner · 22 September 2026
+
+
+1. The short version
+We want to build a website where our European wetland restoration projects are presented in
+enough depth that a large company or an investor can judge them, get in touch privately, agree
+a deal, and where every step of that deal is recorded permanently.
+
+Think of it as a cross between a property listing site and a deal room, for a product most people
+have never bought before.
+
+
+2. The background you need
+Companies are under growing pressure, from regulators and from their own risk, to do
+something measurable about nature. Some of them are also directly exposed: a power station
+needs water in the river, a drinks company needs water in the catchments around its production
+sites. Restoring a wetland upstream helps both.
+
+A biodiversity credit is a way of packaging that restoration so it can be sold. A project restores
+a wetland, an independent body verifies the ecological result, and the result is issued as units
+the buyer can purchase and then retire, meaning take out of circulation so nobody else can
+claim it. The market is new and small. There is no single standard, and different schemes
+measure different things.
+
+Three consequences shape this build:
+
+Credits are issued later. Our pilot projects have their project idea notes and project design
+documents in place. Credits are issued only after an independent body has verified the results
+on the ground, which comes later. So most of what gets agreed on this platform is a
+commitment to future units, not a sale of something sitting in inventory. The platform has to
+handle deals on units that will exist later.
+
+Units from different projects are not interchangeable. One project may sell hectares under
+restoration for a year, another may sell points on an index. Adding them together produces a
+meaningless number. The platform must never do it.
+
+We are not the registry. Each credit scheme runs its own official database of issued and retired
+units, and does not give outside systems write access. So we store references to their records
+plus the supporting documents. Our own record is evidence of what was agreed, not the
+authoritative record of what exists.
+
+Sylva runs this platform as part of an EU-funded pilot. That matters to you in two ways: every
+page must carry the EU emblem and the line "Co-funded by the European Union" with a short
+disclaimer, and everything is hosted in the EU. More on that in section 9.
+
+
+3. What we learned from the buyers
+We interviewed eight organisations between June and September: two water-dependent
+corporates, two large companies with sustainability reporting obligations, three banks and funds,
+and a foundation. Four points shape the design.
+
+Location matters most to the water-dependent companies and to the reporting companies. The
+water-dependent companies want a project in the same catchment as their own sites; a
+catchment is the area of land that drains into a particular river or aquifer. The reporting
+companies want projects near their own assets. European origin as such did not matter to them.
+
+The water-dependent companies rank water outcomes first and biodiversity second. They would
+claim the biodiversity benefit, but water is what they are paying for.
+
+Who gets to claim what can decide whether a buyer takes part. One company said it would not
+fund a project if the onward sale of credits took away its right to claim the benefit it had paid for,
+and compared this to power purchase agreements that sign away the renewable attributes.
+Another does not want its investment used by others as an offset.
+
+Participation is anonymous by default, and naming is the buyer's choice, deal by deal. Two of
+the organisations we interviewed supported this directly.
+
+
+4. Who uses it
+Project owners. The organisations that run the restoration. They put projects on the platform
+and answer questions.
+
+Buyers. Large companies, in two groups that want different things from the same page: the
+water-driven buyer wants catchment and hydrology, the reporting-driven buyer wants
+documentation its auditor will accept.
+
+Investors. Funds and banks. They finance the project and are repaid from credit sales and
+other revenue. They need financial data, and they come in once buyers have committed.
+
+Us, the operator. Sylva. We vet everyone who wants to transact, confirm records and publish.
+Auditors. Read-only access to everything including real names, for the funder and external
+auditors.
+
+
+5. What can be transacted
+Three deal shapes, offered side by side on each project, because the buyers we spoke to differ
+on this:
+
+A spot volume, where units already exist and the buyer takes some and retires them when
+ready.
+
+A forward contract, where the buyer commits now to take a volume in a future year at agreed
+terms. Most of our pilot deals will take this form, because credits are issued later.
+
+A co-investment, where a company funds a share of the project directly and the volume it does
+not need is sold to other buyers.
+
+
+6. The project page
+This is the heart of the product. Every project gets its own page at its own URL, shareable and
+indexable, so buyers can forward it to colleagues.
+
+We have no photographs or video of the projects yet and are not waiting for them. The buyers
+asked for the following, and most of it can be filled from the project idea notes and design
+documents we already hold:
+
+The catchment view. The project boundary and the surrounding catchment on a satellite map.
+If the visitor has registered their own sites, show the distance from those sites to the project.
+Boundaries are GeoJSON; the file should be downloadable.
+
+Claim rights. For each benefit the project produces, a plain statement of who may claim it, for
+what, and what is excluded.
+
+Outcomes. What is measured, water indicators and the biodiversity metric, with the baseline,
+the monitoring plan, the verifier and the stated uncertainty.
+
+Durability. What happens to the site after the contract ends: who controls the land, who has
+committed to maintain it, for how long. One buyer asked about the period after a five-year
+contract, another about thirty to forty years.
+
+A reporting evidence pack. European companies report on nature under a regime called
+CSRD. One reporting company told us its assessor asked it to consider projects with a
+measurable action, a fixed timeframe, expected impact, a budget and a verification standard.
+We assemble exactly that as a downloadable pack. We state what is in it and make no claim
+that it satisfies any particular auditor.
+
+The partners on the ground. Who develops the project, who owns the land, who verifies. One
+buyer told us it judges a project by meeting the people behind it.
+
+Availability. How many units the project expects to issue in each period, how much is already
+committed, how much is left. Held back from that is a buffer, a margin of unsold units in case the
+project delivers less than expected. Per period, per project, never totalled across projects.
+
+Documents. Project idea note, project design document, monitoring plan and, later, verification
+reports.
+
+Investor data. Financing need, revenue streams, the financial model. Visible only to investors
+we have vetted.
+
+Plus a private question box. Questions go to the project owner and to us, not to a public
+comment feed.
+
+
+7. The private side
+A buyer clicks one button, Express interest. That opens a private room between that buyer and
+that project: messages, documents, versions of the draft terms, and a stage marker running
+from first interest, through a letter of intent and a term sheet, to signed.
+
+Agreements are signed outside the platform, and the signed document is uploaded as evidence.
+We are not building payments, escrow or settlement.
+
+Nobody reaches this stage without being vetted by us first. We collect what the buyer intends to
+claim, how it operates and its approach to sustainability, and approve or decline. This is a
+condition of our funding and our main safeguard against greenwashing.
+
+
+8. The transaction record and the rules that must hold
+Every step is written to a permanent record: listed, offered, interest expressed, terms proposed,
+agreed, credits issued, allocated, retired, cancelled. On the public version of that record the
+buyer appears as a label such as "Buyer 014" with its sector, country and size, unless it has
+chosen to be named for that deal.
+
+Seven rules must hold whatever any screen does. They belong in the database as constraints,
+triggers and permissions, not in application code, because application code gets rewritten and
+the rules must survive that.
+   1.​ Committed volume for a project and period never exceeds what the project expects to
+       issue, less the buffer.
+   2.​ No credit can be allocated, transferred or retired without a reference to the scheme's
+       registry record.
+   3.​ Once retired or cancelled, a credit never changes state again.
+   4.​ The record is append-only. Nothing is edited or deleted. A mistake is corrected by a new
+       entry that points at the wrong one, and the wrong one stays visible.
+   5.​ A buyer's identity is shown as a pseudonym unless that deal is flagged for disclosure.
+   6.​ No deal can be created for an organisation we have not approved.
+   7.​ No screen, query, export or chart adds unit volumes across different projects.
+
+Rules 1 to 6 can be enforced in Postgres. Rule 7 cannot, so it is a review habit and a test.
+
+Row-level security needs care. One buyer seeing another buyer's prices or terms is the failure
+we most need to avoid. Please review the policies table by table rather than relying on whatever
+a tool generates.
+
+
+9. Practical constraints
+Hosting and database in a named EU member state region such as Frankfurt, Paris or Dublin,
+not a generic "Europe" region, which may include London or Zurich.
+
+Personal data sits in one table only, the user accounts. Everything else references organisations
+by ID. A person must be deletable without breaking the permanent record; that is how the right
+to erasure and an append-only record coexist.
+
+Project pages server-rendered and fast. Basic usage analytics from day one, self-hosted or
+EU-hosted, no third-party trackers. English first, German second, so a translation library from
+the first commit. Every page carries the EU emblem, the co-funding line and the disclaimer.
+
+Plain, document-like design. One typeface, one accent colour, no stock nature photography, no
+marketing language. Every figure on screen carries its source and date. The test: a finance
+analyst reads a project page in ten minutes and knows what is being sold, where, on what
+evidence, with what claim rights and on what terms.
+
+
+10. What we build first
+The first release, which we want live by the end of October, is the public side plus a way in: the
+projects index with the catchment map, a full page for each pilot project with its idea note and
+design document, registration of a buyer's own sites so distances can be shown, the vetting
+questionnaire, the Express interest button, and the public record showing interest events.
+Then: the private deal room, the three deal shapes, issuance and retirement records, investor
+data, exports.
+

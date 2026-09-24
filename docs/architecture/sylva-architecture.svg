@@ -1,0 +1,388 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2934" viewBox="40 0 1600 2934">
+<rect x="40" y="0" width="1600" height="2934" fill="#fff"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#868e96"/></marker></defs>
+<text x="80" y="70.0" font-family="Helvetica,Arial,sans-serif" font-size="30" fill="#1e1e1e" text-anchor="start" font-weight="600">Sylva — European wetland restoration platform</text>
+<text x="80" y="95.0" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#868e96" text-anchor="start">Page architecture, user flows and current build state.  Regenerate with: python3 docs/architecture/generate.py</text>
+<text x="80" y="117.0" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#1b5a78" text-anchor="start">Every page carries: EU emblem + &quot;Co-funded by the European Union&quot; + grant-agreement disclaimer  ·  EN / DE  ·  demo-data notice</text>
+<rect x="80" y="140" width="190" height="26" rx="6" fill="#e8f0ec" stroke="#1f4d3a" stroke-width="1"/>
+<text x="92" y="158.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1f4d3a" text-anchor="start">BUILT · runs &amp; tested</text>
+<rect x="285" y="140" width="250" height="26" rx="6" fill="#fbf3db" stroke="#8a5a00" stroke-width="1"/>
+<text x="297" y="158.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#8a5a00" text-anchor="start">UI ONLY · demo data, not wired</text>
+<rect x="550" y="140" width="205" height="26" rx="6" fill="#fdebec" stroke="#9f2f2d" stroke-width="1"/>
+<text x="562" y="158.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#9f2f2d" text-anchor="start">BROKEN · raw i18n keys</text>
+<rect x="770" y="140" width="165" height="26" rx="6" fill="#f1f3f5" stroke="#868e96" stroke-width="1"/>
+<text x="782" y="158.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#868e96" text-anchor="start">NOT STARTED</text>
+<rect x="950" y="140" width="150" height="26" rx="6" fill="#e1f3fe" stroke="#1b5a78" stroke-width="1"/>
+<text x="962" y="158.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1b5a78" text-anchor="start">Engine · done</text>
+<rect x="80" y="200" width="1520" height="300" rx="6" fill="none" stroke="#1e1e1e" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="96" y="230.0" font-family="Helvetica,Arial,sans-serif" font-size="18" fill="#1e1e1e" text-anchor="start" font-weight="600">1 · PUBLIC</text>
+<text x="96" y="248.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#868e96" text-anchor="start">No account. Indexable, shareable, server-rendered.</text>
+<rect x="110" y="266" width="268" height="147.0" rx="6" fill="#e8f0ec" stroke="#1f4d3a" stroke-width="1"/>
+<text x="124" y="293.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#1f4d3a" text-anchor="start" font-weight="600">Landing</text>
+<text x="364" y="288.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#1f4d3a" text-anchor="end">BUILT</text>
+<text x="124" y="314.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- What the platform is, in plain words</text>
+<text x="124" y="329.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- 7-step flow: project -&gt; evidence -&gt;</text>
+<text x="124" y="344.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">-   interest -&gt; deal -&gt; verified -&gt; units</text>
+<text x="124" y="359.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- 8 things you can evaluate</text>
+<text x="124" y="374.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- NOT the registry — stated here</text>
+<rect x="410" y="266" width="268" height="162.0" rx="6" fill="#e8f0ec" stroke="#1f4d3a" stroke-width="1"/>
+<text x="424" y="293.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#1f4d3a" text-anchor="start" font-weight="600">Projects index</text>
+<text x="664" y="288.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#1f4d3a" text-anchor="end">BUILT</text>
+<text x="424" y="314.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Filters: country, outcome, status</text>
+<text x="424" y="329.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- SORT: near my sites / my catchment</text>
+<text x="424" y="344.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Map draws catchment polygons</text>
+<text x="424" y="359.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Card per project with its OWN units</text>
+<text x="424" y="374.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Reads the REAL database (RLS)</text>
+<text x="424" y="389.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- NO cross-project totals anywhere</text>
+<rect x="710" y="266" width="268" height="162.0" rx="6" fill="#fbf3db" stroke="#8a5a00" stroke-width="1"/>
+<text x="724" y="293.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#8a5a00" text-anchor="start" font-weight="600">Project page</text>
+<text x="964" y="288.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#8a5a00" text-anchor="end">UI ONLY</text>
+<text x="724" y="314.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- THE most important page</text>
+<text x="724" y="329.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- 10-min read for a finance analyst</text>
+<text x="724" y="344.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- 11 sections — see lane 1b below</text>
+<text x="724" y="359.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Own URL, shareable, indexable</text>
+<text x="724" y="374.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Express interest (primary action)</text>
+<text x="724" y="389.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- 13 section components, demo data</text>
+<rect x="1010" y="266" width="268" height="147.0" rx="6" fill="#fbf3db" stroke="#8a5a00" stroke-width="1"/>
+<text x="1024" y="293.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#8a5a00" text-anchor="start" font-weight="600">Public record</text>
+<text x="1264" y="288.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#8a5a00" text-anchor="end">UI ONLY</text>
+<text x="1024" y="314.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Append-only event list</text>
+<text x="1024" y="329.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Buyer 014 - one label PER DEAL</text>
+<text x="1024" y="344.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">-   + sector, country, size</text>
+<text x="1024" y="359.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Named only if that deal opted in</text>
+<text x="1024" y="374.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- RISK: small pilot -&gt; re-identifiable</text>
+<rect x="1310" y="266" width="268" height="147.0" rx="6" fill="#fbf3db" stroke="#868e96" stroke-width="1"/>
+<text x="1324" y="293.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#868e96" text-anchor="start" font-weight="600">Explainer pages</text>
+<text x="1564" y="288.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#8a5a00" text-anchor="end">UI ONLY</text>
+<text x="1324" y="314.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- How it works / For buyers /</text>
+<text x="1324" y="329.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">-   For investors = UI ONLY</text>
+<text x="1324" y="344.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- About = BROKEN (5 raw keys)</text>
+<text x="1324" y="359.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- No marketing language</text>
+<text x="1324" y="374.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- No stock photography</text>
+<polyline points="386.0,316.0 402.0,316.0" fill="none" stroke="#868e96" stroke-width="1" marker-end="url(#a)"/>
+<polyline points="686.0,316.0 702.0,316.0" fill="none" stroke="#868e96" stroke-width="1" marker-end="url(#a)"/>
+<polyline points="986.0,316.0 1002.0,316.0" fill="none" stroke="#868e96" stroke-width="1" marker-end="url(#a)"/>
+<rect x="80" y="530" width="1520" height="410" rx="6" fill="none" stroke="#8a5a00" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="96" y="560.0" font-family="Helvetica,Arial,sans-serif" font-size="18" fill="#8a5a00" text-anchor="start" font-weight="600">1b · PROJECT PAGE — the eleven sections</text>
+<text x="96" y="578.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#868e96" text-anchor="start">The page a buyer forwards to a colleague. Every figure carries source + date.</text>
+<rect x="110" y="596" width="268" height="88" rx="6" fill="#fffaf0" stroke="#8a5a00" stroke-width="1"/>
+<text x="122" y="619.0" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#8a5a00" text-anchor="start">1 Header</text>
+<text x="122" y="637.0" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">Name, owner, location</text>
+<text x="122" y="650.8" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">Status + verification status</text>
+<text x="122" y="664.5" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">Express interest / documents</text>
+<rect x="410" y="596" width="268" height="88" rx="6" fill="#fffaf0" stroke="#8a5a00" stroke-width="1"/>
+<text x="422" y="619.0" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#8a5a00" text-anchor="start">2 Catchment map</text>
+<text x="422" y="637.0" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">Boundary + catchment, satellite</text>
+<text x="422" y="650.8" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">Download GeoJSON</text>
+<text x="422" y="664.5" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">Same catchment? yes/no</text>
+<text x="422" y="678.2" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">Distance to boundary (private)</text>
+<rect x="710" y="596" width="268" height="88" rx="6" fill="#fffaf0" stroke="#8a5a00" stroke-width="1"/>
+<text x="722" y="619.0" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#8a5a00" text-anchor="start">3 Claim rights</text>
+<text x="722" y="637.0" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">Benefit | who may claim |</text>
+<text x="722" y="650.8" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">  allowed use | EXCLUSIONS</text>
+<text x="722" y="664.5" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">Deal-breaker for buyers</text>
+<rect x="1010" y="596" width="268" height="88" rx="6" fill="#fffaf0" stroke="#8a5a00" stroke-width="1"/>
+<text x="1022" y="619.0" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#8a5a00" text-anchor="start">4 Outcomes</text>
+<text x="1022" y="637.0" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">WATER and BIODIVERSITY apart</text>
+<text x="1022" y="650.8" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">Metric, baseline, target, method</text>
+<text x="1022" y="664.5" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">Verifier + stated uncertainty</text>
+<rect x="1310" y="596" width="268" height="88" rx="6" fill="#fffaf0" stroke="#8a5a00" stroke-width="1"/>
+<text x="1322" y="619.0" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#8a5a00" text-anchor="start">5 Durability</text>
+<text x="1322" y="637.0" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">Who controls the land</text>
+<text x="1322" y="650.8" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">Who maintains, how long</text>
+<text x="1322" y="664.5" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">What happens after the contract</text>
+<rect x="110" y="702" width="268" height="88" rx="6" fill="#fffaf0" stroke="#8a5a00" stroke-width="1"/>
+<text x="122" y="725.0" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#8a5a00" text-anchor="start">6 Availability</text>
+<text x="122" y="743.0" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">Per period: expected, buffer,</text>
+<text x="122" y="756.8" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">  committed, remaining</text>
+<text x="122" y="770.5" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">This project&#x27;s unit type ONLY</text>
+<rect x="410" y="702" width="268" height="88" rx="6" fill="#fffaf0" stroke="#8a5a00" stroke-width="1"/>
+<text x="422" y="725.0" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#8a5a00" text-anchor="start">7 Documents</text>
+<text x="422" y="743.0" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">Idea note, design document,</text>
+<text x="422" y="756.8" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">  monitoring plan, verification</text>
+<text x="422" y="770.5" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">Version, date, uploader</text>
+<rect x="710" y="702" width="268" height="88" rx="6" fill="#fffaf0" stroke="#8a5a00" stroke-width="1"/>
+<text x="722" y="725.0" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#8a5a00" text-anchor="start">8 Partners</text>
+<text x="722" y="743.0" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">Developer, landowner, verifier</text>
+<text x="722" y="756.8" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">Buyers judge by the people</text>
+<rect x="1010" y="702" width="268" height="88" rx="6" fill="#fffaf0" stroke="#8a5a00" stroke-width="1"/>
+<text x="1022" y="725.0" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#8a5a00" text-anchor="start">9 Evidence pack</text>
+<text x="1022" y="743.0" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">Action, timeframe, impact,</text>
+<text x="1022" y="756.8" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">  BUDGET, verification standard</text>
+<text x="1022" y="770.5" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">Budget vs investor-only: OPEN</text>
+<rect x="1310" y="702" width="268" height="88" rx="6" fill="#fffaf0" stroke="#8a5a00" stroke-width="1"/>
+<text x="1322" y="725.0" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#8a5a00" text-anchor="start">10 Investor block</text>
+<text x="1322" y="743.0" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">Financing need, revenue, model</text>
+<text x="1322" y="756.8" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">Vetted investors only</text>
+<text x="1322" y="770.5" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">PHASE 2 - shown as locked</text>
+<rect x="110" y="808" width="268" height="88" rx="6" fill="#fffaf0" stroke="#8a5a00" stroke-width="1"/>
+<text x="122" y="831.0" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#8a5a00" text-anchor="start">11 Private questions</text>
+<text x="122" y="849.0" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">To owner + operator</text>
+<text x="122" y="862.8" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1e1e1e" text-anchor="start">NO public comments</text>
+<rect x="80" y="970" width="1520" height="240" rx="6" fill="none" stroke="#1b5a78" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="96" y="1000.0" font-family="Helvetica,Arial,sans-serif" font-size="18" fill="#1b5a78" text-anchor="start" font-weight="600">2 · ACCOUNT &amp; VETTING</text>
+<text x="96" y="1018.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#868e96" text-anchor="start">Nobody transacts without being vetted. This is the anti-greenwashing gate.</text>
+<rect x="110" y="1036" width="268" height="117.0" rx="6" fill="#fbf3db" stroke="#1b5a78" stroke-width="1"/>
+<text x="124" y="1063.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#1b5a78" text-anchor="start" font-weight="600">Register</text>
+<text x="364" y="1058.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#8a5a00" text-anchor="end">UI ONLY</text>
+<text x="124" y="1084.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Organisation + first person</text>
+<text x="124" y="1099.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Personal data -&gt; ONE table only</text>
+<text x="124" y="1114.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Role: buyer / owner / investor</text>
+<rect x="410" y="1036" width="268" height="117.0" rx="6" fill="#fbf3db" stroke="#1b5a78" stroke-width="1"/>
+<text x="424" y="1063.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#1b5a78" text-anchor="start" font-weight="600">Sign in</text>
+<text x="664" y="1058.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#8a5a00" text-anchor="end">UI ONLY</text>
+<text x="424" y="1084.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Session in identity.user_session</text>
+<text x="424" y="1099.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- No IP, no user-agent stored</text>
+<text x="424" y="1114.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Signed org context per request</text>
+<rect x="710" y="1036" width="268" height="132.0" rx="6" fill="#fbf3db" stroke="#1b5a78" stroke-width="1"/>
+<text x="724" y="1063.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#1b5a78" text-anchor="start" font-weight="600">Vetting questionnaire</text>
+<text x="964" y="1058.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#8a5a00" text-anchor="end">UI ONLY</text>
+<text x="724" y="1084.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- What you intend to claim</text>
+<text x="724" y="1099.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- How you operate</text>
+<text x="724" y="1114.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Your sustainability approach</text>
+<text x="724" y="1129.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Onward sale? Offset? Exclusive?</text>
+<rect x="1010" y="1036" width="268" height="132.0" rx="6" fill="#fdebec" stroke="#9f2f2d" stroke-width="1"/>
+<text x="1024" y="1063.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#9f2f2d" text-anchor="start" font-weight="600">Awaiting decision</text>
+<text x="1264" y="1058.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#9f2f2d" text-anchor="end">BROKEN</text>
+<text x="1024" y="1084.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Clear state, no dead end</text>
+<text x="1024" y="1099.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Declined -&gt; reason shown</text>
+<text x="1024" y="1114.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Cannot reach any deal screen</text>
+<text x="1024" y="1129.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- 2 raw i18n keys - needs fixing</text>
+<rect x="1310" y="1036" width="268" height="132.0" rx="6" fill="#e8f0ec" stroke="#1f4d3a" stroke-width="1"/>
+<text x="1324" y="1063.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#1f4d3a" text-anchor="start" font-weight="600">Operator decides</text>
+<text x="1564" y="1058.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#1f4d3a" text-anchor="end">BUILT</text>
+<text x="1324" y="1084.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Approve / decline / suspend</text>
+<text x="1324" y="1099.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Approval DERIVED from decision</text>
+<text x="1324" y="1114.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">-   (never written directly)</text>
+<text x="1324" y="1129.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- R6 enforced in Postgres</text>
+<polyline points="386.0,1086.0 402.0,1086.0" fill="none" stroke="#1b5a78" stroke-width="1" marker-end="url(#a)"/>
+<polyline points="686.0,1086.0 702.0,1086.0" fill="none" stroke="#1b5a78" stroke-width="1" marker-end="url(#a)"/>
+<polyline points="986.0,1086.0 1002.0,1086.0" fill="none" stroke="#1b5a78" stroke-width="1" marker-end="url(#a)"/>
+<polyline points="1286.0,1086.0 1302.0,1086.0" fill="none" stroke="#1b5a78" stroke-width="1" marker-end="url(#a)"/>
+<rect x="80" y="1240" width="1520" height="250" rx="6" fill="none" stroke="#8a5a00" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="96" y="1270.0" font-family="Helvetica,Arial,sans-serif" font-size="18" fill="#8a5a00" text-anchor="start" font-weight="600">2b · PROJECT OWNER</text>
+<text x="96" y="1288.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#868e96" text-anchor="start">One of the five user types in the note: owners put projects on the platform and answer questions. Release 1.</text>
+<rect x="110" y="1306" width="268" height="132.0" rx="6" fill="#fdebec" stroke="#9f2f2d" stroke-width="1"/>
+<text x="124" y="1333.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#9f2f2d" text-anchor="start" font-weight="600">Owner dashboard</text>
+<text x="364" y="1328.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#9f2f2d" text-anchor="end">BROKEN</text>
+<text x="124" y="1354.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- My projects and their status</text>
+<text x="124" y="1369.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- What is blocking publication</text>
+<text x="124" y="1384.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Open questions, open interest</text>
+<text x="124" y="1399.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- 133 raw i18n keys</text>
+<rect x="410" y="1306" width="268" height="147.0" rx="6" fill="#fdebec" stroke="#9f2f2d" stroke-width="1"/>
+<text x="424" y="1333.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#9f2f2d" text-anchor="start" font-weight="600">Create / edit project</text>
+<text x="664" y="1328.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#9f2f2d" text-anchor="end">BROKEN</text>
+<text x="424" y="1354.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Text, outcomes, claim rights,</text>
+<text x="424" y="1369.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">-   durability, partners, periods</text>
+<text x="424" y="1384.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Upload boundary + catchment</text>
+<text x="424" y="1399.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Every figure needs source + date</text>
+<text x="424" y="1414.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- 600 raw i18n keys - biggest fix</text>
+<rect x="710" y="1306" width="268" height="117.0" rx="6" fill="#fbf3db" stroke="#8a5a00" stroke-width="1"/>
+<text x="724" y="1333.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#8a5a00" text-anchor="start" font-weight="600">Submit for review</text>
+<text x="964" y="1328.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#8a5a00" text-anchor="end">UI ONLY</text>
+<text x="724" y="1354.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Shows the publication gate list</text>
+<text x="724" y="1369.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- The SAME list the database checks</text>
+<text x="724" y="1384.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Cannot publish itself</text>
+<rect x="1010" y="1306" width="268" height="132.0" rx="6" fill="#fbf3db" stroke="#8a5a00" stroke-width="1"/>
+<text x="1024" y="1333.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#8a5a00" text-anchor="start" font-weight="600">Question inbox</text>
+<text x="1264" y="1328.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#8a5a00" text-anchor="end">UI ONLY</text>
+<text x="1024" y="1354.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Private questions from buyers</text>
+<text x="1024" y="1369.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Goes to owner AND operator</text>
+<text x="1024" y="1384.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Section 11 now has a destination</text>
+<text x="1024" y="1399.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- No public comments, ever</text>
+<rect x="1310" y="1306" width="268" height="117.0" rx="6" fill="#f1f3f5" stroke="#8a5a00" stroke-width="1"/>
+<text x="1324" y="1333.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#8a5a00" text-anchor="start" font-weight="600">Interest inbox</text>
+<text x="1564" y="1328.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#868e96" text-anchor="end">PHASE 2</text>
+<text x="1324" y="1354.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Who expressed interest</text>
+<text x="1324" y="1369.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Buyer shown per disclosure rules</text>
+<text x="1324" y="1384.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Respond / hand to operator</text>
+<polyline points="386.0,1356.0 402.0,1356.0" fill="none" stroke="#8a5a00" stroke-width="1" marker-end="url(#a)"/>
+<polyline points="686.0,1356.0 702.0,1356.0" fill="none" stroke="#8a5a00" stroke-width="1" marker-end="url(#a)"/>
+<polyline points="986.0,1356.0 1002.0,1356.0" fill="none" stroke="#8a5a00" stroke-width="1" marker-end="url(#a)"/>
+<polyline points="1286.0,1356.0 1302.0,1356.0" fill="none" stroke="#8a5a00" stroke-width="1" marker-end="url(#a)"/>
+<rect x="80" y="1530" width="1520" height="250" rx="6" fill="none" stroke="#1f4d3a" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="96" y="1560.0" font-family="Helvetica,Arial,sans-serif" font-size="18" fill="#1f4d3a" text-anchor="start" font-weight="600">3 · BUYER (vetted)</text>
+<text x="96" y="1578.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#868e96" text-anchor="start">A buyer must never see another buyer&#x27;s prices, terms, documents, messages or identity.</text>
+<rect x="110" y="1596" width="268" height="117.0" rx="6" fill="#fbf3db" stroke="#1f4d3a" stroke-width="1"/>
+<text x="124" y="1623.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#1f4d3a" text-anchor="start" font-weight="600">Buyer dashboard</text>
+<text x="364" y="1618.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#8a5a00" text-anchor="end">UI ONLY</text>
+<text x="124" y="1644.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- My interests, deals, documents</text>
+<text x="124" y="1659.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Organisation + vetting status</text>
+<text x="124" y="1674.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Not an analytics dashboard</text>
+<rect x="410" y="1596" width="268" height="132.0" rx="6" fill="#fbf3db" stroke="#1f4d3a" stroke-width="1"/>
+<text x="424" y="1623.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#1f4d3a" text-anchor="start" font-weight="600">My sites</text>
+<text x="664" y="1618.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#8a5a00" text-anchor="end">UI ONLY</text>
+<text x="424" y="1644.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Register company sites</text>
+<text x="424" y="1659.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Distance to each project</text>
+<text x="424" y="1674.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- PRIVATE — anon role has no grant</text>
+<text x="424" y="1689.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Proven: RLS + privilege, 2 layers</text>
+<rect x="710" y="1596" width="268" height="162.0" rx="6" fill="#fbf3db" stroke="#8a5a00" stroke-width="1"/>
+<text x="724" y="1623.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#8a5a00" text-anchor="start" font-weight="600">Express interest</text>
+<text x="964" y="1618.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#8a5a00" text-anchor="end">UI ONLY</text>
+<text x="724" y="1644.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Checks org is approved (R6)</text>
+<text x="724" y="1659.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Writes interest event to record</text>
+<text x="724" y="1674.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- RELEASE 1: confirmation screen,</text>
+<text x="724" y="1689.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">-   emails owner + operator,</text>
+<text x="724" y="1704.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">-   states the next step. NO room.</text>
+<text x="724" y="1719.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Room opens in Phase 2</text>
+<rect x="1010" y="1596" width="268" height="147.0" rx="6" fill="#f1f3f5" stroke="#868e96" stroke-width="1"/>
+<text x="1024" y="1623.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#868e96" text-anchor="start" font-weight="600">Deal room</text>
+<text x="1264" y="1618.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#868e96" text-anchor="end">PHASE 2</text>
+<text x="1024" y="1644.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Messages, documents, versions</text>
+<text x="1024" y="1659.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Draft terms + versions</text>
+<text x="1024" y="1674.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Stage: interest -&gt; LOI -&gt;</text>
+<text x="1024" y="1689.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">-   term sheet -&gt; signed</text>
+<text x="1024" y="1704.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Not a chat app</text>
+<rect x="1310" y="1596" width="268" height="162.0" rx="6" fill="#f1f3f5" stroke="#868e96" stroke-width="1"/>
+<text x="1324" y="1623.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#868e96" text-anchor="start" font-weight="600">Three deal shapes</text>
+<text x="1564" y="1618.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#868e96" text-anchor="end">PHASE 2</text>
+<text x="1324" y="1644.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Spot volume (units exist)</text>
+<text x="1324" y="1659.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Forward (future period) — most</text>
+<text x="1324" y="1674.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Co-investment (funds a share)</text>
+<text x="1324" y="1689.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Reserved at term sheet,</text>
+<text x="1324" y="1704.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">-   committed at signed</text>
+<text x="1324" y="1719.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- BOTH count against R1 (fixed)</text>
+<polyline points="386.0,1652.0 402.0,1652.0" fill="none" stroke="#1f4d3a" stroke-width="1" marker-end="url(#a)"/>
+<polyline points="686.0,1652.0 702.0,1652.0" fill="none" stroke="#1f4d3a" stroke-width="1" marker-end="url(#a)"/>
+<polyline points="986.0,1652.0 1002.0,1652.0" fill="none" stroke="#1f4d3a" stroke-width="1" marker-end="url(#a)"/>
+<polyline points="1286.0,1652.0 1302.0,1652.0" fill="none" stroke="#1f4d3a" stroke-width="1" marker-end="url(#a)"/>
+<rect x="80" y="1810" width="1520" height="250" rx="6" fill="none" stroke="#868e96" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="96" y="1840.0" font-family="Helvetica,Arial,sans-serif" font-size="18" fill="#868e96" text-anchor="start" font-weight="600">4 · INVESTOR, OPERATOR, AUDITOR</text>
+<text x="96" y="1858.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#868e96" text-anchor="start">Investor financial data is visible only to vetted investors. Auditors read everything and change nothing.</text>
+<rect x="110" y="1876" width="268" height="132.0" rx="6" fill="#f1f3f5" stroke="#868e96" stroke-width="1"/>
+<text x="124" y="1903.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#868e96" text-anchor="start" font-weight="600">Investor view</text>
+<text x="364" y="1898.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#868e96" text-anchor="end">PHASE 2</text>
+<text x="124" y="1924.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Financing need, revenue streams</text>
+<text x="124" y="1939.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Financial model download</text>
+<text x="124" y="1954.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Gated: vetted investors only</text>
+<text x="124" y="1969.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Comes in after buyers commit</text>
+<rect x="410" y="1876" width="268" height="117.0" rx="6" fill="#fbf3db" stroke="#1f4d3a" stroke-width="1"/>
+<text x="424" y="1903.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#1f4d3a" text-anchor="start" font-weight="600">Operator — vetting queue</text>
+<text x="664" y="1898.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#8a5a00" text-anchor="end">NEXT</text>
+<text x="424" y="1924.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Review submissions</text>
+<text x="424" y="1939.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Approve / decline / suspend</text>
+<text x="424" y="1954.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Every decision is recorded</text>
+<rect x="710" y="1876" width="268" height="147.0" rx="6" fill="#fbf3db" stroke="#9f2f2d" stroke-width="1"/>
+<text x="724" y="1903.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#9f2f2d" text-anchor="start" font-weight="600">Operator — publish</text>
+<text x="964" y="1898.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#8a5a00" text-anchor="end">NEXT</text>
+<text x="724" y="1924.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Publication GATE in the database:</text>
+<text x="724" y="1939.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">-   text, boundary, claim rights,</text>
+<text x="724" y="1954.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">-   outcomes, baseline, durability,</text>
+<text x="724" y="1969.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">-   verifier, PIN, PDD, availability</text>
+<text x="724" y="1984.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- 123 raw i18n keys</text>
+<rect x="1010" y="1876" width="268" height="132.0" rx="6" fill="#fbf3db" stroke="#1f4d3a" stroke-width="1"/>
+<text x="1024" y="1903.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#1f4d3a" text-anchor="start" font-weight="600">Operator — record</text>
+<text x="1264" y="1898.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#8a5a00" text-anchor="end">NEXT</text>
+<text x="1024" y="1924.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Confirm registry references</text>
+<text x="1024" y="1939.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Corrections = NEW entry</text>
+<text x="1024" y="1954.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">-   pointing at the wrong one</text>
+<text x="1024" y="1969.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Nothing is ever edited</text>
+<rect x="1310" y="1876" width="268" height="147.0" rx="6" fill="#f1f3f5" stroke="#1f4d3a" stroke-width="1"/>
+<text x="1324" y="1903.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#1f4d3a" text-anchor="start" font-weight="600">Auditor</text>
+<text x="1564" y="1898.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#868e96" text-anchor="end">PHASE 2</text>
+<text x="1324" y="1924.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Read-only, everything</text>
+<text x="1324" y="1939.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Org names ALWAYS</text>
+<text x="1324" y="1954.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Person names until erasure</text>
+<text x="1324" y="1969.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- DELETE denied at DB level</text>
+<text x="1324" y="1984.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Loses names after erasure</text>
+<rect x="80" y="2090" width="1520" height="500" rx="6" fill="none" stroke="#1b5a78" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="96" y="2120.0" font-family="Helvetica,Arial,sans-serif" font-size="18" fill="#1b5a78" text-anchor="start" font-weight="600">5 · THE ENGINE — already built, tested, invisible to users</text>
+<text x="96" y="2138.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#868e96" text-anchor="start">PostgreSQL 16 + PostGIS 3.5. The rules live here because application code gets rewritten and the rules must survive that.</text>
+<rect x="110" y="2156" width="268" height="132.0" rx="6" fill="#e8f0ec" stroke="#1b5a78" stroke-width="1"/>
+<text x="124" y="2183.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#1b5a78" text-anchor="start" font-weight="600">Schema</text>
+<text x="364" y="2178.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#1f4d3a" text-anchor="end">BUILT</text>
+<text x="124" y="2204.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- 81 tables, 31 migrations</text>
+<text x="124" y="2219.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Personal data in ONE table</text>
+<text x="124" y="2234.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- person_ref is an FK to NOTHING</text>
+<text x="124" y="2249.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">-   -&gt; erasure never breaks history</text>
+<rect x="410" y="2156" width="268" height="177.0" rx="6" fill="#e8f0ec" stroke="#1b5a78" stroke-width="1"/>
+<text x="424" y="2183.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#1b5a78" text-anchor="start" font-weight="600">The seven rules</text>
+<text x="664" y="2178.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#1f4d3a" text-anchor="end">BUILT</text>
+<text x="424" y="2204.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- R1 reserved+committed &lt;= exp-buffer</text>
+<text x="424" y="2219.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- R2 registry ref required</text>
+<text x="424" y="2234.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- R3 retired/cancelled is terminal</text>
+<text x="424" y="2249.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- R4 append-only (privilege+trigger)</text>
+<text x="424" y="2264.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- R5 pseudonym PER DEAL (fixed)</text>
+<text x="424" y="2279.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- R6 no deal for unapproved org</text>
+<text x="424" y="2294.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- R7 partly in DB + tests/review</text>
+<rect x="710" y="2156" width="268" height="147.0" rx="6" fill="#e8f0ec" stroke="#1b5a78" stroke-width="1"/>
+<text x="724" y="2183.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#1b5a78" text-anchor="start" font-weight="600">Row-level security</text>
+<text x="964" y="2178.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#1f4d3a" text-anchor="end">BUILT</text>
+<text x="724" y="2204.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- 216 policies, 20 CI guards</text>
+<text x="724" y="2219.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- 6 login roles, none BYPASSRLS</text>
+<text x="724" y="2234.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Role = current_user (unforgeable)</text>
+<text x="724" y="2249.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Org = HMAC-signed context</text>
+<text x="724" y="2264.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- FINDING-001 found &amp; fixed</text>
+<rect x="1010" y="2156" width="268" height="147.0" rx="6" fill="#e8f0ec" stroke="#1b5a78" stroke-width="1"/>
+<text x="1024" y="2183.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#1b5a78" text-anchor="start" font-weight="600">Geography</text>
+<text x="1264" y="2178.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#1f4d3a" text-anchor="end">BUILT</text>
+<text x="1024" y="2204.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- PostGIS, SRID 4326</text>
+<text x="1024" y="2219.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Boundary + catchment per project</text>
+<text x="1024" y="2234.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Geodesic distance to BOUNDARY</text>
+<text x="1024" y="2249.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Point-in-polygon = same catchment</text>
+<text x="1024" y="2264.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Buyer sites private</text>
+<rect x="1310" y="2156" width="268" height="132.0" rx="6" fill="#e8f0ec" stroke="#1b5a78" stroke-width="1"/>
+<text x="1324" y="2183.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#1b5a78" text-anchor="start" font-weight="600">Provenance &amp; EU</text>
+<text x="1564" y="2178.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#1f4d3a" text-anchor="end">BUILT</text>
+<text x="1324" y="2204.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Every figure -&gt; source_ref + date</text>
+<text x="1324" y="2219.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Storage region FK to EU states:</text>
+<text x="1324" y="2234.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">-   London / Zurich REJECTED</text>
+<text x="1324" y="2249.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- EN/DE, 132 keys, full parity</text>
+<rect x="110" y="2356" width="268" height="162.0" rx="6" fill="#f1f3f5" stroke="#8a5a00" stroke-width="1"/>
+<text x="124" y="2383.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#8a5a00" text-anchor="start" font-weight="600">Platform services</text>
+<text x="364" y="2378.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#868e96" text-anchor="end">PHASE 2</text>
+<text x="124" y="2404.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Analytics: self-hosted, EU, no</text>
+<text x="124" y="2419.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">-   third-party trackers (day one)</text>
+<text x="124" y="2434.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Email: vetting decisions,</text>
+<text x="124" y="2449.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">-   questions, interest - EU provider</text>
+<text x="124" y="2464.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- App + backups + logs: ONE named</text>
+<text x="124" y="2479.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">-   EU region, not only storage</text>
+<rect x="410" y="2356" width="268" height="162.0" rx="6" fill="#e8f0ec" stroke="#1b5a78" stroke-width="1"/>
+<text x="424" y="2383.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#1b5a78" text-anchor="start" font-weight="600">The record</text>
+<text x="664" y="2378.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#1f4d3a" text-anchor="end">BUILT</text>
+<text x="424" y="2404.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- All 9 note events present:</text>
+<text x="424" y="2419.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">-   listed, offered, interest,</text>
+<text x="424" y="2434.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">-   terms proposed, agreed, issued,</text>
+<text x="424" y="2449.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">-   allocated, retired, cancelled</text>
+<text x="424" y="2464.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- + correction, transferred,</text>
+<text x="424" y="2479.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">-   withdrawn, declined, lapsed</text>
+<rect x="710" y="2356" width="268" height="132.0" rx="6" fill="#e8f0ec" stroke="#1b5a78" stroke-width="1"/>
+<text x="724" y="2383.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#1b5a78" text-anchor="start" font-weight="600">Erasure - structured</text>
+<text x="964" y="2378.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#1f4d3a" text-anchor="end">BUILT</text>
+<text x="724" y="2404.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- person_ref is an FK to nothing</text>
+<text x="724" y="2419.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- DELETE always succeeds</text>
+<text x="724" y="2434.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- erasure_event records THAT,</text>
+<text x="724" y="2449.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">-   never who</text>
+<rect x="1010" y="2356" width="268" height="147.0" rx="6" fill="#f1f3f5" stroke="#9f2f2d" stroke-width="1"/>
+<text x="1024" y="2383.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#9f2f2d" text-anchor="start" font-weight="600">Erasure - free text &amp; files</text>
+<text x="1264" y="2378.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#868e96" text-anchor="end">PHASE 2</text>
+<text x="1024" y="2404.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Messages, questionnaire answers,</text>
+<text x="1024" y="2419.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">-   signed PDFs contain names</text>
+<text x="1024" y="2434.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- One-table design does NOT cover</text>
+<text x="1024" y="2449.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">-   these. Needs a rule:</text>
+<text x="1024" y="2464.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">-   redact a copy, keep the hash</text>
+<rect x="1310" y="2356" width="268" height="177.0" rx="6" fill="#f1f3f5" stroke="#9f2f2d" stroke-width="1"/>
+<text x="1324" y="2383.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#9f2f2d" text-anchor="start" font-weight="600">NOT WIRED YET</text>
+<text x="1564" y="2378.0" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#868e96" text-anchor="end">PHASE 2</text>
+<text x="1324" y="2404.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Authentication (tables exist)</text>
+<text x="1324" y="2419.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- All form submissions</text>
+<text x="1324" y="2434.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Document upload / storage</text>
+<text x="1324" y="2449.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Map basemap (tile provider = OPEN)</text>
+<text x="1324" y="2464.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Analytics, email, EU region cfg</text>
+<text x="1324" y="2479.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">- Only the index + project page</text>
+<text x="1324" y="2494.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">-   read the real database</text>
+<rect x="80" y="2620" width="1520" height="196" rx="6" fill="#fdebec" stroke="#9f2f2d" stroke-width="1"/>
+<text x="98" y="2649.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#9f2f2d" text-anchor="start" font-weight="600">OPEN — needs the client before launch</text>
+<text x="98" y="2670.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">1  EU emblem asset + exact disclaimer wording from the grant agreement (renders as a red placeholder until supplied)</text>
+<text x="98" y="2685.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">2  Public record still carries sector + country + size on every row. Per-deal labels no longer link a buyer&#x27;s deals, but those three</text>
+<text x="98" y="2700.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">     attributes still match a named row to a pseudonymous one. Needs a k-anonymity rule - suppress below a minimum buyer count.</text>
+<text x="98" y="2715.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">3  Availability: expected / buffer / reserved / committed / remaining are mutually determining. With one buyer, committed IS their volume.</text>
+<text x="98" y="2730.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">     Options: publish committed in bands, suppress below a threshold, or accept it. Product decision, not an engineering one.</text>
+<text x="98" y="2745.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">4  Evidence pack needs a budget (note section 6) but budgets are investor-only. Decide which figure goes in and who may download it.</text>
+<text x="98" y="2760.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">5  May a registered but NOT YET vetted buyer add sites? Recommended yes - sites are private and it helps them decide whether to apply.</text>
+<text x="98" y="2775.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">6  Auditors and erasure: does the grant agreement require retaining named individuals for a fixed period? That would override erasure.</text>
+<text x="98" y="2790.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e" text-anchor="start">7  Demo-data notice needs a removal plan for launch.   8  Co-investor claim rights on volume sold onward - one buyer said this decides participation.</text>
+<rect x="80" y="2836" width="1520" height="58" rx="6" fill="#f1f3f5" stroke="#868e96" stroke-width="1"/>
+<text x="98" y="2861.0" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#868e96" text-anchor="start">NOT BUILT, DELIBERATELY</text>
+<text x="98" y="2880.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#868e96" text-anchor="start">payments  ·  escrow  ·  settlement  ·  an official credit registry  ·  automatic legal or environmental claims  ·  public comments  ·  public buyer identities by default  ·  cross-project unit totals</text>
+</svg>

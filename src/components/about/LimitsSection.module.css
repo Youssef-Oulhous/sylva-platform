@@ -1,0 +1,28 @@
+.list {
+  list-style: none;
+  margin: var(--s-5) 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+  border: var(--rule);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+}
+
+/* A grid of cells divided by rules, not a set of floating cards: one border
+   weight, no nesting, no shadow. */
+.row {
+  padding: var(--s-4);
+  border-right: var(--rule);
+  border-bottom: var(--rule);
+}
+
+.head { font-size: var(--text-sm); font-weight: 600; margin: 0; }
+.body {
+  margin: var(--s-2) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ink);
+  max-width: var(--measure-prose);
+}

@@ -1,0 +1,54 @@
+.section { margin-top: var(--s-7); }
+
+.intro {
+  margin-top: var(--s-3);
+  font-size: var(--text-sm);
+  max-width: var(--measure-prose);
+}
+
+.groupTitle {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-3);
+  margin-top: var(--s-6);
+  margin-bottom: var(--s-3);
+  font-size: var(--text-base);
+}
+
+.proposedNote {
+  margin: 0 0 var(--s-4);
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+.table {
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius);
+}
+:global(.table-scroll) .table { min-width: 30rem; }
+
+.caption { max-width: var(--measure-prose); }
+
+.eventName {
+  background: transparent;
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 500;
+  color: var(--ink);
+  font-size: var(--text-sm);
+  white-space: nowrap;
+  vertical-align: top;
+  padding: var(--s-3);
+  border-bottom: var(--rule);
+  width: 14rem;
+}
+
+.meaning { font-size: var(--text-sm); max-width: var(--measure-prose); }
+
+/* The global reset drops the border on the last row's <td> only; the row
+   header is a <th>, so it needs the same treatment or the table ends on a
+   half-drawn rule. */
+.table tbody tr:last-child th { border-bottom: none; }

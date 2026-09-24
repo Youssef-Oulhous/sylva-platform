@@ -1,0 +1,97 @@
+.lead { margin-top: var(--s-3); color: var(--ink); max-width: var(--measure-prose); }
+
+/* A single counted figure, set like a figure in a report: the number carries
+   weight, the label sits next to it, and the source stamp follows. */
+.figure {
+  display: flex; align-items: baseline; gap: var(--s-3);
+  margin: var(--s-5) 0 0;
+  max-width: none;
+}
+.figureValue {
+  font-family: var(--font-mono);
+  font-size: var(--text-lg);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.figureLabel {
+  font-size: var(--text-2xs);
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--ink-muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-5);
+  margin-top: var(--s-6);
+  align-items: start;
+}
+
+.panel {
+  background: var(--surface);
+  border: var(--rule);
+  border-left: 2px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: var(--s-5);
+}
+/* Water information is blue across the platform, so the water-driven buyer's
+   panel is marked in that colour - alongside the word on its badge, never
+   instead of it. */
+.panelWater { border-left-color: var(--water); }
+
+.panelHead { display: flex; flex-direction: column; gap: var(--s-2); align-items: flex-start; }
+.panelTitle { font-size: var(--text-md); }
+
+.who { margin: var(--s-4) 0 0; color: var(--ink); max-width: none; }
+
+.ranks {
+  margin: var(--s-4) 0 0;
+  padding: var(--s-3) var(--s-4);
+  background: var(--surface-sunk);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  max-width: none;
+}
+.ranksLabel {
+  display: block;
+  font-size: var(--text-2xs);
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--ink-muted);
+  margin-bottom: var(--s-1);
+}
+
+.readsTitle {
+  margin: var(--s-5) 0 var(--s-3);
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--ink-muted);
+}
+.reads { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--s-3); }
+.read {
+  font-size: var(--text-sm);
+  padding-left: var(--s-4);
+  border-left: var(--rule);
+}
+.readLink {
+  display: block;
+  margin-top: var(--s-1);
+  font-size: var(--text-2xs);
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--forest);
+  text-decoration: none;
+}
+.readLink:hover { text-decoration: underline; }
+
+.note {
+  margin: var(--s-5) 0 0;
+  padding-top: var(--s-4);
+  border-top: var(--rule);
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  max-width: none;
+}
+
+@media (max-width: 56rem) {
+  .grid { grid-template-columns: 1fr; }
+}

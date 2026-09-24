@@ -1,0 +1,87 @@
+.lead { margin-top: var(--s-3); color: var(--ink); max-width: var(--measure-prose); }
+
+.options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-5);
+  margin-top: var(--s-5);
+  align-items: start;
+}
+.option {
+  background: var(--surface);
+  border: var(--rule);
+  border-left: 2px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: var(--s-5);
+}
+/* Forest marks the selected state across the platform, and pseudonymous IS the
+   selected state until a buyer changes it for one deal. */
+.optionDefault { border-left-color: var(--forest); }
+.optionTitle { margin-top: var(--s-3); font-size: var(--text-md); }
+.optionBody { margin: var(--s-3) 0 0; font-size: var(--text-sm); max-width: none; }
+
+.recordTitle { margin: var(--s-7) 0 var(--s-3); font-size: var(--text-base); }
+
+.records {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-5);
+}
+.record {
+  margin: 0;
+  border: var(--rule);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+}
+.recordCaption {
+  padding: var(--s-3) var(--s-4);
+  border-bottom: var(--rule);
+  background: var(--surface-sunk);
+  font-size: var(--text-2xs);
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--ink-muted);
+}
+.recordBody { margin: 0; padding: var(--s-4); display: grid; gap: var(--s-3); }
+
+/* The record is read as a document extract, so the labels are set in a fixed
+   column and the values in mono - the same treatment the record itself gets. */
+.field { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); gap: var(--s-3); }
+.fieldLabel {
+  font-size: var(--text-2xs);
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--ink-muted);
+  padding-top: 0.15rem;
+}
+.fieldValue {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  overflow-wrap: anywhere;
+}
+
+.alwaysTitle { margin: var(--s-7) 0 var(--s-3); font-size: var(--text-base); }
+.always {
+  margin: 0; padding: 0; list-style: none;
+  display: grid; gap: var(--s-2);
+  font-size: var(--text-sm);
+  max-width: var(--measure-prose);
+}
+.always li { padding-left: var(--s-4); border-left: var(--rule); }
+
+.appendOnly {
+  margin: var(--s-5) 0 0;
+  padding: var(--s-3) var(--s-4);
+  background: var(--surface-sunk);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+@media (max-width: 56rem) {
+  .options, .records { grid-template-columns: 1fr; }
+}
+@media (max-width: 30rem) {
+  .field { grid-template-columns: 1fr; gap: var(--s-1); }
+}

@@ -1,0 +1,61 @@
+.group {
+  margin-top: var(--s-7);
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding-bottom: var(--s-3);
+  border-bottom: 1px solid var(--border-strong);
+}
+
+.headMain {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-3);
+  min-width: 0;
+}
+
+.title {
+  font-size: var(--text-lg);
+  color: var(--ink);
+}
+
+.place {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}
+
+.headSide {
+  text-align: right;
+}
+
+/* A count of questions, not a volume. Tabular figures so a column of groups
+   lines up when the page is read from top to bottom. */
+.counts {
+  margin: 0;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+.away {
+  margin: var(--s-2) 0 0;
+  font-size: var(--text-sm);
+}
+
+.threads {
+  margin-top: var(--s-2);
+}
+
+@media (max-width: 48rem) {
+  .headSide {
+    text-align: left;
+  }
+}

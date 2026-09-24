@@ -1,0 +1,132 @@
+.panel {
+  margin-top: var(--s-4);
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-raised);
+}
+
+.table {
+  border: none;
+}
+.table caption {
+  padding: var(--s-4) var(--s-5) var(--s-2);
+}
+.table th:first-child,
+.table td:first-child {
+  padding-left: var(--s-5);
+}
+.table th:last-child,
+.table td:last-child {
+  padding-right: var(--s-5);
+}
+
+/* A row header, not a column header: it keeps the row's name announced with
+   every cell, and drops the uppercase small-caps treatment of the head row.
+   It also takes the padding and the border weight of a td, so that the first
+   cell of a row sits on the same baseline and the same rule as the rest of it. */
+.rowHead {
+  background: transparent;
+  text-transform: none;
+  letter-spacing: normal;
+  white-space: normal;
+  padding: var(--s-3);
+  border-bottom: var(--rule);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--ink);
+  min-width: 13rem;
+}
+.table tbody tr:last-child .rowHead {
+  border-bottom: none;
+}
+
+.region {
+  display: block;
+  margin-top: 2px;
+  font-weight: 400;
+  color: var(--ink-muted);
+}
+.note {
+  display: block;
+  margin-top: var(--s-1);
+  font-weight: 400;
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  max-width: 24rem;
+}
+
+/* The second line of a column header: the unit the column is in. Mono, because
+   it belongs to the figures below it rather than to the prose. */
+.colNote {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink-muted);
+}
+
+/* Coordinates are identifiers as much as figures: mono, left aligned under a
+   left-aligned header, and never right aligned - they are not a quantity anyone
+   adds up. */
+.coords {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  white-space: nowrap;
+}
+
+.panelFoot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding: var(--s-4) var(--s-5);
+  border-top: var(--rule);
+  background: var(--surface-sunk);
+}
+.count {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  max-width: none;
+}
+
+/* The empty state. Dashed, so it reads as a place where something will go
+   rather than as a panel that failed to load. */
+.empty {
+  margin-top: var(--s-4);
+  padding: var(--s-6) var(--s-5);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.emptyTitle {
+  margin: 0;
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--ink);
+}
+.emptyBody {
+  margin: var(--s-2) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+@media (max-width: 30rem) {
+  .table caption,
+  .panelFoot {
+    padding-inline: var(--s-4);
+  }
+  .table th:first-child,
+  .table td:first-child {
+    padding-left: var(--s-4);
+  }
+  .empty {
+    padding: var(--s-5) var(--s-4);
+  }
+}

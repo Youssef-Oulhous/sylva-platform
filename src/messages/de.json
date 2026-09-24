@@ -1,0 +1,2599 @@
+{
+  "site": {
+    "name": "Sylva",
+    "tagline": "Europäische Feuchtgebiets-Renaturierungsprojekte",
+    "skipToContent": "Zum Inhalt springen"
+  },
+  "nav": {
+    "projects": "Projekte",
+    "howItWorks": "So funktioniert es",
+    "forBuyers": "Für Käufer",
+    "forInvestors": "Für Investoren",
+    "about": "Über uns",
+    "signIn": "Anmelden",
+    "register": "Registrieren",
+    "language": "Sprache"
+  },
+  "eu": {
+    "coFunded": "Von der Europäischen Union kofinanziert",
+    "emblemMissingShort": "EU-Emblem erforderlich",
+    "emblemMissingAlt": "Platzhalter. Das offizielle Emblem der Europäischen Union wurde noch nicht bereitgestellt.",
+    "disclaimerMissing": "Der laut Finanzhilfevereinbarung erforderliche Haftungsausschluss ist nicht konfiguriert. Der genaue Wortlaut muss der Finanzhilfevereinbarung entnommen und darf hier nicht formuliert werden."
+  },
+  "home": {
+    "title": "Renaturierungsprojekte für Feuchtgebiete in Europa entdecken und finanzieren",
+    "lead": "Prüfen Sie Projektnachweise, erwartete Umweltergebnisse, verfügbare Einheiten und Finanzierungsbedarf an einem Ort. Jedes Projekt gibt an, was gemessen wird, wer es verifiziert und wer das Ergebnis geltend machen darf.",
+    "ctaExplore": "Projekte ansehen",
+    "ctaHowItWorks": "So funktioniert es",
+    "processTitle": "Wie ein Projekt zu einem Käufer gelangt",
+    "processIntro": "Einheiten werden erst ausgegeben, nachdem eine unabhängige Stelle das Ergebnis vor Ort verifiziert hat. Die meisten Vereinbarungen auf dieser Plattform sind daher Zusagen über künftige Einheiten und keine Käufe vorhandener Bestände.",
+    "step": {
+      "project": "Projekt",
+      "projectNote": "Ein geschädigtes Feuchtgebiet wird in einer Projektskizze und einem Projektdesigndokument dokumentiert.",
+      "evidence": "Nachweise",
+      "evidenceNote": "Ausgangswerte, Monitoringplan, Prüfstelle und angegebene Unsicherheit werden auf der Projektseite veröffentlicht.",
+      "interest": "Interesse",
+      "interestNote": "Ein geprüfter Käufer bekundet Interesse. Das Ereignis wird in das dauerhafte Verzeichnis geschrieben.",
+      "deal": "Transaktion",
+      "dealNote": "Die Konditionen werden vertraulich verhandelt. Der Vertrag wird außerhalb der Plattform unterzeichnet und als Nachweis hochgeladen.",
+      "restoration": "Renaturierung",
+      "restorationNote": "Die Arbeiten werden durchgeführt und die Fläche wird gemäß Plan überwacht.",
+      "verified": "Verifiziertes Ergebnis",
+      "verifiedNote": "Eine unabhängige Stelle verifiziert das ökologische Ergebnis.",
+      "units": "Einheiten",
+      "unitsNote": "Der Standard gibt Einheiten nach eigenen Regeln aus und erfasst sie in seinem eigenen Register."
+    },
+    "evaluateTitle": "Was Sie prüfen können, bevor Sie jemanden ansprechen",
+    "evaluate": {
+      "location": "Lage und Einzugsgebiet",
+      "locationNote": "Projektgrenze und Einzugsgebiet auf einer Karte, als GeoJSON herunterladbar.",
+      "water": "Wasserbezogene Ergebnisse",
+      "waterNote": "Was gemessen wird, der Ausgangswert, die Methode und die angegebene Unsicherheit.",
+      "biodiversity": "Biodiversitätsergebnisse",
+      "biodiversityNote": "Zustandskennzahlen, bewertet nach den Kriterien des Standards.",
+      "claims": "Anspruchsrechte",
+      "claimsNote": "Wer welchen Nutzen geltend machen darf, wofür, und was ausgeschlossen ist.",
+      "durability": "Dauerhaftigkeit",
+      "durabilityNote": "Wer die Fläche kontrolliert, wer sie unterhält und wie lange.",
+      "verification": "Verifizierung",
+      "verificationNote": "Die unabhängige Stelle, die für die Verifizierung des Ergebnisses zuständig ist.",
+      "documents": "Dokumente",
+      "documentsNote": "Projektskizze, Designdokument, Monitoringplan und Verifizierungsberichte.",
+      "availability": "Verfügbarkeit",
+      "availabilityNote": "Erwartete, zugesagte und verbleibende Einheiten, je Projekt und je Periode."
+    },
+    "buyersTitle": "Für Käufer",
+    "buyersBody": "Unternehmen können Projekte prüfen, eigene Standorte registrieren, um die Entfernung zu jedem Projekt zu sehen, und Interesse bekunden. Die Teilnahme erfolgt standardmäßig pseudonym; eine namentliche Nennung entscheiden Sie selbst, Transaktion für Transaktion.",
+    "investorsTitle": "Für Investoren",
+    "investorsBody": "Geprüfte Investoren können Finanzierungsbedarf, Einnahmequellen und das Finanzmodell von Projekten einsehen, die Finanzierung suchen. Der Zugang zu Finanzinformationen wird nach der Prüfung gewährt.",
+    "trustTitle": "Wie das Verzeichnis funktioniert",
+    "trustBody": "Jeder Standard führt sein eigenes offizielles Register der ausgegebenen und stillgelegten Einheiten. Diese Plattform ist nicht dieses Register und ersetzt es nicht. Wir führen Verweise auf Registereinträge, die zugehörigen Dokumente sowie ein dauerhaftes, ausschließlich ergänzbares Verzeichnis dessen, was hier vereinbart wurde.",
+    "demoBanner": "Demonstrationsdaten. Die auf dieser Plattform gezeigten Projekte, Organisationen und Zahlen sind fiktiv und dienen ausschließlich der Vorführung der Software. Sie beschreiben keine realen Feuchtgebiete, keine realen Verifizierungen und keine realen Umweltergebnisse."
+  },
+  "projects": {
+    "title": "Renaturierungsprojekte",
+    "lead": "Jedes Projekt nennt seinen eigenen Standard, seinen eigenen Einheitentyp und seine eigenen Perioden. Einheiten verschiedener Projekte messen Unterschiedliches und werden niemals addiert.",
+    "count": "{count, plural, =0 {Keine Projekte} one {# Projekt} other {# Projekte}}",
+    "viewProject": "Projekt ansehen",
+    "empty": "Keine Projekte entsprechen Ihren aktuellen Filtern.",
+    "emptyAction": "Filter zurücksetzen",
+    "filters": {
+      "heading": "Filtern",
+      "country": "Land",
+      "outcome": "Ergebnisart",
+      "status": "Status",
+      "dealType": "Transaktionsart",
+      "all": "Alle"
+    }
+  },
+  "project": {
+    "expressInterest": "Interesse bekunden",
+    "downloadDocuments": "Projektdokumente herunterladen",
+    "downloadGeoJson": "GeoJSON herunterladen",
+    "owner": "Projektträger",
+    "status": "Status",
+    "scheme": "Standard",
+    "unitType": "Einheitentyp",
+    "location": "Lage",
+    "catchment": "Einzugsgebiet",
+    "summary": "Zusammenfassung",
+    "map": "Einzugsgebietskarte",
+    "outcomes": "Umweltergebnisse",
+    "water": "Wasser",
+    "biodiversity": "Biodiversität",
+    "metric": "Kennzahl",
+    "baseline": "Ausgangswert",
+    "expected": "Erwartet",
+    "method": "Methode",
+    "verifier": "Prüfstelle",
+    "uncertainty": "Angegebene Unsicherheit",
+    "claimRights": "Anspruchsrechte",
+    "benefit": "Nutzen",
+    "claimHolder": "Wer darf geltend machen",
+    "allowedUse": "Was darf geltend gemacht werden",
+    "exclusions": "Was ist ausgeschlossen",
+    "durability": "Langfristiger Schutz",
+    "landControl": "Verfügungsgewalt über die Fläche",
+    "availability": "Verfügbarkeit",
+    "availabilityNote": "Je Periode, nur für dieses Projekt. Diese Einheiten sind spezifisch für den Standard und den Einheitentyp dieses Projekts und können nicht mit Einheiten anderer Projekte verglichen werden.",
+    "period": "Periode",
+    "expectedIssuance": "Erwartete Ausgabe",
+    "committed": "Zugesagt",
+    "buffer": "Puffer",
+    "remaining": "Verbleibend",
+    "documents": "Dokumente",
+    "documentName": "Dokument",
+    "documentVersion": "Version",
+    "documentDate": "Datum",
+    "partners": "Projektpartner",
+    "role": "Rolle",
+    "investorInfo": "Finanzierung",
+    "investorGate": "Finanzierungsinformationen zu diesem Projekt stehen von uns geprüften Investoren zur Verfügung.",
+    "yourSites": "Entfernung zu Ihren Standorten",
+    "yourSitesNote": "Nur für Sie sichtbar. Luftlinie zur Projektgrenze.",
+    "noSites": "Registrieren Sie Ihre Unternehmensstandorte, um deren Entfernung zu diesem Projekt zu sehen.",
+    "vintageOutcome": "Perioden beziehen sich auf den Zeitraum des ökologischen Ergebnisses.",
+    "vintageIssuance": "Perioden beziehen sich auf den Zeitraum, in dem Einheiten ausgegeben werden.",
+    "vintageUndefined": "Der Standard definiert nicht, worauf sich eine Periode bezieht."
+  },
+  "source": {
+    "label": "Quelle",
+    "updated": "Aktualisiert",
+    "separator": "·"
+  },
+  "status": {
+    "draft": "Entwurf",
+    "submitted_for_review": "In Prüfung",
+    "changes_requested": "Änderungen erbeten",
+    "published": "Veröffentlicht",
+    "withdrawn": "Zurückgezogen",
+    "archived": "Archiviert"
+  },
+  "demo": {
+    "badge": "Demodaten"
+  },
+  "errors": {
+    "loadProject": "Dieses Projekt konnte nicht geladen werden. Bitte versuchen Sie es erneut.",
+    "forbidden": "Sie haben keinen Zugriff auf diese Informationen.",
+    "notFound": "Diese Seite konnte nicht gefunden werden."
+  },
+  "projectPage": {
+    "meta": {
+      "description": "DEMO-Projektseite: was im {catchment} wiederhergestellt wird, welche Wasser- und Biodiversitätsergebnisse erwartet und wie sie gemessen werden, Anrechnungsrechte und Ausschlüsse, Dauerhaftigkeit, Dokumente und Verfügbarkeit je Periode nach {scheme}."
+    },
+    "breadcrumb": {
+      "label": "Sie befinden sich hier"
+    },
+    "nav": {
+      "label": "Abschnitte dieser Projektseite",
+      "heading": "Auf dieser Seite"
+    },
+    "header": {
+      "interestNote": "Eine Interessensbekundung eröffnet ein privates Gespräch mit dem Projektträger und mit Sylva. Sie ist keine Bestellung und verpflichtet Sie zu nichts."
+    },
+    "verification": {
+      "label": "Verifizierungsstand",
+      "designVerified": "Projektdesigndokument verifiziert. Das ökologische Ergebnis ist nicht verifiziert, und es wurden keine Einheiten ausgegeben."
+    },
+    "keyFacts": {
+      "nearestPeriod": "Nächste Periode",
+      "periodOfOutcome": "Periode des Ergebnisses",
+      "dealTypes": "Angebotene Vertragsformen"
+    },
+    "unit": {
+      "hectareYears": "Hektarjahre"
+    },
+    "dealType": {
+      "forward": "Terminvertrag",
+      "coInvestment": "Ko-Investition"
+    },
+    "demo": {
+      "region": "Brandenburg",
+      "country": "Deutschland",
+      "catchment": "Einzugsgebiet der Unteren Havel"
+    },
+    "map": {
+      "lead": "Die Projektgrenze innerhalb ihres Einzugsgebiets. Ein Einzugsgebiet ist die Fläche, die in einen bestimmten Fluss oder Grundwasserleiter entwässert.",
+      "altCombined": "Umrisskarte: das Einzugsgebiet der Unteren Havel mit der darin eingezeichneten Projektgrenze.",
+      "altBoundary": "Umrisskarte: die Projektgrenze allein.",
+      "insetLabel": "Projektgrenze",
+      "legendCatchment": "Einzugsgebiet",
+      "legendBoundary": "Projektgrenze",
+      "projectArea": "Projektfläche",
+      "geometryTitle": "Geografie",
+      "geojsonNote": "Grenze in voller Genauigkeit, wie vom Projektentwickler geliefert. Die Karte oben ist aus einer vereinfachten Kopie gezeichnet.",
+      "sameCatchmentQuestion": "Gleiches Einzugsgebiet wie Ihre Standorte?",
+      "sameCatchmentYes": "Ja. Mindestens einer Ihrer registrierten Standorte entwässert in dasselbe Einzugsgebiet.",
+      "sameCatchmentNo": "Nein. Keiner Ihrer registrierten Standorte liegt in diesem Einzugsgebiet.",
+      "sameCatchmentUnknown": "Unbekannt, solange Sie nicht angemeldet sind. Registrieren Sie Ihre Standorte, um dies zu sehen.",
+      "basemapPending": "Noch keine Satellitenkarte. Die Darstellung wird aus der Grenzdatei des Projekts gezeichnet. Eine Satellitenansicht kommt hinzu, sobald der Kartendienst ausgewählt ist – damit kein Dritter erfährt, welches Projekt Sie lesen."
+    },
+    "summary": {
+      "lead": "412 Hektar entwässertes Niedermoor an der Unteren Havel werden wieder in einen Feuchtgebietswasserhaushalt versetzt, damit Wasser über den Sommer im Einzugsgebiet gehalten wird und Niedermoorlebensräume sich erholen.",
+      "what": "Die Fläche wurde in den 1960er-Jahren für Grünland entwässert; der Torf oxidiert seither. Die Arbeiten verschließen die Entwässerungsgräben, bauen regelbare Stauwehre ein und heben den Wasserstand zwischen 2027 und 2029 stufenweise an – auf 412 Hektar innerhalb eines Einzugsgebiets von 1.840 km².",
+      "why": "Zwei Ergebnisse werden erwartet. Wasser wird im Einzugsgebiet zurückgehalten und in den Niedrigwassermonaten langsamer abgegeben, was für Wassernutzer flussabwärts zählt. Und Niedermoorvegetation sowie Wiesenlimikolen erholen sich auf Flächen, die derzeit zu trocken für sie sind.",
+      "measured": "Für Wasser: Grundwasserstand, wiedervernässte Fläche und zusätzlich zurückgehaltenes Niedrigwasservolumen. Für Biodiversität: Lebensraumzustand, Brutpaare von Wiesenlimikolen und Fläche in günstigem Zustand. Die Ausgangswerte wurden zwischen 2024 und 2026 erhoben. Jede Kennzahl wird von der DEMO Hydro-Verify GmbH gegen den Monitoringplan verifiziert, bevor eine Einheit ausgegeben wird.",
+      "detail": {
+        "worksTitle": "Die Arbeiten, in ihrer Reihenfolge",
+        "worksBody": "2027: 14 km Entwässerungsgraben verschlossen, acht regelbare Stauwehre eingebaut. 2028: Wasserstand auf die erste Zielhöhe angehoben und gehalten. 2029: zweite Anhebung, danach wird der Stand gehalten. Auf 180 Hektar wird die Mahd eingestellt; auf den übrigen Flächen wird weiter gemäht, um das Niedermoor offen zu halten.",
+        "baselineTitle": "Wie der Ausgangswert bestimmt wurde",
+        "baselineBody": "Das Grundwasser wurde von Frühjahr 2024 bis Frühjahr 2026 an sechs Pegeln aufgezeichnet, sodass der Ausgangswert zwei volle hydrologische Jahre einschließlich eines trockenen Sommers abdeckt. Der Lebensraumzustand wurde 2025 und 2026 auf 24 festen Probeflächen bewertet. Der Bericht zur Ausgangslage ist im Abschnitt Dokumente aufgeführt.",
+        "riskTitle": "Was schiefgehen kann",
+        "riskBody": "Eine Folge trockener Jahre würde den Anstieg des Grundwassers verlangsamen und das Ergebnis verzögern; deshalb wird in jeder Periode ein Puffer zurückgehalten. Bereits verlorener Torf kehrt nicht zurück. Das Projekt gibt seine Unsicherheit je Kennzahl an und nicht als eine einzelne Vertrauenszahl."
+      }
+    },
+    "outcomes": {
+      "lead": "Was gemessen wird, gegen welchen Ausgangswert, mit welcher Methode und mit welcher angegebenen Unsicherheit.",
+      "noCombinedScore": "Wasser und Biodiversität werden getrennt berichtet und nicht zu einer einzigen Kennzahl zusammengefasst. Sie messen nicht miteinander vergleichbare Dinge, und die Käufer, die diese Arbeit finanzieren, gewichten sie unterschiedlich.",
+      "waterDomain": "Wasser",
+      "bioDomain": "Biodiversität",
+      "waterNote": "Hydrologische Indikatoren für die Projektfläche und das Einzugsgebiet unterhalb davon.",
+      "bioNote": "Lebensraumzustand und Artindikatoren, bewertet nach den Kriterien des Standards.",
+      "waterCaption": "Wasserergebnisse dieses Projekts: Ausgangswert, erwartetes Ergebnis, Methode, Verifizierer und angegebene Unsicherheit.",
+      "bioCaption": "Biodiversitätsergebnisse dieses Projekts: Ausgangswert, erwartetes Ergebnis, Methode, Verifizierer und angegebene Unsicherheit."
+    },
+    "outcome": {
+      "groundwater": {
+        "metric": "Mittlerer Sommergrundwasserstand unter Flur",
+        "method": "Kontinuierliche Aufzeichnung an sechs Pegeln, monatlich abgelesen, verglichen mit der Ausgangsreihe 2024–2026."
+      },
+      "rewetted": {
+        "metric": "Fläche mit wiederhergestelltem Feuchtgebietswasserhaushalt",
+        "method": "Wasserstandsdaten und Luftbilder, bewertet nach den hydrologischen Kriterien des Monitoringplans."
+      },
+      "lowflow": {
+        "metric": "Zusätzlich im Einzugsgebiet zurückgehaltenes Wasser bei Niedrigwasser",
+        "method": "Modelliert aus gemessenen Wasserständen und dem Speichervermögen der Fläche, jährlich gegen die Pegelreihe bei Rathenow neu berechnet."
+      },
+      "condition": {
+        "metric": "Zustandswert des Feuchtgebietslebensraums",
+        "method": "Zustandsbewertung des Standards auf 24 festen Probeflächen, alle zwei Jahre durch eine qualifizierte Gutachterin oder einen qualifizierten Gutachter."
+      },
+      "waders": {
+        "metric": "Brutpaare von Wiesenlimikolen",
+        "method": "Drei Revierkartierungen je Brutsaison nach dem Erfassungsprotokoll des Standards."
+      },
+      "favourable": {
+        "metric": "Fläche in günstigem Erhaltungszustand",
+        "method": "Aus dem Netz der Probeflächen und der Vegetationsaufnahme auf die Fläche übertragene Zustandswerte."
+      }
+    },
+    "claims": {
+      "lead": "Für jeden Nutzen, den dieses Projekt erzeugt, legen die Anrechnungsbedingungen fest, wer ihn geltend machen darf, was geltend gemacht werden darf und was ausgeschlossen ist. Lesen Sie die Spalte mit den Ausschlüssen zuerst.",
+      "caption": "Anrechnungsrechte und Ausschlüsse nach den Anrechnungsbedingungen dieses Projekts.",
+      "note": "Diese Tabelle gibt die auf der Plattform hinterlegten Anrechnungsbedingungen wieder. Sie ist eine Lesefassung, nicht der Vertrag; maßgeblich ist das Dokument mit den Anrechnungsbedingungen."
+    },
+    "claim": {
+      "biodiversity": {
+        "benefit": "Verbesserung des Biodiversitätszustands",
+        "holder": "Der Käufer, der die Einheiten der betreffenden Periode hält und stilllegt.",
+        "allowed": "Die Aussage, dass der Käufer die Wiederherstellung einer angegebenen Fläche finanziert hat, sowie die Berichterstattung über die verifizierte Zustandsverbesserung für die von ihm stillgelegten Einheiten.",
+        "excluded": "Keine Anrechnung vor der Verifizierung. Keine Anrechnung für Einheiten, die der Käufer nicht stillgelegt hat. Dieselben Einheiten dürfen nicht zugleich vom Projektträger oder von einem zweiten Käufer geltend gemacht werden."
+      },
+      "water": {
+        "benefit": "Wasserergebnis im Einzugsgebiet",
+        "holder": "Jeder Käufer mit Terminvertrag oder Ko-Investition in dieses Projekt, für die von ihm zugesagten Perioden.",
+        "allowed": "Die Aussage, dass der Käufer zu den am Projekt gemessenen Wasserergebnissen beigetragen hat, beschrieben mit den Kennzahlen des Projekts.",
+        "excluded": "Nicht als volumetrischer Wasservorteil und nicht als Ausgleich für den eigenen Wasserverbrauch des Käufers darstellbar. Das Wasserergebnis wird nicht als Einheiten ausgegeben."
+      },
+      "cofinance": {
+        "benefit": "Ko-Investition in das Projekt",
+        "holder": "Der Investor oder das Unternehmen, das einen Anteil des Projekts finanziert hat.",
+        "allowed": "Die Angabe des finanzierten Betrags und des damit finanzierten Anteils am Projekt.",
+        "excluded": "Keine Anrechnung des ökologischen Ergebnisses selbst, solange nicht zugleich Einheiten gehalten und stillgelegt werden. Das Projekt zu finanzieren ist keine Anrechnung seines Ergebnisses."
+      },
+      "communication": {
+        "benefit": "Nutzung des Projektnamens und der Materialien",
+        "holder": "Käufer und Ko-Investoren für die Laufzeit ihrer Vereinbarung.",
+        "allowed": "Nutzung von Projektname, Lage und veröffentlichten Zahlen in Berichten und Kommunikation, mit Angabe von Quelle und Datum.",
+        "excluded": "Keine Darstellung, die Eigentum am Land nahelegt, keine produktbezogene Aussage und keine Nutzung des Namens des Verifizierers oder des Standards in einer Weise, die eine Empfehlung des Käufers nahelegt."
+      }
+    },
+    "durability": {
+      "lead": "Wer das Land kontrolliert, wer sich zur Pflege verpflichtet hat, für wie lange, und was die Dokumente über die Zeit danach sagen.",
+      "fact": {
+        "control": "Landkontrolle",
+        "controlValue": "Das Land gehört der DEMO Havelland Landstiftung und wird von der DEMO Moorland Trust gGmbH auf Grundlage eines langfristigen Pachtvertrags bewirtschaftet.",
+        "maintenance": "Pflege",
+        "maintenanceValue": "Die DEMO Moorland Trust gGmbH ist für Wasserstandsregelung, Mahd und Monitoring verantwortlich. Die Arbeiten führt die DEMO Havel Restoration Partners GmbH aus.",
+        "term": "Zugesagte Laufzeit",
+        "termValue": "30 Jahre Bewirtschaftung, von 2027 bis 2057. Die Verträge über Einheiten laufen bis 2033.",
+        "after": "Nach der zugesagten Laufzeit",
+        "afterValue": "Die Projektdokumente sagen nicht, was nach 2057 geschieht. Das Land bleibt unter der Kontrolle der Eigentümerin, und eine weitere Verpflichtung ist nicht erfasst."
+      },
+      "timelineTitle": "Was wann geschieht",
+      "timelineNote": "Hier erscheinen nur Zeitpunkte, die in den Projektdokumenten stehen. Wo die Dokumente etwas offenlassen, sagt der Eintrag das.",
+      "stateRecorded": "Erfasst",
+      "statePlanned": "Geplant",
+      "stateOpen": "Offen"
+    },
+    "timeline": {
+      "registration": {
+        "title": "Projekt auf der Plattform erfasst",
+        "body": "Projektideenpapier und Designdokument wurden veröffentlicht und die Projektgrenze hochgeladen."
+      },
+      "works": {
+        "title": "Wiederherstellungsarbeiten",
+        "body": "Entwässerungsgräben werden verschlossen, regelbare Stauwehre eingebaut und der Wasserstand stufenweise angehoben."
+      },
+      "firstOutcome": {
+        "title": "Erste Ergebnisperiode",
+        "body": "Die erste Periode, für die Einheiten erwartet werden. Das Ergebnis entsteht in diesem Jahr; die Ausgabe folgt der Verifizierung."
+      },
+      "verification": {
+        "title": "Unabhängige Verifizierung",
+        "body": "Die DEMO Hydro-Verify GmbH bewertet das Ergebnis gegen den Monitoringplan. Der Standard gibt Einheiten erst nach diesem Schritt aus."
+      },
+      "contractEnd": {
+        "title": "Verträge über Einheiten enden",
+        "body": "Die Termin- und Ko-Investitionsvereinbarungen für die Perioden 2028 bis 2030 erreichen ihr Enddatum."
+      },
+      "management": {
+        "title": "Zugesagter Bewirtschaftungszeitraum",
+        "body": "Wasserstandsregelung, Mahd und Monitoring laufen nach der Bewirtschaftungsvereinbarung weiter."
+      },
+      "beyond": {
+        "title": "Nach 2057",
+        "body": "In den Projektdokumenten nicht festgelegt. Über 2057 hinaus ist auf der Plattform keine Verpflichtung erfasst."
+      }
+    },
+    "availability": {
+      "periodMeansTitle": "Was eine Periode hier bedeutet",
+      "periodMeansDetail": "Eine Periode benennt das Jahr, in dem das ökologische Ergebnis entsteht. Einheiten für dieses Ergebnis können später ausgegeben werden, nach der Verifizierung. Lesen Sie eine Periode nicht als das Datum, an dem Einheiten verfügbar werden.",
+      "caption": "Verfügbarkeit für {project}, je Periode, in {unit}. Diese Einheiten gehören ausschließlich zu diesem Projekt.",
+      "reserved": "Vorgemerkt",
+      "defExpected": "Die Zahl der Einheiten, die das Projekt für diese Periode vom Standard erwartet, wie im Projektdesigndokument angegeben.",
+      "defBuffer": "Zurückgehaltene Einheiten für den Fall, dass das Projekt weniger liefert als erwartet. Sie werden nicht zum Verkauf angeboten.",
+      "defReserved": "Einheiten, die während eines laufenden Gesprächs für einen Käufer vorgemerkt sind, bevor etwas zugesagt ist.",
+      "defCommitted": "Einheiten, deren Abnahme ein Käufer vertraglich zugesagt hat.",
+      "defRemaining": "Erwartete Ausgabe abzüglich Puffer, Vormerkungen und Zusagen. Darüber kann noch gesprochen werden.",
+      "notIssuedYet": "Für keine dieser Perioden wurden Einheiten ausgegeben. Die Ausgabe folgt der Verifizierung des Ergebnisses vor Ort und wird vom Standard in dessen eigenem Register erfasst."
+    },
+    "documents": {
+      "lead": "Jede Zahl auf dieser Seite stammt aus einem dieser Dokumente. Version und Datum hier sind die Version und das Datum, aus denen die Zahlen gelesen wurden.",
+      "caption": "Auf der Plattform zu diesem Projekt hinterlegte Dokumente.",
+      "type": "Art",
+      "uploadedBy": "Hochgeladen von",
+      "actions": "Aktionen",
+      "view": "Ansehen",
+      "download": "Herunterladen",
+      "notYetAvailable": "Noch nicht verfügbar",
+      "expected2029": "Erwartet 2029",
+      "note": "Die Dokumente stammen vom Projektträger und vom Verifizierer. Die Plattform speichert sie und erfasst, wann jede Version eingegangen ist; sie schreibt sie nicht um."
+    },
+    "doc": {
+      "ideaNote": "Projektideenpapier",
+      "designDocument": "Projektdesigndokument",
+      "monitoringPlan": "Monitoringplan",
+      "verificationReport": "Verifizierungsbericht",
+      "landControl": "Zusammenfassung zu Landkontrolle und Pflege",
+      "baselineHydrology": "Bericht zur hydrologischen Ausgangslage",
+      "claimTerms": "Anrechnungsbedingungen",
+      "boundary": "Projektgrenze (GeoJSON)"
+    },
+    "docType": {
+      "ideaNote": "Projektideenpapier",
+      "designDocument": "Designdokument",
+      "monitoringPlan": "Monitoringplan",
+      "verificationReport": "Verifizierungsbericht",
+      "legalSummary": "Rechtliche Zusammenfassung",
+      "technicalReport": "Fachbericht",
+      "geodata": "Geodaten"
+    },
+    "partners": {
+      "lead": "Die für dieses Projekt verantwortlichen Organisationen und die Rolle, die jede von ihnen innehat.",
+      "reference": "Plattformkennung",
+      "note": "Rollen werden je Organisation erfasst. Kontaktdaten werden in dem privaten Gespräch ausgetauscht, das eine Interessensbekundung eröffnet, und nicht hier veröffentlicht."
+    },
+    "partner": {
+      "developer": "Projektentwickler",
+      "developerNote": "Plant und führt die Wiederherstellungsarbeiten aus und erstellt das Designdokument.",
+      "owner": "Projektträger",
+      "ownerNote": "Führt das Projekt auf der Plattform, bietet die Einheiten an und beantwortet Fragen von Käufern.",
+      "landOwner": "Landeigentümerin",
+      "landOwnerNote": "Besitzt das Land und hat den langfristigen Pachtvertrag eingeräumt, auf dessen Grundlage die Arbeiten erfolgen.",
+      "verifier": "Verifizierer",
+      "verifierNote": "Unabhängig von Projektträger und Entwickler. Bewertet das Ergebnis gegen den Monitoringplan."
+    },
+    "evidence": {
+      "title": "Nachweise für die Berichterstattung",
+      "lead": "Ein Paket, das die auf der Plattform vorhandenen Projektinformationen zusammenstellt – für Ihre eigene Berichterstattung.",
+      "containsTitle": "Was das Paket enthält",
+      "item": {
+        "description": "Projektbeschreibung und Lage, mit der Grenze als GeoJSON",
+        "action": "Die messbare Maßnahme: was wiederhergestellt wird und auf welcher Fläche",
+        "timeframe": "Zeitrahmen: Arbeiten, Ergebnisperioden und zugesagte Bewirtschaftungsdauer",
+        "impact": "Erwartete Wasser- und Biodiversitätsergebnisse, mit Ausgangswerten und angegebener Unsicherheit",
+        "budget": "Projektbudget, soweit der Projektträger es veröffentlicht hat",
+        "verification": "Verifizierung: Standard, Verifizierer und Monitoringplan",
+        "documents": "Die aktuelle Version jedes Projektdokuments",
+        "availability": "Verfügbarkeit je Periode für dieses Projekt, mit Angabe des Einheitentyps"
+      },
+      "download": "Nachweispaket herunterladen",
+      "format": "PDF · wird beim Herunterladen erstellt",
+      "caveat": "Dieses Nachweispaket beschreibt die auf der Plattform verfügbaren Informationen. Es garantiert nicht die Anerkennung durch eine bestimmte Prüferin oder einen bestimmten Prüfer."
+    },
+    "questions": {
+      "title": "Private Fragen",
+      "lead": "Stellen Sie eine Frage zu diesem Projekt. Sie geht an den Projektträger und an Sylva und wird nicht veröffentlicht.",
+      "subjectLabel": "Worum geht es in Ihrer Frage?",
+      "subjectPlaceholder": "Abschnitt auswählen",
+      "subjectOther": "Etwas anderes",
+      "bodyLabel": "Ihre Frage",
+      "bodyPlaceholder": "Zum Beispiel: Aus welchen Pegeln stammt der Ausgangswert des Grundwasserstands?",
+      "bodyHint": "Bitte geben Sie in einer ersten Frage keine vertraulichen Informationen über Ihre eigene Organisation an.",
+      "replyLabel": "Antwortadresse",
+      "replyHint": "Wird für die Antwort an Sie verwendet. Ihre Organisation wird dem Projektträger nur genannt, wenn Sie das wählen.",
+      "send": "Frage senden",
+      "notWiredYet": "Dieses Formular gehört zum Entwurfsstand und sendet noch nichts.",
+      "goesToTitle": "Wer dies erhält",
+      "operator": "Plattformbetreiber",
+      "operatorName": "Sylva",
+      "noThreadTitle": "Es gibt keinen öffentlichen Kommentarbereich",
+      "noThreadBody": "Fragen und Antworten werden auf dieser Seite nicht veröffentlicht. Nichts, was Sie hier senden, ist für andere Käufer sichtbar, und die Fragen anderer Käufer sind für Sie nicht sichtbar."
+    },
+    "investor": {
+      "accessBadge": "Investorenzugang",
+      "phaseBadge": "Phase 2",
+      "lockedTitle": "Finanzinformationen werden auf dieser Seite nicht angezeigt",
+      "field": {
+        "financingNeed": "Finanzierungsbedarf",
+        "revenueStreams": "Einnahmequellen",
+        "model": "Finanzmodell",
+        "issuanceSchedule": "Erwarteter Ausgabeplan",
+        "useOfFunds": "Mittelverwendung"
+      },
+      "withheld": "Zurückgehalten",
+      "vettingNote": "Die Feldnamen sind aufgeführt, damit Sie wissen, was vorhanden ist. Die Werte werden nach der Prüfung an Investoren freigegeben; hier wird kein Wert und keine Annäherung an einen Wert gezeigt.",
+      "notAdviceNote": "Die Verifizierung eines ökologischen Ergebnisses ist keine Aussage über eine finanzielle Rendite. Beides wird getrennt bewertet."
+    }
+  },
+  "record": {
+    "title": "Öffentliches Transaktionsverzeichnis",
+    "lead": "Jeder Schritt einer auf dieser Plattform vereinbarten Transaktion wird hier als neuer Eintrag festgehalten. Einträge werden hinzugefügt; sie werden nie bearbeitet und nie gelöscht.",
+    "entriesTitle": "Einträge des Verzeichnisses",
+    "count": "{count, plural, =0 {Keine Einträge in diesem Auszug} one {# Eintrag in diesem Auszug} other {# Einträge in diesem Auszug}}",
+    "countNote": "Diese Zahl zählt Verzeichniseinträge. Sie ist keine Menge von Einheiten.",
+    "extractSource": "Sylva-Transaktionsverzeichnis, öffentlicher Auszug",
+    "noVolumes": "In diesem Verzeichnis erscheinen keine Mengen von Einheiten und keine Preise. Die Einheiten eines Projekts gehören zum Standard und zur Einheitenart dieses Projekts und werden auf der Seite dieses Projekts angezeigt, mit der Einheit neben jeder Zahl.",
+    "scope": {
+      "title": "Was dieses Verzeichnis ist und was nicht",
+      "isTitle": "Was dieses Verzeichnis ist",
+      "isBody": "Ein Nachweis darüber, was auf dieser Plattform vereinbart wurde, in der Reihenfolge des Geschehens. Jeder Eintrag nennt das Projekt, die Art des Ereignisses, das Datum des Ereignisses und die Gegenpartei so, wie sie öffentlich erscheint.",
+      "isSecond": "Es ist dauerhaft. Ein geschriebener Eintrag bleibt geschrieben und bleibt lesbar, auch dann, wenn er sich als falsch erwiesen hat.",
+      "isNotTitle": "Was dieses Verzeichnis nicht ist",
+      "isNotBody": "Es ist nicht das Register des Standards. Jeder Standard führt seine eigene offizielle Datenbank ausgegebener und stillgelegter Einheiten und gewährt externen Systemen keinen Schreibzugriff darauf. Ob eine Einheit existiert und ob sie stillgelegt wurde, beantwortet dieses Register und nicht diese Seite.",
+      "isNotSecond": "Es ist keine Preisliste und kein Mengenbericht. Das Verzeichnis enthält keine Mengen von Einheiten und keine Preise."
+    },
+    "how": {
+      "title": "Wie ein Eintrag zu lesen ist",
+      "appendOnlyTitle": "Nichts wird bearbeitet und nichts gelöscht",
+      "appendOnlyBody": "Ein Fehler wird durch einen neuen Eintrag korrigiert, der auf den fehlerhaften Eintrag verweist. Der korrigierte Eintrag bleibt sichtbar, in zeitlicher Reihenfolge, als überholt gekennzeichnet. Ein überholter Eintrag bleibt Teil des Verzeichnisses.",
+      "labelTitle": "Gegenparteien werden gekennzeichnet, nicht genannt",
+      "labelBody": "Ein Käufer erscheint als Kennung wie „Buyer 014“, zusammen mit Branche, Land und Größenklasse. Kennungen werden je Projekt und je Transaktion vergeben: dieselbe Kennung auf zwei Projekten ist nicht dieselbe Organisation, und zwei Transaktionen derselben Organisation in einem Projekt tragen unterschiedliche Kennungen.",
+      "disclosureTitle": "Über die Namensnennung entscheidet die Gegenpartei, Transaktion für Transaktion",
+      "disclosureBody": "Hat sich eine Gegenpartei für eine Transaktion zur Namensnennung entschieden, wird die Organisation ab dem Datum dieser Entscheidung in den Einträgen dieser Transaktion genannt. Zuvor veröffentlichte Einträge behalten die Kennung, mit der sie veröffentlicht wurden, denn bereits Veröffentlichtes wird nicht nachträglich geändert.",
+      "ownerTitle": "Projektträger werden genannt",
+      "ownerBody": "Die Organisation, der ein Projekt gehört, wird in den Einträgen dieses Projekts genannt. Sie ist auf der Projektseite ohnehin genannt, eine Kennung würde nichts verbergen.",
+      "registryTitle": "Registerverweise gehören dem Standard",
+      "registryBody": "Ein Eintrag über eine Zuteilung, eine Übertragung oder eine Stilllegung verweist auf einen Datensatz im Register des Standards. Dieser Verweis macht den Eintrag überprüfbar. Der maßgebliche Datensatz bleibt beim Standard."
+    },
+    "filters": {
+      "title": "Filter",
+      "project": "Projekt",
+      "eventType": "Ereignisart",
+      "apply": "Anwenden",
+      "notConnected": "Diese Filter sind noch nicht angeschlossen. Unten wird der vollständige Auszug angezeigt."
+    },
+    "table": {
+      "caption": "Einträge des Transaktionsverzeichnisses, neueste zuerst. Überholte Einträge bleiben an ihrer Stelle und sind gekennzeichnet. In dieser Tabelle erscheinen keine Mengen von Einheiten und keine Preise."
+    },
+    "col": {
+      "date": "Datum",
+      "entry": "Eintrag",
+      "project": "Projekt",
+      "event": "Ereignis",
+      "counterparty": "Gegenpartei",
+      "sector": "Branche",
+      "country": "Land",
+      "sizeBand": "Größenklasse",
+      "entryStatus": "Eintragsstatus"
+    },
+    "entryStatus": {
+      "current": "Aktuell",
+      "superseded": "Überholt",
+      "supersededBy": "Überholt durch Eintrag {ref}",
+      "correction": "Korrektur",
+      "corrects": "Korrigiert Eintrag {ref}",
+      "reason": "Grund"
+    },
+    "party": {
+      "label": "Kennung",
+      "named": "Genannt",
+      "owner": "Projektträger"
+    },
+    "sector": {
+      "food_bev": "Lebensmittel und Getränke",
+      "utilities": "Versorgung und Energie",
+      "finance": "Finanzdienstleistungen",
+      "chemicals": "Chemie",
+      "public": "Öffentlich und gemeinnützig"
+    },
+    "sizeBand": {
+      "sme": "Bis 249 Beschäftigte",
+      "large": "250 oder mehr Beschäftigte"
+    },
+    "event": {
+      "listed": "Gelistet",
+      "listedNote": "Das Projekt wurde auf der Plattform gelistet und seine Seite wurde öffentlich.",
+      "offered": "Angeboten",
+      "offeredNote": "Der Projektträger hat für einen Zeitraum eine Menge angeboten.",
+      "interest_expressed": "Interesse bekundet",
+      "interest_expressedNote": "Ein geprüfter Käufer hat Interesse bekundet. Damit öffnet sich ein privater Raum zwischen diesem Käufer und diesem Projekt.",
+      "terms_proposed": "Konditionen vorgeschlagen",
+      "terms_proposedNote": "Im privaten Raum wurden Entwurfskonditionen vorgeschlagen. Die Konditionen selbst werden nicht veröffentlicht.",
+      "agreed": "Vereinbart",
+      "agreedNote": "Die Parteien haben sich auf Konditionen geeinigt. Verträge werden außerhalb der Plattform unterzeichnet und das unterzeichnete Dokument wird als Nachweis hochgeladen.",
+      "credits_issued": "Einheiten ausgegeben",
+      "credits_issuedNote": "Der Standard hat Einheiten nach eigenen Regeln ausgegeben, nachdem eine unabhängige Stelle das Ergebnis vor Ort verifiziert hat.",
+      "allocated": "Zugeteilt",
+      "retired": "Stillgelegt",
+      "retiredNote": "Der Käufer hat die Einheiten aus dem Verkehr genommen, sodass niemand sonst sie geltend machen kann.",
+      "cancelled": "Annulliert",
+      "cancelledNote": "Einmal stillgelegt oder annulliert, ändert eine Einheit ihren Zustand nie wieder.",
+      "transferred": "Übertragen",
+      "transferredNote": "Regel 2 der Konzeptnotiz nennt eine Übertragung, die Liste der Ereignisse nicht. Wird mit einem Verweis auf den Registerdatensatz des Standards festgehalten.",
+      "correction": "Korrektur",
+      "correctionNote": "Verweist auf einen früheren, fehlerhaften Eintrag und nennt den Grund. Regel 4 verlangt eine solche Möglichkeit; die Liste der Ereignisse sieht keine vor.",
+      "deal_withdrawn": "Transaktion zurückgezogen",
+      "deal_withdrawnNote": "Eine Transaktion kann enden, ohne zustande zu kommen, und die Liste der Ereignisse sieht dafür nichts vor. Zurückgezogen von der Partei, die sie vorgeschlagen hat.",
+      "deal_declined": "Transaktion abgelehnt",
+      "deal_declinedNote": "Wie oben, wenn die andere Partei abgelehnt hat.",
+      "deal_lapsed": "Transaktion verfallen",
+      "deal_lapsedNote": "Wie oben, wenn keine der Parteien sie weiterverfolgt hat."
+    },
+    "vocabulary": {
+      "title": "Ereignisvokabular",
+      "intro": "Neun Ereignisarten stammen aus der Konzeptnotiz, in ihrer eigenen Reihenfolge. Die übrigen stammen von uns: das Verzeichnis benötigt sie, und sie sind als Vorschlag gekennzeichnet, bis das Vokabular bestätigt ist.",
+      "noted": "In der Konzeptnotiz genannt",
+      "notedCaption": "In der Konzeptnotiz genannte Ereignisarten und was ein Eintrag dieser Art festhält.",
+      "proposed": "Von uns vorgeschlagen",
+      "proposedBadge": "Noch nicht bestätigt",
+      "proposedNote": "Diese Ereignisarten stehen nicht in der Liste der Konzeptnotiz. Sie stehen hier, weil das Verzeichnis ohne sie seine Aufgabe nicht erfüllen kann, und sie sind getrennt aufgeführt, damit sie niemand als vereinbart liest.",
+      "proposedCaption": "Von uns vorgeschlagene Ereignisarten und was ein Eintrag dieser Art festhält.",
+      "colEvent": "Ereignis",
+      "colMeaning": "Was der Eintrag festhält",
+      "notDefined": "Die Konzeptnotiz nennt dieses Ereignis, definiert aber nicht, was es umfasst. Wir haben dafür keine Definition formuliert."
+    },
+    "correction": {
+      "title": "Wie die Korrektur in diesem Auszug funktioniert",
+      "body": "Ein Eintrag in diesem Auszug wurde dem falschen Zeitraum zugeordnet. Das Verzeichnis kennt keine Möglichkeit, einen Eintrag zu ändern, daher wurde er auf dem einzig möglichen Weg korrigiert: durch weitere Einträge.",
+      "step1": "Eintrag {wrong} ordnete das Ereignis dem falschen Zeitraum zu.",
+      "step2": "Eintrag {correction} verweist auf Eintrag {wrong} und nennt den Grund. Eintrag {wrong} wird weder geändert noch entfernt; er wird als überholt gekennzeichnet und bleibt in zeitlicher Reihenfolge stehen.",
+      "step3": "Eintrag {corrected} hält das Ereignis erneut fest, mit dem Zeitraum aus der unterzeichneten Absichtserklärung.",
+      "close": "Drei Einträge, alle sichtbar. Wer sie liest, sieht, was festgehalten wurde, dass es falsch war, warum, und was an seine Stelle getreten ist."
+    },
+    "limits": {
+      "title": "Grenzen dieses Auszugs",
+      "privacy": "Der Inhalt eines privaten Transaktionsraums wird nicht veröffentlicht: weder die Nachrichten noch die Entwurfsdokumente noch die Konditionen noch die Preise. Das Verzeichnis hält fest, dass ein Ereignis stattgefunden hat, nicht was darin stand.",
+      "kAnonymity": "Jede Zeile trägt eine Branche, ein Land und eine Größenklasse. Wird eine Organisation bei einer Transaktion genannt, können diese drei Angaben ausreichen, um sie Einträgen zuzuordnen, in denen sie nur als Kennung erscheint. Ob die Branchengruppen und Größenklassen breit genug sind, um das zu verhindern, ist eine offene Frage für den Auftraggeber und keine, die diese Seite beantworten kann.",
+      "classification": "Die Branche wird so angezeigt, wie sie im Datensatz der Organisation hinterlegt ist, nach {classification}. Welche Klassifikation verwendet wird und was die Größenklassen messen, sind offene Entscheidungen; die Werte hier sind Demonstrationswerte."
+    },
+    "demo": {
+      "correctionReason": "Der Eintrag nannte den Zeitraum 2028. Die unterzeichnete Absichtserklärung nennt den Zeitraum 2029."
+    }
+  },
+  "howItWorks": {
+    "title": "So funktioniert es",
+    "metaDescription": "Die sieben Schritte von einem dokumentierten Feuchtgebietsprojekt bis zu ausgegebenen Einheiten: wer in jedem Schritt handelt, welche Nachweise dann vorliegen und was diese Plattform tut und was nicht.",
+    "lead": "Diese Seite beschreibt, was zwischen einem dokumentierten Renaturierungsprojekt und Einheiten geschieht, die ein Käufer stilllegen kann: wer in jedem Schritt handelt, welche Nachweise dann vorliegen und wo die Rolle dieser Plattform endet.",
+    "onThisPage": "Auf dieser Seite",
+    "flow": {
+      "title": "Die sieben Schritte im Detail",
+      "lead": "Dieselben sieben Schritte wie auf der Startseite, mit den Angaben, nach denen bei einer Prüfung gefragt wird. Bei den Pilotprojekten sind die ersten beiden Schritte erledigt: Projektskizzen und Projektdesigndokumente liegen vor. Verifizierung und Ausgabe folgen später.",
+      "who": "Wer es tut",
+      "evidence": "Nachweise zu diesem Zeitpunkt",
+      "does": "Was die Plattform tut",
+      "doesNot": "Was die Plattform nicht tut",
+      "steps": {
+        "project": {
+          "who": "Der Projektträger, also die Organisation, die die Renaturierung durchführt, bereitet das Projekt auf und stellt es auf die Plattform. Sylva bestätigt die Angaben und veröffentlicht die Seite.",
+          "evidence": "Eine Projektskizze und, bei den Pilotprojekten, ein Projektdesigndokument. Die Projektgrenze als GeoJSON, von der Projektseite herunterladbar.",
+          "does": "Sie gibt dem Projekt eine eigene Seite unter einer eigenen URL, die weitergeleitet und ohne Konto gelesen werden kann.",
+          "doesNot": "Sie konzipiert das Projekt nicht, führt die Arbeiten nicht aus und beurteilt nicht, ob der Renaturierungsplan fachlich tragfähig ist. Der Projektträger verantwortet das Projekt und beantwortet Fragen dazu."
+        },
+        "evidence": {
+          "who": "Der Projektträger liefert die Zahlen und die Dokumente dahinter. Sylva prüft, dass jede Zahl auf der Seite angibt, woher sie stammt und von wann sie ist.",
+          "evidence": "Ausgangswerte, der Monitoringplan, die benannte Prüfstelle und die angegebene Unsicherheit. Anspruchsrechte: wer welchen Nutzen geltend machen darf, wofür, und was ausgeschlossen ist. Dauerhaftigkeit: wer die Fläche kontrolliert, wer sie unterhält und wie lange. Verfügbarkeit je Periode.",
+          "does": "Sie nennt neben jeder Zahl die Quelle und das Datum und sagt es ausdrücklich, wenn die Dokumente zu einem Punkt schweigen.",
+          "doesNot": "Sie verifiziert das ökologische Ergebnis nicht. Nichts auf der Projektseite ist zu diesem Zeitpunkt ein verifiziertes Ergebnis, und erwartete Werte sind als erwartet gekennzeichnet."
+        },
+        "interest": {
+          "who": "Ein Käufer aus einer von Sylva freigegebenen Organisation klickt auf der Projektseite auf „Interesse bekunden“.",
+          "evidence": "Ein Interessensereignis im dauerhaften Verzeichnis: Projekt, Käufer, Datum. In der öffentlichen Fassung erscheint der Käufer als Kennung wie „Käufer 014“ mit Branche, Land und Größe, sofern er sich für diese Transaktion nicht für eine namentliche Nennung entschieden hat.",
+          "does": "Sie öffnet einen privaten Raum zwischen diesem Käufer und diesem Projekt und schreibt das Ereignis in das Verzeichnis.",
+          "doesNot": "Es werden weder Menge noch Preis noch Laufzeit festgelegt. Interesse ist die erste Stufe; Absichtserklärung und Term Sheet folgen später."
+        },
+        "deal": {
+          "who": "Der Käufer und der Projektträger im privaten Raum. Fragen gehen an den Projektträger und an Sylva, nicht in einen öffentlichen Kommentarbereich.",
+          "evidence": "Nachrichten, Dokumente, aufeinanderfolgende Fassungen der Vertragsentwürfe und eine Stufenmarkierung von Interesse über Absichtserklärung und Term Sheet bis unterzeichnet. Der unterzeichnete Vertrag wird hochgeladen.",
+          "does": "Sie bewahrt jede Fassung auf und schreibt jede Stufe in das dauerhafte Verzeichnis. Darin wird nichts bearbeitet oder gelöscht: Ein Fehler wird durch einen neuen Eintrag korrigiert, der auf den falschen verweist, und der falsche bleibt sichtbar.",
+          "doesNot": "Sie wickelt keine Zahlungen, keine Treuhand und keine Abwicklung ab und ist nicht der Ort der Unterzeichnung. Unterzeichnet wird außerhalb der Plattform; das unterzeichnete Dokument wird als Nachweis hochgeladen."
+        },
+        "restoration": {
+          "who": "Der Projektträger und die Partner vor Ort: wer das Projekt entwickelt, wem die Fläche gehört und wer sich zur Unterhaltung verpflichtet hat.",
+          "evidence": "Monitoring gemäß Plan sowie die Regelungen zur Dauerhaftigkeit der Fläche nach Vertragsende.",
+          "does": "Sie veröffentlicht Monitoringdokumente, sobald sie geliefert werden, und hält frühere Fassungen lesbar, statt sie zu ersetzen.",
+          "doesNot": "Sie führt die Arbeiten weder aus noch beaufsichtigt sie sie, und sie übernimmt kein Monitoring der Fläche."
+        },
+        "verified": {
+          "who": "Eine unabhängige Prüfstelle, die auf der Projektseite benannt ist, bevor sich jemand bindet.",
+          "evidence": "Ein Verifizierungsbericht. Solange keiner vorliegt, ist jedes Ergebnis auf der Seite eine Erwartung und kein Resultat.",
+          "does": "Sie veröffentlicht den Bericht neben den Dokumenten, die er prüft.",
+          "doesNot": "Sie verifiziert selbst nichts und entscheidet nicht, ob ein Ergebnis die Kriterien des Standards erfüllt. Sylva ist nicht die Prüfstelle."
+        },
+        "units": {
+          "who": "Der Standard gibt Einheiten nach eigenen Regeln aus und erfasst sie in seinem eigenen Register.",
+          "evidence": "Der Registereintrag des Standards und ein Verweis darauf, der hier zu diesem Projekt und dieser Periode geführt wird.",
+          "does": "Sie erfasst den Registerverweis, die Zuordnung zu den hier eingegangenen Zusagen und die Stilllegung, also Einheiten, die aus dem Verkehr genommen werden, damit niemand sonst das Ergebnis geltend machen kann. Ohne Verweis auf den Eintrag des Standards wird hier keine Einheit zugeordnet, übertragen oder stillgelegt.",
+          "doesNot": "Sie gibt keine Einheiten aus und ist nicht das Register. Eine Einheit existiert, weil der Standard sie ausgegeben hat, nicht weil sie auf dieser Plattform erscheint."
+        }
+      }
+    },
+    "vetting": {
+      "title": "Wer Transaktionen eingehen darf",
+      "body": "Niemand gelangt ohne vorherige Prüfung durch Sylva auf die private Seite. Wir fragen, was der Käufer geltend machen will, wie er arbeitet und wie er es mit Nachhaltigkeit hält, und geben ihn dann frei oder lehnen ab. Das ist eine Auflage unserer Förderung und unsere wichtigste Absicherung gegen Greenwashing.",
+      "approval": "Für eine nicht freigegebene Organisation kann keine Transaktion angelegt werden. Projektseiten sind öffentlich und ohne Konto lesbar; eine Interessensbekundung ist es nicht.",
+      "pseudonym": "Die Teilnahme erfolgt standardmäßig pseudonym. Im öffentlichen Verzeichnis erscheint ein Käufer als Kennung mit Branche, Land und Größe; über eine namentliche Nennung entscheidet er selbst, Transaktion für Transaktion."
+    },
+    "dealShapes": {
+      "title": "Die drei Transaktionsformen",
+      "lead": "Alle drei werden bei jedem Projekt nebeneinander angeboten, weil die von uns befragten Käufer unterschiedliche davon bevorzugen.",
+      "caption": "Die drei Transaktionsformen, wie sie bei jedem Projekt angeboten werden.",
+      "colShape": "Transaktionsform",
+      "colCommitment": "Wozu sich der Käufer verpflichtet",
+      "colUnitsExist": "Existieren die Einheiten bereits",
+      "colRecord": "Was auf dieser Plattform erfasst wird",
+      "mostPilot": "Die meisten Pilotabschlüsse",
+      "why": "Die meisten Abschlüsse in diesem Pilotvorhaben sind Terminzusagen. Einheiten werden erst ausgegeben, nachdem eine unabhängige Stelle das Ergebnis vor Ort verifiziert hat; zu dem Zeitpunkt, an dem sich ein Käufer und ein Projekt einigen, gibt es daher in der Regel keinen Bestand zu verkaufen. Die Plattform ist für Transaktionen über Einheiten gebaut, die später existieren werden, nicht nur für solche über bereits bestehende.",
+      "spot": {
+        "name": "Sofortmenge",
+        "commitment": "Nimmt eine Menge bereits bestehender Einheiten ab und legt sie still, sobald es passt.",
+        "unitsExist": "Ja. Vom Standard bereits ausgegeben, mit einem Registereintrag, auf den verwiesen werden kann.",
+        "record": "Die Zuordnung zu diesem Registerverweis und die Stilllegung, sobald sie erfolgt."
+      },
+      "forward": {
+        "name": "Terminvertrag",
+        "commitment": "Verpflichtet sich jetzt, eine Menge in einem künftigen Jahr zu den jetzt vereinbarten Konditionen abzunehmen.",
+        "unitsExist": "Nein. Sie werden erst ausgegeben, nachdem eine unabhängige Stelle das Ergebnis verifiziert hat.",
+        "record": "Die Zusage zu diesem Projekt und dieser Periode, die aufeinanderfolgenden Entwürfe und der unterzeichnete Vertrag."
+      },
+      "coInvestment": {
+        "name": "Ko-Investition",
+        "commitment": "Finanziert direkt einen Anteil am Projekt. Die Menge, die das Unternehmen nicht benötigt, wird an andere Käufer verkauft.",
+        "unitsExist": "Nein. Wie beim Terminvertrag folgt die Ausgabe auf die Verifizierung.",
+        "record": "Die Vereinbarung und die Menge, die für das investierende Unternehmen zu diesem Projekt und dieser Periode reserviert ist."
+      }
+    },
+    "units": {
+      "title": "Einheiten, und warum die Zahlen zweier Projekte nie addiert werden",
+      "lead": "Der Markt ist neu und klein. Es gibt keinen einheitlichen Standard, und verschiedene Standards messen Unterschiedliches. Ein Projekt verkauft möglicherweise Hektar unter Renaturierung für ein Jahr, ein anderes Punkte auf einem Zustandsindex. Diese Zahlen zu addieren ergibt eine Zahl ohne Bedeutung.",
+      "rule": "Deshalb addiert auf dieser Plattform kein Bildschirm, kein Export und keine Grafik Mengen über verschiedene Projekte hinweg, und jede Zahl wird mit der Einheit ausgewiesen, in der sie gemessen ist. Die beiden folgenden Blöcke sind Demodaten und zeigen, warum sie getrennt bleiben.",
+      "metricHectareYears": "Hektarjahre unter Renaturierung",
+      "metricIndexPoints": "Punkte auf dem Zustandsindex des Standards",
+      "sourceDesignDocument": "DEMO-Projektdesigndokument",
+      "tableCaption": "Einheitenzahlen für {project}: ein Projekt, eine Periode, ein Einheitentyp. Demodaten.",
+      "noTotal": "Unter diesen beiden Blöcken steht keine zusammengefasste Zahl, und es wird auch keine geben. Hektarjahre und Indexpunkte messen Unterschiedliches; ihre Summe würde nichts beschreiben."
+    },
+    "boundaries": {
+      "title": "Was diese Plattform nicht ist",
+      "lead": "Fünf Grenzen, klar benannt, weil man bei jeder leicht das Gegenteil annimmt.",
+      "registry": {
+        "title": "Sie ist nicht das Register",
+        "body": "Jeder Standard führt seine eigene offizielle Datenbank der ausgegebenen und stillgelegten Einheiten und gewährt fremden Systemen keinen Schreibzugriff darauf. Diese Plattform führt Verweise auf diese Einträge samt der zugehörigen Dokumente. Unser eigenes Verzeichnis ist ein Nachweis dessen, was hier vereinbart wurde; ob eine Einheit existiert und in welchem Zustand sie ist, beantwortet das Register des Standards und nicht wir."
+      },
+      "payments": {
+        "title": "Es gibt keine Zahlungen, keine Treuhand und keine Abwicklung",
+        "body": "Über diese Plattform fließt kein Geld, und das ist auch nicht geplant. Verträge werden außerhalb der Plattform unterzeichnet, und das unterzeichnete Dokument wird als Nachweis des Vereinbarten hochgeladen."
+      },
+      "verifier": {
+        "title": "Sylva ist nicht die Prüfstelle",
+        "body": "Das ökologische Ergebnis verifiziert eine unabhängige Stelle, die auf der Projektseite benannt ist. Wir veröffentlichen, was diese Stelle berichtet. Ökologische Verifizierung und finanzieller Erfolg sind zwei verschiedene Fragen, und keine beantwortet die andere."
+      },
+      "evidencePack": {
+        "title": "Das Berichtsnachweispaket ist kein Prüfurteil",
+        "body": "Das Paket stellt zusammen, was die Plattform zu einem Projekt vorhält: die messbare Maßnahme, den Zeitrahmen, die erwartete Wirkung, ein Budget, sofern vorhanden, die Angaben zur Verifizierung und die zugehörigen Dokumente. Es beschreibt die hier verfügbaren Informationen. Es garantiert keine Anerkennung durch eine bestimmte Prüfstelle."
+      },
+      "ownership": {
+        "title": "Eine Einheit ist kein Anteil an der Fläche",
+        "body": "Einheiten sind das verpackte Ergebnis einer Renaturierung, kein Recht an der Fläche. Wer die Fläche kontrolliert, wer sie unterhält und wie lange, steht im Abschnitt zum langfristigen Schutz des jeweiligen Projekts."
+      }
+    },
+    "terms": {
+      "title": "Begriffe auf dieser Seite",
+      "lead": "In diesem Markt werden dieselben Wörter unterschiedlich verwendet. So sind sie hier gemeint.",
+      "projectOwner": {
+        "term": "Projektträger",
+        "def": "Die Organisation, die die Renaturierung durchführt. Sie stellt das Projekt auf die Plattform und beantwortet Fragen dazu."
+      },
+      "buyer": {
+        "term": "Käufer",
+        "def": "Ein Unternehmen, das Einheiten abnimmt und stilllegt. Zwei Arten lesen dieselbe Projektseite unterschiedlich: die eine zahlt für Wasser in den Einzugsgebieten ihrer eigenen Standorte, die andere für Unterlagen, auf die sich ihre Berichterstattung stützt."
+      },
+      "investor": {
+        "term": "Investor",
+        "def": "Ein Fonds oder eine Bank, die ein Projekt finanziert und aus Einheitenverkäufen und weiteren Einnahmen zurückgezahlt wird. Finanzinformationen stehen von Sylva geprüften Investoren zur Verfügung."
+      },
+      "coInvestor": {
+        "term": "Ko-Investor",
+        "def": "Ein Unternehmen, das direkt einen Anteil an einem Projekt finanziert, die benötigte Menge behält und den Rest an andere Käufer verkaufen lässt."
+      },
+      "verifier": {
+        "term": "Prüfstelle",
+        "def": "Die unabhängige Stelle, die das ökologische Ergebnis verifiziert. Auf der Projektseite benannt."
+      },
+      "scheme": {
+        "term": "Standard",
+        "def": "Das Regelwerk, unter dem ein Projekt registriert ist. Es legt fest, was eine Einheit misst, gibt Einheiten aus und führt sein eigenes Register."
+      },
+      "unit": {
+        "term": "Einheit",
+        "def": "Das nach den Regeln eines Standards verpackte Ergebnis einer Renaturierung: nach der Verifizierung ausgegeben, gekauft und anschließend stillgelegt."
+      },
+      "retirement": {
+        "term": "Stilllegung",
+        "def": "Das Herausnehmen einer Einheit aus dem Verkehr, damit niemand sonst sie geltend machen kann."
+      },
+      "buffer": {
+        "term": "Puffer",
+        "def": "Eine vom Verkauf zurückgehaltene Menge für den Fall, dass ein Projekt weniger liefert als erwartet."
+      },
+      "catchment": {
+        "term": "Einzugsgebiet",
+        "def": "Die Landfläche, die in einen bestimmten Fluss oder Grundwasserleiter entwässert. Ein wasserabhängiger Käufer sucht meist ein Projekt im selben Einzugsgebiet wie seine eigenen Standorte."
+      },
+      "period": {
+        "term": "Periode",
+        "def": "Das Jahr, auf das sich die Einheiten eines Projekts beziehen. Ob damit das Jahr des ökologischen Ergebnisses oder das Jahr der Ausgabe gemeint ist, legt der Standard fest; die Projektseite gibt es an."
+      },
+      "dealRoom": {
+        "term": "Transaktionsraum",
+        "def": "Der private Raum, der sich mit einer Interessensbekundung öffnet: Nachrichten, Dokumente, Vertragsentwürfe und eine Stufenmarkierung, sichtbar nur für diesen Käufer und dieses Projekt."
+      }
+    },
+    "next": {
+      "title": "Wie es weitergeht",
+      "body": "Die Projektseiten enthalten die oben beschriebenen Nachweise: die Einzugsgebietskarte, die Ergebnisse mit ihren Ausgangswerten und der Prüfstelle, Anspruchsrechte, den langfristigen Schutz, die Verfügbarkeit je Periode und die Dokumente selbst."
+    }
+  },
+  "forInvestors": {
+    "meta": {
+      "title": "Für Investoren",
+      "description": "Welche Finanzinformationen ein Renaturierungsprojekt vorhält, wer sie einsehen darf und wie eine Bank oder ein Fonds Zugang beantragt."
+    },
+    "audience": "Für Banken und Fonds",
+    "title": "Für Investoren",
+    "lead": "Investoren finanzieren die Renaturierungsarbeiten und werden aus dem Verkauf von Einheiten und weiteren Projekterlösen zurückgezahlt. Diese Seite gibt an, welche Finanzinformationen ein Projekt vorhält, wer sie einsehen darf und wie Zugang beantragt wird.",
+    "gate": {
+      "title": "Finanzinformationen sind nur für von uns geprüfte Investoren einsehbar.",
+      "body": "Finanzierungsbedarf, Erlösquellen und Finanzmodell werden einer Investorenorganisation freigegeben, nachdem Sylva sie zugelassen hat. Projektbeschreibung, Umweltergebnisse, Anspruchsrechte, Dokumente und Verfügbarkeitsangaben sind öffentlich und können vorher gelesen werden.",
+      "link": "Zugang zu Finanzinformationen beantragen"
+    },
+    "sequence": {
+      "title": "Wo Investoren einsteigen",
+      "intro": "Die folgende Reihenfolge ist bei den Pilotprojekten die übliche. Jedes Projekt gibt an, welche Stufe es erreicht hat.",
+      "documented": {
+        "name": "Projekt dokumentiert",
+        "note": "Der Projektträger veröffentlicht Projektskizze und Projektdesigndokument, was gemessen wird, den Monitoringplan und die Prüfstelle."
+      },
+      "committed": {
+        "name": "Käufer sagen Volumen zu",
+        "note": "Geprüfte Käufer bekunden Interesse und verpflichten sich, ein Volumen der Einheiten abzunehmen, die das Projekt in einer künftigen Periode auszugeben erwartet."
+      },
+      "financing": {
+        "name": "Finanzierung wird besprochen",
+        "note": "Geprüfte Investoren lesen Finanzierungsbedarf, Erlösquellen und Finanzmodell und besprechen die Konditionen mit dem Projektträger in einem privaten Raum."
+      },
+      "signed": {
+        "name": "Vertrag unterzeichnet",
+        "note": "Verträge werden außerhalb der Plattform unterzeichnet. Das unterzeichnete Dokument wird als Nachweis hochgeladen und der Schritt in das dauerhafte Verzeichnis geschrieben."
+      },
+      "entryMarker": "Investoren steigen in der Regel hier ein."
+    },
+    "entryCallout": {
+      "title": "Käufer sagen Volumen zu, bevor über die Finanzierung gesprochen wird",
+      "body": "Einheiten werden erst ausgegeben, nachdem eine unabhängige Stelle das Ergebnis vor Ort verifiziert hat. Die meisten Vereinbarungen hier sind daher Zusagen über künftige Einheiten und keine Verkäufe vorhandener Bestände. Investoren kommen typischerweise hinzu, sobald Käufer Volumen zugesagt haben. Ein Projekt lässt sich auch vorher vollständig lesen, und die Tabelle unten gibt an, welche Projekte diese Stufe erreicht haben."
+    },
+    "information": {
+      "title": "Welche Finanzinformationen es gibt",
+      "intro": "Ein Projekt hält die folgenden Angaben vor. Die ersten drei sind die Finanzangaben und werden erst nach der Prüfung freigegeben; alles Weitere ist öffentlich. Diese Tabelle listet auf, was vorhanden ist, nicht was darin steht.",
+      "caption": "Für ein Projekt vorgehaltene Angaben und wer sie einsehen darf (Demonstration)",
+      "col": {
+        "item": "Angabe",
+        "contains": "Was sie enthält",
+        "providedBy": "Bereitgestellt von",
+        "visibility": "Wer sie einsehen darf"
+      }
+    },
+    "visibility": {
+      "public": "Öffentlich",
+      "vetted": "Geprüfte Investoren"
+    },
+    "providedBy": {
+      "owner": "Projektträger",
+      "ownerVerifier": "Projektträger; Verifizierungsberichte von der Prüfstelle"
+    },
+    "info": {
+      "financingNeed": {
+        "name": "Finanzierungsbedarf",
+        "contains": "Die Höhe der Finanzierung, die das Projekt sucht."
+      },
+      "revenueStreams": {
+        "name": "Erlösquellen",
+        "contains": "Die Erlösquellen, die der Projektträger benannt hat, einschließlich des Verkaufs von Einheiten und weiterer Projekterlöse."
+      },
+      "model": {
+        "name": "Finanzmodell",
+        "contains": "Das Modell des Projektträgers zu Kosten und Erlösen des Projekts, als Datei, die nach Freigabe des Zugangs heruntergeladen werden kann."
+      },
+      "availability": {
+        "name": "Verfügbarkeit und Zusagen",
+        "contains": "Was das Projekt in jeder Periode auszugeben erwartet, wie viel zugesagt ist und wie viel verbleibt, in den Einheiten dieses Projekts."
+      },
+      "outcomes": {
+        "name": "Umweltergebnisse und Verifizierung",
+        "contains": "Was gemessen wird, der Ausgangswert, der Monitoringplan, die Prüfstelle und die angegebene Unsicherheit."
+      },
+      "claimRights": {
+        "name": "Anspruchsrechte",
+        "contains": "Wer welchen Nutzen des Projekts geltend machen darf, wofür, und was ausgeschlossen ist."
+      },
+      "durability": {
+        "name": "Langfristiger Schutz",
+        "contains": "Wer die Fläche kontrolliert, wer sich zu ihrer Pflege verpflichtet hat und für wie lange."
+      },
+      "documents": {
+        "name": "Projektdokumente",
+        "contains": "Projektskizze, Projektdesigndokument, Monitoringplan und, sobald eine Verifizierung stattgefunden hat, Verifizierungsberichte."
+      }
+    },
+    "pipeline": {
+      "title": "Projekte mit Finanzierungsbedarf",
+      "intro": "Demonstrationszeilen. Ein Projekt erscheint hier, wenn sein Träger Finanzierung sucht; die erreichte Stufe steht in der Tabelle.",
+      "caption": "Demonstrationsprojekte mit Finanzierungsbedarf und der Stand ihrer Finanzinformationen",
+      "col": {
+        "project": "Projekt",
+        "location": "Lage",
+        "stage": "Stufe",
+        "dealTypes": "Angebotene Transaktionsarten",
+        "financialPack": "Finanzinformationen"
+      },
+      "noVolumes": "Diese Tabelle zeigt keine Einheitenvolumina. Jedes Projekt gibt Einheiten nach seinem eigenen Standard aus: Ein Hektarjahr nach einem Standard und ein Punkt auf dem Index eines anderen Standards messen nicht dasselbe. Volumina werden auf der Seite des jeweiligen Projekts gezeigt, neben der Einheit, in der sie gezählt werden, und werden niemals addiert oder in eine Rangfolge mit den Volumina eines anderen Projekts gebracht."
+    },
+    "stage": {
+      "documented": "Projekt dokumentiert",
+      "buyersCommitted": "Käuferzusagen liegen vor",
+      "financingOpen": "Finanzierungsgespräche offen"
+    },
+    "dealType": {
+      "spot": "Spot-Volumen",
+      "forward": "Forward-Vertrag",
+      "coInvestment": "Ko-Investition"
+    },
+    "pack": {
+      "prepared": "Vorbereitet",
+      "inPreparation": "In Vorbereitung"
+    },
+    "panel": {
+      "title": "Ein Projekt: der öffentliche und der geschützte Teil",
+      "intro": "Ein Demonstrationsprojekt. Die öffentlichen Zahlen werden vollständig gezeigt. Die Finanzzahlen werden hier in keiner Form gezeigt, weder unscharf noch gerundet noch teilweise maskiert.",
+      "publicHeading": "Öffentlich zu diesem Projekt",
+      "restrictedHeading": "Freigabe nach der Prüfung",
+      "withheld": "Nicht gezeigt",
+      "withheldNote": "Name, Version und Datum jeder Angabe sind öffentlich. Die Werte werden an von Sylva geprüfte Investoren freigegeben und auf dieser Seite nicht vorab gezeigt.",
+      "unitNote": "Gezählt in {unit}, nach {scheme}. Diese Einheiten gehören zu diesem Projekt. Sie sind nicht mit Einheiten anderer Projekte vergleichbar und werden diesen niemals hinzugerechnet."
+    },
+    "unit": {
+      "hectareYears": "Hektarjahre"
+    },
+    "documents": {
+      "title": "Dokumente, die ein Investor anfordern kann",
+      "intro": "Dieselbe Grenze, Dokument für Dokument. Die Projektdokumente sind jetzt lesbar; die Finanzdokumente werden nach der Prüfung freigegeben.",
+      "caption": "Demonstrations-Dokumentenverzeichnis für DEMO Untere Havel Wetland Restoration",
+      "col": {
+        "name": "Dokument",
+        "type": "Art",
+        "version": "Version",
+        "date": "Datum",
+        "access": "Zugang",
+        "action": "Aktion"
+      },
+      "open": "Öffentlich",
+      "restricted": "Nach der Prüfung",
+      "download": "Herunterladen",
+      "requestAccess": "Zugang beantragen",
+      "inertNote": "Quelle: Dokumentenverzeichnis der Plattform. Keine Schaltfläche auf dieser Seite ist angebunden: Es wird nichts heruntergeladen und nichts gesendet."
+    },
+    "doc": {
+      "pin": "Projektskizze",
+      "pdd": "Projektdesigndokument",
+      "monitoring": "Monitoringplan",
+      "financingNeed": "Darstellung des Finanzierungsbedarfs",
+      "revenue": "Übersicht der Erlösquellen",
+      "model": "Finanzmodell"
+    },
+    "docType": {
+      "project": "Projekt",
+      "financial": "Finanzen"
+    },
+    "source": {
+      "projectDesignDocument": "Projektdesigndokument",
+      "financingSummary": "Finanzierungsübersicht des Projekts",
+      "ownerSubmission": "Einreichung des Projektträgers"
+    },
+    "demo": {
+      "havel": {
+        "location": "Brandenburg, Deutschland · Einzugsgebiet Untere Havel"
+      },
+      "sevre": {
+        "location": "Nouvelle-Aquitaine, Frankreich · Einzugsgebiet Sèvre Niortaise"
+      },
+      "shannon": {
+        "location": "County Offaly, Irland · Einzugsgebiet Shannon"
+      }
+    },
+    "vetting": {
+      "title": "Zugang erst nach der Prüfung",
+      "body1": "Sylva prüft jede Organisation, bevor sie auf der Plattform Transaktionen vornehmen kann. Die Zulassung ist eine Bedingung der Förderung, unter der dieses Pilotvorhaben läuft, und unsere wichtigste Absicherung gegen Greenwashing.",
+      "body2": "Für eine von Sylva nicht zugelassene Organisation kann keine Transaktion angelegt werden, und die Finanzinformationen eines Projekts bleiben verschlossen, bis die anfragende Organisation zugelassen ist.",
+      "body3": "Im öffentlichen Verzeichnis erscheint ein Käufer als Kennung wie „Buyer 014“ mit Branche, Land und Größe, sofern der Käufer sich nicht für diese Transaktion zur Namensnennung entschieden hat. Echte Namen stehen Prüferinnen und Prüfern zur Verfügung, deren Zugang ausschließlich lesend ist.",
+      "body4": "Was wir von einer Investorenorganisation im Rahmen der Prüfung erheben, ist noch nicht veröffentlicht. Das Formular unten fragt nur, wer anfragt und welche Projekte angesehen werden sollen."
+    },
+    "form": {
+      "title": "Zugang zu Finanzinformationen beantragen",
+      "intro": "Teilen Sie uns mit, wer Sie sind und was Sie ansehen möchten. Sylva prüft jede Anfrage, und der Zugang zu Finanzinformationen folgt der Zulassung der Organisation.",
+      "org": "Name der Organisation",
+      "orgType": "Art der Organisation",
+      "orgTypeOption": {
+        "bank": "Bank",
+        "fund": "Fonds",
+        "insurer": "Versicherer",
+        "other": "Andere"
+      },
+      "country": "Land der Registrierung",
+      "contact": "Name der Kontaktperson",
+      "email": "Geschäftliche E-Mail-Adresse",
+      "projects": "Projekte, die Sie ansehen möchten",
+      "projectsHint": "Nennen Sie die Projekte oder beschreiben Sie, welche Art von Projekten Sie finanzieren.",
+      "note": "Was wir sonst wissen sollten",
+      "dataNote": "Personenbezogene Daten werden ausschließlich im Datensatz des Benutzerkontos gehalten. Alles Weitere auf der Plattform verweist auf Organisationen über eine Kennung.",
+      "submit": "Anfrage senden",
+      "inertNote": "Dieses Formular ist Teil des Interface-Entwurfs. Es ist nicht angebunden und sendet nichts."
+    },
+    "limits": {
+      "title": "Was diese Seite nicht enthält",
+      "returns": "Keine Renditeangaben, keine Verzinsung und keine Finanzprognosen. Nichts davon wird auf dieser Seite, auf einer Projektseite oder an anderer Stelle der Plattform veröffentlicht.",
+      "noRanking": "Keine Rangfolge und keine Empfehlung. Sylva veröffentlicht die Angaben, die jeder Projektträger dokumentiert hat, samt der Verifizierungsangaben des Projekts, und bewertet Projekte nicht gegeneinander.",
+      "registry": "Jeder Standard führt sein eigenes offizielles Register ausgegebener und stillgelegter Einheiten. Diese Plattform ist dieses Register nicht und ersetzt es nicht. Sie hält Verweise auf Registereinträge, die zugehörigen Dokumente und ein dauerhaftes Verzeichnis dessen, was hier vereinbart wurde.",
+      "settlement": "Keine Zahlungen, kein Treuhandkonto und keine Abwicklung. Verträge werden außerhalb der Plattform unterzeichnet, und das unterzeichnete Dokument wird als Nachweis hochgeladen.",
+      "demo": "Kein echtes Projekt. Jede Organisation, jedes Projekt und jede Zahl auf dieser Seite sind fiktive Demonstrationsdaten und beschreiben kein reales Feuchtgebiet, keine reale Verifizierung und kein reales Umweltergebnis."
+    }
+  },
+  "forBuyers": {
+    "title": "Für Käufer",
+    "metaDescription": "Was Käufer auf dieser Plattform tun können: Projekte prüfen, eigene Standorte registrieren und Entfernungen sehen, Interesse bekunden, die Prüfung durchlaufen und vertraulich verhandeln.",
+    "lead": "Zwei Arten von Unternehmen kaufen Renaturierungsergebnisse, aus unterschiedlichen Gründen, und sie lesen dieselbe Projektseite in unterschiedlicher Reihenfolge. Diese Seite beschreibt beide Situationen, was Käufer hier tun können, wie Ihre Identität öffentlich erscheint und was wir prüfen, bevor eine Transaktion zustande kommen kann.",
+    "source": {
+      "interviews": "Käufergespräche, Juni bis September 2026",
+      "siteRegister": "DEMO-Standortregister",
+      "publicRecord": "DEMO-Transaktionsverzeichnis, öffentlicher Teil",
+      "participationTerms": "DEMO-Teilnahmebedingungen",
+      "questionnaire": "DEMO-Prüffragebogen"
+    },
+    "situations": {
+      "title": "Zwei Käufersituationen",
+      "lead": "Beide Situationen wurden von den Organisationen beschrieben, die für das Pilotvorhaben befragt wurden. Eine Projektseite bedient beide; unterschiedlich ist nur, welcher Abschnitt zuerst gelesen wird.",
+      "interviewedLabel": "für das Pilotvorhaben befragte Organisationen",
+      "ranksLabel": "Priorität",
+      "readsTitle": "Was zuerst gelesen wird",
+      "seeSection": "{section}, auf der Demo-Projektseite",
+      "evidenceSection": "Nachweise für die Berichterstattung",
+      "water": {
+        "tag": "Wassergetrieben",
+        "heading": "Der wasserabhängige Käufer",
+        "who": "Ein Kraftwerk, ein Getränkehersteller, ein Lebensmittelproduzent. Der Betrieb hängt vom Wasser in einem bestimmten Fluss oder Grundwasserkörper ab. Gesucht wird daher ein Projekt in dem Einzugsgebiet, aus dem die eigenen Standorte schöpfen, und nicht einfach ein Projekt in Europa.",
+        "ranks": "Wasserbezogene Ergebnisse zuerst, Biodiversität danach. Den Biodiversitätsnutzen würde das Unternehmen ebenfalls geltend machen, bezahlt wird aber für Wasser.",
+        "read1": "Die Karte des Einzugsgebiets und die Entfernung der eigenen registrierten Standorte zur Projektgrenze.",
+        "read2": "Die Wasserkennzahlen: was gemessen wird, der Ausgangswert, die Monitoringmethode und die angegebene Unsicherheit.",
+        "read3": "Die Anspruchsrechte, um zu prüfen, dass ein Weiterverkauf von Einheiten nicht das Recht entzieht, den bezahlten Nutzen geltend zu machen.",
+        "read4": "Der langfristige Schutz: wer die Fläche nach Vertragsende kontrolliert und wer sich zur Unterhaltung verpflichtet hat.",
+        "note": "Die europäische Herkunft als solche war den befragten Unternehmen nicht wichtig. Das Einzugsgebiet war es."
+      },
+      "reporting": {
+        "tag": "Berichtsgetrieben",
+        "heading": "Der berichtsgetriebene Käufer",
+        "who": "Ein großes Unternehmen mit Berichtspflichten zur Nachhaltigkeit. Es sucht Projekte in der Nähe eigener Anlagen und eine Dokumentation, die die prüfende Stelle akzeptiert.",
+        "ranks": "Dokumentation zuerst: welche Maßnahme durchgeführt wurde, über welchen Zeitraum, mit welcher erwarteten Wirkung, zu welchen Kosten, von wem verifiziert.",
+        "read1": "Das Nachweispaket für die Berichterstattung: Projektbeschreibung, die messbare Maßnahme, der Zeitraum, die erwartete Wirkung, das Budget soweit verfügbar, Angaben zur Verifizierung und die zugehörigen Dokumente.",
+        "read2": "Die Dokumente selbst: Projektskizze, Projektdesigndokument, Monitoringplan und, sobald vorhanden, Verifizierungsberichte, jeweils mit Version und Datum.",
+        "read3": "Die Partner vor Ort, einschließlich der unabhängigen Stelle, die das Ergebnis verifiziert.",
+        "read4": "Die Verfügbarkeit je Periode, damit eine Zusage in der eigenen Berichterstattung datiert werden kann.",
+        "note": "Ein Unternehmen berichtete uns, seine prüfende Stelle habe darum gebeten, Projekte mit einer messbaren Maßnahme, einem festen Zeitraum, einer erwarteten Wirkung, einem Budget und einem Verifizierungsstandard in Betracht zu ziehen. Die Plattform stellt diese Informationen zusammen und nennt für jede Angabe die Quelle. Sie erhebt nicht den Anspruch, damit eine bestimmte Prüfung, prüfende Stelle oder Vorschrift zu erfüllen; diese Beurteilung bleibt bei Ihrer prüfenden Stelle."
+      }
+    },
+    "actions": {
+      "title": "Was Sie hier tun können",
+      "lead": "Fünf Schritte in der Reihenfolge, in der sie stattfinden. Eine Transaktion kann erst entstehen, wenn Ihre Organisation freigegeben ist, und der vertrauliche Raum öffnet sich erst mit der Interessensbekundung.",
+      "review": {
+        "title": "Projekte prüfen",
+        "body": "Jedes Projekt hat eine eigene Seite unter einer eigenen Adresse und kann an Kolleginnen und Kollegen weitergegeben werden. Die Seite nennt den Standard, den Einheitentyp, was gemessen wird, wer es verifiziert, wer das Ergebnis geltend machen darf und was in jeder Periode verfügbar bleibt."
+      },
+      "sites": {
+        "title": "Eigene Standorte registrieren",
+        "body": "Tragen Sie Ihre Standorte mit Koordinaten einmalig im Bereich Ihrer Organisation ein, nachdem Sie sich angemeldet haben. Jede Projektseite zeigt dann die Entfernung Ihrer Standorte zu diesem Projekt. Das Register bleibt auf Ihre Organisation beschränkt."
+      },
+      "interest": {
+        "title": "Interesse bekunden",
+        "body": "Eine Schaltfläche auf der Projektseite hält fest, dass Ihre Organisation Interesse hat, und öffnet einen vertraulichen Raum mit diesem Projekt. Das Ereignis wird in das dauerhafte Verzeichnis geschrieben, der Inhalt der Gespräche nicht."
+      },
+      "vetting": {
+        "title": "Prüfung durchlaufen",
+        "body": "Sylva prüft jede Organisation, die auf der Plattform abschließen möchte. Wir fragen, was Sie geltend machen wollen, wie Sie wirtschaften und wie Sie mit Nachhaltigkeit umgehen, und geben frei oder lehnen ab. Für eine Organisation ohne Freigabe existiert auf dieser Plattform keine Transaktion."
+      },
+      "negotiate": {
+        "title": "Vertraulich verhandeln",
+        "body": "Im vertraulichen Raum: Nachrichten, Dokumente, aufeinanderfolgende Fassungen der Vertragsentwürfe und eine Stufenanzeige von der ersten Interessensbekundung über eine Absichtserklärung und ein Term Sheet bis zur Unterzeichnung. Kein anderer Käufer sieht Ihre Konditionen."
+      },
+      "outside": "Verträge werden außerhalb der Plattform unterzeichnet; das unterzeichnete Dokument wird als Nachweis hochgeladen. Die Plattform führt keine Zahlungen, keine Treuhand und keine Abwicklung durch."
+    },
+    "sites": {
+      "lead": "Sobald Ihre Standorte registriert sind, beantwortet jede Projektseite die erste Frage eines wasserabhängigen Käufers: Wie weit ist dieses Projekt entfernt, und liegt es in unserem Einzugsgebiet? Die Tabelle zeigt, was ein Käufer von seinem eigenen Register sieht.",
+      "caption": "DEMO-registrierte Standorte und ihre Luftlinienentfernung zu {project}. Fiktive Daten.",
+      "colSite": "Standort",
+      "colRelation": "Bezug zum Einzugsgebiet des Projekts",
+      "colDistance": "Luftlinienentfernung",
+      "sameCatchment": "Gleiches Einzugsgebiet",
+      "otherCatchment": "Anderes Einzugsgebiet",
+      "unitKm": "km",
+      "privacyTitle": "Wer Ihr Standortregister sehen kann",
+      "privacyOwners": "Projektinhaber nicht. Sie sehen, dass ein Käufer Interesse bekundet hat, nicht, wo dieser Käufer tätig ist.",
+      "privacyBuyers": "Andere Käufer nicht. Kein Käufer sieht die Standorte, Konditionen oder Preise eines anderen.",
+      "privacyCalculation": "Entfernungen werden allein für Ihre Ansicht und aus Ihrem eigenen Register berechnet."
+    },
+    "disclosure": {
+      "title": "Ihre Identität, Transaktion für Transaktion",
+      "lead": "Die Teilnahme ist standardmäßig pseudonym. Im öffentlichen Verzeichnis erscheint Ihre Organisation als Kennung mit Branche, Land und Größe. Namentlich genannt zu werden ist Ihre Entscheidung, und Sie treffen sie für jede Transaktion einzeln.",
+      "defaultTag": "Voreinstellung",
+      "defaultHeading": "Pseudonym",
+      "defaultBody": "Nichts im öffentlichen Verzeichnis identifiziert Ihre Organisation. Lesende sehen eine Käuferkennung, eine Branche, ein Land und eine Größenklasse. Das genügt, um den Verlauf des Projekts nachzuvollziehen, ohne Sie zu nennen.",
+      "namedTag": "Ihre Wahl, je Transaktion",
+      "namedHeading": "Namentlich in einer Transaktion",
+      "namedBody": "Wenn Sie eine Transaktion zur Offenlegung freigeben, tragen die öffentlichen Einträge dieser Transaktion den Namen Ihrer Organisation. Ihre anderen Transaktionen bleiben unberührt, und bereits geschriebene Einträge bleiben, wie sie geschrieben wurden.",
+      "recordTitle": "Dasselbe Interessenereignis, in beiden Fassungen",
+      "recordDefaultCaption": "So veröffentlicht, standardmäßig",
+      "recordNamedCaption": "Mit Offenlegung für diese Transaktion",
+      "fieldProject": "Projekt",
+      "fieldEvent": "Ereignis",
+      "fieldBuyer": "Käufer",
+      "fieldDate": "Datum",
+      "eventInterest": "Interesse bekundet",
+      "buyerPseudonym": "{label} · Getränke und Lebensmittel · Deutschland · 1.000 bis 5.000 Beschäftigte",
+      "buyerNamed": "{name} · Getränke und Lebensmittel · Deutschland",
+      "alwaysTitle": "Wer Ihren Namen in jedem Fall sieht",
+      "alwaysOperator": "Sylva als Betreiberin, die Organisationen prüft und Einträge bestätigt.",
+      "alwaysOwner": "Der Projektinhaber, innerhalb des vertraulichen Raums, den Sie mit ihm eröffnet haben.",
+      "alwaysAuditor": "Prüferinnen und Prüfer, ausschließlich lesend, für den Fördergeber des Pilotvorhabens und für externe Prüfungen.",
+      "appendOnly": "Das Verzeichnis wird nur ergänzt. Ein Eintrag wird nie geändert oder gelöscht; ein Fehler wird durch einen neuen Eintrag korrigiert, der auf den falschen verweist, und der falsche bleibt sichtbar."
+    },
+    "dealShapes": {
+      "title": "Was Sie vereinbaren können",
+      "lead": "Drei Formen, bei jedem Projekt nebeneinander angeboten, weil die befragten Käufer sich darin unterscheiden. Die meisten Transaktionen in diesem Pilotvorhaben werden Terminverträge sein: Einheiten werden erst ausgegeben, nachdem eine unabhängige Stelle das Ergebnis verifiziert hat, es gibt also in der Regel keinen Bestand zu verkaufen.",
+      "caption": "Transaktionsformen, die ein Käufer mit einem Projekt vereinbaren kann.",
+      "colShape": "Form",
+      "colWhat": "Was es ist",
+      "colFits": "Wann sie passt",
+      "colUnits": "Einheiten bei Vertragsschluss",
+      "unitsIssued": "Bereits ausgegeben",
+      "unitsFuture": "Später ausgegeben, nach der Verifizierung",
+      "spot": {
+        "name": "Spot-Volumen",
+        "what": "Einheiten, die bereits bestehen. Sie übernehmen ein vereinbartes Volumen und entwerten es, wenn Sie bereit sind.",
+        "fits": "In diesem Pilotvorhaben selten, weil es bereits ausgegebene Einheiten voraussetzt."
+      },
+      "forward": {
+        "name": "Terminvertrag",
+        "what": "Sie verpflichten sich jetzt, ein Volumen in einer künftigen Periode zu übernehmen, zu heute vereinbarten Bedingungen.",
+        "fits": "Die übliche Form hier und die Form, die die meisten Transaktionen im Pilotvorhaben annehmen werden."
+      },
+      "coinvestment": {
+        "name": "Ko-Investition",
+        "what": "Sie finanzieren einen Anteil des Projekts direkt. Das Volumen, das Sie nicht benötigen, wird an andere Käufer verkauft.",
+        "fits": "Wenn Sie wollen, dass das Projekt zustande kommt, aber nicht das gesamte Volumen benötigen."
+      },
+      "retireTerm": "Eine Einheit entwerten",
+      "retireBody": "Entwerten heißt, eine Einheit aus dem Umlauf zu nehmen, sodass niemand anderes sie geltend machen kann. Die Entwertung wird im eigenen Register des Credit-Standards erfasst. Diese Plattform hält den Verweis auf diesen Eintrag; sie ist nicht das Register.",
+      "landTerm": "Was eine Einheit nicht ist",
+      "landBody": "Der Kauf von Einheiten begründet kein Recht an der Fläche; die Fläche bleibt bei ihrem Eigentümer, den die Projektseite nennt. Der Kauf ist auch keine Beteiligung am finanziellen Erfolg des Projekts."
+    },
+    "vetting": {
+      "title": "Der Prüffragebogen",
+      "lead": "Die Prüfung steht zwischen einer Organisation und einer Transaktion, deshalb hier ihre Form. Der Fragebogen wird einmal von Ihrer Organisation ausgefüllt. Wir lesen die Antworten und geben frei oder lehnen ab.",
+      "questionsLabel": "Fragen im vollständigen Fragebogen",
+      "partsLabel": "Teile",
+      "previewNote": "Vorschau. Diese Felder sind mit nichts verbunden, und das Formular wird nicht abgesendet.",
+      "required": "Pflichtfeld",
+      "selectPlaceholder": "Branche auswählen",
+      "partOrganisation": "Organisation",
+      "partClaims": "Ansprüche",
+      "partOperations": "Betrieb",
+      "partSustainability": "Nachhaltigkeit",
+      "legalName": {
+        "label": "Eingetragener Name der Organisation",
+        "hint": "Die Organisation, die die Einheiten halten und entwerten würde."
+      },
+      "sector": {
+        "label": "Branche",
+        "hint": "Wird neben Ihrer pseudonymen Kennung im öffentlichen Verzeichnis angezeigt.",
+        "optionFood": "Getränke und Lebensmittel",
+        "optionEnergy": "Energie und Versorgung",
+        "optionManufacturing": "Industrie und Fertigung",
+        "optionFinance": "Finanzdienstleistungen",
+        "optionOther": "Andere"
+      },
+      "country": {
+        "label": "Land der Eintragung"
+      },
+      "disclosure": {
+        "label": "Identität im öffentlichen Verzeichnis",
+        "hint": "Eine Voreinstellung, die Sie einmal setzen. Jede Transaktion wird einzeln bestätigt, Sie können also in einer Transaktion genannt werden und in einer anderen nicht.",
+        "optionPseudonymous": "Pseudonyme Kennung, die Voreinstellung",
+        "optionNamed": "Organisation nennen, je Transaktion bestätigt"
+      },
+      "claim": {
+        "label": "Was wollen Sie geltend machen?",
+        "hint": "Welchen Nutzen Sie geltend machen würden, in welcher Berichterstattung und für welche Periode. Nennen Sie auch, was Sie nicht geltend machen würden."
+      },
+      "operations": {
+        "label": "Wie wirtschaftet Ihre Organisation?",
+        "hint": "Wo Ihre Standorte liegen, wovon dieser Betrieb abhängt und welche dieser Standorte mit diesem Projekt zusammenhängen würden."
+      },
+      "sustainability": {
+        "label": "Wie gehen Sie mit Nachhaltigkeit um?",
+        "hint": "Bestehende Verpflichtungen, wie ein Kauf hier mit der Verringerung Ihrer eigenen Belastungen von Wasser und Natur zusammenhängt, und wer dies intern verantwortet."
+      },
+      "submit": "Weiter",
+      "remaining": "Die übrigen Fragen folgen denselben vier Teilen.",
+      "decision": "Die Prüfung ist eine Bedingung der Förderung des Pilotvorhabens und unsere wichtigste Vorkehrung gegen Greenwashing. Wir geben die Organisation frei oder lehnen sie ab; für eine Organisation ohne Freigabe existiert auf der Plattform keine Transaktion."
+    },
+    "next": {
+      "title": "Nächster Schritt",
+      "body": "Öffnen Sie ein Projekt und lesen Sie die Nachweise dahinter. Nichts auf dieser Plattform verpflichtet Ihre Organisation, bevor außerhalb der Plattform ein Vertrag unterzeichnet wird."
+    }
+  },
+  "signIn": {
+    "metaDescription": "Melden Sie sich bei der Sylva-Plattform an. Projektträger, Käufer, Investoren, Auditoren und Administratoren nutzen dieselbe Anmeldung.",
+    "lead": "Projektträger, Käufer, Investoren, Auditoren und Administratoren nutzen dieselbe Anmeldung. Was Sie danach sehen, hängt von Ihrer Rolle ab und davon, ob Sylva Ihre Organisation freigegeben hat.",
+    "formLabel": "Bei Ihrem Konto anmelden",
+    "email": "Geschäftliche E-Mail-Adresse",
+    "emailHint": "Die Adresse, mit der das Konto Ihrer Organisation eingerichtet wurde.",
+    "password": "Passwort",
+    "forgotten": "Passwort vergessen?",
+    "noAccount": "Noch kein Konto?",
+    "registerBody": "Registrieren Sie Ihre Organisation. Bevor eine Transaktion entstehen kann, prüft Sylva die Organisation und gibt sie frei oder lehnt sie ab.",
+    "registerCta": "Organisation registrieren",
+    "hosting": "Diese Plattform und die Nutzerkonten werden in der Europäischen Union gehostet.",
+    "frontendNote": "Frontend-Stand: Dieses Formular wird angezeigt, sendet aber nichts. Die Anmeldung ist noch nicht angebunden.",
+    "errorState": {
+      "summary": "Fehlerzustand anzeigen, der bei fehlgeschlagener Anmeldung erscheint",
+      "note": "Dasselbe Formular mit einem Beispielfehler, damit die Fehlerdarstellung im Design vorhanden ist. Die Felder sind schreibgeschützt.",
+      "formLabel": "Anmelden – Beispiel für den Fehlerzustand"
+    },
+    "error": {
+      "prefix": "Fehler",
+      "title": "Die Anmeldung war nicht möglich",
+      "body": "Prüfen Sie den unten markierten Eintrag und versuchen Sie es erneut.",
+      "email": "Geben Sie eine E-Mail-Adresse in der Form name@unternehmen.eu ein."
+    }
+  },
+  "about": {
+    "meta": {
+      "title": "Über Sylva",
+      "description": "Wer diese Plattform betreibt, wozu das EU-geförderte Pilotvorhaben dient, wie Organisationen geprüft werden und wie personenbezogene Daten, Hosting und Analyse gehandhabt werden."
+    },
+    "title": "Über Sylva",
+    "lead": "Sylva betreibt diese Plattform im Rahmen eines von der EU geförderten Pilotvorhabens. Diese Seite nennt, wer wir sind, was das Pilotvorhaben herausfinden soll, was wir prüfen, bevor eine Organisation hier Geschäfte abschließen kann, was diese Plattform nicht tut und wie personenbezogene Daten behandelt werden.",
+    "contents": "Auf dieser Seite",
+    "operator": {
+      "title": "Wer die Plattform betreibt",
+      "lead": "Sylva betreibt diese Plattform. Wir veröffentlichen die Projekte, prüfen die Organisationen, die damit handeln wollen, bestätigen die hier gezeigten Angaben und führen den Nachweis darüber, was vereinbart wurde.",
+      "dutiesTitle": "Woraus der Betrieb besteht",
+      "duty": {
+        "publish": "Projekte veröffentlichen",
+        "publishBody": "Ein Projektträger reicht ein Projekt ein. Wir prüfen das Eingereichte und veröffentlichen die Projektseite.",
+        "vet": "Organisationen prüfen",
+        "vetBody": "Jede Organisation, die an einem Geschäft teilnehmen will, wird vorher von uns geprüft.",
+        "confirm": "Angaben bestätigen",
+        "confirmBody": "Wir bestätigen die Angaben, die auf einer Projektseite und im öffentlichen Transaktionsverzeichnis erscheinen.",
+        "evidence": "Nachweise aufbewahren",
+        "evidenceBody": "Verträge werden außerhalb der Plattform unterzeichnet. Das unterzeichnete Dokument wird danach hier hochgeladen und als Nachweis des Vereinbarten aufbewahrt.",
+        "questions": "Fragen weiterleiten",
+        "questionsBody": "Eine Frage zu einem Projekt geht an den Projektträger und an uns. Es gibt keinen öffentlichen Kommentarbereich."
+      }
+    },
+    "pilot": {
+      "title": "Wozu das Pilotvorhaben dient",
+      "lead": "Das Pilotvorhaben prüft eine Frage: Lässt sich ein Renaturierungsprojekt so ausführlich darstellen, dass ein großes Unternehmen oder ein Investor es beurteilen, vertraulich Kontakt aufnehmen und Bedingungen vereinbaren kann – und lässt sich jeder Schritt davon so festhalten, dass Dritte ihn später nachvollziehen können?",
+      "marketTitle": "Warum die Darstellung so genau sein muss",
+      "marketBody": "Dieser Markt ist neu und klein. Es gibt keinen einheitlichen Standard, und verschiedene Systeme messen Verschiedenes: Ein Projekt verkauft möglicherweise Hektarjahre unter Renaturierung, ein anderes Punkte auf einem Index. Einheiten aus zwei Projekten sind daher nicht austauschbar, und nichts auf dieser Plattform addiert sie.",
+      "issuanceBody": "Einheiten werden erst ausgegeben, nachdem eine unabhängige Stelle das Ergebnis vor Ort verifiziert hat. Das meiste, was hier vereinbart wird, ist deshalb eine Zusage auf Einheiten, die erst später existieren, und kein Verkauf aus einem Bestand.",
+      "researchTitle": "Worauf die Gestaltung beruht",
+      "researchLead": "Zwischen Juni und September 2026 wurden acht Organisationen befragt. Was sie verlangten, hat die Projektseite geprägt: zuerst Lage und Einzugsgebiet; bei den wasserabhängigen Käufern Wasserergebnisse vor Biodiversität; Anrechnungsrechte, die einen Weiterverkauf überdauern; und eine Teilnahme, die anonym bleibt, sofern der Käufer nicht von Fall zu Fall etwas anderes wählt.",
+      "research": {
+        "caption": "Befragte Organisationen nach Art",
+        "group": "Art der Organisation",
+        "count": "Befragt",
+        "water": "Wasserabhängige Unternehmen",
+        "reporting": "Große Unternehmen mit Nachhaltigkeitsberichtspflichten",
+        "finance": "Banken und Fonds",
+        "foundation": "Stiftungen",
+        "total": "Befragte Organisationen"
+      },
+      "releaseTitle": "Was gebaut wird, und in welcher Reihenfolge",
+      "release": {
+        "firstTitle": "Erste Veröffentlichung",
+        "firstTarget": "Ziel: Ende Oktober 2026",
+        "laterTitle": "Nach der ersten Veröffentlichung",
+        "laterTarget": "Kein Termin festgelegt",
+        "item": {
+          "index": "Das Projektverzeichnis mit der Karte des Einzugsgebiets",
+          "detail": "Eine vollständige Seite je Pilotprojekt, mit Projektskizze und Projektdesigndokument",
+          "sites": "Die Registrierung eigener Standorte eines Käufers, damit die Entfernung zu einem Projekt angezeigt werden kann",
+          "vetting": "Der Prüffragebogen",
+          "interest": "Die Schaltfläche zur Interessensbekundung",
+          "record": "Das öffentliche Verzeichnis der Interessensbekundungen",
+          "dealRoom": "Der vertrauliche Verhandlungsraum",
+          "dealShapes": "Die drei Geschäftsformen: Sofortvolumen, Termingeschäft, Ko-Investition",
+          "issuance": "Verzeichnisse über Ausgabe und Stilllegung",
+          "investor": "Investorendaten",
+          "exports": "Exporte"
+        }
+      },
+      "fundingPointer": "Der Kofinanzierungshinweis und der laut Finanzhilfevereinbarung erforderliche Haftungsausschluss stehen im Fußbereich jeder Seite, auch dieser. Sie werden hier nicht wiederholt, damit es nur einen Wortlaut gibt, der korrekt gehalten werden muss."
+    },
+    "roles": {
+      "title": "Wer die Plattform nutzt",
+      "lead": "Fünf Arten von Organisationen nutzen diese Plattform, und sie sehen nicht dasselbe.",
+      "caption": "Rollen auf der Plattform und was jede von ihnen sehen kann",
+      "col": {
+        "does": "Was sie tun",
+        "sees": "Was sie sehen"
+      },
+      "owner": "Projektträger",
+      "ownerDoes": "Führen die Renaturierung durch. Stellen ein Projekt auf die Plattform und beantworten Fragen dazu.",
+      "ownerSees": "Ihre eigenen Projekte und die Fragen dazu.",
+      "buyer": "Käufer",
+      "buyerDoes": "Große Unternehmen. Prüfen Projekte, registrieren eigene Standorte, bekunden Interesse und vereinbaren ein Volumen.",
+      "buyerSees": "Veröffentlichte Projekte sowie ihre eigenen Standorte, Fragen und Geschäfte. Niemals die Bedingungen eines anderen Käufers.",
+      "investor": "Investoren",
+      "investorDoes": "Fonds und Banken. Finanzieren ein Projekt und werden aus dem Verkauf von Einheiten und weiteren Erlösen bedient.",
+      "investorSees": "Veröffentlichte Projekte und deren Finanzierungsangaben, sobald wir sie als Investoren geprüft haben.",
+      "operator": "Sylva, der Betreiber",
+      "operatorDoes": "Prüft die Organisationen, bestätigt die Angaben, veröffentlicht die Projekte.",
+      "operatorSees": "Was dafür erforderlich ist.",
+      "auditor": "Prüfer",
+      "auditorDoes": "Nur Lesezugriff. Verfolgen die Geschichte eines Projekts und einer Transaktion. Es wird nichts bearbeitet.",
+      "auditorSees": "Das Verzeichnis, die Dokumente und die Registerreferenzen, für den Fördergeber und für externe Prüfer.",
+      "note": "Dass ein Käufer die Bedingungen eines anderen Käufers sieht, ist der Fehler, der auf dieser Plattform am schwersten wiegt. Was jede Rolle lesen darf, wird in der Datenbank entschieden, Tabelle für Tabelle, und nicht in den Bildschirmen."
+    },
+    "limits": {
+      "title": "Was diese Plattform nicht tut",
+      "lead": "Jede der folgenden Verwechslungen hätte Folgen. Sie wird deshalb hier ausdrücklich genannt und nicht dem Rückschluss überlassen.",
+      "registry": "Dies ist nicht das Register",
+      "registryBody": "Jedes Gutschriftensystem führt seine eigene amtliche Datenbank der ausgegebenen und stillgelegten Einheiten und gewährt fremden Systemen keinen Schreibzugriff darauf. Wir halten Referenzen auf diese Einträge und die zugehörigen Dokumente. Unser Verzeichnis ist ein Nachweis darüber, was hier vereinbart wurde, nicht die maßgebliche Aufzeichnung dessen, was existiert.",
+      "issue": "Wir geben keine Einheiten aus und verifizieren keine",
+      "issueBody": "Eine unabhängige Stelle verifiziert das Ergebnis vor Ort. Das System gibt die Einheiten nach seinen eigenen Regeln aus.",
+      "money": "Wir bewegen kein Geld",
+      "moneyBody": "Auf dieser Plattform gibt es keine Zahlung, kein Treuhandkonto und keine Abwicklung.",
+      "sign": "Wir unterzeichnen keine Verträge",
+      "signBody": "Verträge werden außerhalb der Plattform unterzeichnet. Das unterzeichnete Dokument wird danach hier als Nachweis hochgeladen.",
+      "land": "Ein Volumen zu vereinbaren heißt nicht, die Fläche zu kaufen",
+      "landBody": "Wem das Land gehört und wer darüber verfügt, steht gesondert auf jeder Projektseite, im Abschnitt zum langfristigen Schutz. Nichts auf dieser Plattform überträgt Land.",
+      "totals": "Wir addieren keine Einheiten über Projekte hinweg",
+      "totalsBody": "Ein Projekt verkauft möglicherweise Hektarjahre unter Renaturierung, ein anderes Punkte auf einem Index. Kein Bildschirm, kein Export und keine Grafik summiert hier Volumen über Projekte hinweg, und jede Zahl steht mit der Einheit, in der sie gezählt wird.",
+      "auditor": "Wir erklären nicht, dass ein Projekt einem Prüfer genügt",
+      "auditorBody": "Zu jedem Projekt gibt es ein Nachweispaket für die Berichterstattung, das die hier verfügbaren Informationen beschreibt. Es erhebt keinen Anspruch darauf, dass ein bestimmter Prüfer, ein bestimmtes System oder eine bestimmte Vorschrift es akzeptiert."
+    },
+    "vetting": {
+      "title": "Die Prüfung und wozu sie dient",
+      "lead": "Keine Organisation kommt hier zu einem Geschäft, ohne vorher von uns geprüft worden zu sein. Das ist eine Bedingung unserer Förderung und unsere wichtigste Vorkehrung gegen Grünfärberei.",
+      "stepsTitle": "Wie sie abläuft",
+      "step": {
+        "apply": "Die Organisation bewirbt sich",
+        "applyBody": "Sie teilt uns mit, was sie geltend machen will, wie sie arbeitet und wie sie es mit Nachhaltigkeit hält.",
+        "decide": "Wir genehmigen oder lehnen ab",
+        "decideBody": "Die Entscheidung liegt bei uns und wird festgehalten.",
+        "effect": "Was eine Genehmigung erlaubt",
+        "effectBody": "Eine genehmigte Organisation kann Interesse an einem Projekt bekunden und einen vertraulichen Raum mit dem Projektträger öffnen. Für eine nicht genehmigte Organisation kann kein Geschäft angelegt werden."
+      },
+      "limitTitle": "Was die Prüfung nicht ist",
+      "limitBody": "Die Prüfung ist eine Beurteilung der Angaben, die eine Organisation uns macht. Sie ist keine Wirtschaftsprüfung dieser Organisation, und eine Genehmigung ist keine Empfehlung – weder der Organisation noch eines Projekts.",
+      "claimsTitle": "Die zweite Vorkehrung: Anrechnungsrechte",
+      "claimsBody": "Ein befragtes Unternehmen sagte, es würde ein Projekt nicht finanzieren, wenn der Weiterverkauf von Gutschriften ihm das Recht nähme, den bezahlten Nutzen selbst geltend zu machen. Ein anderes wollte nicht, dass seine Investition von Dritten als Kompensation verwendet wird. Jede Projektseite nennt daher für jeden Nutzen, den das Projekt erzeugt, wer ihn geltend machen darf, was geltend gemacht werden darf und was ausgeschlossen ist.",
+      "claimsCta": "Ansehen, wie ein Projekt das angibt"
+    },
+    "data": {
+      "title": "Personenbezogene Daten, Hosting und Analyse",
+      "lead": "Zwei Festlegungen prägen dies: Personenbezogene Daten liegen an einer Stelle, damit eine Person daraus entfernt werden kann, und der Aufruf einer Seite ruft keinen Dienst Dritter auf.",
+      "fact": {
+        "region": "Hosting-Region",
+        "regionBody": "Anwendung und Datenbank laufen in einer namentlich benannten Region in einem EU-Mitgliedstaat – Frankfurt, Paris oder Dublin. Eine allgemeine Region „Europa“ wird nicht verwendet, weil eine solche Region Standorte außerhalb der EU umfassen kann.",
+        "regionPending": "Region noch nicht festgelegt",
+        "personal": "Wo personenbezogene Daten liegen",
+        "personalBody": "Personenbezogene Daten liegen in einer Tabelle, den Benutzerkonten. Alles Übrige auf der Plattform verweist über eine Kennung auf Organisationen, nicht auf Personen.",
+        "erasure": "Löschen einer Person",
+        "erasureBody": "Das dauerhafte Verzeichnis enthält keinen Verweis auf eine Person, der mit ihr entfernt werden müsste. Ein Konto kann daher gelöscht werden, ohne das Verzeichnis zu beschädigen.",
+        "analytics": "Analyse",
+        "analyticsBody": "Die Nutzungsanalyse wird selbst betrieben oder in der EU gehostet. Es gibt keine Tracker Dritter, keine Werbepixel und keine seitenübergreifenden Kennungen.",
+        "fonts": "Schriften und Seitenbestandteile",
+        "fontsBody": "Die Schrift wird von dieser Plattform ausgeliefert. Eine Seite lädt keine Schrift, kein Skript und kein Stylesheet von einem Dienst Dritter, was sonst bei jedem Seitenaufruf Ihre IP-Adresse an diesen Dienst senden würde.",
+        "identity": "Ihre Identität im öffentlichen Verzeichnis",
+        "identityBody": "Im öffentlichen Transaktionsverzeichnis erscheint ein Käufer als Bezeichnung wie „Käufer 014“, mit Branche, Land und Größe. Der Name der Organisation erscheint nur dort, wo dieser Käufer sich für dieses Geschäft zur Nennung entschieden hat.",
+        "sites": "Die Standorte, die Sie registrieren",
+        "sitesBody": "Die von einem Käufer registrierten Standorte sind allein für diesen Käufer sichtbar. Sie dienen dazu, die Entfernung von diesen Standorten zu einem Projekt anzuzeigen; die Standorte anderer Organisationen werden nie gezeigt.",
+        "questions": "Ihre Fragen",
+        "questionsBody": "Eine Frage zu einem Projekt geht an den Projektträger und an uns. Sie wird nicht veröffentlicht."
+      },
+      "erasureTitle": "Was mit einem Konto gelöscht wird und was bleibt",
+      "erasureLead": "Ein dauerhaftes Verzeichnis und ein Recht auf Löschung passen nur zusammen, wenn die Grenze dazwischen sichtbar ist. Hier verläuft sie.",
+      "erasure": {
+        "deletedTitle": "Mit dem Konto gelöscht",
+        "deleted": {
+          "name": "Name",
+          "email": "E-Mail-Adresse",
+          "phone": "Telefonnummer",
+          "jobTitle": "Funktionsbezeichnung",
+          "sessions": "Sitzungsdaten und IP-Adressen"
+        },
+        "retainedTitle": "Im Verzeichnis verbleibend",
+        "retained": {
+          "organisation": "Die Organisation, die gehandelt hat",
+          "roleAtTime": "Die Rolle, die diese Person damals innehatte",
+          "event": "Was getan wurde: gelistet, angeboten, vereinbart, ausgegeben, stillgelegt",
+          "timestamp": "Wann es getan wurde",
+          "registry": "Registerreferenzen, Dokumentversionen und Verhandlungsstände"
+        },
+        "afterwards": "Ein Bildschirm, der zuvor den Namen einer Person zeigte, zeigt die Organisation und die damals gehaltene Rolle. Das Verzeichnis selbst ändert sich nicht; nur die Zuordnung zu einer Person führt zu keinem Ergebnis mehr."
+      },
+      "requestsTitle": "Anfragen zu Ihren Daten",
+      "requestsBody": "Schreiben Sie an die unten genannte Adresse für Datenschutz. Diese Seite erklärt, wie die Plattform gebaut ist und was sie enthält; sie ist keine Datenschutzerklärung."
+    },
+    "contact": {
+      "title": "Kontakt",
+      "lead": "Schreiben Sie an die Adresse, die zu Ihrem Anliegen passt. Die Plattform erscheint auf Englisch und auf Deutsch.",
+      "channelsTitle": "Wohin schreiben",
+      "placeholderBadge": "Platzhalter",
+      "placeholderNote": "Die folgenden Adressen sind Platzhalter für diesen Entwicklungsstand, auf einer für Beispiele reservierten Domain, die keine Nachrichten empfangen kann. Die echten Adressen von Sylva ersetzen sie vor dem Start.",
+      "channel": {
+        "general": "Allgemeine Fragen zur Plattform",
+        "owners": "Projektträger, die ein Projekt listen lassen wollen",
+        "vetting": "Käufer und Investoren: Prüfung und Zugang",
+        "data": "Fragen und Anträge zu personenbezogenen Daten",
+        "audit": "Fördergeber und externe Prüfer"
+      },
+      "projectQuestion": "Eine Frage zu einem einzelnen Projekt",
+      "projectQuestionBody": "Verwenden Sie das Fragefeld auf der Seite dieses Projekts und nicht diesen Abschnitt. Die Frage geht an den Projektträger und an uns und wird nicht veröffentlicht.",
+      "projectQuestionCta": "Zum Projektverzeichnis",
+      "formTitle": "Schreiben Sie uns",
+      "formNote": "Dieses Formular ist noch nicht angeschlossen. Nichts, was hier eingegeben wird, wird gesendet oder gespeichert, und die Schaltfläche tut nichts.",
+      "form": {
+        "name": "Ihr Name",
+        "organisation": "Organisation",
+        "email": "E-Mail-Adresse",
+        "role": "Sie sind",
+        "roleChoose": "Bitte wählen",
+        "roleOwner": "Projektträger",
+        "roleBuyer": "Ein Unternehmen, das kaufen könnte",
+        "roleInvestor": "Investor",
+        "roleAuditor": "Prüfer",
+        "roleOther": "Etwas anderes",
+        "subject": "Betreff",
+        "message": "Nachricht",
+        "messageHint": "Beschreiben Sie Ihr Anliegen. Bitte geben Sie keine personenbezogenen Daten anderer Personen an.",
+        "submit": "Nachricht senden"
+      }
+    },
+    "source": {
+      "conceptNote": "Konzeptpapier für den Entwicklungspartner",
+      "designDecisions": "Gestaltungsentscheidungen der Plattform"
+    }
+  },
+  "mySites": {
+    "title": "Meine Standorte",
+    "metaDescription": "Registrieren Sie die Standorte Ihrer Organisation, um zu sehen, wie weit jeder Standort von einem Renaturierungsprojekt entfernt ist. Standortangaben sind nur für Ihre Organisation sichtbar.",
+    "lead": "Registrieren Sie die Standorte, die für Ihre Organisation relevant sind. Für jeden registrierten Standort wird die Luftlinienentfernung zu jedem veröffentlichten Projekt angezeigt – nur auf Ihrem eigenen Bildschirm.",
+    "orgLabel": "Organisation",
+    "privacy": {
+      "title": "Ihre Standortangaben bleiben Ihrer Organisation vorbehalten",
+      "lead": "Ein registrierter Standort gehört zum eigenen Verzeichnis Ihrer Organisation. Wer ihn sehen kann:",
+      "publicWho": "Nicht veröffentlicht",
+      "publicWhat": "Standortnamen und Koordinaten erscheinen auf keiner öffentlichen Seite und sind nicht Teil des öffentlichen Transaktionsverzeichnisses.",
+      "ownersWho": "Für Projektträger nicht sichtbar",
+      "ownersWhat": "Ein Projektträger sieht Ihre Standorte nicht und erfährt auch nicht, dass eine Organisation einen Standort in der Nähe seines Projekts hat.",
+      "othersWho": "Für andere Käufer und Investoren nicht sichtbar",
+      "othersWhat": "Keine andere Organisation auf der Plattform kann Ihr Verzeichnis einsehen.",
+      "youWho": "Verwendung zu einem einzigen Zweck",
+      "youWhat": "Die Luftlinienentfernung von Ihren Standorten zu einer Projektgrenze, angezeigt nur auf Ihrem eigenen Bildschirm."
+    },
+    "register": {
+      "title": "Registrierte Standorte",
+      "lead": "Von Ihrer Organisation hinzugefügte Standorte. Die Koordinaten sind Dezimalgrad: zuerst der Breitengrad, dann der Längengrad.",
+      "caption": "Von Ihrer Organisation registrierte Standorte mit den jeweils eingegebenen Koordinaten.",
+      "colSite": "Standort",
+      "colCountry": "Land",
+      "colCoordinates": "Koordinaten",
+      "colCoordinatesNote": "Lat, Lon",
+      "colAdded": "Hinzugefügt am",
+      "count": "{count, plural, =0 {Keine Standorte} one {# Standort} other {# Standorte}}",
+      "emptyTitle": "Noch keine Standorte registriert",
+      "emptyBody": "Fügen Sie die Standorte Ihres Unternehmens hinzu, um zu sehen, wie weit jeder Standort von einem Renaturierungsprojekt entfernt ist.",
+      "emptyPrivacy": "Beim Hinzufügen eines Standorts wird nichts veröffentlicht. Das Verzeichnis ist nur für Ihre Organisation sichtbar.",
+      "emptySummary": "Leeres Verzeichnis anzeigen",
+      "emptyNote": "Was eine Organisation sieht, bevor sie ihren ersten Standort hinzugefügt hat."
+    },
+    "form": {
+      "title": "Standort hinzufügen",
+      "lead": "Fünf Felder. Name und Notizen dienen Ihrer eigenen Orientierung; die Entfernung wird von den Koordinaten aus gemessen.",
+      "name": "Standortname",
+      "nameHint": "Die Bezeichnung, die Ihre Organisation für diesen Standort verwendet.",
+      "country": "Land",
+      "countryPlaceholder": "Land auswählen",
+      "coordinates": "Koordinaten",
+      "coordinatesHint": "Dezimalgrad, mit Dezimalpunkt geschrieben. Nord und Ost sind positiv, Süd und West negativ.",
+      "latitude": "Breitengrad",
+      "latitudeHint": "Zwischen -90 und 90.",
+      "longitude": "Längengrad",
+      "longitudeHint": "Zwischen -180 und 180.",
+      "notes": "Notizen",
+      "notesHint": "Für Ihre eigene Orientierung, zum Beispiel wofür der Standort genutzt wird. Für Personen außerhalb Ihrer Organisation nicht sichtbar.",
+      "optional": "Optional",
+      "submit": "Standort hinzufügen",
+      "privacyReminder": "Der Standort wird dem Verzeichnis Ihrer Organisation hinzugefügt. Es wird nichts veröffentlicht.",
+      "frontendNote": "Dieser Stand zeigt die Seite. Das Formular speichert noch nichts."
+    },
+    "distances": {
+      "title": "Entfernung zu Projekten",
+      "lead": "Für einen registrierten Standort die Luftlinienentfernung zur Grenze jedes veröffentlichten Projekts.",
+      "siteLabel": "Gemessen von",
+      "caption": "Luftlinienentfernung von {site} zur Grenze jedes veröffentlichten Projekts.",
+      "colProject": "Projekt",
+      "colDistance": "Entfernung",
+      "unitKm": "km",
+      "sameCatchment": "Gleiches Einzugsgebiet",
+      "otherCatchment": "Anderes Einzugsgebiet",
+      "exampleNote": "Ein Standort ist beispielhaft dargestellt. Für jeden registrierten Standort gibt es eine eigene Tabelle.",
+      "methodTitle": "Wie diese Entfernung gemessen wird",
+      "methodLine": "Eine Luftlinie von den Standortkoordinaten zum nächstgelegenen Punkt der veröffentlichten Projektgrenze. Es handelt sich nicht um eine Straßen- oder Reiseentfernung.",
+      "methodCatchment": "Eine geringe Entfernung bedeutet nicht, dass Standort und Projekt im selben Einzugsgebiet liegen. Die Spalte zum Einzugsgebiet weist dies gesondert aus.",
+      "methodUnits": "Entfernungen sind in Kilometern angegeben und lassen sich zeilenweise vergleichen. Einheitenmengen nicht: Jedes Projekt gibt Einheiten nach seinem eigenen Standard und mit eigenem Einheitentyp aus, deshalb enthält diese Tabelle keine Mengen.",
+      "browseProjects": "Renaturierungsprojekte ansehen"
+    },
+    "source": {
+      "register": "Standortverzeichnis, von Ihrer Organisation eingegeben",
+      "distances": "Standortverzeichnis und veröffentlichte Projektgrenzen"
+    },
+    "country": {
+      "AT": "Österreich",
+      "BE": "Belgien",
+      "DE": "Deutschland",
+      "DK": "Dänemark",
+      "ES": "Spanien",
+      "FR": "Frankreich",
+      "NL": "Niederlande",
+      "PL": "Polen"
+    }
+  },
+  "register": {
+    "metaDescription": "Eine Organisation bei Sylva registrieren: die Organisation, die handeln wird, die erste Person des Kontos und was zwischen Registrierung und Freigabe geschieht.",
+    "lead": "Die Registrierung besteht aus zwei Teilen: der Organisation, die handeln wird, und der ersten Person, die sich für sie anmeldet. Mit einem Konto können Sie sich anmelden und veröffentlichte Projektseiten lesen. Eine Transaktion ist erst möglich, nachdem Sylva die Organisation geprüft und freigegeben hat.",
+    "buildNote": "Diese Seite gehört zum Frontend-Aufbau. Das Formular wird angezeigt, bewirkt aber nichts: Es wird kein Konto erstellt und keine Eingabe gespeichert.",
+    "haveAccount": "Sie haben bereits ein Konto?",
+    "next": {
+      "title": "Was nach der Registrierung geschieht",
+      "intro": "Drei Schritte in dieser Reihenfolge. Registrierung und Freigabe sind nicht dasselbe; erst der dritte Schritt macht eine Transaktion möglich.",
+      "stageLabel": "Schritt",
+      "canLabel": "Was Sie tun können",
+      "actorYou": "Sie",
+      "actorSylva": "Sylva",
+      "s1": {
+        "name": "Konto erstellt",
+        "body": "Sie füllen dieses Formular aus. Der Eintrag der Organisation und Ihr Benutzerkonto werden gemeinsam erstellt, und Sie können sich anmelden.",
+        "can": "Anmelden, veröffentlichte Projektseiten lesen, Projektdokumente herunterladen und eigene Standorte registrieren.",
+        "limitLabel": "Noch nicht möglich",
+        "limit": "Interesse an einem Projekt bekunden oder an einer Transaktion teilnehmen."
+      },
+      "s2": {
+        "name": "Prüfung",
+        "body": "Sylva schickt der Organisation einen Fragebogen. Er fragt, was Sie geltend machen wollen, wie Sie arbeiten und wie Sie mit Nachhaltigkeit umgehen. Die Prüfung ist eine Bedingung der Förderung dieser Plattform.",
+        "can": "Den Fragebogen ausfüllen und zurücksenden. Projektseiten währenddessen weiter lesen.",
+        "limitLabel": "Noch nicht möglich",
+        "limit": "Interesse an einem Projekt bekunden oder an einer Transaktion teilnehmen.",
+        "questionnaireLabel": "Fragebogen",
+        "questionnaireFigure": "{parts} Teile · {questions} Fragen",
+        "questionnaireSource": "Prüfungsfragebogen",
+        "questionnaireLink": "Ansehen, was der Fragebogen fragt"
+      },
+      "s3": {
+        "name": "Entscheidung",
+        "body": "Sylva gibt die Organisation frei oder lehnt sie ab. Für eine Organisation ohne Freigabe kann keine Transaktion angelegt werden; dieser Schritt öffnet daher den vertraulichen Teil der Plattform.",
+        "can": "Nach der Freigabe: Interesse an einem Projekt bekunden und einen vertraulichen Raum mit dem Projektträger öffnen. Für Finanzinformationen freigegebene Investoren können zusätzlich die Finanzierungsangaben einsehen.",
+        "limitLabel": "Bei Ablehnung",
+        "limit": "Das Konto behält den Lesezugriff auf veröffentlichte Projektseiten, und es kann keine Transaktion angelegt werden."
+      }
+    },
+    "form": {
+      "title": "Angaben zur Organisation und zum Konto",
+      "ariaLabel": "Eine Organisation registrieren",
+      "requiredNote": "Alle Felder dieses Formulars sind Pflichtfelder.",
+      "selectPlaceholder": "Bitte wählen …",
+      "submit": "Konto erstellen",
+      "submitNote": "In diesem Aufbau ohne Funktion. Das Formular hat kein Ziel, und es wird nichts gesendet."
+    },
+    "role": {
+      "legend": "Als was registriert sich diese Organisation?",
+      "hint": "Wählen Sie die Rolle, die die Organisation auf der Plattform einnimmt. Weitere Angaben zur Organisation können Sie während der Prüfung machen.",
+      "afterLabel": "Nach der Freigabe",
+      "notHere": "Konten für Auditoren und für den Plattformbetrieb werden nicht über dieses Formular erstellt.",
+      "buyer": "Käufer",
+      "buyerNote": "Ein Unternehmen, das Einheiten eines Projekts übernehmen und stilllegen will oder sich jetzt zu einer Menge in einem künftigen Jahr verpflichtet.",
+      "buyerAfter": "Interesse an einem Projekt bekunden und vertraulich mit dem Projektträger verhandeln.",
+      "owner": "Projektträger",
+      "ownerNote": "Eine Organisation, die ein Renaturierungsprojekt durchführt, es hier darstellen und Fragen von Käufern beantworten will.",
+      "ownerAfter": "Ein Projekt zur Prüfung einreichen und auf Interessensbekundungen von Käufern antworten.",
+      "investor": "Investor",
+      "investorNote": "Ein Fonds oder eine Bank, die ein Projekt finanziert und aus dem Verkauf von Einheiten und weiteren Projekterlösen zurückgezahlt wird.",
+      "investorAfter": "Finanzierungsbedarf, Einnahmequellen und das Finanzmodell von Projekten einsehen, die Finanzierung suchen."
+    },
+    "org": {
+      "legend": "Die Organisation",
+      "intro": "Die Organisation ist die Partei, die auf dieser Plattform handelt. Jede Transaktion, jedes Dokument und jede Interessensbekundung verweist über ihre ID auf sie, nicht auf die Person, die die Angaben eingetragen hat.",
+      "legalName": {
+        "label": "Offizieller Name",
+        "hint": "Wie eingetragen, einschließlich der Rechtsform."
+      },
+      "regNumber": {
+        "label": "Registernummer",
+        "hint": "Die Nummer der Organisation im nationalen Handels- oder Vereinsregister."
+      },
+      "country": {
+        "label": "Land der Registrierung",
+        "hint": "Erscheint neben der Bezeichnung der Organisation im öffentlichen Verzeichnis."
+      },
+      "sector": {
+        "label": "Branche",
+        "hint": "Erscheint neben der Bezeichnung der Organisation im öffentlichen Verzeichnis."
+      },
+      "size": {
+        "label": "Größe",
+        "hint": "Zahl der Beschäftigten als Größenklasse. Erscheint neben der Bezeichnung der Organisation im öffentlichen Verzeichnis."
+      },
+      "address": {
+        "label": "Eingetragene Adresse",
+        "hint": "Straße, Postleitzahl und Ort, wie eingetragen."
+      }
+    },
+    "person": {
+      "legend": "Die erste Person des Kontos",
+      "intro": "Eine Person zum Anmelden. Name, Funktion und E-Mail-Adresse liegen im Benutzerkonto, der einzigen Stelle dieser Plattform, die personenbezogene Daten enthält.",
+      "fullName": {
+        "label": "Vollständiger Name",
+        "hint": "Der Name, mit dem Sylva Sie anschreibt."
+      },
+      "jobTitle": {
+        "label": "Funktion",
+        "hint": "Ihre Rolle in der Organisation, zum Beispiel Leitung Nachhaltigkeit."
+      },
+      "email": {
+        "label": "Geschäftliche E-Mail-Adresse",
+        "hint": "Dient zur Anmeldung und für Rückfragen zur Registrierung der Organisation."
+      },
+      "password": {
+        "label": "Passwort",
+        "hint": "Verwenden Sie eine lange Passphrase, die Sie auf keiner anderen Seite nutzen."
+      }
+    },
+    "public": {
+      "title": "Wie Ihre Organisation öffentlich erscheint",
+      "body": "Die Teilnahme erfolgt standardmäßig pseudonym. Im öffentlichen Verzeichnis erscheint Ihre Organisation als Bezeichnung mit Branche, Land und Größe, sofern Sie sich nicht für eine namentliche Nennung entscheiden. Diese Entscheidung treffen Sie für jede Transaktion einzeln.",
+      "registeredLabel": "Bei Sylva erfasst",
+      "publicLabel": "Im öffentlichen Verzeichnis sichtbar",
+      "note": "Das öffentliche Verzeichnis zeigt die Bezeichnung, die Branche, das Land und die Größe. Es verweist auf Organisationen, nicht auf die Personen ihrer Konten.",
+      "recordLink": "Öffentliches Verzeichnis ansehen"
+    },
+    "data": {
+      "title": "Wo Ihre Daten liegen",
+      "body": "Personenbezogene Daten liegen an einer einzigen Stelle: im Benutzerkonto. Alles Übrige auf der Plattform verweist über die ID auf die Organisation. Genau das macht es möglich, eine Person zu löschen, ohne das dauerhafte Verzeichnis zu beschädigen.",
+      "caption": "Was wo liegt und wer es lesen kann",
+      "colWhat": "Daten",
+      "colWhere": "Wo sie liegen",
+      "colWho": "Wer sie lesen kann",
+      "r1": {
+        "what": "Name, Funktion, E-Mail-Adresse, Passwort",
+        "where": "Im Benutzerkonto. Keine andere Tabelle enthält personenbezogene Daten.",
+        "who": "Sie und Sylva. Auditoren haben Lesezugriff, einschließlich der echten Namen."
+      },
+      "r2": {
+        "what": "Offizieller Name, Registernummer, Land, Branche, Größe, eingetragene Adresse",
+        "where": "Im Eintrag der Organisation.",
+        "who": "Sylva und Auditoren. Branche, Land und Größe erscheinen neben der Bezeichnung der Organisation im öffentlichen Verzeichnis."
+      },
+      "r3": {
+        "what": "Interessensbekundungen, Transaktionen, Dokumente, Nachrichten",
+        "where": "Im dauerhaften Verzeichnis, mit Verweis auf die Organisation statt auf die handelnde Person.",
+        "who": "Sylva, Auditoren und die jeweilige Gegenpartei der Transaktion. Andere Organisationen sehen Ihre Konditionen nicht."
+      },
+      "erasure": "Verlangt eine Person die Löschung, kann ihr Konto entfernt werden. Das dauerhafte Verzeichnis ist ausschließlich ergänzbar und bleibt unverändert, weil es auf die Organisation verweist.",
+      "hosting": "Hosting und Datenbank liegen in einer benannten Region eines EU-Mitgliedstaats."
+    },
+    "sector": {
+      "foodBeverage": "Lebensmittel und Getränke",
+      "energyUtilities": "Energie und Versorgung",
+      "waterUtility": "Wasserversorgung",
+      "manufacturing": "Industrie und Fertigung",
+      "bankingInvestment": "Bank- und Investmentwesen",
+      "publicSector": "Öffentlicher Sektor",
+      "foundation": "Stiftung oder Non-Profit",
+      "other": "Andere"
+    },
+    "country": {
+      "dk": "Dänemark",
+      "de": "Deutschland",
+      "es": "Spanien",
+      "fr": "Frankreich",
+      "ie": "Irland",
+      "nl": "Niederlande",
+      "pl": "Polen",
+      "se": "Schweden",
+      "other": "Anderes Land"
+    },
+    "size": {
+      "s1": "1 bis 49 Beschäftigte",
+      "s2": "50 bis 249 Beschäftigte",
+      "s3": "250 bis 999 Beschäftigte",
+      "s4": "1.000 bis 4.999 Beschäftigte",
+      "s5": "5.000 oder mehr Beschäftigte"
+    }
+  },
+  "vettingForm": {
+    "title": "Prüfungsfragebogen",
+    "metaDescription": "Der Fragebogen, den eine Organisation ausfüllt, bevor sie an einem Geschäft teilnehmen kann: welchen Umweltnutzen sie geltend machen will, wo dieser Anspruch veröffentlicht würde, wie sie arbeitet und wie sie Nachhaltigkeit angeht.",
+    "lead": "Jede Organisation, die auf dieser Plattform ein Geschäft abschließen möchte, beantwortet diese acht Fragen. Wir lesen die Antworten und lassen die Organisation dann zu oder lehnen sie ab. Für eine Organisation, die wir nicht zugelassen haben, kann kein Geschäft angelegt werden.",
+    "demoNote": "Vorführung. Diese Seite zeigt den Fragebogen so, wie ihn eine angemeldete Ansprechperson eines Käufers sieht. Es wird nichts gespeichert und nichts eingereicht.",
+    "whyTitle": "Warum wir das alles fragen",
+    "whyBody1": "Die Prüfung ist unsere wichtigste Vorkehrung gegen Greenwashing und eine Bedingung der Förderung, die hinter diesem Pilotvorhaben steht. Die Fragen betreffen das, was Sie geltend machen wollen, und die Art, wie Sie arbeiten – nicht Ihre Größe und nicht Ihr Budget.",
+    "whyBody2": "Zu jeder Frage steht unten, warum sie gestellt wird. Wenn eine Frage für Ihre Organisation nicht zutrifft, schreiben Sie das in die Antwort, anstatt sie leer zu lassen.",
+    "readBy": "Ihre Antworten werden von Sylva im Rahmen der Prüfungsentscheidung gelesen. Prüfer der Förderstelle und externe Prüfer haben ausschließlich lesenden Zugriff auf die Aufzeichnungen der Plattform.",
+    "questionsTitle": "Die Fragen",
+    "questionsLead": "Fünf Fragen in Ihren eigenen Worten, dann drei, die ein Ja oder ein Nein brauchen. Es gibt keine Wortgrenze und keine richtige Länge; eine Antwort, mit der wir arbeiten können, ist besser als eine lange.",
+    "org": {
+      "title": "Ihre Organisation",
+      "nameLabel": "Organisation",
+      "sectorLabel": "Branche",
+      "countryLabel": "Registrierungsland",
+      "referenceLabel": "Referenz",
+      "sectorValue": "Lebensmittel und Getränke",
+      "countryValue": "Deutschland",
+      "status": "Noch nicht zugelassen",
+      "statusNote": "Ihre Organisation kann Projekte und deren Nachweise bereits ansehen. Interesse an einem Projekt zu bekunden ist möglich, sobald wir die Organisation zugelassen haben.",
+      "sourceLabel": "Organisationsdatensatz"
+    },
+    "progress": {
+      "title": "Fortschritt",
+      "summary": "{answered} von {total} Fragen beantwortet",
+      "barLabel": "{answered} von {total} Fragen beantwortet.",
+      "answered": "Beantwortet",
+      "notAnswered": "Nicht beantwortet",
+      "indexLabel": "Die acht Fragen",
+      "sourceLabel": "Ihr gespeicherter Entwurf"
+    },
+    "parts": {
+      "claim": "Was Sie geltend machen wollen",
+      "operations": "Wie Ihre Organisation arbeitet",
+      "intentions": "Weiterverkauf, Kompensation und Exklusivität"
+    },
+    "labels": {
+      "required": "Pflichtfeld",
+      "optional": "Optional",
+      "why": "Warum wir das fragen",
+      "yes": "Ja",
+      "no": "Nein",
+      "questionShort": "F",
+      "questionNumber": "Frage {n} von {total}"
+    },
+    "q": {
+      "benefit": {
+        "short": "Beabsichtigter Anspruch",
+        "label": "Welchen Umweltnutzen wollen Sie geltend machen?",
+        "hint": "Benennen Sie den Nutzen selbst – zum Beispiel ein Wasserergebnis in einem bestimmten Einzugsgebiet oder ein Ergebnis zum Biodiversitätszustand – und die Periode, für die Sie ihn geltend machen würden. Wenn Sie mehr als einen Nutzen geltend machen wollen, führen Sie jeden einzeln auf.",
+        "why": "Anspruchsrechte werden je Projekt und je Nutzen festgelegt, und jedes Projekt nennt, wer was geltend machen darf und was ausgeschlossen ist. Ohne Ihre Beschreibung können wir nicht sagen, ob die Anspruchsrechte eines Projekts das zulassen, was Sie vorhaben."
+      },
+      "publication": {
+        "short": "Ort der Veröffentlichung",
+        "label": "Wo würde dieser Anspruch veröffentlicht?",
+        "hint": "Zum Beispiel im Geschäftsbericht, in einer Nachhaltigkeitserklärung, auf einem Produkt oder einer Verpackung, in der Kundenkommunikation, in einer Ausschreibungsantwort oder nur in der internen Berichterstattung. Benennen Sie die Dokumente und die Adressaten.",
+        "why": "Ein Anspruch in einem öffentlichen Bericht wird von mehr Menschen gelesen als einer, der im Haus bleibt, und seine Formulierung wird genauer geprüft. Wo der Anspruch erscheint, ist die Frage, die unsere Förderstelle uns am häufigsten stellt – deshalb stellen wir sie vor einem Geschäft und nicht danach."
+      },
+      "operations": {
+        "short": "Wie Sie arbeiten",
+        "label": "Wie arbeitet Ihre Organisation?",
+        "hint": "Was Sie herstellen oder tun, wo Ihre wichtigsten Standorte liegen und welche Teile Ihrer Tätigkeit von Wasser, Flächen und Lebensräumen abhängen oder auf sie einwirken. Eine sachliche Beschreibung genügt, Strategiesprache ist nicht nötig.",
+        "why": "Wir lesen diese Antwort zusammen mit dem, was Sie geltend machen wollen. Ein Renaturierungsprojekt oberhalb Ihrer eigenen Standorte trägt einen anderen Anspruch als eines ohne Bezug zu ihnen, und der Projektträger muss wissen, wer fragt."
+      },
+      "catchments": {
+        "short": "Wasserabhängigkeit",
+        "label": "Sind Sie von Wasser in bestimmten Einzugsgebieten abhängig?",
+        "hint": "Ein Einzugsgebiet ist die Fläche, die in einen bestimmten Fluss oder Grundwasserleiter entwässert. Benennen Sie die Einzugsgebiete und die davon abhängigen Standorte – oder halten Sie fest, dass Ihre Tätigkeit keine einzugsgebietsbezogene Wasserabhängigkeit hat.",
+        "why": "Zwei der von uns befragten Unternehmen suchen ein Projekt im selben Einzugsgebiet wie ihre eigenen Standorte und stellen Wasserergebnisse vor Biodiversität. Wenn Sie die Einzugsgebiete benennen, können wir Ihnen die Projekte zeigen, die darin liegen, und der Projektträger weiß, welche Wasserkennzahlen Sie zuerst lesen werden. Von Ihnen registrierte Standorte bleiben nur für Sie sichtbar."
+      },
+      "sustainability": {
+        "short": "Nachhaltigkeitsansatz",
+        "label": "Wie gehen Sie Nachhaltigkeit an?",
+        "hint": "Wie in Ihrer Organisation über Natur und Wasser entschieden wird, wer dafür verantwortlich ist, was Sie heute messen und worüber Sie berichten. Nennen Sie auch laufende Arbeiten, nicht nur abgeschlossene.",
+        "why": "Diese Frage gewichten wir am stärksten. Uns interessiert, ob ein Kauf hier Teil eines umfassenderen Vorgehens ist oder an dessen Stelle allein steht. Eine offene Antwort über laufende Arbeiten nützt uns mehr als eine geschliffene."
+      },
+      "resale": {
+        "short": "Weiterverkauf oder Stilllegung",
+        "label": "Wollen Sie Einheiten weiterverkaufen statt sie stillzulegen?",
+        "hint": "Eine Einheit stilllegen heißt, sie aus dem Verkehr zu nehmen, sodass niemand anderes denselben Nutzen geltend machen kann. Ein Weiterverkauf hält sie für eine andere Partei im Verkehr.",
+        "hintFollowUp": "Wenn Sie weiterverkaufen wollen, beschreiben Sie, an wen und zu welchen Bedingungen. Wenn Sie stilllegen wollen, nennen Sie den Zeitpunkt.",
+        "followUpLabel": "Ergänzende Angaben",
+        "why": "Stilllegung und Weiterverkauf sind unterschiedliche Produkte und führen zu unterschiedlichen Vertragsbedingungen. Ein Ko-Investor kann mehr Volumen halten, als er benötigt, und den Rest verkaufen – das ist hier ein üblicher Fall. Wir fragen, damit es offen vereinbart und nicht später entdeckt wird."
+      },
+      "offset": {
+        "short": "Darstellung als Kompensation",
+        "label": "Würden Sie den Nutzen als Kompensation (Offset) darstellen?",
+        "hint": "Eine Darstellung als Kompensation stellt den Nutzen als Ausgleich für eine Auswirkung an anderer Stelle dar.",
+        "hintFollowUp": "Beschreiben Sie die geplante Darstellung und die Auswirkung, der sie gegenübergestellt würde.",
+        "followUpLabel": "Ergänzende Angaben",
+        "why": "Ein von uns befragtes Unternehmen möchte nicht, dass seine Investition von anderen als Kompensation verwendet wird. Projektträger und andere Beteiligte beurteilen das unterschiedlich, deshalb muss die Darstellung auf dem Tisch liegen, bevor Bedingungen entworfen werden. Wir fragen, was Sie vorhaben; wir entscheiden nicht, ob ein solcher Anspruch zulässig ist."
+      },
+      "exclusivity": {
+        "short": "Exklusivität",
+        "label": "Verlangen Sie, dass keine andere Partei denselben Nutzen geltend machen darf?",
+        "hint": "Also ob exklusive Anspruchsrechte an dem Nutzen, für den Sie zahlen, Bedingung Ihrer Teilnahme sind.",
+        "hintFollowUp": "Halten Sie fest, welche Nutzen die Exklusivität abdecken müsste und für welchen Zeitraum.",
+        "followUpLabel": "Ergänzende Angaben",
+        "why": "Ein Unternehmen sagte uns, es würde ein Projekt nicht finanzieren, wenn der Weiterverkauf der Einheiten ihm das Recht nimmt, den bezahlten Nutzen geltend zu machen, und verglich das mit dem Abtreten der Grünstromeigenschaften in einem Stromabnahmevertrag. Exklusivität ist mit dem Projektträger zu vereinbaren; deshalb fragen wir vor der Zuordnung zu einem Projekt, ob sie für Sie Bedingung ist."
+      }
+    },
+    "actions": {
+      "submit": "Zur Prüfung einreichen",
+      "saveDraft": "Entwurf speichern",
+      "inertNote": "Dies ist der Frontend-Stand. Keine der beiden Schaltflächen speichert oder übermittelt etwas.",
+      "footNote": "Sie können einen Entwurf speichern und später weiterarbeiten. Nicht beantwortete Fragen bleiben in der Liste links stehen."
+    },
+    "next": {
+      "title": "Was nach dem Einreichen passiert",
+      "step1": "Wir lesen die Antworten und stellen gegebenenfalls Rückfragen.",
+      "step2": "Wir lassen Ihre Organisation zu oder lehnen sie ab und teilen Ihnen mit, was zutrifft.",
+      "step3": "Nach der Zulassung können Sie Interesse an einem Projekt bekunden. Damit öffnet sich ein privater Raum zwischen Ihrer Organisation und diesem Projektträger, und das Interessensereignis wird in die dauerhafte Aufzeichnung geschrieben. In der öffentlichen Fassung dieser Aufzeichnung erscheint Ihre Organisation als Kennung wie „Käufer 014“ mit Branche, Land und Größenklasse – es sei denn, Sie entscheiden sich, für dieses Geschäft namentlich genannt zu werden.",
+      "notTitle": "Was eine Zulassung nicht ist",
+      "notBody": "Die Zulassung ist unsere Entscheidung über die Teilnahme auf dieser Plattform. Sie ist keine Prüfung Ihrer Organisation, keine Verifizierung Ihrer Angaben und keine Aussage darüber, dass ein von Ihnen beabsichtigter Anspruch von Dritten akzeptiert wird.",
+      "backToBuyers": "Nachlesen, was Käufer auf dieser Plattform tun können"
+    },
+    "source": {
+      "questionnaire": "Prüfungsfragebogen"
+    },
+    "demoAnswers": {
+      "benefit": "DEMO-ANTWORT. Wir würden das Wasserergebnis – das Retentionsvolumen und die Kennzahl zum sommerlichen Niedrigwasser – für die Periode 2028 geltend machen, für das Einzugsgebiet, das unseren Abfüllstandort Lüneburg versorgt. Das Ergebnis zum Biodiversitätszustand würden wir nicht geltend machen.",
+      "publication": "DEMO-ANTWORT. In unserer jährlichen Nachhaltigkeitserklärung im Abschnitt Wasser und im Umweltanhang, den wir Handelskunden auf Anfrage geben. Nicht auf der Verpackung und nicht in der Werbung.",
+      "operations": "DEMO-ANTWORT. Wir füllen Mineralwasser und Erfrischungsgetränke an drei Standorten in Norddeutschland ab und vertreiben sie. Zwei der drei entnehmen Grundwasser auf der Grundlage von Entnahmeerlaubnissen. Unser Risiko liegt beim sommerlichen Niedrigwasser und bei sinkenden Grundwasserständen um die Standorte Lüneburg und Uelzen."
+    }
+  },
+  "vettingStatus": {
+    "metaDescription": "Wo eine Zulassungsprüfung steht, was eine Organisation während der laufenden Prüfung tun kann und was nicht, und was eine Ablehnung bedeutet.",
+    "title": "Status der Zulassungsprüfung",
+    "lead": "Diese Seite zeigt, wo die Zulassungsprüfung einer Organisation steht, was die Organisation tun kann, solange keine Entscheidung vorliegt, und was eine Ablehnung bedeutet.",
+    "gate": "Für eine Organisation, die Sylva nicht zugelassen hat, kann auf dieser Plattform keine Transaktion angelegt werden. Die Zulassungsprüfung ist diese Zulassung, und sie ist eine Bedingung der Förderung dieses Pilotvorhabens.",
+    "cellLegend": "„Nicht festgelegt“ bedeutet, dass die hier zitierbaren Unterlagen des Pilotvorhabens die Frage nicht klären. Fragen Sie nach, statt eine der beiden Antworten anzunehmen.",
+    "limitsLead": "Zwei Dinge, die Leserinnen und Leser hier erwarten könnten und nicht finden werden:",
+    "footFrontend": "Frontend-Stand. Diese Seite zeigt einen Demo-Zustand. Nichts darauf wird abgesendet, und hier wird keine Entscheidung getroffen.",
+    "sourceLabel": "Prüfungsdatensatz",
+    "section": {
+      "thisApplication": "Dieser Antrag",
+      "thisApplicationLead": "Der Demo-Antrag unten befindet sich in Prüfung. Alle Datumsangaben in diesem Block stammen aus demselben Datensatz und tragen ihre Quellenangabe.",
+      "thisApplicationMark": "Dieser Antrag",
+      "states": "Die vier Zustände",
+      "statesLead": "Ein Antrag befindet sich in genau einem dieser Zustände. Jeder Zustand wird als Wort angegeben, niemals allein durch Farbe.",
+      "statesCaption": "Die vier Zustände einer Zulassungsprüfung und was jeder für die Organisation bedeutet.",
+      "statesMeaningCol": "Bedeutung",
+      "matrix": "Was eine Organisation in welchem Zustand tun kann",
+      "matrixLead": "Projekte lesen und eigene Standorte registrieren warten nicht auf die Entscheidung. Interesse bekunden schon, denn mit der Interessensbekundung entsteht eine Transaktion.",
+      "matrixCaption": "Was eine Organisation auf der Plattform tun kann, nach dem Zustand ihrer Zulassungsprüfung.",
+      "declinedExample": "Abgelehnt — ausgearbeitetes Beispiel",
+      "declinedExampleLead": "Ein zweiter Antrag, vollständig dargestellt, damit der Zustand „Abgelehnt“ nicht nur beschrieben wird. Der mit der Entscheidung festgehaltene Grund gehört zum Datensatz.",
+      "limits": "Was diese Seite nicht entscheidet",
+      "visibility": "Wer einen Antrag sehen kann"
+    },
+    "state": {
+      "submitted": "Eingereicht",
+      "under_review": "In Prüfung",
+      "approved": "Zugelassen",
+      "declined": "Abgelehnt"
+    },
+    "stateMeaning": {
+      "submitted": "Die Angaben sind erfasst und warten auf die Prüfung. Von der Organisation ist zu diesem Zeitpunkt nichts weiter erforderlich.",
+      "under_review": "Sylva liest den Antrag. Die Organisation kann in der Zwischenzeit den öffentlichen Teil der Plattform nutzen; Interesse an einem Projekt kann sie noch nicht bekunden.",
+      "approved": "Die Organisation kann Interesse an einem Projekt bekunden; damit öffnet sich ein privater Raum zwischen ihr und diesem Projekt.",
+      "declined": "Für die Organisation kann keine Transaktion angelegt werden. Die öffentlichen Projektseiten bleiben ihr offen."
+    },
+    "field": {
+      "organisation": "Organisation",
+      "reference": "Aktenzeichen",
+      "role": "Beantragt als",
+      "sector": "Branche",
+      "country": "Land",
+      "state": "Zustand",
+      "submittedOn": "Eingereicht",
+      "lastEventOn": "Letzte Änderung",
+      "decidedOn": "Entscheidung erfasst",
+      "decisionDueOn": "Entscheidung fällig",
+      "notSet": "Nicht festgelegt",
+      "notSetNote": "Für dieses Pilotvorhaben ist keine Zielfrist für Entscheidungen veröffentlicht. Diese Seite schätzt keine."
+    },
+    "role": {
+      "buyer": "Käufer",
+      "investor": "Investor",
+      "projectOwner": "Projektträger"
+    },
+    "sector": {
+      "beverages": "Lebensmittel und Getränke",
+      "logistics": "Transport und Logistik"
+    },
+    "country": {
+      "de": "Deutschland",
+      "nl": "Niederlande"
+    },
+    "stage": {
+      "heading": "Verlauf",
+      "submitted": "Antrag eingereicht",
+      "submittedNote": "Die Angaben der Organisation wurden unter dem oben genannten Aktenzeichen erfasst.",
+      "review": "In Prüfung",
+      "reviewNote": "Sylva liest den Antrag. Diese Seite nennt den Zustand dieser Prüfung und nichts darüber hinaus.",
+      "decision": "Entscheidung",
+      "decisionNote": "Sylva lässt zu oder lehnt ab. Beide Ergebnisse erscheinen auf dieser Seite, mit dem dazu festgehaltenen Grund.",
+      "noDate": "Kein Datum",
+      "position": {
+        "done": "Abgeschlossen",
+        "current": "Aktueller Schritt",
+        "ahead": "Noch nicht erreicht"
+      }
+    },
+    "action": {
+      "heading": "Handlung",
+      "browse": "Veröffentlichte Projektseiten lesen",
+      "browseNote": "Ergebnisse, Anspruchsrechte, langfristiger Schutz, Verfügbarkeit und die mit einem Projekt veröffentlichten Dokumente liegen im öffentlichen Teil der Plattform.",
+      "documents": "Die mit einem Projekt veröffentlichten Dokumente herunterladen",
+      "documentsNote": "Projektidee, Projektdesigndokument, Monitoringplan und, soweit vorhanden, Prüfberichte.",
+      "sites": "Eigene Standorte der Organisation registrieren",
+      "sitesNote": "Registrierte Standorte dienen dazu, die Entfernung von einem Standort zu einem Projekt anzuzeigen. Sie sind nur für die Organisation sichtbar, die sie registriert hat.",
+      "interest": "Interesse an einem Projekt bekunden",
+      "interestNote": "Der Schritt, mit dem sich ein privater Raum zwischen der Organisation und dem Projekt öffnet. Dieser Schritt setzt die Zulassung voraus.",
+      "dealRoom": "An einem privaten Transaktionsraum teilnehmen",
+      "dealRoomNote": "Ein Raum besteht für ein Projekt und einen Käufer, sobald Interesse bekundet wurde.",
+      "financing": "Den Finanzierungsteil eines Projekts lesen",
+      "financingNote": "Finanzierungsbedarf, Einnahmequellen und das Finanzmodell werden Investoren gezeigt, die Sylva geprüft hat.",
+      "record": "Im öffentlichen Transaktionsverzeichnis erscheinen",
+      "recordNote": "Das Verzeichnis führt Transaktionsereignisse. Eine Organisation erscheint dort unter einer pseudonymen Bezeichnung, sofern sie sich für diese Transaktion nicht für eine namentliche Nennung entschieden hat."
+    },
+    "cell": {
+      "yes": "Möglich",
+      "no": "Nicht möglich",
+      "notSet": "Nicht festgelegt"
+    },
+    "reason": {
+      "heading": "Mit der Entscheidung festgehaltener Grund",
+      "part": "Teil des Fragebogens",
+      "declinedHeadline": "Der von der Organisation beabsichtigte Anspruch ließ sich nicht mit den veröffentlichten Anspruchsrechten der von ihr genannten Projekte in Einklang bringen.",
+      "declinedDetail": "Der Antrag nannte zwei Projekte und beschrieb den Nutzen, den die Organisation daraus geltend machen wollte. Die für beide Projekte veröffentlichten Anspruchsrechte weisen diesen Nutzen einem anderen Inhaber zu. Die Zulassungsprüfung ist der Punkt, an dem Sylva liest, was ein Käufer geltend machen will; der Antrag wurde daher abgelehnt und nicht in der Annahme zugelassen, der beabsichtigte Anspruch werde später korrigiert.",
+      "declinedPart": "Teil 2 — was die Organisation geltend machen will"
+    },
+    "next": {
+      "heading": "Was als Nächstes zu tun ist",
+      "howCta": "Wie die Zulassungsprüfung abläuft",
+      "contactCta": "An die Prüfstelle für Zulassungen schreiben",
+      "questionnaireCta": "Der Fragebogen zur Zulassungsprüfung",
+      "pending": {
+        "read": "Die Projekte lesen",
+        "readBody": "Nichts im öffentlichen Teil einer Projektseite wird zurückgehalten, solange eine Entscheidung aussteht: Ergebnisse, Anspruchsrechte, langfristiger Schutz, Verfügbarkeit und Dokumente sind vollständig vorhanden.",
+        "sites": "Die Standorte der Organisation registrieren",
+        "sitesBody": "Entfernungen werden von registrierten Standorten aus gemessen. Wer sie jetzt registriert, sieht die Entfernung zu jedem Projekt bereits auf der Seite, wenn die Entscheidung kommt. Registrierte Standorte sind nur für die Organisation sichtbar, die sie registriert hat.",
+        "vetting": "Lesen, was die Zulassungsprüfung umfasst",
+        "vettingBody": "Was erhoben wird, wer entscheidet und was sich mit der Zulassung ändert."
+      },
+      "declined": {
+        "reason": "Den festgehaltenen Grund lesen",
+        "reasonBody": "Der Grund oben ist der Grund. Es gibt keinen zweiten, unausgesprochenen.",
+        "projects": "Weiterhin die Projekte lesen",
+        "projectsBody": "Eine Ablehnung verschließt der Organisation die öffentlichen Projektseiten nicht.",
+        "ask": "Sylva zur Entscheidung befragen",
+        "askBody": "Nennen Sie das Aktenzeichen. Ob ein Antrag erneut gestellt werden kann, ist hier nicht festgelegt; auf diesem Weg lässt es sich klären."
+      }
+    },
+    "limit": {
+      "timing": "Wie lange eine Prüfung dauert. Für dieses Pilotvorhaben ist keine Zielfrist für Entscheidungen veröffentlicht, und diese Seite schätzt keine.",
+      "again": "Ob eine abgelehnte Organisation erneut einen Antrag stellen kann. Die hier zitierbaren Unterlagen des Pilotvorhabens legen das nicht fest; fragen Sie daher nach, statt eine der beiden Antworten anzunehmen."
+    },
+    "visibility": {
+      "lead": "Ein Antrag wird nicht veröffentlicht.",
+      "sylva": "Sylva als Betreiberin der Plattform, die den Antrag liest und die Entscheidung erfasst.",
+      "auditors": "Prüfer, die für den Fördergeber und für die externe Prüfung ausschließlich Leserechte haben.",
+      "notRecord": "Der Antrag erscheint nicht im öffentlichen Transaktionsverzeichnis. Dieses Verzeichnis führt Transaktionsereignisse — gelistet, angeboten, Interesse bekundet, Bedingungen vorgeschlagen, vereinbart und was darauf folgt — und für eine nicht zugelassene Organisation besteht keine Transaktion."
+    }
+  },
+  "expressInterest": {
+    "metaDescription": "Senden Sie eine private Anfrage an den Projektträger dieses Renaturierungsprojekts: welche Perioden, welches Volumen ungefähr, welche Vertragsform und eine Nachricht.",
+    "breadcrumbLabel": "Sie befinden sich hier",
+    "lead": "Teilen Sie dem Projektträger mit, für welche Perioden Sie sich interessieren, welches Volumen Sie ungefähr benötigen und welche Vertragsform Sie besprechen möchten. Die Anfrage geht an den Projektträger und an Sylva. Sie wird nicht veröffentlicht.",
+    "notAnOffer": "Dies ist eine Anfrage, kein Angebot, und sie verpflichtet Sie zu keinem Kauf. Die Bedingungen werden anschließend privat besprochen; eine Vereinbarung wird außerhalb der Plattform unterzeichnet und hier als Nachweis hinterlegt.",
+    "frontendNote": "Diese Seite gehört zu einem Frontend-Durchgang. Das Formular wird dargestellt und sendet nichts; die Bestätigung und die blockierten Zustände sind Beispiele und nicht das Ergebnis einer Prüfung.",
+    "sections": {
+      "reference": "Worauf sich Ihre Interessenbekundung bezieht",
+      "enquiry": "Ihre Anfrage",
+      "enquiryLead": "Vier kurze Fragen. Alles Weitere wird im anschließenden Gespräch geklärt.",
+      "after": "Nach dem Absenden",
+      "afterLead": "Die Ansicht, die Sie sehen, sobald das Interessenereignis erfasst ist, hier als Beispiel.",
+      "blocked": "Wenn Sie noch nicht absenden können",
+      "blockedLead": "Zwei Umstände verhindern das Absenden einer Anfrage. Beide sind hier gezeigt, jeweils mit dem nächsten Schritt."
+    },
+    "reference": {
+      "project": "Projekt"
+    },
+    "form": {
+      "label": "Interesse an diesem Projekt bekunden",
+      "periodsLegend": "Perioden und ungefähres Volumen",
+      "periodsHint": "Lassen Sie eine Periode leer, wenn sie für Sie nicht infrage kommt. Die Volumina sind Richtwerte und können sich im Gespräch mit dem Projektträger ändern.",
+      "unitNote": "Alle Volumina in diesem Formular sind in {unit} angegeben, der Einheit dieses Projekts. Sie sind nicht mit Volumina anderer Projekte vergleichbar.",
+      "periodsCaption": "Verbleibendes Volumen je Periode dieses Projekts und das Volumen, nach dem Sie fragen.",
+      "volumeHeader": "Volumen, nach dem Sie fragen",
+      "volumeLabel": "Ungefähres Volumen für {period}, in {unit}",
+      "remainingNote": "Verbleibend ist, was in dieser Periode übrig bleibt, nachdem der vom Projekt zurückgehaltene Puffer sowie bereits zugesagte und vorgemerkte Volumina abgezogen sind.",
+      "dealLegend": "Vertragsform",
+      "dealHint": "Die drei Formen werden bei jedem Projekt gleichrangig angeboten. Ihre Auswahl sagt dem Projektträger nur, wo das Gespräch beginnt.",
+      "deal": {
+        "spot": "Sofortvolumen",
+        "spotNote": "Einheiten, die bereits bestehen. Sie übernehmen ein Volumen und legen es still, wenn Sie bereit sind.",
+        "forward": "Terminvertrag",
+        "forwardNote": "Sie verpflichten sich jetzt, ein Volumen in einer künftigen Periode zu vereinbarten Bedingungen abzunehmen. Die meisten Pilotgeschäfte haben diese Form, weil Einheiten erst ausgegeben werden, nachdem eine unabhängige Stelle das Ergebnis verifiziert hat.",
+        "coInvestment": "Ko-Investition",
+        "coInvestmentNote": "Sie finanzieren einen Anteil des Projekts direkt; das Volumen, das Sie nicht benötigen, wird an andere Käufer verkauft.",
+        "undecided": "Noch nicht entschieden",
+        "undecidedNote": "Sie möchten, dass der Projektträger Ihnen die Möglichkeiten zunächst erläutert."
+      },
+      "messageLabel": "Nachricht an den Projektträger",
+      "messageHint": "Was Sie wissen oder vereinbaren möchten: Fragen zu den Nachweisen, den Anspruchsrechten, dem Monitoring oder dem Zeitplan.",
+      "messagePrivacy": "Diese Nachricht lesen der Projektträger und Sylva. Sie wird nicht veröffentlicht, und es gibt keinen öffentlichen Kommentarbereich.",
+      "disclosureLegend": "Wie Sie in der öffentlichen Aufzeichnung erscheinen",
+      "disclosureHint": "Die Teilnahme erfolgt pseudonym, solange Sie nichts anderes wählen, und die Wahl wird für jedes Geschäft einzeln getroffen. Der Projektträger und Sylva sehen immer, wer Sie sind.",
+      "disclosureOptIn": "Unsere Organisation für dieses Interessenereignis in der öffentlichen Aufzeichnung namentlich nennen.",
+      "disclosureDefault": "Ohne Häkchen zeigt die Aufzeichnung eine Bezeichnung wie Buyer 014 mit Branche, Land und Größe.",
+      "submitNote": "Diese Schaltfläche sendet nichts: Die Seiten entstehen vor den Funktionen dahinter."
+    },
+    "confirmation": {
+      "exampleLabel": "Beispiel der Bestätigungsansicht",
+      "title": "Interesse erfasst",
+      "recordedWord": "Erfasst",
+      "body": "Der Projektträger und Sylva sind benachrichtigt und melden sich bei Ihnen. Bewahren Sie die untenstehende Referenz auf, falls Sie uns zu dieser Anfrage etwas fragen möchten.",
+      "event": "Ereignis",
+      "organisation": "Organisation",
+      "publicRecord": "In der öffentlichen Aufzeichnung",
+      "publicRecordPseudonym": "Sie haben für dieses Geschäft keine namentliche Nennung gewählt; die öffentliche Aufzeichnung zeigt daher das Pseudonym oben.",
+      "publicRecordNamed": "Sie haben für dieses Geschäft die namentliche Nennung gewählt; die öffentliche Aufzeichnung zeigt daher den Namen Ihrer Organisation.",
+      "date": "Datum",
+      "reference": "Referenz",
+      "dealShape": "Vertragsform",
+      "volumesCaption": "Die Volumina dieser Anfrage, je Periode dieses Projekts.",
+      "volumeHeader": "Angefragtes Volumen",
+      "volumeSource": "Diese Anfrage, wie gesendet",
+      "noTotalNote": "Die Perioden stehen einzeln und werden nicht addiert: ein Volumen in 2028 und ein Volumen in 2029 sind unterschiedliche Lieferungen.",
+      "nextTitle": "Nächster Schritt",
+      "next1": "Der Projektträger antwortet Ihnen per E-Mail.",
+      "next2": "Sylva erhält dieselbe Anfrage und kann ein Gespräch mit den Verantwortlichen des Projekts vermitteln.",
+      "next3": "Sie können weitere Anfragen zu anderen Perioden oder anderen Projekten senden. Jede wird einzeln erfasst.",
+      "dealRoomTitle": "Der private Verhandlungsraum",
+      "dealRoomBody": "Der Verhandlungsraum — private Nachrichten, Entwürfe der Bedingungen, Versionen jedes Dokuments und eine Statusmarke von der ersten Interessenbekundung über eine Absichtserklärung und ein Term Sheet bis zur Unterzeichnung — folgt in einer späteren Version. Bis dahin läuft dieses Gespräch per E-Mail.",
+      "signingBody": "Vereinbarungen werden ohnehin außerhalb der Plattform unterzeichnet; das unterzeichnete Dokument wird hier als Nachweis hinterlegt. Sylva übernimmt keine Zahlungen und keine Abwicklung.",
+      "permanentNote": "Das Interessenereignis wird in die dauerhafte Aufzeichnung geschrieben. Einträge dort werden nie geändert oder gelöscht: Ein Fehler wird durch einen neuen Eintrag berichtigt, der auf den falschen verweist, und der falsche bleibt sichtbar.",
+      "backToProject": "Zurück zum Projekt",
+      "viewRecord": "Öffentliche Aufzeichnung ansehen"
+    },
+    "blocked": {
+      "exampleSignedOut": "Beispiel: Sie sind nicht angemeldet",
+      "exampleNotApproved": "Beispiel: Ihre Organisation wird noch geprüft",
+      "whatToDo": "Was zu tun ist",
+      "signedOut": {
+        "statusWord": "Anmeldung erforderlich",
+        "title": "Sie sind nicht angemeldet",
+        "body": "Ein Interessenereignis wird für eine Organisation erfasst, und der Projektträger muss wissen, wer anfragt; anonym lässt sich diese Anfrage daher nicht senden. Nach der Anmeldung kommen Sie zu diesem Projekt zurück.",
+        "registerAction": "Organisation registrieren",
+        "note": "Wie Sie in der öffentlichen Aufzeichnung erscheinen, ist eine gesonderte Entscheidung und wird für jedes Geschäft einzeln getroffen. Die Anmeldung veröffentlicht den Namen Ihrer Organisation nicht."
+      },
+      "notApproved": {
+        "title": "Ihre Organisation ist noch nicht freigegeben",
+        "body": "Sylva prüft jede Organisation, bevor sie handeln kann; für eine nicht freigegebene Organisation wird kein Geschäft angelegt. Ihr Fragebogen liegt uns vor, und das Ergebnis teilen wir Ihnen per E-Mail mit.",
+        "submittedLabel": "Fragebogen eingegangen",
+        "asksTitle": "Was der Fragebogen abfragt",
+        "asks1": "Was Ihre Organisation beanspruchen möchte.",
+        "asks2": "Wie Ihre Organisation arbeitet.",
+        "asks3": "Ihr Vorgehen in Nachhaltigkeitsfragen.",
+        "vettingAction": "Wie die Prüfung abläuft",
+        "note": "Bis dahin können Sie alle Projektseiten, die dazugehörigen Nachweise und die öffentliche Aufzeichnung lesen. Über die Freigabe oder Ablehnung einer Organisation entscheidet Sylva; das ist eine Bedingung der Förderung dieses Pilotvorhabens."
+      }
+    },
+    "event": {
+      "interestExpressed": "Interesse bekundet"
+    },
+    "source": {
+      "designDocument": "Projektentwurfsdokument"
+    },
+    "demo": {
+      "country": "Deutschland",
+      "catchment": "Einzugsgebiet der Unteren Havel",
+      "unitLabel": "Hektarjahre",
+      "buyerSector": "Lebensmittel und Getränke",
+      "buyerCountry": "Deutschland"
+    }
+  },
+  "ownerQuestions": {
+    "title": "Fragen von Käufern",
+    "metaDescription": "Private Fragen, die Käufer zu Ihren Projekten gesendet haben, jeweils mit dem Antwortfeld. Nichts auf dieser Seite wird veröffentlicht.",
+    "lead": "Käufer stellen Fragen zu einem Projekt privat. Jede Frage unten nennt das betroffene Projekt, die Kennung, unter der der Käufer in dieser Transaktion erscheint, das Datum, die Frage selbst und das Feld, in dem Sie antworten.",
+    "inboxFor": "Posteingang von",
+    "demoNote": "Demodaten. Die Fragen, Antworten, Entwürfe, Organisationen und Käuferkennungen auf dieser Seite sind fiktiv und zeigen nur den Aufbau des Posteingangs. Kein Käufer hat sie geschrieben, und nichts darin beschreibt ein echtes Projekt.",
+    "who": {
+      "title": "Wer eine Frage sieht",
+      "recipientsTitle": "Sie und der Betreiber",
+      "recipientsBody": "Eine Frage geht an Sie als Projektträger und an Sylva, die die Plattform betreibt. Beide sehen die Frage und Ihre Antwort.",
+      "privateTitle": "Es gibt keinen öffentlichen Kommentarbereich",
+      "privateBody": "Fragen und Antworten bleiben zwischen dem Käufer, Ihnen und Sylva. Nichts auf dieser Seite erscheint auf der Projektseite oder im öffentlichen Transaktionsverzeichnis.",
+      "identityTitle": "Wie der Käufer erscheint",
+      "identityBody": "Ein Käufer erscheint unter der Kennung, die er für diese Transaktion hat, etwa Buyer 003, sofern er sich nicht für diese Transaktion namentlich nennen lässt. Die Kennungen beginnen bei jedem Projekt wieder bei 001; dieselbe Kennung bei zwei Projekten ist daher nicht dieselbe Organisation."
+    },
+    "inbox": {
+      "title": "Posteingang",
+      "awaiting": "{count, plural, =0 {Keine Frage wartet auf eine Antwort} one {# Frage wartet auf eine Antwort} other {# Fragen warten auf eine Antwort}}",
+      "answered": "{count, plural, =0 {keine beantwortet} one {# beantwortet} other {# beantwortet}}",
+      "scopeNote": "{count, plural, one {Aus Ihrem # Projekt} other {Aus Ihren # Projekten}}",
+      "countNote": "Diese Angaben zählen Fragen. Auf dieser Seite werden keine Einheitenmengen dargestellt: Wie viele Einheiten ein Projekt erwartet, bereits zugesagt hat und noch frei hat, steht in der Verfügbarkeitstabelle dieses Projekts, mit dem Einheitentyp neben der Zahl."
+    },
+    "source": {
+      "inbox": "Auszug aus dem Fragen-Posteingang"
+    },
+    "filters": {
+      "heading": "Posteingang filtern",
+      "project": "Projekt",
+      "state": "Status",
+      "apply": "Filter anwenden",
+      "notConnected": "Diese Bedienelemente sind angelegt, aber noch nicht angebunden. Es wird nichts gefiltert und nichts ausgeblendet: alle Fragen stehen auf der Seite."
+    },
+    "state": {
+      "unanswered": "Wartet auf Ihre Antwort",
+      "answered": "Beantwortet",
+      "draft": "Entwurf gespeichert"
+    },
+    "project": {
+      "questionCount": "{count, plural, =0 {Keine Fragen} one {# Frage} other {# Fragen}}",
+      "awaitingCount": "{count, plural, =0 {keine wartet auf eine Antwort} one {# wartet auf eine Antwort} other {# warten auf eine Antwort}}"
+    },
+    "thread": {
+      "refLabel": "Frage",
+      "askedLabel": "Gestellt",
+      "projectLabel": "Projekt",
+      "buyerLabel": "Von",
+      "questionLabel": "Frage von {buyer}",
+      "replyLabel": "Ihre gesendete Antwort",
+      "replySentBy": "Gesendet von {org}",
+      "replyVisibility": "Der Käufer kann diese Antwort lesen. Sylva kann sie lesen. Sie wird nicht veröffentlicht.",
+      "furtherReply": "Weitere Antwort schreiben"
+    },
+    "identity": {
+      "pseudonym": "Kennung für diese Transaktion",
+      "named": "Vom Käufer für diese Transaktion namentlich freigegeben"
+    },
+    "topic": {
+      "claimRights": "Anspruchsrechte",
+      "availability": "Verfügbarkeit und Puffer",
+      "catchment": "Einzugsgebiet und registrierte Standorte",
+      "durability": "Langfristiger Schutz"
+    },
+    "sector": {
+      "food_bev": "Lebensmittel und Getränke",
+      "chemicals": "Chemie",
+      "utilities": "Versorgungswirtschaft",
+      "finance": "Banken und Fonds",
+      "public": "Öffentlicher Sektor und Non-Profit"
+    },
+    "sizeBand": {
+      "sme": "Kleines oder mittleres Unternehmen",
+      "large": "Großunternehmen"
+    },
+    "reply": {
+      "label": "Ihre Antwort",
+      "furtherLabel": "Weitere Antwort",
+      "hint": "Schreiben Sie, was die Projektunterlagen belegen. Gehört eine Zahl zu einem Dokument, nennen Sie das Dokument und sein Datum, anstatt die Zahl hier zu wiederholen.",
+      "draftNote": "Im Feld unten steht ein Entwurf. Er wurde nicht gesendet, und der Käufer hat ihn nicht gesehen.",
+      "visibility": "Der Käufer erhält die Antwort. Sylva kann sie sehen. Sie wird nicht auf die Projektseite und nicht in das öffentliche Verzeichnis aufgenommen.",
+      "send": "Antwort senden",
+      "saveDraft": "Entwurf speichern",
+      "inertNote": "Dies ist der Aufbau des Antwortfeldes. Keines der beiden Bedienelemente sendet oder speichert bisher etwas."
+    },
+    "empty": {
+      "title": "Zu diesem Projekt gibt es noch keine Fragen",
+      "body": "Eine Frage zu diesem Projekt erscheint hier, sobald ein Käufer sie sendet. Käufer erreichen das Fragefeld über die Projektseite."
+    },
+    "emptyAll": {
+      "title": "Noch keine Fragen",
+      "body": "Kein Käufer hat eine Frage zu Ihren Projekten gesendet. Eine Frage kommt über eine Projektseite und erscheint hier für Sie und für Sylva."
+    },
+    "messages": {
+      "q214": {
+        "question": "Wenn wir uns jetzt über einen Terminvertrag zu einer Menge für 2028 verpflichten und einen Teil davon später weiterverkaufen: Bleibt das Recht, den Wassernutzen zu beanspruchen, bei uns, oder geht es mit den Einheiten über? Wir würden nicht teilnehmen, wenn ein Weiterverkauf den Anspruch aufhebt, für den wir bezahlt haben.",
+        "draft": "Der Abschnitt zu den Anspruchsrechten auf der Projektseite führt das Nutzen für Nutzen auf. Bevor ich beantworte, was bei einem Weiterverkauf gilt, möchte ich den Wortlaut des Standarddokuments vor mir haben und nicht aus dem Gedächtnis antworten; zu diesem Punkt komme ich auf Sie zurück."
+      },
+      "q213": {
+        "question": "Ihre Verfügbarkeitstabelle hält für 2028 einen Puffer von der erwarteten Ausgabe zurück. Wird der Puffer freigegeben, sobald die Prüfung das erwartete Ergebnis erreicht oder übertrifft, oder wird er über die gesamte Vertragslaufzeit gehalten?",
+        "reply": "Der Puffer wird gehalten, bis der Prüfbericht für die betreffende Periode vorliegt. Was danach mit einem nicht benötigten Puffer geschieht, regelt der Standard und nicht wir; der Monitoringplan auf der Projektseite nennt das Standarddokument und die Klausel. Ich verweise Sie lieber darauf, als es hier zusammenzufassen."
+      },
+      "q212": {
+        "question": "Zwei unserer Abfüllstandorte liegen im selben Einzugsgebiet. Können Sie uns die Entfernung von der Projektgrenze zu dem Standort nennen, den wir letzte Woche registriert haben, oder lesen wir das selbst auf der Projektseite ab?"
+      },
+      "q209": {
+        "question": "Die Vertragslaufzeit in Ihrem Projektdesigndokument beträgt fünf Jahre. Wer unterhält die Fläche danach, und ist diese Verpflichtung schriftlich an einer Stelle festgehalten, die wir einsehen können?",
+        "reply": "Der Abschnitt zum langfristigen Schutz auf der Projektseite nennt die Stelle, die sich zur Unterhaltung der Fläche verpflichtet hat, und den Zeitraum, für den sie sich verpflichtet hat. Die Bewirtschaftungsvereinbarung selbst steht mit Version und Datum in der Dokumentenliste. Für die Zeit nach der Vertragslaufzeit ist noch nichts geprüft; was Sie dort lesen können, ist die Verpflichtung, nicht ein Ergebnis."
+      }
+    }
+  },
+  "adminVetting": {
+    "title": "Antragsprüfung",
+    "metaDescription": "Betreiberansicht. Anträge, die auf eine Entscheidung warten, die jeweils eingereichten Fragebogenantworten und die Einträge, aus denen der Freigabestatus einer Organisation gelesen wird.",
+    "operator": "Betreiber",
+    "lead": "Anträge von Organisationen, die auf dieser Plattform kaufen, investieren, ein Projekt betreiben oder prüfen möchten. Für eine nicht freigegebene Organisation kann kein Geschäft angelegt werden; hier wird darüber entschieden.",
+    "demoNote": "Demonstrationsdaten. Alle Organisationen, Antragsnummern, Fragebogenantworten, erfassten Begründungen und Daten auf diesem Bildschirm sind fiktiv. Nichts davon beschreibt eine reale Organisation oder eine reale Prüfentscheidung.",
+    "accessNote": "Dieser Bildschirm ist für Betreiber von Sylva. Anmeldung und Zugriffskontrolle sind nicht Teil dieses Frontend-Durchgangs.",
+    "answered": "Antwort",
+    "answersTitle": "Antworten im Fragebogen",
+    "answersLead": "Alle {count} Antworten wie eingereicht, in der Reihenfolge der Fragen. Nichts ist gekürzt oder hinter einem Bedienelement verborgen.",
+    "answerSource": "Eingereichter Fragebogen",
+    "queueSource": "Auszug aus der Prüfliste",
+    "logSource": "Prüfdatensatz",
+    "relatedTitle": "Verwandte Bildschirme",
+    "model": {
+      "title": "Wie eine Freigabe erfasst wird",
+      "recorded": "Ein Betreiber setzt den Status einer Organisation nicht. Er erfasst eine Entscheidung — freigeben, ablehnen oder aussetzen — mit einer Begründung, als einen Eintrag zum Antrag.",
+      "derived": "Der Status, der hier, in der Liste oben und überall sonst auf der Plattform erscheint, wird aus diesen Einträgen gelesen. Es gibt kein Freigabefeld, das bearbeitet werden könnte.",
+      "corrected": "Eine irrtümlich erfasste Entscheidung wird durch einen neuen Eintrag korrigiert, der auf sie verweist. Der frühere Eintrag behält seine Zeile und seine Begründung, und der Status wird erneut aus den verbleibenden Einträgen gelesen.",
+      "caption": "Was jeder erfasste Eintrag für den Status der Organisation bedeutet",
+      "recomputedState": "Erneut aus den verbleibenden Einträgen gelesen",
+      "gate": "Für eine nicht freigegebene Organisation kann kein Geschäft angelegt werden. Die Freigabe ist damit der einzige Eintrag in dieser Liste, der einen Dealroom öffnet.",
+      "openTitle": "Im Pilotmaterial nicht geregelt",
+      "openSuspension": "Was eine Aussetzung für ein bereits vereinbartes Geschäft bedeutet. Das Konzeptpapier beschreibt Freigabe und Ablehnung und sagt nicht, ob ein vereinbartes Geschäft weiterläuft, ruht oder endet. Dieser Bildschirm sagt es ebenfalls nicht.",
+      "openReason": "Wie viel von der erfassten Begründung die antragstellende Organisation liest. Die Begründung ist Teil des Datensatzes; ob sie der Organisation vollständig gezeigt wird, ist nicht geregelt.",
+      "sourceLabel": "Konzeptpapier",
+      "sourceLocator": "Abschnitt 8"
+    },
+    "col": {
+      "organisation": "Organisation",
+      "role": "Beantragte Rolle",
+      "submitted": "Eingereicht",
+      "lastEntry": "Letzter Eintrag",
+      "state": "Status",
+      "review": "Prüfen",
+      "reference": "Antrag",
+      "sector": "Branche",
+      "country": "Land",
+      "recordedEntry": "Erfasster Eintrag",
+      "derivedState": "Daraus gelesener Status",
+      "mayDeal": "Geschäft möglich",
+      "effect": "Bedeutung",
+      "entry": "Eintrag",
+      "date": "Datum",
+      "recorded": "Was erfasst wurde",
+      "recordedBy": "Erfasst von",
+      "reason": "Erfasste Begründung"
+    },
+    "queue": {
+      "title": "Anträge",
+      "lead": "Neueste Einreichung zuerst. Der Status in der letzten Spalte wird aus den Einträgen des Antrags gelesen und nicht in der Zeile gesetzt.",
+      "count": "{count, plural, =0 {Keine Anträge} one {# Antrag} other {# Anträge}}",
+      "countNote": "Gezählt werden Anträge, keine Einheiten. Keine Zahl auf diesem Bildschirm ist eine Einheitenmenge.",
+      "caption": "Prüfanträge und der Status, der aus den Einträgen des jeweiligen Antrags gelesen wird",
+      "open": "Öffnen",
+      "openInPanel": "Im Prüfbereich geöffnet",
+      "inertNote": "Dies ist ein Frontend-Durchgang. Das Öffnen eines anderen Antrags ist noch nicht angebunden, diese Schaltflächen tun nichts, und der Antrag im Prüfbereich unten ist festgelegt."
+    },
+    "panel": {
+      "eyebrow": "Antrag in Prüfung",
+      "derivedFrom": "Status gelesen aus {count, plural, one {# Eintrag} other {# Einträgen}} zu diesem Antrag, der neueste ist {reference}. Er ist nicht am Antrag gespeichert und kann hier nicht bearbeitet werden."
+    },
+    "state": {
+      "submitted": "Eingereicht",
+      "under_review": "In Prüfung",
+      "approved": "Freigegeben",
+      "declined": "Abgelehnt",
+      "suspended": "Ausgesetzt"
+    },
+    "role": {
+      "buyer": "Käufer",
+      "investor": "Investor",
+      "projectOwner": "Projektträger",
+      "auditor": "Prüfer"
+    },
+    "sector": {
+      "agriculture": "Landwirtschaft",
+      "beverages": "Lebensmittel und Getränke",
+      "energy": "Energie",
+      "pensions": "Pensionsfonds",
+      "foundation": "Stiftung",
+      "logistics": "Logistik"
+    },
+    "country": {
+      "at": "Österreich",
+      "de": "Deutschland",
+      "fr": "Frankreich",
+      "nl": "Niederlande",
+      "se": "Schweden"
+    },
+    "by": {
+      "organisation": "Die Organisation",
+      "reviewer": "Prüfer von Sylva"
+    },
+    "entry": {
+      "submitted": "Antrag eingereicht",
+      "review_opened": "Prüfung eröffnet",
+      "approved": "Freigabe erfasst",
+      "declined": "Ablehnung erfasst",
+      "suspended": "Aussetzung erfasst",
+      "correction": "Korrektur erfasst"
+    },
+    "derivation": {
+      "submittedNote": "Der Fragebogen ist eingegangen. Es wurde noch nichts gelesen.",
+      "reviewNote": "Ein Prüfer hat den Antrag geöffnet. Die Organisation kann Projekte lesen und eigene Standorte registrieren, mehr nicht.",
+      "approvedNote": "Die Organisation kann Interesse an einem Projekt bekunden; damit öffnet sich ein privater Dealroom.",
+      "declinedNote": "Kein Geschäft. Die erfasste Begründung ist, was der Organisation mitgeteilt wird.",
+      "suspendedNote": "Solange die Aussetzung gilt, wird kein neues Interesse bekundet. Was mit einem bereits vereinbarten Geschäft geschieht, ist nicht geregelt — siehe unten.",
+      "correctionNote": "Verweist auf einen früheren Eintrag, der sichtbar bleibt. Der Status wird erneut aus den verbleibenden Einträgen gelesen."
+    },
+    "permit": {
+      "yes": "Ja",
+      "no": "Nein",
+      "notSet": "Nicht geregelt"
+    },
+    "parts": {
+      "claim": "Was die Organisation beanspruchen würde",
+      "claimNote": "Welchen Nutzen der Käufer beanspruchen will und wo der Anspruch erscheinen würde. Diese Antworten sind der Grund für die Prüfung: an ihnen wird die Entscheidung vor allem gemessen.",
+      "operations": "Wie die Organisation arbeitet",
+      "operationsNote": "Was die Organisation tut, von welchen Einzugsgebieten sie abhängt und wie sie mit Nachhaltigkeit umgeht.",
+      "conditions": "Bedingungen, die ein Geschäft prägen",
+      "conditionsNote": "Drei Bedingungen, keine Beschreibungen, deshalb wird jede mit einem Wort beantwortet. Sie entscheiden, welche Geschäftsformen für diese Organisation offen sind, und werden zusammen gelesen."
+    },
+    "q": {
+      "benefit": "Welchen Nutzen will die Organisation beanspruchen, und für welchen Berichtszeitraum?",
+      "publication": "Wo würde dieser Anspruch veröffentlicht?",
+      "operations": "Was tut die Organisation, und wo ist sie tätig?",
+      "catchments": "Von welchen Einzugsgebieten hängen die eigenen Standorte der Organisation ab?",
+      "sustainability": "Wie geht die Organisation mit Nachhaltigkeit um, und wer ist intern dafür verantwortlich?",
+      "resale": "Würden hier erworbene Einheiten weiterverkauft?",
+      "offset": "Würden die Einheiten zur Kompensation eigener Emissionen verwendet?",
+      "exclusivity": "Verlangt die Organisation ausschließliche Anspruchsrechte an dem Nutzen, für den sie zahlt?"
+    },
+    "yesNo": {
+      "yes": "Ja",
+      "no": "Nein"
+    },
+    "answers": {
+      "benefit": "Das Wasserergebnis, für das Berichtsjahr, in dem die Einheiten ausgegeben werden. Das Biodiversitätsergebnis würden wir begleitend als Kontext berichten und nicht gesondert beanspruchen. Einen Kohlenstoffanspruch streben wir nicht an.",
+      "publication": "Im Geschäftsbericht, in der Nachhaltigkeitserklärung und im Einzugsgebietsteil des Wasserberichts, den wir für unsere drei Produktionsstandorte veröffentlichen. Ansprüche würden dem benannten Projekt und dem ausgebenden Standard zugeordnet.",
+      "operations": "Drei Getränkeabfüllstandorte in Norddeutschland mit insgesamt rund 900 Beschäftigten. Alle drei entnehmen Wasser aus denselben zwei Einzugsgebieten. Die Produktion ist saisonal, die höchste Entnahme liegt zwischen Mai und September.",
+      "catchments": "Havel und untere Elbe. Der Standort Rathenow liegt etwa 14 km von der Projektgrenze DEMO Untere Havel entfernt, die beiden anderen liegen weiter flussabwärts.",
+      "sustainability": "Ein Wasserbewirtschaftungsplan, 2025 vom Vorstand beschlossen und jährlich überprüft. Verantwortlich ist die Betriebsleitung, nicht die Kommunikation. Unsere Berichterstattung wird extern geprüft, und der Prüfer verlangt für jedes Projekt, das wir finanzieren, eine messbare Maßnahme mit festem Zeitrahmen, erwarteter Wirkung, Budget und einem Verifizierungsstandard.",
+      "resale": "Nein. Wir würden die Einheiten für unsere eigene Berichterstattung stilllegen und nicht weitergeben. Sinkt unser Bedarf, würden wir die Menge lieber an das Projekt zurückgeben als weiterverkaufen.",
+      "offset": "Nein. Wir würden das Wasserergebnis als Maßnahme im Einzugsgebiet berichten und nicht gegen Emissionen aufrechnen.",
+      "exclusivity": "Ja, für das Wasserergebnis und für die Zeiträume, auf die wir uns verpflichten. Wir würden kein Projekt finanzieren, bei dem dasselbe Wasserergebnis desselben Zeitraums auch von einem anderen Käufer beansprucht werden könnte. Für das Biodiversitätsergebnis verlangen wir keine Ausschließlichkeit."
+    },
+    "reason": {
+      "approvedFund": "Rolle Investor. Mandat, Fondsunterlagen und die dargestellte Haltung zu Anspruchsrechten wurden gelesen und passen zum Pilotvorhaben.",
+      "approvedOwner": "Rolle Projektträger. Die Verfügung über die Fläche und der benannte Verifizierer wurden anhand der eingereichten Unterlagen bestätigt.",
+      "approvedKraft": "Rolle Investor. Finanzierungsbedarf und Erlöserwartungen wurden gelesen, ein Anspruch auf Projektergebnisse wurde nicht geltend gemacht.",
+      "suspendedKraft": "Auf eigenen Wunsch der Organisation ausgesetzt, während sie ihre europäischen Beteiligungen neu ordnet. Erneut zu prüfen, sobald sie sich meldet.",
+      "declinedLogistics": "Die Organisation verlangte ausschließliche Anspruchsrechte an allen Ergebnissen eines Projekts, das sie mitfinanzieren würde, einschließlich Ergebnissen, für die sie nicht zahlt, und hätte den Anspruch als Kompensation eigener Emissionen veröffentlicht. Beides liegt außerhalb dessen, was das Pilotvorhaben anbietet."
+    },
+    "log": {
+      "title": "Erfasste Einträge",
+      "lead": "Älteste zuerst, denn dies ist die Ableitung, aus der der Status oben gelesen wurde. Einträge werden nie bearbeitet oder gelöscht.",
+      "caption": "Einträge zum Antrag {reference}",
+      "pointsAt": "Verweist auf {reference}",
+      "corrected": "Korrigiert",
+      "noReason": "Keine Entscheidung",
+      "readsAs": "Liest sich als",
+      "readsAsNote": "Aus den Einträgen oben in ihrer Reihenfolge gelesen. Nichts anderes setzt ihn.",
+      "example": {
+        "title": "Wie eine irrtümlich erfasste Entscheidung korrigiert wird",
+        "body": "Ein durchgerechnetes Beispiel aus einem Antrag, der vor diesem Auszug entschieden wurde. Nichts wird bearbeitet und nichts gelöscht: eine Korrektur ist ein weiterer Eintrag, und der korrigierte Eintrag bleibt am Bildschirm.",
+        "step1": "Eine Freigabe wurde als Eintrag {wrong} mit ihrer Begründung erfasst.",
+        "step2": "Ein späterer Eintrag, {correction}, verweist auf {wrong} und trägt seine eigene Begründung. {wrong} behält seine Zeile und erhält das Wort „Korrigiert“.",
+        "step3": "Der Status des Antrags {application} wird danach erneut aus den verbleibenden Einträgen gelesen. Was zuerst erfasst wurde und warum es sich geändert hat, bleibt beides lesbar.",
+        "close": "Das ist der fortschreibende Datensatz, den das Konzeptpapier verlangt: ein Fehler wird durch einen neuen Eintrag korrigiert, der auf den falschen verweist, und der falsche bleibt sichtbar."
+      }
+    },
+    "decide": {
+      "title": "Entscheidung erfassen",
+      "lead": "Ein Eintrag zu {organisation}, mit Begründung. Das Erfassen ändert keinen gespeicherten Status; der Status wird danach erneut aus den Einträgen gelesen.",
+      "legend": "Zu erfassende Entscheidung",
+      "required": "Pflichtfeld",
+      "wouldRead": "Status läse sich dann",
+      "unsettled": "Wirkung auf ein vereinbartes Geschäft nicht geregelt",
+      "reasonLabel": "Mit dieser Entscheidung erfasste Begründung",
+      "reasonHelp": "Für zwei Leser schreiben: die antragstellende Organisation und diejenigen, die diesen Datensatz in fünf Jahren lesen. Benennen, woran in den Antworten oben die Entscheidung hängt.",
+      "reasonPart": "Die Begründung wird mit dem Eintrag gespeichert und ist danach nicht mehr bearbeitbar. Eine Korrektur ist ein neuer Eintrag, der auf diesen verweist und seine eigene Begründung trägt.",
+      "inertNote": "Dies ist ein Frontend-Durchgang. Die Schaltfläche unten ist wirkungslos: es wird kein Eintrag geschrieben, kein Status geändert und nichts an die Organisation gesendet.",
+      "record": "Entscheidung erfassen",
+      "notAFlag": "Das Erfassen dieses Eintrags setzt kein Freigabekennzeichen. Ein solches Feld gibt es nicht. Der Status der Organisation wird erneut aus ihren Einträgen gelesen, diesen eingeschlossen.",
+      "appendOnly": "Nichts auf diesem Bildschirm bearbeitet oder löscht einen früheren Eintrag.",
+      "noReasonNoEntry": "Ohne Begründung kann keine Entscheidung erfasst werden. Ein Eintrag, der sich später nicht mehr erklären lässt, bliebe dauerhaft unerklärt."
+    },
+    "decision": {
+      "approve": "Freigeben",
+      "approveNote": "Die Organisation kann Interesse an einem Projekt bekunden, wodurch sich ein privater Dealroom öffnet. Dies ist die Voraussetzung für jedes Geschäft.",
+      "decline": "Ablehnen",
+      "declineNote": "Kein Geschäft. Der Organisation wird die erfasste Begründung mitgeteilt.",
+      "suspend": "Aussetzen",
+      "suspendNote": "Solange die Aussetzung gilt, wird kein neues Interesse bekundet. Zu verwenden, wenn eine freigegebene Organisation vorläufig nicht weitergehen soll, mit Begründung."
+    },
+    "related": {
+      "questionnaire": "Der Fragebogen aus Sicht der antragstellenden Organisation",
+      "questionnaireNote": "Die acht Fragen, mit dem Grund für jede einzelne.",
+      "record": "Öffentlicher Transaktionsdatensatz",
+      "recordNote": "Wo Interessens- und Geschäftsereignisse erscheinen, Käufer standardmäßig pseudonym.",
+      "howItWorks": "So funktioniert es",
+      "howItWorksNote": "Wo die Prüfung im Ablauf steht."
+    }
+  },
+  "buyerDashboard": {
+    "meta": {
+      "title": "Käuferübersicht",
+      "description": "Der Eintrag Ihrer Organisation auf dieser Plattform: Status der Zulassungsprüfung, bekundete Interessen, registrierte Standorte, Dokumente und Transaktionen."
+    },
+    "title": "Käuferübersicht",
+    "lead": "Was Ihre Organisation auf dieser Plattform veranlasst hat und wie der jeweilige Stand ist. Mengen werden für ein Projekt, eine Periode und einen Einheitentyp angegeben; Einheiten verschiedener Projekte messen Unterschiedliches und werden niemals addiert.",
+    "inertNote": "Demonstrationsstand. Die Bedienelemente auf dieser Seite werden dargestellt, haben aber noch keine Funktion.",
+    "header": {
+      "publicLabel": "Öffentliche Kennung"
+    },
+    "section": {
+      "status": "Organisation und Zulassungsprüfung",
+      "statusIntro": "Der Eintrag, den Sylva zu Ihrer Organisation führt, und die dazu erfasste Entscheidung der Zulassungsprüfung. Für eine Organisation, die Sylva nicht zugelassen hat, kann keine Transaktion angelegt werden.",
+      "interests": "Meine bekundeten Interessen",
+      "interestsIntro": "Jedes von Ihrer Organisation bekundete Interesse, das neueste zuerst. Ein abgeschlossener Eintrag bleibt in der Liste, denn der Datensatz wird nur ergänzt, nie geändert.",
+      "sites": "Meine registrierten Standorte",
+      "sitesIntro": "Die Standorte, die Ihre Organisation registriert hat, damit Entfernungen zu Projekten angezeigt werden können. Diese Zeilen sind nur für Ihre Organisation sichtbar.",
+      "documents": "Meine Dokumente",
+      "documentsIntro": "Dokumente, die Ihre Organisation eingereicht oder erhalten hat, gruppiert nach ihrer Zugehörigkeit. Eine ersetzte Version bleibt in der Liste.",
+      "deals": "Meine Transaktionen",
+      "dealsIntro": "Eine Karte je Transaktion. Jede Menge gehört zu einem Projekt, einer Periode und einem Einheitentyp; Mengen auf verschiedenen Karten sind nicht vergleichbar."
+    },
+    "org": {
+      "recordTitle": "Organisationseintrag",
+      "legalName": "Firmenname",
+      "registrationNumber": "Registernummer",
+      "registeredAddress": "Eingetragene Anschrift",
+      "sector": "Branche",
+      "sizeBand": "Größenklasse",
+      "orgRef": "Organisationsreferenz",
+      "recordedOn": "Erfasst am",
+      "amendNote": "Branche, Land und Größenklasse sind die Felder, die im öffentlichen Datensatz erscheinen. Bitten Sie Sylva um eine Korrektur, falls etwas davon nicht zutrifft.",
+      "amendAction": "Korrektur anfragen",
+      "sectorName": {
+        "foodBev": "Lebensmittel und Getränke"
+      },
+      "sizeBandName": {
+        "large": "Großunternehmen"
+      }
+    },
+    "vetting": {
+      "title": "Status der Zulassungsprüfung",
+      "state": {
+        "approved": "Zugelassen",
+        "submitted": "Bei Sylva",
+        "declined": "Abgelehnt"
+      },
+      "submittedOn": "Eingereicht am",
+      "decidedOn": "Entschieden am",
+      "notDecided": "Noch nicht entschieden",
+      "decidedBy": "Entschieden von",
+      "questionnaire": "Version des Fragebogens",
+      "reason": "Erfasste Begründung",
+      "reasonRecorded": "Beabsichtigte Ansprüche, Geschäftstätigkeit und Nachhaltigkeitsansatz wurden anhand des Fragebogens geprüft. Keine Rückfragen.",
+      "permitsTitle": "Was diese Zulassung erlaubt",
+      "permits": {
+        "interest": "Interesse an einem veröffentlichten Projekt zu bekunden.",
+        "dealRoom": "An einem privaten Transaktionsraum mit einem Projektträger teilzunehmen.",
+        "sites": "Eigene Standorte zu registrieren, damit Ihnen Entfernungen zu Projekten angezeigt werden können."
+      },
+      "limitsTitle": "Was diese Zulassung nicht ist",
+      "limits": {
+        "investor": "Sie ist kein Zugang zu Finanzierungsinformationen. Der Zugang zu Finanzinformationen ist eine gesonderte Zulassungsentscheidung für Investoren.",
+        "registry": "Sie ist keine Ausgabe, keine Zuteilung und keine Stilllegung. Einheiten werden vom jeweiligen Standard ausgegeben und in dessen eigenem Register erfasst, nicht hier."
+      }
+    },
+    "disclosure": {
+      "title": "Wie Ihre Organisation im öffentlichen Datensatz erscheint",
+      "body": "Ihre Organisation erscheint unter einer Kennung zusammen mit Branche, Land und Größenklasse. Ihr Name wird nur angezeigt, wenn Sie sich für die Namensnennung entscheiden.",
+      "perDealBody": "Die Namensnennung wird je Transaktion entschieden. Eine Namensnennung bei einer Transaktion nennt Ihre Organisation bei keiner anderen.",
+      "recordLink": "Öffentlichen Datensatz öffnen",
+      "specimenLabel": "Veröffentlichte Zeile",
+      "specimen": {
+        "project": "Projekt",
+        "event": "Ereignis",
+        "buyer": "Käufer",
+        "date": "Datum"
+      },
+      "specimenNote": "Wiedergegeben so, wie der öffentliche Datensatz sie darstellt.",
+      "event": {
+        "interestExpressed": "Interesse bekundet"
+      }
+    },
+    "interests": {
+      "caption": "Von Ihrer Organisation bekundete Interessen, das neueste zuerst.",
+      "col": {
+        "expressedOn": "Bekundet am",
+        "project": "Projekt",
+        "units": "Standard und Einheit",
+        "state": "Stand",
+        "recordRef": "Datensatzreferenz",
+        "nextStep": "Nächster Schritt"
+      },
+      "state": {
+        "recorded": "Erfasst",
+        "dealOpen": "Transaktionsraum offen",
+        "closed": "Abgeschlossen"
+      },
+      "openDealRoom": "Transaktionsraum öffnen",
+      "openDealRoomFor": "Transaktionsraum für {project} öffnen",
+      "awaitingOwner": "Wartet auf den Projektträger",
+      "closedNote": "Kein Transaktionsraum",
+      "noVolumes": "Diese Tabelle führt Projekte unter verschiedenen Standards auf und enthält deshalb keine Mengenspalte: Die Zahlen wären nicht vergleichbar. Stattdessen ist angegeben, was jedes Projekt ausgibt. Mengen erscheinen weiter unten auf dieser Seite, jeweils für ein einzelnes Projekt.",
+      "empty": {
+        "title": "Noch kein Interesse bekundet",
+        "body": "Sobald Sie Interesse an einem Projekt bekunden, erscheint der Eintrag hier und im öffentlichen Datensatz."
+      }
+    },
+    "sites": {
+      "caption": "Von Ihrer Organisation registrierte Standorte.",
+      "col": {
+        "site": "Standort",
+        "latitude": "Breitengrad",
+        "longitude": "Längengrad",
+        "registeredOn": "Registriert am"
+      },
+      "registerAction": "Standort registrieren",
+      "compareLink": "Entfernungen in der Projektübersicht ansehen",
+      "privacyTitle": "Wer diese Standorte sehen kann",
+      "privacy": {
+        "owners": "Projektträger können Ihre Standorte und deren Koordinaten nicht sehen.",
+        "buyers": "Kein anderer Käufer und kein Investor kann sie sehen.",
+        "distance": "Auf einer Projektseite wird die Entfernung von diesen Standorten zu jenem Projekt nur Ihnen angezeigt."
+      },
+      "empty": {
+        "title": "Noch keine Standorte registriert",
+        "body": "Registrieren Sie Ihre Unternehmensstandorte, um deren Entfernung zu jedem Renaturierungsprojekt zu sehen."
+      }
+    },
+    "documents": {
+      "col": {
+        "scope": "Gehört zu",
+        "lodgedBy": "Eingereicht von",
+        "actions": "Aktionen"
+      },
+      "view": "Ansehen",
+      "viewAria": "{name} ansehen",
+      "download": "Herunterladen",
+      "downloadAria": "{name} herunterladen",
+      "replacedBy": "Ersetzt durch {version}",
+      "attributionNote": "Dokumente werden einer Organisation zugeordnet, nicht einer Person.",
+      "group": {
+        "organisation": {
+          "title": "Organisationsdokumente",
+          "intro": "Was Ihre Organisation bei Sylva eingereicht hat und was Sylva dazu erfasst hat.",
+          "emptyTitle": "Noch keine Organisationsdokumente",
+          "emptyBody": "Ihre Antworten auf den Prüfungsfragebogen und die dazu erfasste Entscheidung erscheinen hier."
+        },
+        "deal": {
+          "title": "Transaktionsdokumente",
+          "intro": "Entwürfe und vereinbarte Dokumente aus Ihren Transaktionsräumen, zusammen mit den Projektdokumenten, auf die sich eine Transaktion bezieht.",
+          "emptyTitle": "Noch keine Transaktionsdokumente",
+          "emptyBody": "In einem Transaktionsraum ausgetauschte Dokumente erscheinen hier, sobald ein Transaktionsraum offen ist."
+        },
+        "signed": {
+          "title": "Unterzeichnete Vereinbarungen",
+          "intro": "Vereinbarungen werden außerhalb der Plattform unterzeichnet. Das unterzeichnete Dokument wird hier als Nachweis des Vereinbarten hochgeladen.",
+          "emptyTitle": "Noch keine unterzeichnete Vereinbarung",
+          "emptyBody": "Keine Ihrer Transaktionen hat die Unterzeichnung erreicht. Eine unterzeichnete Vereinbarung erscheint hier, sobald sie hochgeladen wurde."
+        }
+      },
+      "name": {
+        "vettingResponse": "Antworten auf den Prüfungsfragebogen",
+        "vettingDecision": "Entscheidung der Zulassungsprüfung",
+        "siteRegisterExtract": "Auszug aus dem Standortregister",
+        "termSheet": "Eckpunktepapier",
+        "letterOfIntent": "Absichtserklärung",
+        "projectDesignDocument": "Projektdesigndokument"
+      },
+      "scope": {
+        "organisation": "Organisation",
+        "project": "Projekt",
+        "deal": "Transaktion"
+      },
+      "lodgedBy": {
+        "you": "Ihre Organisation"
+      },
+      "status": {
+        "submitted": "Eingereicht",
+        "recorded": "Erfasst",
+        "current": "Aktuell",
+        "draftWithYou": "Entwurf bei Ihnen",
+        "superseded": "Ersetzt",
+        "agreed": "Vereinbart",
+        "referenceCopy": "Referenzexemplar"
+      }
+    },
+    "deals": {
+      "dealRef": "Transaktionsreferenz",
+      "openedOn": "Eröffnet am",
+      "lastActivity": "Letzte Aktivität",
+      "disclosureLabel": "Identität bei dieser Transaktion",
+      "disclosureState": {
+        "pseudonymous": "Nur Kennung",
+        "named": "Namentlich"
+      },
+      "documentsInRoom": "Dokumente im Raum",
+      "stageTitle": "Stufe",
+      "volumeTitle": "Verhandelte Menge",
+      "underDiscussion": "In Verhandlung",
+      "remainingInPeriod": "Verbleibend in {period}",
+      "unitNote": "Diese Zahlen sind {unit} nach {scheme}, nur für dieses Projekt und diese Periode. Sie können weder zu Einheiten anderer Projekte addiert noch mit ihnen verglichen werden.",
+      "openDealRoom": "Transaktionsraum öffnen",
+      "dealType": {
+        "forward": "Terminvertrag",
+        "coInvestment": "Ko-Investition"
+      },
+      "stage": {
+        "interest": "Interesse",
+        "loi": "Absichtserklärung",
+        "termSheet": "Eckpunktepapier",
+        "signed": "Unterzeichnet"
+      },
+      "stageState": {
+        "reached": "Erreicht",
+        "current": "Aktuelle Stufe",
+        "notReached": "Nicht erreicht"
+      },
+      "activity": {
+        "termSheetReceived": "Eckpunktepapier vom Projektträger erhalten",
+        "loiAgreed": "Absichtserklärung vereinbart"
+      },
+      "empty": {
+        "title": "Noch keine Transaktionen",
+        "body": "Ein Transaktionsraum wird eröffnet, nachdem Sie Interesse an einem Projekt bekundet haben und der Projektträger geantwortet hat."
+      }
+    },
+    "unit": {
+      "hectareYears": "Hektarjahre",
+      "indexPoints": "Indexpunkte"
+    },
+    "source": {
+      "organisationRecord": "Organisationseintrag",
+      "vettingDecision": "Entscheidung der Zulassungsprüfung",
+      "termSheetDraft": "Entwurf des Eckpunktepapiers",
+      "letterOfIntent": "Absichtserklärung"
+    }
+  }
+}

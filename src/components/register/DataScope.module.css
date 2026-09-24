@@ -1,0 +1,48 @@
+.wrap {
+  display: block;
+  min-width: 0;
+}
+
+.body {
+  margin: var(--s-3) 0 var(--s-5);
+  font-size: var(--text-base);
+  color: var(--ink);
+  max-width: var(--measure-prose);
+}
+
+.table {
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius);
+}
+
+/* A row header is a heading, not a number: left aligned, normal weight, and it
+   keeps the ink colour so the first column reads as the subject of the row. */
+.rowHead {
+  background: transparent;
+  color: var(--ink);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: normal;
+  border-bottom: var(--rule);
+  width: 30%;
+}
+
+.table tbody tr:last-child .rowHead {
+  border-bottom: none;
+}
+
+.notes {
+  margin-top: var(--s-4);
+  display: grid;
+  gap: var(--s-2);
+}
+
+.note {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}

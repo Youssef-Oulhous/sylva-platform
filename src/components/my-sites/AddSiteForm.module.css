@@ -1,0 +1,83 @@
+.form {
+  display: block;
+}
+
+.fields {
+  display: grid;
+  gap: var(--s-5);
+  max-width: 40rem;
+}
+
+/* The fieldset carries the grouping, not a box: one more border around two
+   fields would be a card inside a card. The left rule is enough to say that the
+   two boxes belong together. */
+.coords {
+  margin: 0;
+  padding: 0 0 0 var(--s-4);
+  border: none;
+  border-left: var(--rule);
+}
+
+.legend {
+  padding: 0;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.legendHint {
+  margin: var(--s-1) 0 0;
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+.coordFields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-4);
+  margin-top: var(--s-4);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-4);
+  margin-top: var(--s-6);
+}
+
+/* One primary action on this section. Forest green is the primary action colour
+   in this system and nothing else on the page fills with it. */
+.submit {
+  padding: var(--s-3) var(--s-5);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--forest-on);
+  background: var(--forest);
+  border: 1px solid var(--forest);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color var(--motion-fast);
+}
+.submit:hover {
+  background: var(--forest-hover);
+  border-color: var(--forest-hover);
+}
+
+.actionNote {
+  margin: 0;
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  max-width: 24rem;
+}
+
+@media (max-width: 34rem) {
+  .coordFields {
+    grid-template-columns: 1fr;
+  }
+  .submit {
+    width: 100%;
+  }
+}

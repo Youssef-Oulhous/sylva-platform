@@ -1,0 +1,250 @@
+/* The form primitives. One label weight, one field border, one hint style.
+   Every value here comes from tokens.css. */
+
+.row {
+  display: grid;
+  gap: var(--s-5);
+  margin-top: var(--s-5);
+}
+.row1 { grid-template-columns: 1fr; }
+.row2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.row3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+.field {
+  display: block;
+  min-width: 0;
+}
+
+.label {
+  display: block;
+  margin: 0 0 var(--s-1);
+  max-width: var(--measure-prose);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  line-height: var(--leading-tight);
+  color: var(--ink);
+}
+
+/* "Required" and "Optional" are words inside the label, so they are announced
+   with the field and are not carried by a colour or a glyph. */
+.marker {
+  margin-left: var(--s-2);
+  font-size: var(--text-2xs);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+
+.hint {
+  margin: 0 0 var(--s-2);
+  max-width: var(--measure-prose);
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  color: var(--ink-muted);
+}
+
+/* --- controls ------------------------------------------------------------- */
+
+.inputWrap {
+  display: flex;
+  align-items: stretch;
+  max-width: 100%;
+}
+
+.input,
+.select,
+.textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: var(--s-2) var(--s-3);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  transition: border-color var(--motion-fast);
+}
+.input:hover,
+.select:hover,
+.textarea:hover { border-color: var(--ink-muted); }
+/* The visible focus ring comes from :focus-visible in globals.css. This border
+   change is additional to it, never a replacement. */
+.input:focus,
+.select:focus,
+.textarea:focus { border-color: var(--water); }
+
+.textarea {
+  max-width: var(--measure-prose);
+  resize: vertical;
+}
+
+.inputMono {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+}
+
+.select {
+  appearance: none;
+  padding-right: var(--s-6);
+  /* A caret drawn with borders: no icon font, no image, no gradient. */
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--ink-muted) 50%),
+    linear-gradient(135deg, var(--ink-muted) 50%, transparent 50%);
+  background-position: right var(--s-4) center, right calc(var(--s-4) - 4px) center;
+  background-size: 4px 4px, 4px 4px;
+  background-repeat: no-repeat;
+}
+
+/* The unit sits against the field, in mono, so a figure is never read without
+   the thing it counts. */
+.unit {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 var(--s-3);
+  margin-left: -1px;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  background: var(--surface-sunk);
+  border: 1px solid var(--border-strong);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  white-space: nowrap;
+}
+.inputWrap .input {
+  border-radius: var(--radius) 0 0 var(--radius);
+}
+.inputWrap > .input:only-child {
+  border-radius: var(--radius);
+}
+
+.file {
+  display: block;
+  width: 100%;
+  max-width: var(--measure-prose);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--ink);
+  padding: var(--s-2);
+  background: var(--surface);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius);
+}
+
+.fileState {
+  margin-bottom: var(--s-2);
+  padding: var(--s-2) var(--s-3);
+  background: var(--surface-sunk);
+  border: var(--rule);
+  border-radius: var(--radius-sm);
+  max-width: var(--measure-prose);
+}
+.fileLine { margin: 0; display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-3); align-items: baseline; }
+.fileName { font-family: var(--font-mono); font-size: var(--text-sm); color: var(--ink); }
+.fileMeta { font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--ink-muted); }
+.fileEmpty { margin: 0; font-size: var(--text-sm); color: var(--ink-muted); }
+
+/* --- radio and checkbox groups ------------------------------------------- */
+
+/* A fieldset carries the browser's own box. This system has one border weight
+   and one border colour, so the box is removed and the rules do the work. */
+.group {
+  margin: var(--s-5) 0 0;
+  padding: 0;
+  border: none;
+}
+.legend {
+  padding: 0;
+  max-width: var(--measure-prose);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  line-height: var(--leading-tight);
+  color: var(--ink);
+}
+.group .hint { margin-top: var(--s-2); }
+
+.choices {
+  display: grid;
+  gap: var(--s-2);
+  margin-top: var(--s-3);
+}
+
+.choice {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-3);
+  padding: var(--s-3) var(--s-4);
+  max-width: var(--measure-prose);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color var(--motion-fast);
+}
+.choice:hover { border-color: var(--ink-muted); }
+.choice input { margin: 0; accent-color: var(--forest); flex: none; }
+/* A checked box takes a stronger border as well as the control's own mark: the
+   state is never carried by the tint alone. */
+.choice:has(input:checked) {
+  border-color: var(--forest);
+  background: var(--tint-bio);
+}
+
+.choiceText { display: block; }
+.choiceLabel { display: block; font-size: var(--text-base); color: var(--ink); }
+.choiceHint {
+  display: block;
+  margin-top: var(--s-1);
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+}
+
+/* --- static values and notes --------------------------------------------- */
+
+.static {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-2);
+  margin: 0;
+  padding: var(--s-2) var(--s-3);
+  background: var(--surface-sunk);
+  border: var(--rule);
+  border-radius: var(--radius);
+}
+.staticValue {
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+.static .unit {
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+}
+
+.noteWrap { margin-top: var(--s-2); max-width: var(--measure-prose); }
+
+.note {
+  margin: var(--s-3) 0 0;
+  max-width: var(--measure-prose);
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}
+/* The bordered note: for a rule a reader must not miss. Water blue marks it as
+   information about measurement, and the words carry the meaning. */
+.noteRule {
+  padding: var(--s-3) var(--s-4);
+  color: var(--ink);
+  background: var(--tint-neutral);
+  border-left: 2px solid var(--water);
+}
+
+@media (max-width: 52rem) {
+  .row2, .row3 { grid-template-columns: 1fr; }
+}

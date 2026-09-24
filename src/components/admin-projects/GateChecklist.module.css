@@ -1,0 +1,64 @@
+.wrap { margin-top: var(--s-6); }
+
+.head { padding-bottom: var(--s-3); }
+.lead {
+  margin: var(--s-2) 0 0; font-size: var(--text-sm); color: var(--ink);
+  max-width: var(--measure-prose);
+}
+
+.summaryRow {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3);
+  margin: var(--s-4) 0 var(--s-3);
+}
+.summary {
+  margin: 0; font-size: var(--text-sm); font-weight: 500; color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+/* The item is the row's identity, so it is the row header. The global th rule
+   dresses column headers - uppercase, sunk, muted - and a row header has to be
+   undressed back to body text. */
+.itemCell {
+  background: transparent;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--ink);
+  text-align: left;
+  vertical-align: top;
+  white-space: normal;
+  min-width: 12rem;
+  padding: var(--s-3);
+  border-bottom: var(--rule);
+}
+tbody tr:last-child > .itemCell { border-bottom: none; }
+
+.itemLabel { display: block; font-weight: 500; color: var(--ink); }
+/* The code the database returns, printed so a refusal read from the database
+   can be matched to a row here word for word. */
+.code {
+  display: block; font-family: var(--font-mono); font-size: var(--text-2xs);
+  color: var(--ink-muted); margin-top: var(--s-1);
+}
+
+.requires { color: var(--ink); max-width: 34rem; }
+.detail { color: var(--ink); }
+.nothing { color: var(--ink-muted); }
+.mono { font-family: var(--font-mono); font-size: var(--text-xs); }
+
+/* A missing row is marked by a rule as well as by the word in its badge: a
+   reader scanning the column for gaps should not have to read every cell. */
+.missingRow > .itemCell { box-shadow: inset 2px 0 0 var(--error); }
+
+.openDecision {
+  margin: var(--s-4) 0 0; padding: var(--s-3) var(--s-4);
+  background: var(--tint-warning); color: var(--tint-warning-ink);
+  border-left: 2px solid var(--warning);
+  font-size: var(--text-sm); max-width: var(--measure-prose);
+}
+
+/* Inside a disclosure the checklist carries no heading of its own and drops the
+   requirement column: the summary above it already names the project. */
+.compact { margin-top: var(--s-4); }
+.compact .summaryRow { margin-top: 0; }

@@ -1,0 +1,98 @@
+.wrap { margin-top: var(--s-7); }
+.head { padding-bottom: var(--s-4); }
+.lead {
+  font-size: var(--text-base); color: var(--ink); margin: var(--s-2) 0 0;
+  max-width: var(--measure-prose);
+}
+
+.countRow {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-2) var(--s-4);
+  margin-bottom: var(--s-4);
+}
+.count { font-size: var(--text-sm); color: var(--ink); margin: 0; font-weight: 500; }
+.countNote {
+  font-size: var(--text-2xs); color: var(--ink-muted); margin: 0;
+  max-width: var(--measure-prose);
+}
+
+/* A breakdown by status. A labelled row of figures, not tiles, so that nothing
+   here reads as a dashboard KPI. */
+.summary {
+  display: flex; flex-wrap: wrap; gap: var(--s-6);
+  list-style: none; margin: 0 0 var(--s-5); padding: var(--s-4);
+  background: var(--surface); border: var(--rule); border-radius: var(--radius);
+}
+.summaryItem { display: flex; flex-direction: column; gap: 1px; }
+.summaryFigure {
+  font-family: var(--font-mono); font-size: var(--text-md); font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.summaryLabel {
+  font-size: var(--text-2xs); color: var(--ink-muted);
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+
+/* Seven columns of document data: below this width the table scrolls rather
+   than reflows, because a reflowed row loses the alignment that makes the gate
+   column readable down the page. */
+:global(.table-scroll) .table { min-width: 58rem; }
+
+/* The project is the row's identity, so it is the row header. The global th
+   rule dresses column headers - uppercase, sunk, muted - and a row header has
+   to be undressed back to body text. */
+.projectCell {
+  background: transparent;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--ink);
+  text-align: left;
+  vertical-align: top;
+  white-space: normal;
+  min-width: 15rem;
+  padding: var(--s-3);
+  border-bottom: var(--rule);
+}
+tbody tr:last-child > .projectCell { border-bottom: none; }
+
+.projectLink { display: block; font-weight: 500; color: var(--ink); text-decoration: none; }
+.projectLink:hover { text-decoration: underline; text-decoration-color: var(--forest); }
+.projectMeta { display: block; font-size: var(--text-xs); color: var(--ink-muted); }
+.ref {
+  display: block; font-family: var(--font-mono); font-size: var(--text-2xs);
+  color: var(--ink-muted); margin-top: var(--s-1);
+}
+
+.scheme { display: block; }
+.unit { display: block; font-size: var(--text-xs); color: var(--ink-muted); }
+
+.gateCell { white-space: nowrap; }
+.gateFigure {
+  display: block; font-variant-numeric: tabular-nums;
+  font-size: var(--text-sm); margin-bottom: var(--s-1);
+}
+.date { font-family: var(--font-mono); font-size: var(--text-xs); white-space: nowrap; }
+
+/* The row the panel below is showing. A rule on the left plus a word in the
+   last cell - never the tint alone. */
+.openRow > th, .openRow > td { background: var(--surface-sunk); }
+.openRow > .projectCell { box-shadow: inset 2px 0 0 var(--forest); }
+
+.reviewCell { white-space: nowrap; }
+.openMark {
+  font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--forest); font-weight: 500;
+}
+.openButton {
+  font-family: var(--font-sans); font-size: var(--text-xs); font-weight: 500;
+  color: var(--ink); background: var(--surface);
+  border: 1px solid var(--border-strong); border-radius: var(--radius-sm);
+  padding: var(--s-1) var(--s-3); cursor: not-allowed;
+}
+.openButton:hover { border-color: var(--ink-muted); }
+
+.inertNote {
+  margin: var(--s-3) 0 0; font-size: var(--text-2xs); color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}

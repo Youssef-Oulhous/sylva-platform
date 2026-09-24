@@ -1,0 +1,15 @@
+.terms { margin: 0; display: grid; gap: 0; }
+.entry {
+  display: grid;
+  grid-template-columns: 13rem 1fr;
+  gap: var(--s-4);
+  padding: var(--s-3) 0;
+  border-top: var(--rule);
+}
+.terms > .entry:last-child { border-bottom: var(--rule); }
+.term { font-weight: 600; font-size: var(--text-sm); }
+.def { margin: 0; font-size: var(--text-sm); max-width: var(--measure-prose); }
+
+@media (max-width: 52rem) {
+  .entry { grid-template-columns: 1fr; gap: var(--s-1); }
+}

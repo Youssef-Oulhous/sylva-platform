@@ -1,0 +1,46 @@
+/* Three statements across the page at desktop, stacked at 375px. Held by rules
+   and alignment: no card nesting, no tint, no shadow. */
+
+.scope {
+  margin-top: var(--s-6);
+  padding-top: var(--s-6);
+  border-top: 1px solid var(--border-strong);
+}
+
+.title {
+  font-size: var(--text-md);
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--s-6);
+  margin: var(--s-5) 0 0;
+}
+
+.item {
+  padding-left: var(--s-4);
+  /* Water blue marks a statement about how information travels, which is the
+     one thing on this page a reader must not get wrong. */
+  border-left: 2px solid var(--water);
+}
+
+.term {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.body {
+  margin: var(--s-2) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ink);
+  max-width: var(--measure-prose);
+}
+
+@media (max-width: 60rem) {
+  .list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-5);
+  }
+}

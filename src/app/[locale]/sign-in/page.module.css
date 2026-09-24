@@ -1,0 +1,108 @@
+/* One narrow column, centred on the canvas. Everything inside it is left
+   aligned: the column is narrow because the task is short, not because the
+   page is a poster. */
+.page {
+  max-width: 30rem;
+  margin: 0 auto;
+}
+
+.head {
+  padding-bottom: var(--s-5);
+}
+/* Smaller than the document h1: the largest thing on this platform is a project
+   name, and this page is a door, not a document. */
+.title {
+  font-size: var(--text-xl);
+}
+.lead {
+  margin: var(--s-3) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  max-width: none;
+}
+
+.card {
+  padding: var(--s-6);
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-raised);
+}
+
+/* The register route, set below the card and separated by a rule rather than by
+   a second coloured button. There is one primary action on this page. */
+.alt {
+  margin-top: var(--s-6);
+  padding-top: var(--s-5);
+  border-top: var(--rule);
+}
+.altTitle {
+  font-size: var(--text-base);
+  font-weight: 600;
+}
+.altBody {
+  margin: var(--s-2) 0 var(--s-3);
+  font-size: var(--text-sm);
+  color: var(--ink);
+  max-width: none;
+}
+.altCta {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--forest);
+}
+
+/* The error-state specimen. Closed by default. */
+.states {
+  margin-top: var(--s-6);
+  border-top: var(--rule);
+  padding-top: var(--s-4);
+}
+.statesSummary {
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  cursor: pointer;
+  list-style-position: outside;
+}
+.statesSummary:hover {
+  color: var(--ink);
+}
+.statesBody {
+  margin-top: var(--s-4);
+}
+.statesNote {
+  margin: 0 0 var(--s-4);
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  max-width: none;
+}
+/* Inset rather than raised, so the specimen never competes with the live card
+   above it. */
+.cardSpecimen {
+  padding: var(--s-5);
+  background: var(--surface-sunk);
+  border: var(--rule);
+  border-radius: var(--radius);
+}
+
+.foot {
+  margin-top: var(--s-7);
+  padding-top: var(--s-4);
+  border-top: var(--rule);
+}
+.footNote {
+  margin: 0 0 var(--s-2);
+  font-size: var(--text-2xs);
+  color: var(--ink-muted);
+  max-width: none;
+}
+.footNote:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 30rem) {
+  .card,
+  .cardSpecimen {
+    padding: var(--s-4);
+  }
+}

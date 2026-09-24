@@ -1,0 +1,130 @@
+/* Correspondence in a file: rules between items, nothing boxed, the question
+   itself the only thing set at reading size. */
+.queue {
+  margin-top: var(--s-4);
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: var(--rule);
+}
+
+.item {
+  padding: var(--s-4) 0;
+  border-bottom: var(--rule);
+}
+
+.itemHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-3);
+}
+
+.project {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-muted);
+}
+
+/* A wait is stated in words and days. Amber ink, never amber alone. */
+.waiting {
+  font-size: var(--text-xs);
+  color: var(--warning);
+  font-variant-numeric: tabular-nums;
+}
+
+.askedInline {
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+}
+
+.body {
+  margin: var(--s-3) 0 var(--s-4);
+  font-size: var(--text-base);
+  max-width: var(--measure-prose);
+}
+
+.itemFoot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3) var(--s-5);
+}
+
+.asked {
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+}
+
+.action {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--forest);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: var(--s-2) var(--s-4);
+  cursor: pointer;
+  transition:
+    border-color var(--motion-fast),
+    color var(--motion-fast);
+}
+.action:hover {
+  border-color: var(--forest);
+  color: var(--forest-hover);
+}
+
+.answered {
+  margin-top: var(--s-5);
+}
+.answeredSummary {
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  cursor: pointer;
+}
+.answeredSummary:hover {
+  color: var(--ink);
+}
+
+/* An answer is a later record under the question, indented against a rule so
+   the question above it stays visible. */
+.answer {
+  margin-top: var(--s-3);
+  padding-left: var(--s-4);
+  border-left: 2px solid var(--border-strong);
+}
+.answerBody {
+  margin: 0;
+  font-size: var(--text-sm);
+  max-width: var(--measure-prose);
+}
+.answerMeta {
+  display: block;
+  margin-top: var(--s-2);
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+}
+
+.empty {
+  margin: 0;
+  padding: var(--s-5) 0;
+  border-top: var(--rule);
+  border-bottom: var(--rule);
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+@media (max-width: 30rem) {
+  .itemFoot {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

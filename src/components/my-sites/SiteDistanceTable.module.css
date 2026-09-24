@@ -1,0 +1,154 @@
+.panel {
+  margin-top: var(--s-4);
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-raised);
+}
+
+/* Which site the table is measured from, stated once at the top of the panel
+   rather than repeated in every row. */
+.panelHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding: var(--s-4) var(--s-5);
+  border-bottom: var(--rule);
+}
+.siteLabel {
+  display: block;
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-muted);
+}
+.siteName {
+  display: block;
+  margin-top: 2px;
+  font-size: var(--text-base);
+  font-weight: 500;
+}
+.siteWhere {
+  display: block;
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}
+.siteCoords {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+
+.table {
+  border: none;
+}
+.table caption {
+  padding: var(--s-4) var(--s-5) var(--s-2);
+}
+.table th:first-child,
+.table td:first-child {
+  padding-left: var(--s-5);
+}
+.table th:last-child,
+.table td:last-child {
+  padding-right: var(--s-5);
+}
+
+/* Takes the padding and border weight of a td, so the first cell of a row sits
+   on the same baseline and the same rule as the rest of the row. */
+.rowHead {
+  background: transparent;
+  text-transform: none;
+  letter-spacing: normal;
+  white-space: normal;
+  padding: var(--s-3);
+  border-bottom: var(--rule);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--ink);
+  min-width: 15rem;
+}
+.table tbody tr:last-child .rowHead {
+  border-bottom: none;
+}
+
+.relation {
+  display: block;
+  margin-top: var(--s-1);
+}
+.otherCatchment {
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+}
+
+/* The unit travels with the figure, in every row. */
+.unit {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--ink-muted);
+}
+.colNote {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink-muted);
+}
+
+.panelFoot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding: var(--s-4) var(--s-5);
+  border-top: var(--rule);
+  background: var(--surface-sunk);
+}
+.exampleNote {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  max-width: 30rem;
+}
+
+.methodTitle {
+  margin: var(--s-6) 0 var(--s-3);
+  font-size: var(--text-base);
+}
+.method {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: var(--s-2);
+  max-width: var(--measure-prose);
+  font-size: var(--text-sm);
+}
+.method li {
+  padding-left: var(--s-4);
+  border-left: var(--rule);
+}
+
+.next {
+  margin: var(--s-5) 0 0;
+  font-size: var(--text-sm);
+}
+
+@media (max-width: 30rem) {
+  .panelHead,
+  .panelFoot,
+  .table caption {
+    padding-inline: var(--s-4);
+  }
+  .table th:first-child,
+  .table td:first-child {
+    padding-left: var(--s-4);
+  }
+}

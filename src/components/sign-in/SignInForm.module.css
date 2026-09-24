@@ -1,0 +1,58 @@
+.form {
+  display: block;
+}
+
+.fields {
+  display: grid;
+  gap: var(--s-5);
+}
+
+/* The form-level message. Tinted, ruled on the left, and it says the word -
+   a reader who cannot see the tint still reads "We couldn't sign you in". */
+.banner {
+  margin-bottom: var(--s-5);
+  padding: var(--s-3) var(--s-4);
+  background: var(--tint-error);
+  border-left: 2px solid var(--error);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+.bannerTitle {
+  margin: 0;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--tint-error-ink);
+}
+.bannerBody {
+  margin: var(--s-1) 0 0;
+  font-size: var(--text-sm);
+  color: var(--tint-error-ink);
+  max-width: var(--measure-prose);
+}
+
+.forgotten {
+  color: var(--forest);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* One primary action, the full width of the card. Forest green is the primary
+   action colour in this system; nothing else on the page uses it as a fill. */
+.submit {
+  display: block;
+  width: 100%;
+  margin-top: var(--s-6);
+  padding: var(--s-3) var(--s-5);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--forest-on);
+  background: var(--forest);
+  border: 1px solid var(--forest);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color var(--motion-fast);
+}
+.submit:hover {
+  background: var(--forest-hover);
+  border-color: var(--forest-hover);
+}

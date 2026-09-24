@@ -1,0 +1,119 @@
+/* ==========================================================================
+   Sylva design tokens
+
+   The brief: professional, trustworthy, analytical, document-oriented, clear,
+   serious, simple. One primary typeface. One accent colour. Colour carries
+   meaning - water is blue, biodiversity is green, financial is neutral.
+
+   Contrast ratios below were measured, not estimated. Every value used for
+   text meets WCAG 2.1 AA on the canvas; most meet AAA.
+   ========================================================================== */
+
+:root {
+  /* --- Typeface -----------------------------------------------------------
+     ONE type family: IBM Plex. Plex Sans for everything, Plex Mono only for
+     figures, identifiers and source stamps - a sibling of the same family, so
+     the page still reads as a single type system rather than two competing
+     voices.
+
+     Why Plex: it was drawn for technical and institutional documents, it has
+     true tabular figures (essential when an availability table must align),
+     and its Latin Extended coverage handles German without substitution. It is
+     under the SIL Open Font License and is self-hosted from /fonts, never
+     fetched from a third-party CDN - a font request from a CDN would send the
+     reader's IP address outside the EU on every page view.
+     --------------------------------------------------------------------- */
+  --font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', monospace;
+
+  /* --- Surfaces ---------------------------------------------------------- */
+  --canvas:        #FBFBFA;   /* warm off-white page background              */
+  --surface:       #FFFFFF;   /* cards, tables, panels                       */
+  --surface-sunk:  #F5F5F3;   /* table header rows, inset blocks             */
+
+  /* --- Ink --------------------------------------------------------------- */
+  --ink:           #1A1A18;   /* 16.83:1 on canvas - AAA. Never pure black.  */
+  --ink-muted:     #6B6B66;   /*  5.17:1 on canvas - AA. Metadata, sources.  */
+
+  /* --- Accent: one primary, one secondary --------------------------------
+     Forest green is the single accent: primary actions, selected states,
+     biodiversity. Water blue is reserved for water outcomes and map chrome,
+     so a reader can tell at a glance which kind of outcome they are reading.
+     --------------------------------------------------------------------- */
+  --forest:        #1F4D3A;   /*  9.30:1 on canvas - AAA                     */
+  --forest-hover:  #173A2C;   /* 12.09:1 on canvas                           */
+  --forest-on:     #FFFFFF;   /*  9.63:1 white on forest - AAA               */
+  --water:         #1B5A78;   /*  7.29:1 on canvas - AAA                     */
+  --water-on:      #FFFFFF;   /*  7.55:1 white on water                      */
+
+  /* --- Status. Never colour alone: every status also carries a word. ------ */
+  --success:       #346538;   /* 6.62:1 */
+  --warning:       #8A5A00;   /* 5.72:1 */
+  --error:         #9F2F2D;   /* 6.95:1 */
+
+  --tint-water:    #E1F3FE;  --tint-water-ink:    #1F6C9F;  /* 4.98:1 AA */
+  --tint-bio:      #EDF3EC;  --tint-bio-ink:      #346538;  /* 6.08:1 AA */
+  --tint-warning:  #FBF3DB;  --tint-warning-ink:  #8A5A00;  /* 5.35:1 AA */
+  --tint-error:    #FDEBEC;  --tint-error-ink:    #9F2F2D;  /* 6.26:1 AA */
+  --tint-neutral:  #F1F1EF;  --tint-neutral-ink:  #55554F;
+
+  /* --- Structure ---------------------------------------------------------
+     One border weight, one border colour, everywhere. A document is held
+     together by rules and alignment, not by shadows.
+     --------------------------------------------------------------------- */
+  --border:        #E4E4E0;
+  --border-strong: #C9C9C3;   /* table section rules, active field outline   */
+  --rule: 1px solid var(--border);
+
+  --radius-sm: 3px;
+  --radius:    5px;           /* crisp. Nothing on this platform is a pill   */
+  --radius-lg: 8px;           /* except small status badges                  */
+
+  /* The only shadow in the system, and it is barely there. */
+  --shadow-raised: 0 1px 2px rgba(26, 26, 24, 0.04);
+
+  /* --- Type scale --------------------------------------------------------
+     A document scale, not a marketing scale: the largest thing on a project
+     page is the project name, and it is not enormous.
+     --------------------------------------------------------------------- */
+  --text-2xs:  0.6875rem;  /* 11px - source stamps, table units              */
+  --text-xs:   0.75rem;    /* 12px - labels, badges                         */
+  --text-sm:   0.8125rem;  /* 13px - table cells, secondary                 */
+  --text-base: 0.9375rem;  /* 15px - body                                   */
+  --text-md:   1.0625rem;  /* 17px - lead paragraph                         */
+  --text-lg:   1.375rem;   /* 22px - section heading                        */
+  --text-xl:   1.75rem;    /* 28px - page heading                           */
+  --text-2xl:  2.25rem;    /* 36px - project name                           */
+
+  --leading-tight: 1.2;
+  --leading-body:  1.6;     /* generous, for reading a document             */
+
+  /* --- Spacing: a 4px grid ----------------------------------------------- */
+  --s-1: 0.25rem;  --s-2: 0.5rem;   --s-3: 0.75rem;  --s-4: 1rem;
+  --s-5: 1.5rem;   --s-6: 2rem;     --s-7: 3rem;     --s-8: 4rem;
+  --s-9: 6rem;
+
+  /* --- Measure ----------------------------------------------------------- */
+  --measure-prose: 68ch;     /* readable line length for running text        */
+  --measure-page:  1200px;   /* full document width incl. tables and maps    */
+
+  --focus-ring: 2px solid var(--water);
+  --focus-offset: 2px;
+}
+
+/* Motion is a whisper. A due-diligence document does not fade in.
+   Transitions exist for hover, focus and disclosure only. */
+:root {
+  --motion-fast: 120ms cubic-bezier(0.2, 0, 0, 1);
+  --motion:      200ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --motion-fast: 0ms; --motion: 0ms; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

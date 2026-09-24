@@ -1,0 +1,69 @@
+.page { display: block; }
+
+/* Two columns: the in-page index, and the document. The index is narrow and
+   sticky; the document keeps the full remaining width because its tables need
+   it. */
+.body {
+  display: grid;
+  grid-template-columns: 13rem minmax(0, 1fr);
+  gap: var(--s-8);
+  margin-top: var(--s-7);
+  align-items: start;
+}
+/* Both columns must be allowed to be narrower than their content, or a
+   wide child silently widens the whole page instead of scrolling. */
+.navColumn { min-width: 0; max-width: 100%; overflow: hidden; }
+/* grid-template-columns is not optional here. An implicit grid column is
+   sized `auto`, which means max-content: one wide child - a table, a long
+   unbroken figure - stretches every section and the whole page with it.
+   minmax(0, 1fr) is what lets the column be narrower than its contents so the
+   child's own overflow-x handles it instead. */
+.sections {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s-9);
+}
+.sections > * { min-width: 0; }
+
+.section {
+  /* The sticky nav and the site's demo bar would otherwise cover the heading of
+     whichever section the reader jumps to. */
+  scroll-margin-top: var(--s-5);
+  min-width: 0;
+}
+
+/* The investor block is set apart rather than styled louder: a rule above it and
+   more air, so it reads as a different document attached to this one. */
+.sectionApart {
+  scroll-margin-top: var(--s-5);
+  min-width: 0;
+  padding-top: var(--s-7);
+  border-top: 1px solid var(--border-strong);
+}
+
+.marker {
+  display: flex; align-items: baseline; gap: var(--s-3);
+  margin: 0 0 var(--s-3);
+  padding-bottom: var(--s-2);
+  border-bottom: var(--rule);
+  max-width: none;
+}
+.markerNum {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--forest);
+}
+.markerLabel {
+  font-size: var(--text-2xs);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--ink-muted);
+}
+
+@media (max-width: 64rem) {
+  .body { grid-template-columns: 1fr; gap: var(--s-5); margin-top: var(--s-5); }
+  .sections { gap: var(--s-8); }
+  /* With the nav pinned to the top of the viewport on narrow screens, an anchor
+     jump has to clear it. */
+  .section, .sectionApart { scroll-margin-top: 4rem; }
+}

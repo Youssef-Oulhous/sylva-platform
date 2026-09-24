@@ -1,0 +1,144 @@
+.lead {
+  margin-top: var(--s-3);
+  color: var(--ink-muted);
+  font-size: var(--text-base);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(16rem, 1fr);
+  gap: var(--s-5);
+  margin-top: var(--s-5);
+  align-items: start;
+}
+
+.figure { margin: 0; }
+
+.frame {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border: var(--rule);
+  border-radius: var(--radius);
+  background: var(--surface-sunk);
+  overflow: hidden;
+}
+
+/* The inset is a locator, not decoration: the same boundary at its own scale,
+   so a reader can see the shape of the site as well as where it sits. */
+.insetWrap {
+  position: absolute;
+  right: var(--s-3); bottom: var(--s-3);
+  width: 28%;
+}
+.inset {
+  aspect-ratio: 1;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  overflow: hidden;
+}
+.insetLabel {
+  margin: 0 0 var(--s-1);
+  font-size: var(--text-2xs); line-height: 1.3;
+  color: var(--ink-muted);
+  text-transform: uppercase; letter-spacing: 0.05em;
+  max-width: none;
+}
+
+.legend { margin: var(--s-4) 0 0; }
+.legendList {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-5);
+  font-size: var(--text-sm);
+}
+.legendList li { display: flex; align-items: center; gap: var(--s-2); }
+
+/* Both swatches also carry their word, so the legend does not depend on the
+   reader distinguishing two greens. */
+.swatchCatchment {
+  width: 0.85rem; height: 0.85rem; flex: 0 0 auto;
+  background: var(--tint-bio);
+  border: 1.5px solid var(--forest);
+  border-radius: var(--radius-sm);
+}
+.swatchBoundary {
+  width: 0.85rem; height: 0.85rem; flex: 0 0 auto;
+  background: transparent;
+  border: 1.5px solid var(--forest);
+  border-radius: var(--radius-sm);
+}
+
+.side { display: grid; gap: var(--s-4); }
+
+.panel {
+  border: var(--rule);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: var(--s-4);
+}
+.panelTitle {
+  margin: 0 0 var(--s-3);
+  font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--ink-muted); font-weight: 500;
+}
+
+.kv { margin: 0 0 var(--s-4); padding: 0; display: grid; gap: var(--s-3); }
+.kv dt {
+  font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--ink-muted);
+}
+.kv dd { margin: 0; font-size: var(--text-sm); }
+
+.download {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 2.25rem; padding: 0 var(--s-4);
+  border: 1px solid var(--border-strong); border-radius: var(--radius);
+  background: var(--surface); color: var(--ink);
+  font-size: var(--text-sm); font-weight: 500; text-decoration: none;
+  transition: border-color var(--motion-fast);
+}
+.download:hover { border-color: var(--ink-muted); color: var(--ink); }
+
+.panelNote {
+  margin: var(--s-3) 0 0;
+  font-size: var(--text-xs); color: var(--ink-muted);
+}
+
+.empty {
+  margin: 0;
+  padding: var(--s-3);
+  border: 1px dashed var(--border-strong); border-radius: var(--radius-sm);
+  font-size: var(--text-sm); color: var(--ink-muted);
+}
+
+.sameCatchment {
+  margin: var(--s-4) 0 0; padding-top: var(--s-3);
+  border-top: var(--rule);
+  display: grid; gap: var(--s-1);
+  font-size: var(--text-sm);
+}
+.sameCatchmentLabel {
+  font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--ink-muted);
+}
+
+.basemapNote {
+  margin: var(--s-5) 0 0;
+  padding: var(--s-3) var(--s-4);
+  background: var(--tint-water);
+  border-left: 2px solid var(--water);
+  color: var(--tint-water-ink);
+  font-size: var(--text-sm);
+  max-width: var(--measure-prose);
+}
+
+.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+@media (max-width: 64rem) {
+  .layout { grid-template-columns: 1fr; }
+}
+@media (max-width: 30rem) {
+  .frame { aspect-ratio: 1; }
+  .insetWrap { width: 34%; }
+  .download { width: 100%; }
+}

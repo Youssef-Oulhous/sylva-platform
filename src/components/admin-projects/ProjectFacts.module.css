@@ -1,0 +1,31 @@
+.wrap { padding-bottom: var(--s-5); border-bottom: var(--rule); }
+
+.head { display: flex; flex-direction: column; gap: var(--s-2); }
+.eyebrow {
+  margin: 0; font-size: var(--text-2xs); text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--ink-muted);
+}
+.title { font-size: var(--text-xl); margin: 0; }
+.badges { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-1); }
+
+.facts {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--s-4) var(--s-5); margin: var(--s-5) 0 var(--s-3);
+}
+.fact { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.factLabel {
+  font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--ink-muted);
+}
+.factValue { margin: 0; font-size: var(--text-sm); color: var(--ink); overflow-wrap: anywhere; }
+.mono { font-family: var(--font-mono); font-size: var(--text-xs); }
+.date { font-family: var(--font-mono); font-size: var(--text-xs); }
+
+.pageLink { margin: var(--s-4) 0 0; font-size: var(--text-sm); }
+
+@media (max-width: 52rem) {
+  .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 26rem) {
+  .facts { grid-template-columns: 1fr; }
+}

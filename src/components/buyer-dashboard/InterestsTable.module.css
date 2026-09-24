@@ -1,0 +1,73 @@
+.table {
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius);
+}
+
+.caption { color: var(--ink-muted); }
+
+.rowHead {
+  background: transparent;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ink);
+  white-space: normal;
+  padding: var(--s-3);
+  border-bottom: var(--rule);
+  vertical-align: top;
+  min-width: 16rem;
+}
+
+.dateCell { color: var(--ink-muted); white-space: nowrap; }
+
+.unitsCell { min-width: 14rem; }
+.scheme { display: block; }
+/* The unit label is the fact that makes two rows incomparable, so it is set
+   apart from the scheme name rather than run together with it. */
+.unit {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--ink-muted);
+}
+
+.stateCell { white-space: nowrap; }
+
+.refCell { white-space: nowrap; }
+.mono { font-family: var(--font-mono); font-size: var(--text-xs); }
+
+.actionCell { min-width: 12rem; }
+
+.action {
+  font-family: inherit;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--forest);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+}
+.action:hover { color: var(--forest-hover); text-decoration: underline; }
+
+.waiting { color: var(--ink-muted); font-size: var(--text-sm); }
+
+/* A closed interest is quieter, but it is still readable and still legible as
+   a row: it is part of the record, not a struck-out mistake. */
+.closedRow td, .closedRow th { color: var(--ink-muted); }
+.closedRow .rowHead a { color: var(--ink-muted); }
+
+.noVolumes {
+  margin: var(--s-4) 0 0;
+  padding: var(--s-3) var(--s-4);
+  background: var(--tint-neutral);
+  border-left: 2px solid var(--water);
+  font-size: var(--text-sm);
+  color: var(--ink);
+  max-width: var(--measure-prose);
+}
+
+.emptyLink { font-size: var(--text-sm); font-weight: 500; }

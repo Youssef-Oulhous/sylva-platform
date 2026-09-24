@@ -1,0 +1,96 @@
+.groups { display: grid; gap: var(--s-6); }
+
+/* A group is held apart from the next one by a rule, not by a card: three
+   nested cards inside a section that is already inside the page would be the
+   card-nesting the brief rules out. */
+.group { padding-top: var(--s-4); border-top: var(--rule); }
+.groups > .group:first-child { padding-top: 0; border-top: none; }
+
+.groupTitle {
+  margin: 0 0 var(--s-2);
+  font-size: var(--text-base);
+  font-weight: 600;
+}
+
+.groupIntro {
+  margin: 0 0 var(--s-3);
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+.table {
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius);
+}
+
+/* The caption repeats the group heading for a reader who reaches the table on
+   its own, and is not a second visible title. */
+.caption {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.rowHead {
+  background: transparent;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ink);
+  white-space: normal;
+  padding: var(--s-3);
+  border-bottom: var(--rule);
+  vertical-align: top;
+  min-width: 15rem;
+}
+
+.scopeCell { min-width: 13rem; }
+.scopeKind {
+  display: block;
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-muted);
+}
+.scopeName { display: block; }
+
+.versionCell { white-space: nowrap; }
+.mono { font-family: var(--font-mono); font-size: var(--text-xs); }
+
+.dateCell { color: var(--ink-muted); white-space: nowrap; }
+.lodgedCell { min-width: 11rem; }
+.statusCell { min-width: 11rem; }
+.statusNote {
+  display: block;
+  font-size: var(--text-2xs);
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+}
+
+.actionsCell { white-space: nowrap; }
+.actionsCell .action + .action { margin-left: var(--s-4); }
+
+.action {
+  font-family: inherit;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--forest);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.action:hover { color: var(--forest-hover); text-decoration: underline; }
+
+.attribution {
+  margin: 0;
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}

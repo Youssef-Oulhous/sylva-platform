@@ -1,0 +1,82 @@
+.head { padding-bottom: var(--s-6); border-bottom: var(--rule); }
+
+.lead {
+  margin-top: var(--s-4);
+  font-size: var(--text-md);
+  color: var(--ink);
+}
+
+/* The organisation line: who this dashboard belongs to, and the two
+   identifiers it is known by. */
+.identity {
+  margin-top: var(--s-5);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-3) var(--s-6);
+}
+
+.orgName { font-size: var(--text-base); font-weight: 600; }
+
+.identityItem { display: inline-flex; align-items: baseline; gap: var(--s-2); }
+
+.identityLabel {
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-muted);
+}
+
+/* Identifiers take the mono face. */
+.identityValue {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--ink);
+}
+
+.inert {
+  margin: var(--s-4) 0 0;
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+.section {
+  margin-top: var(--s-7);
+  padding-bottom: var(--s-7);
+  border-bottom: var(--rule);
+}
+.sectionLast { margin-top: var(--s-7); }
+
+.sectionHead { margin-bottom: var(--s-5); }
+
+.sectionIntro {
+  margin: var(--s-3) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+/* Two panels of equal weight: the organisation record and its vetting status.
+   Neither is a headline figure, so neither is larger than the other. */
+.panels {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-4);
+  align-items: start;
+}
+
+/* Deals are cards in a column, never rows in a shared table: a column of
+   volumes from two schemes would read as comparable, and it is not. */
+.deals { display: grid; gap: var(--s-5); }
+
+.emptyLink { font-size: var(--text-sm); font-weight: 500; }
+
+@media (max-width: 60rem) {
+  .panels { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 40rem) {
+  .lead { font-size: var(--text-base); }
+  .identity { gap: var(--s-2) var(--s-4); }
+}

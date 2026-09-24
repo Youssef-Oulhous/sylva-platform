@@ -1,0 +1,28 @@
+.head { padding-bottom: var(--s-6); border-bottom: var(--rule); }
+.eyebrow {
+  margin: 0 0 var(--s-2); font-size: var(--text-2xs); text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--ink-muted);
+}
+.lead { font-size: var(--text-md); color: var(--ink); margin-top: var(--s-3); }
+
+/* The rule that stops this screen becoming a comparison table. */
+.incomparable {
+  margin-top: var(--s-4); padding: var(--s-3) var(--s-4);
+  background: var(--tint-neutral); border-left: 2px solid var(--water);
+  font-size: var(--text-sm); color: var(--ink); max-width: var(--measure-prose);
+}
+
+/* The review panel. One project, read in full: what it is, what the gate says,
+   and what may be done about it. */
+.panel {
+  margin-top: var(--s-7);
+  padding: var(--s-5);
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-raised);
+}
+
+@media (max-width: 30rem) {
+  .panel { padding: var(--s-4); }
+}

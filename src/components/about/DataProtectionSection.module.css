@@ -1,0 +1,32 @@
+/* Two columns, one rule between them: what is destroyed on the left, what
+   survives on the right. The pairing is the information, so the two lists share
+   one frame rather than sitting in two cards. */
+.ledger {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 0;
+  margin-top: var(--s-4);
+  border: var(--rule);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.column { padding: var(--s-4); border-right: var(--rule); border-bottom: var(--rule); }
+
+.columnHead {
+  margin: 0;
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-muted);
+}
+
+.items {
+  margin: var(--s-3) 0 0;
+  padding-left: var(--s-4);
+  font-size: var(--text-sm);
+  display: grid;
+  gap: var(--s-1);
+}

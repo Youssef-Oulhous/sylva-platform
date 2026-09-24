@@ -1,0 +1,105 @@
+.group {
+  margin: 0;
+  padding: 0;
+  border: none;
+  min-width: 0;
+}
+
+.legend {
+  padding: 0;
+  font-size: var(--text-md);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+  letter-spacing: -0.014em;
+  color: var(--ink);
+}
+
+.hint {
+  margin: var(--s-2) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+.options {
+  display: grid;
+  gap: var(--s-3);
+  margin-top: var(--s-4);
+}
+
+/* The radio sits in its own column so the note below the label stays aligned
+   with the label and not with the control. */
+.option {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--s-3);
+  row-gap: var(--s-1);
+  padding: var(--s-4);
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius);
+  transition: border-color var(--motion-fast);
+}
+
+.option:hover {
+  border-color: var(--border-strong);
+}
+
+/* Selection is carried by the native control and by the border weight, and the
+   label is always a word - never a colour on its own. */
+.option:has(.radio:checked) {
+  border-color: var(--forest);
+}
+
+.radio {
+  width: 1rem;
+  height: 1rem;
+  margin: 0.25rem 0 0;
+  accent-color: var(--forest);
+}
+
+.optionLabel {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.note {
+  grid-column: 2;
+}
+
+.noteBody {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--ink);
+  max-width: var(--measure-prose);
+}
+
+.after {
+  margin: var(--s-2) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ink);
+  max-width: var(--measure-prose);
+}
+
+.afterLabel {
+  display: block;
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-muted);
+}
+
+.notHere {
+  margin: var(--s-4) 0 0;
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+@media (max-width: 30rem) {
+  .option {
+    padding: var(--s-3);
+    column-gap: var(--s-2);
+  }
+}

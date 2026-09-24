@@ -1,0 +1,69 @@
+.wrap {
+  margin-top: var(--s-6);
+  padding-top: var(--s-5);
+  border-top: var(--rule);
+}
+.head { padding-bottom: var(--s-4); }
+
+.state {
+  padding: var(--s-4);
+  background: var(--surface-sunk);
+  border-left: 2px solid var(--forest);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+/* Blocked is marked by a rule, a tint, a badge and a sentence. Never by the
+   tint alone. */
+.blocked { background: var(--tint-error); border-left-color: var(--error); }
+
+.stateHead { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-3); }
+.stateTitle { margin: 0; font-size: var(--text-base); font-weight: 500; color: var(--ink); }
+.stateLead {
+  margin: var(--s-3) 0 0; font-size: var(--text-sm); color: var(--ink);
+  max-width: var(--measure-prose);
+}
+
+.reasonsLabel {
+  margin: var(--s-4) 0 var(--s-2);
+  font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--ink-muted);
+}
+.reasons { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-2); }
+.reason {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-2) var(--s-3);
+}
+.reasonLabel { font-size: var(--text-sm); font-weight: 500; color: var(--ink); }
+.reasonCode {
+  font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--ink-muted);
+}
+
+.form { margin-top: var(--s-5); }
+.publish {
+  font-family: var(--font-sans); font-size: var(--text-base); font-weight: 500;
+  color: var(--forest-on); background: var(--forest);
+  border: 1px solid var(--forest); border-radius: var(--radius-sm);
+  padding: var(--s-3) var(--s-5);
+  cursor: not-allowed;
+  transition: background-color var(--motion-fast);
+}
+.publish:hover { background: var(--forest-hover); border-color: var(--forest-hover); }
+/* The disabled state. Flat, unsaturated, and unmistakably not the primary
+   action on the page any more. */
+.publishOff {
+  color: var(--ink-muted); background: var(--surface);
+  border-color: var(--border-strong);
+}
+.publishOff:hover { background: var(--surface); border-color: var(--border-strong); }
+
+.note {
+  margin: var(--s-3) 0 0; font-size: var(--text-2xs); color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+.statements { margin-top: var(--s-5); }
+.statement {
+  margin: 0 0 var(--s-3); padding-left: var(--s-4);
+  border-left: 2px solid var(--border-strong);
+  font-size: var(--text-sm); color: var(--ink); max-width: var(--measure-prose);
+}
+.statement:first-child { border-left-color: var(--forest); }
+.statement:last-child { margin-bottom: 0; }

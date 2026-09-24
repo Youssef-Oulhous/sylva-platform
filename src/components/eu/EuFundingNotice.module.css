@@ -1,0 +1,28 @@
+.notice {
+  display: flex;
+  gap: var(--s-4);
+  align-items: flex-start;
+  padding: var(--s-5) 0;
+  border-top: var(--rule);
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  line-height: 1.5;
+}
+.emblem { flex: 0 0 auto; }
+.emblemImg { display: block; height: 3rem; width: auto; }
+
+/* The placeholder is deliberately conspicuous. A wrong or missing EU emblem on
+   an EU-funded pilot is a compliance failure, so it must not be possible to
+   ship without noticing. */
+.placeholder {
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  height: 3rem; width: 4.5rem; padding: var(--s-1);
+  border: 1px dashed var(--error); border-radius: var(--radius-sm);
+  color: var(--error); font-size: var(--text-2xs); font-weight: 500; line-height: 1.15;
+}
+.body { max-width: var(--measure-prose); }
+.line { color: var(--ink); font-weight: 500; margin: 0 0 var(--s-1); }
+.disclaimer { margin: 0; }
+.missing {
+  margin: var(--s-1) 0 0; color: var(--error); font-weight: 500;
+}

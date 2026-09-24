@@ -1,0 +1,80 @@
+.section {
+  margin-top: var(--s-5);
+  padding: var(--s-4) var(--s-5) var(--s-5);
+  background: var(--surface-sunk);
+  border: var(--rule);
+  border-radius: var(--radius);
+}
+
+.heading {
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-muted);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--s-4);
+  margin-top: var(--s-4);
+}
+
+.field {
+  display: grid;
+  gap: var(--s-1);
+  min-width: 16rem;
+}
+.field label {
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-muted);
+}
+.field select {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: var(--s-2) var(--s-3);
+  min-height: 2.25rem;
+}
+.field select:hover {
+  border-color: var(--ink-muted);
+}
+
+.apply {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: var(--s-2) var(--s-5);
+  min-height: 2.25rem;
+  cursor: pointer;
+  transition: border-color var(--motion-fast);
+}
+.apply:hover {
+  border-color: var(--ink-muted);
+}
+
+.note {
+  margin: var(--s-4) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+@media (max-width: 34rem) {
+  .field,
+  .apply {
+    width: 100%;
+    min-width: 0;
+  }
+}

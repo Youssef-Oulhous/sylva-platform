@@ -1,0 +1,59 @@
+.lead { margin-top: var(--s-3); color: var(--ink-muted); }
+
+.noScore {
+  margin: 0 0 var(--s-5);
+  padding: var(--s-3) var(--s-4);
+  background: var(--tint-neutral);
+  border-left: 2px solid var(--border-strong);
+  font-size: var(--text-sm);
+  max-width: var(--measure-prose);
+}
+
+.blocks { display: grid; gap: var(--s-6); }
+
+/* The two domains are separate blocks with separate borders, so no eye can
+   track a row from one into the other. The left rule is the only place colour
+   distinguishes them, and each block also carries its own heading and badge. */
+.blockWater, .blockBio {
+  border: var(--rule);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: var(--s-5);
+}
+.blockWater { border-left: 3px solid var(--water); }
+.blockBio { border-left: 3px solid var(--forest); }
+
+.blockHead {
+  display: flex; align-items: baseline; gap: var(--s-3); flex-wrap: wrap;
+}
+.blockTitle { font-size: var(--text-md); margin: 0; }
+.blockNote {
+  margin: var(--s-2) 0 var(--s-4);
+  font-size: var(--text-sm); color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+.rowHead {
+  /* A row header, so it must not pick up the uppercase treatment that
+     globals.css gives column headers. */
+  background: transparent;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--ink);
+  white-space: normal;
+  border-bottom: var(--rule);
+  padding: var(--s-3);
+  min-width: 14rem;
+}
+.blockWater tbody tr:last-child .rowHead,
+.blockBio tbody tr:last-child .rowHead { border-bottom: none; }
+
+.figure { font-family: var(--font-mono); font-size: var(--text-sm); }
+.expected { font-weight: 500; }
+.method { max-width: 24rem; color: var(--ink); }
+
+@media (max-width: 30rem) {
+  .blockWater, .blockBio { padding: var(--s-4); }
+}

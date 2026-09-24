@@ -1,0 +1,39 @@
+.lead {
+  margin-top: var(--s-4);
+  font-size: var(--text-md);
+  color: var(--ink);
+  max-width: var(--measure-prose);
+}
+
+.prose { margin-top: var(--s-4); }
+.prose p { font-size: var(--text-base); max-width: var(--measure-prose); }
+
+.details {
+  margin-top: var(--s-5);
+  border-top: var(--rule);
+  max-width: var(--measure-prose);
+}
+
+.detail { border-bottom: var(--rule); }
+
+.summary {
+  cursor: pointer;
+  list-style: none;
+  padding: var(--s-3) 0;
+  font-size: var(--text-sm); font-weight: 500;
+  display: flex; align-items: baseline; gap: var(--s-3);
+}
+.summary::-webkit-details-marker { display: none; }
+/* A single hairline marker rather than an icon set: the arrow is drawn by the
+   glyph, and its rotation is the only motion in the section. */
+.summary::before {
+  content: '+';
+  font-family: var(--font-mono);
+  color: var(--forest);
+  flex: 0 0 1rem;
+}
+.detail[open] > .summary::before { content: '−'; }
+.summary:hover { color: var(--forest); }
+
+.detailBody { padding: 0 0 var(--s-4) calc(1rem + var(--s-3)); }
+.detailBody p { margin: 0; font-size: var(--text-sm); color: var(--ink); }

@@ -1,0 +1,102 @@
+/* A figure and its provenance, drawn as one field. */
+
+.figure {
+  margin: var(--s-5) 0 0;
+  padding: 0;
+  border: none;
+  min-width: 0;
+}
+
+.legend {
+  padding: 0;
+  max-width: var(--measure-prose);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  line-height: var(--leading-tight);
+  color: var(--ink);
+}
+
+.marker {
+  margin-left: var(--s-2);
+  font-size: var(--text-2xs);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+
+.hint {
+  margin: var(--s-2) 0 0;
+  max-width: var(--measure-prose);
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  color: var(--ink-muted);
+}
+
+.valueRow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-3);
+  margin-top: var(--s-2);
+}
+
+.valueLabel {
+  flex: none;
+  width: 5.5rem;
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.inputWrap {
+  display: flex;
+  align-items: stretch;
+  min-width: 0;
+  flex: 1 1 auto;
+  max-width: 22rem;
+}
+
+/* A figure is mono and tabular: a column of them must align, and a value must
+   not change width when a digit changes. */
+.input {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: var(--s-2) var(--s-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  font-variant-numeric: tabular-nums;
+  line-height: var(--leading-body);
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius) 0 0 var(--radius);
+  transition: border-color var(--motion-fast);
+}
+.input:hover { border-color: var(--ink-muted); }
+.input:focus { border-color: var(--water); }
+
+/* The unit travels with the number, against the field. */
+.unit {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  padding: 0 var(--s-3);
+  margin-left: -1px;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  background: var(--surface-sunk);
+  border: 1px solid var(--border-strong);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  white-space: nowrap;
+}
+
+@media (max-width: 40rem) {
+  .valueRow { display: block; }
+  .valueLabel { display: block; width: auto; margin-bottom: var(--s-1); }
+  .inputWrap { max-width: none; }
+}

@@ -1,0 +1,12 @@
+.list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+
+/* A stack of statements separated by rules, the way a document sets out terms.
+   No cards: five cards of negative statements read as five warnings. */
+.item { padding: var(--s-4) 0; border-top: var(--rule); }
+.list > .item:last-child { border-bottom: var(--rule); }
+.itemTitle { font-size: var(--text-md); }
+.itemBody {
+  margin: var(--s-2) 0 0;
+  font-size: var(--text-sm);
+  max-width: var(--measure-prose);
+}

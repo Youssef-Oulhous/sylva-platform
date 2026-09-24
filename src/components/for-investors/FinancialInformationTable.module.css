@@ -1,0 +1,22 @@
+.table { background: var(--surface); border: var(--rule); border-radius: var(--radius); }
+.rowHead {
+  /* A row header, but read as body text: the global th style is for column
+     headers and would shout in uppercase here. */
+  background: transparent;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ink);
+  white-space: normal;
+  padding: var(--s-3);
+  border-bottom: var(--rule);
+  vertical-align: top;
+  width: 14rem;
+}
+.contains { color: var(--ink); max-width: 34rem; }
+.providedBy { color: var(--ink-muted); white-space: nowrap; }
+
+/* The restricted rows are grouped visually by an inset rule on the left,
+   never by colour alone: the visibility column states it in words. */
+.restrictedRow .rowHead { box-shadow: inset 2px 0 0 var(--border-strong); }
