@@ -1,0 +1,248 @@
+/* ---------------------------------------------------------------------------
+   The four operator screens that had no page: /admin, /admin/record,
+   /admin/questions, /admin/organisations.
+
+   One stylesheet for all four, imported by the pages and by their components,
+   the way src/components/auditor/Auditor.module.css serves that area. The
+   alternative - a module per page - had the four screens drifting apart in
+   type size and table rhythm while claiming to be one workspace.
+
+   Nothing here defines a colour. Every value is a token from
+   src/styles/tokens.css, which this pass does not touch.
+   --------------------------------------------------------------------------- */
+
+.page { max-width: var(--measure-page); }
+
+/* --------------------------------------------------------------- page head */
+
+.head { padding-bottom: var(--s-5); border-bottom: var(--rule); }
+.eyebrow {
+  margin: 0 0 var(--s-2); font-size: var(--text-2xs);
+  text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-muted);
+}
+.headTop { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-3); }
+.lead {
+  margin: var(--s-3) 0 0; font-size: var(--text-md); color: var(--ink);
+  max-width: var(--measure-prose);
+}
+.note {
+  margin: var(--s-4) 0 0; font-size: var(--text-sm); color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+.stamp { margin-top: var(--s-4); }
+
+/* A sentence the reader is meant to stop on: why a restricted thing is being
+   shown, or what a write cannot be undone. A rule on the left, never a tint
+   alone. */
+.statement {
+  margin: var(--s-4) 0 0; padding-left: var(--s-4);
+  border-left: 2px solid var(--border-strong);
+  font-size: var(--text-sm); color: var(--ink); max-width: var(--measure-prose);
+}
+.statementStrong { border-left-color: var(--forest); }
+.warning {
+  margin: var(--s-4) 0 0; padding: var(--s-4);
+  border: var(--rule); border-left: 3px solid var(--warning);
+  border-radius: var(--radius-sm);
+  background: var(--tint-warning);
+  font-size: var(--text-sm); color: var(--ink); max-width: var(--measure-prose);
+}
+.failure {
+  margin: var(--s-4) 0 0; padding: var(--s-4);
+  border: var(--rule); border-left: 3px solid var(--error);
+  border-radius: var(--radius-sm);
+  background: var(--tint-error);
+  font-size: var(--text-sm); color: var(--ink); max-width: var(--measure-prose);
+}
+.done {
+  margin: var(--s-4) 0 0; padding: var(--s-4);
+  border: var(--rule); border-left: 3px solid var(--forest);
+  border-radius: var(--radius-sm);
+  background: var(--tint-bio);
+  font-size: var(--text-sm); color: var(--ink); max-width: var(--measure-prose);
+}
+
+/* ---------------------------------------------------------------- sections */
+
+.section { margin-top: var(--s-7); }
+.sectionHead { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-3); }
+.sectionLead {
+  margin: var(--s-2) 0 var(--s-4); font-size: var(--text-sm); color: var(--ink);
+  max-width: var(--measure-prose);
+}
+.countRow {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-2) var(--s-4);
+  margin: 0 0 var(--s-4);
+}
+.count { margin: 0; font-size: var(--text-sm); font-weight: 500; color: var(--ink); }
+.more { margin: var(--s-3) 0 0; font-size: var(--text-sm); }
+.empty {
+  margin: var(--s-3) 0 0; padding: var(--s-4);
+  background: var(--surface-sunk); border: var(--rule); border-radius: var(--radius);
+  font-size: var(--text-sm); color: var(--ink-muted); max-width: var(--measure-prose);
+}
+
+/* A labelled row of figures. Deliberately not tiles: nothing on an operator
+   screen should read as a dashboard KPI, and every figure here counts rows. */
+.figures {
+  display: flex; flex-wrap: wrap; gap: var(--s-6);
+  list-style: none; margin: 0 0 var(--s-4); padding: var(--s-4);
+  background: var(--surface); border: var(--rule); border-radius: var(--radius);
+}
+.figure { display: flex; flex-direction: column; gap: 1px; }
+.figureValue {
+  font-family: var(--font-mono); font-size: var(--text-md); font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.figureLabel {
+  font-size: var(--text-2xs); color: var(--ink-muted);
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+
+/* ------------------------------------------------------------------ tables */
+
+.mono { font-family: var(--font-mono); font-size: var(--text-xs); }
+.nowrap { white-space: nowrap; }
+.muted { color: var(--ink-muted); }
+.small { font-size: var(--text-xs); color: var(--ink-muted); }
+.sub { display: block; font-size: var(--text-xs); color: var(--ink-muted); }
+.strong { font-weight: 500; color: var(--ink); }
+
+/* The row's identity is a row header, and the global th rule dresses column
+   headers - uppercase, sunk, muted - so a row header is dressed back down. */
+.rowHead {
+  background: transparent; text-transform: none; letter-spacing: normal;
+  font-size: var(--text-sm); font-weight: 400; color: var(--ink);
+  text-align: left; vertical-align: top; white-space: normal;
+  min-width: 12rem; padding: var(--s-3); border-bottom: var(--rule);
+}
+tbody tr:last-child > .rowHead { border-bottom: none; }
+
+.tag {
+  display: inline-block; padding: 0.1em 0.45em; border-radius: var(--radius-sm);
+  font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: 0.05em;
+  font-weight: 500; white-space: nowrap;
+  background: var(--tint-neutral); color: var(--ink);
+}
+.tagPublic { background: var(--tint-bio); color: var(--tint-bio-ink); }
+.tagPrivate { background: var(--tint-warning); color: var(--tint-warning-ink); }
+.tagCorrected { background: var(--tint-error); color: var(--tint-error-ink); }
+
+/* Wide tables. The global floor is 34rem; these two need more before the
+   columns stop meaning anything. */
+:global(.table-scroll) .wideRecord { min-width: 72rem; }
+:global(.table-scroll) .wideOrgs { min-width: 62rem; }
+
+/* ------------------------------------------------------------------- forms */
+
+.filters {
+  display: flex; flex-wrap: wrap; align-items: end; gap: var(--s-4);
+  margin: 0 0 var(--s-4); padding: var(--s-4);
+  background: var(--surface); border: var(--rule); border-radius: var(--radius);
+}
+.field { display: grid; gap: var(--s-1); min-width: 0; }
+.fieldLabel {
+  font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--ink-muted); font-weight: 500;
+}
+/* A <select> sizes itself to its longest OPTION, and one of these options is a
+   whole sentence - "Only entries the public record does not reach" - which at
+   375px pushed the control 599px wide. min-width:0 plus a 100% ceiling makes the
+   text truncate instead of the control growing. */
+.select, .input {
+  font-family: var(--font-sans); font-size: var(--text-sm); color: var(--ink);
+  background: var(--surface); border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm); padding: var(--s-2) var(--s-3);
+  width: 100%; min-width: 0; max-width: 24rem;
+}
+.select:focus-visible, .input:focus-visible, .textarea:focus-visible {
+  border-color: var(--water);
+}
+.textarea {
+  display: block; width: 100%; max-width: var(--measure-prose);
+  font-family: var(--font-sans); font-size: var(--text-base);
+  line-height: var(--leading-body); color: var(--ink);
+  background: var(--surface); border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm); padding: var(--s-3); resize: vertical;
+}
+.help {
+  margin: var(--s-2) 0 0; font-size: var(--text-sm); color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+.required {
+  margin-left: var(--s-2); text-transform: none; letter-spacing: 0;
+  font-size: var(--text-2xs); color: var(--error);
+}
+.apply {
+  font-family: var(--font-sans); font-size: var(--text-sm); font-weight: 500;
+  color: var(--ink); background: var(--surface);
+  border: 1px solid var(--border-strong); border-radius: var(--radius-sm);
+  padding: var(--s-2) var(--s-4); cursor: pointer;
+}
+.apply:hover { background: var(--tint-neutral); }
+.clear { font-size: var(--text-sm); }
+
+.form {
+  margin-top: var(--s-5); padding: var(--s-5);
+  background: var(--surface); border: var(--rule); border-radius: var(--radius);
+  box-shadow: var(--shadow-raised);
+}
+.formField { margin-top: var(--s-5); }
+.record {
+  margin-top: var(--s-5);
+  font-family: var(--font-sans); font-size: var(--text-base); font-weight: 500;
+  color: var(--forest-on); background: var(--forest);
+  border: 1px solid var(--forest); border-radius: var(--radius-sm);
+  padding: var(--s-3) var(--s-5); cursor: pointer;
+  transition: background-color var(--motion-fast);
+}
+.record:hover { background: var(--forest-hover); border-color: var(--forest-hover); }
+
+/* ------------------------------------------------------------------ paging */
+
+.pager {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-4);
+  margin-top: var(--s-4); padding-top: var(--s-4); border-top: var(--rule);
+  font-size: var(--text-sm);
+}
+.pagerPosition { color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+
+/* -------------------------------------------------------- question threads */
+
+.thread {
+  margin-top: var(--s-5); padding: var(--s-5);
+  background: var(--surface); border: var(--rule); border-radius: var(--radius);
+}
+.threadHead {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-2) var(--s-4);
+  padding-bottom: var(--s-3); border-bottom: var(--rule);
+}
+.threadTitle { margin: 0; font-size: var(--text-base); }
+.body {
+  margin: var(--s-4) 0 0; font-size: var(--text-base); color: var(--ink);
+  max-width: var(--measure-prose); white-space: pre-wrap;
+}
+.answer {
+  margin-top: var(--s-4); padding: var(--s-4);
+  background: var(--surface-sunk); border-radius: var(--radius-sm);
+  border-left: 2px solid var(--forest);
+}
+.answerMeta {
+  margin: 0 0 var(--s-2); font-size: var(--text-xs); color: var(--ink-muted);
+}
+.pairs {
+  display: grid; grid-template-columns: max-content 1fr;
+  gap: var(--s-1) var(--s-4); margin: var(--s-4) 0 0;
+}
+.pairs dt { color: var(--ink-muted); font-size: var(--text-xs); }
+.pairs dd { margin: 0; min-width: 0; overflow-wrap: anywhere; font-size: var(--text-sm); }
+
+@media (max-width: 40rem) {
+  .figures { gap: var(--s-4); padding: var(--s-3); }
+  .form, .thread { padding: var(--s-4); }
+  .filters { flex-direction: column; align-items: stretch; }
+  .filters .field { width: 100%; }
+  .select, .input { max-width: 100%; }
+  .pairs { grid-template-columns: 1fr; gap: var(--s-1); }
+  .pairs dt { margin-top: var(--s-2); }
+}

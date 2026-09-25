@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "scripts/run-local.sh",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "db:start": "scripts/dev-db.sh start",
@@ -25,7 +25,10 @@
     "check:rule7": "tsx scripts/check-rule7.ts",
     "gen:security-matrix": "tsx scripts/gen-security-matrix.ts",
     "check:i18n": "tsx scripts/check-i18n.ts",
-    "db:seed:documents": "tsx scripts/seed-demo-documents.ts"
+    "db:seed:documents": "tsx scripts/seed-demo-documents.ts",
+    "start:dev": "scripts/run-local.sh dev",
+    "start:reset": "scripts/run-local.sh reset",
+    "stop": "scripts/run-local.sh stop"
   },
   "dependencies": {
     "next": "^15.1.0",

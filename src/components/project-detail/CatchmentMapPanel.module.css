@@ -53,19 +53,22 @@
 }
 .legendList li { display: flex; align-items: center; gap: var(--s-2); }
 
-/* Both swatches also carry their word, so the legend does not depend on the
-   reader distinguishing two greens. */
+/* Each swatch echoes how that shape is actually drawn on the map, and each
+   carries its word too, so the legend never depends on telling two greens
+   apart. They were previously two near-identical pale squares with the same
+   border, which read as unticked checkboxes rather than as a key. */
 .swatchCatchment {
-  width: 0.85rem; height: 0.85rem; flex: 0 0 auto;
+  width: 1.15rem; height: 0.8rem; flex: 0 0 auto;
   background: var(--tint-bio);
-  border: 1.5px solid var(--forest);
-  border-radius: var(--radius-sm);
+  border: 1px solid var(--forest);
+  border-radius: 2px;
 }
 .swatchBoundary {
-  width: 0.85rem; height: 0.85rem; flex: 0 0 auto;
+  width: 1.15rem; height: 0.8rem; flex: 0 0 auto;
   background: transparent;
-  border: 1.5px solid var(--forest);
-  border-radius: var(--radius-sm);
+  /* the boundary is a stroke on the map, so its key is a stroke */
+  border: 2.5px solid var(--forest);
+  border-radius: 2px;
 }
 
 .side { display: grid; gap: var(--s-4); }

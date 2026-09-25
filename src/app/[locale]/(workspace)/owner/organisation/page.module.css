@@ -1,0 +1,112 @@
+/* This organisation's own record and its vetting. Page width and side gutters
+   come from .main in SiteChrome. */
+
+.page {
+  display: block;
+}
+
+.head {
+  padding-bottom: var(--s-5);
+}
+
+.lead {
+  margin: var(--s-4) 0 0;
+  max-width: var(--measure-prose);
+  font-size: var(--text-md);
+  color: var(--ink);
+}
+
+.section {
+  margin-top: var(--s-7);
+  padding-top: var(--s-6);
+  border-top: 1px solid var(--border-strong);
+}
+
+.sectionLead {
+  margin: var(--s-3) 0 var(--s-5);
+  max-width: var(--measure-prose);
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}
+
+/* The record itself: a description list, because that is what it is - a set of
+   labelled facts, not a table of rows. */
+.pairs {
+  margin: var(--s-4) 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: var(--s-4) var(--s-5);
+}
+
+.pair dt {
+  margin: 0;
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-muted);
+}
+.pair dd {
+  margin: var(--s-1) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ink);
+}
+
+.note {
+  margin: var(--s-4) 0 var(--s-3);
+  max-width: var(--measure-prose);
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}
+
+.history {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+.history th,
+.history td {
+  padding: var(--s-3) var(--s-4) var(--s-3) 0;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: var(--rule);
+}
+.history thead th {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-muted);
+}
+
+.empty {
+  margin: var(--s-4) 0 0;
+  padding: var(--s-6);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius);
+  text-align: center;
+  color: var(--ink-muted);
+}
+
+.foot {
+  margin-top: var(--s-7);
+  padding-top: var(--s-5);
+  border-top: var(--rule);
+}
+.footLinks {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-5);
+  font-size: var(--text-sm);
+}
+.footLinks a {
+  text-decoration: none;
+}
+.footLinks a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 40rem) {
+  .pairs {
+    grid-template-columns: 1fr;
+  }
+}

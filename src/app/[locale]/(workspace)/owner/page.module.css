@@ -1,0 +1,180 @@
+/* The page width and the side gutters come from .main in SiteChrome, which
+   every page shares. Nothing here re-declares them. */
+.page {
+  display: block;
+}
+
+.head {
+  padding-bottom: var(--s-5);
+}
+
+.headTop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-4);
+}
+
+.lead {
+  margin-top: var(--s-4);
+  font-size: var(--text-md);
+  color: var(--ink);
+}
+
+.org {
+  margin: var(--s-4) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}
+.orgName {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.demoNote {
+  margin: var(--s-4) 0 0;
+  max-width: var(--measure-prose);
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}
+
+/* One heavier rule per section: the page is read as a document with parts, and
+   the parts are separated by a rule rather than by a coloured band. */
+.section {
+  margin-top: var(--s-7);
+  padding-top: var(--s-6);
+  border-top: 1px solid var(--border-strong);
+}
+
+.sectionHead {
+  margin-bottom: var(--s-5);
+}
+
+.counts {
+  margin: var(--s-3) 0 0;
+  font-size: var(--text-md);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+.sectionLead {
+  margin: var(--s-3) 0;
+  max-width: var(--measure-prose);
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}
+
+/* The Rule 7 statement. Stated visibly, once, near the first figures. */
+.countNote {
+  margin: var(--s-4) 0 0;
+  padding: var(--s-3) var(--s-4);
+  max-width: var(--measure-prose);
+  background: var(--tint-neutral);
+  border-left: 2px solid var(--water);
+  font-size: var(--text-sm);
+  color: var(--ink);
+}
+
+.projects {
+  display: grid;
+  gap: var(--s-4);
+}
+
+/* One card per section of the area, not one card per project: the card says how
+   much is waiting and links to the page that acts on it. */
+.cards {
+  list-style: none;
+  margin: var(--s-5) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--s-4);
+}
+
+.card {
+  border: var(--rule);
+  border-radius: var(--radius);
+  padding: var(--s-5);
+  background: var(--surface);
+  min-width: 0;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: var(--text-md);
+}
+.cardTitle a {
+  text-decoration: none;
+}
+.cardTitle a:hover {
+  text-decoration: underline;
+}
+
+.cardCount {
+  margin: var(--s-3) 0 0;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+.cardNote {
+  margin: var(--s-3) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}
+
+.cardLink {
+  margin: var(--s-4) 0 0;
+  font-size: var(--text-sm);
+}
+.cardLink a {
+  font-weight: 500;
+  text-decoration: none;
+}
+.cardLink a:hover {
+  text-decoration: underline;
+}
+
+/* Nothing is waiting. Stated as a sentence, not as three empty cards. */
+.clear {
+  margin: var(--s-4) 0 0;
+  padding: var(--s-3) var(--s-4);
+  max-width: var(--measure-prose);
+  background: var(--tint-neutral);
+  border-left: 2px solid var(--border-strong);
+  font-size: var(--text-sm);
+  color: var(--ink);
+}
+
+.empty {
+  margin: 0;
+  padding: var(--s-7);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius);
+  text-align: center;
+  color: var(--ink-muted);
+}
+
+.sectionFoot {
+  margin: var(--s-5) 0 0;
+  font-size: var(--text-sm);
+}
+.sectionFoot a {
+  font-weight: 500;
+  text-decoration: none;
+}
+.sectionFoot a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 40rem) {
+  .lead {
+    font-size: var(--text-base);
+  }
+  .section {
+    margin-top: var(--s-6);
+    padding-top: var(--s-5);
+  }
+}

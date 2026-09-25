@@ -172,7 +172,14 @@ export async function loadQuestionnaire(
 export async function draftIn(tx: Tx, questionnaireId: string): Promise<DraftState> {
   const rows = await tx.query<AnswerRow & { updated_at: string }>(
     `SELECT question_code, answer_text, answer_boolean,
-            answer_numeric::text AS answer_numeric, updated_at
+            answer_numeric::text AS answer_numeric,
+            -- ::text like every other timestamp in this file. Without it pg
+            -- returns a JS Date, dateOf() calls .slice() on it, and /vetting
+            -- throws for ever for any organisation that saved a draft - with
+            -- no way to clear the draft, so the organisation can never be
+            -- vetted and can never transact. The row type above claims string,
+            -- which pg cannot contradict, so TypeScript never saw it.
+            updated_at::text AS updated_at
        FROM org.vetting_draft
       WHERE questionnaire_id = $1
       ORDER BY question_code`,

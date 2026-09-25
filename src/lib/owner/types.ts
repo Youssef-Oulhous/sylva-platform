@@ -224,6 +224,18 @@ export interface RecordEntryView {
   readonly label: string;
   readonly detail: string;
   readonly source: SourceRefView;
+  /**
+   * The translation status of the text on this entry's latest version, or null
+   * where the entry carries no translated text at all (a project party has a
+   * description, not a translation).
+   *
+   * Here because the public project page admits 'published' and 'reviewed' and
+   * nothing else. An entry recorded at 'human_draft' is on the record for ever
+   * and invisible to a buyer, and until this field existed the owner had no way
+   * to tell: the published page showed the raw benefit key and three dashes
+   * while this form said "Already recorded". See reachesTheBuyer() in steps.ts.
+   */
+  readonly publicStatus: string | null;
 }
 
 /** The whole record, as the edit form needs it. */

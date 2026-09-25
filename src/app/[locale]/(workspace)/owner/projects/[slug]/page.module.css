@@ -1,0 +1,59 @@
+/* One project's overview.
+
+   The two-column layout that used to be here - a sticky publication panel
+   beside a form 120 inputs long - went with the form. The record is eight pages
+   now, so this page is a short document read top to bottom: what the project is,
+   the index to its sections, the publication list, and the one act that belongs
+   to the whole record. */
+
+.page {
+  display: block;
+}
+
+.head {
+  padding-bottom: var(--s-6);
+  border-bottom: var(--rule);
+}
+
+.lead {
+  margin-top: var(--s-3);
+  max-width: var(--measure-prose);
+  font-size: var(--text-md);
+  color: var(--ink);
+}
+
+.away {
+  margin: var(--s-4) 0 0;
+  font-size: var(--text-sm);
+}
+.away a {
+  text-decoration: none;
+}
+.away a:hover {
+  text-decoration: underline;
+}
+
+/* One rule per part. The page is a document with parts, and the parts are
+   separated by a rule rather than by a coloured band. */
+.section {
+  margin-top: var(--s-7);
+  padding-top: var(--s-6);
+  border-top: 1px solid var(--border-strong);
+}
+
+.sectionLead {
+  margin: var(--s-3) 0 var(--s-5);
+  max-width: var(--measure-prose);
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}
+
+@media (max-width: 40rem) {
+  .lead {
+    font-size: var(--text-base);
+  }
+  .section {
+    margin-top: var(--s-6);
+    padding-top: var(--s-5);
+  }
+}

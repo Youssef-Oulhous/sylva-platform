@@ -59,6 +59,7 @@ const REPAIRED_PAGES: Record<string, readonly string[]> = {
     'vettingStatus.cell.notSet',
   ],
   '/owner': [
+    'owner.overviewTitle',
     'owner.title',
     'owner.lead',
     'owner.projects.empty',

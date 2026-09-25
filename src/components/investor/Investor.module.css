@@ -1,0 +1,257 @@
+/* --------------------------------------------------------------------------
+   The investor workspace.
+
+   ONE stylesheet for the whole area rather than a page.module.css per route,
+   for the reason the buyer area gives: four sections of one area must not drift
+   apart from each other in heading size, lead, or the rule under the header.
+
+   Document width, one column, left aligned. Nothing here is centred and no
+   figure is enlarged into a headline: a financing need is a fact a project has
+   stated, not a selling point, and rendering €1,200,000 at display size would
+   be this platform editorialising about somebody else's finances.
+
+   No colour carries meaning on its own anywhere in this file. Every state that
+   has a tint also has a word next to it.
+   -------------------------------------------------------------------------- */
+
+.page { max-width: 68rem; }
+
+.head {
+  padding-bottom: var(--s-5);
+  border-bottom: var(--rule);
+}
+.head h1 { font-size: var(--text-xl); }
+
+.lead {
+  margin: var(--s-3) 0 0;
+  font-size: var(--text-md);
+  color: var(--ink);
+  max-width: var(--measure-prose);
+}
+
+/* Whose record this is. On every page in the area, not only the overview: a
+   reader arriving at a deep link should not have to go looking for it. */
+.org {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-2) var(--s-5);
+  margin: var(--s-4) 0 0;
+}
+.orgLabel {
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-muted);
+}
+.orgName { font-size: var(--text-sm); font-weight: 500; }
+
+.section { margin-top: var(--s-7); }
+.section > h2 { font-size: var(--text-lg); }
+.sectionIntro {
+  margin: var(--s-3) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+/* A statement about the page, in the flow of the document. */
+.note {
+  margin: var(--s-4) 0 0;
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+/* Something the page could not read. A sentence, never a stack trace. */
+.failure {
+  margin: var(--s-5) 0 0;
+  padding: var(--s-3) var(--s-4);
+  background: var(--tint-error);
+  border: 1px solid var(--tint-error-ink);
+  border-radius: var(--radius);
+  color: var(--tint-error-ink);
+  font-size: var(--text-sm);
+  max-width: var(--measure-prose);
+}
+
+/* -- a bordered block of prose -------------------------------------------- */
+
+.panel {
+  margin-top: var(--s-5);
+  padding: var(--s-4) var(--s-5);
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius);
+}
+.panelHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-3);
+}
+.panelTitle { font-size: var(--text-base); margin: 0; }
+.panelBody {
+  margin: var(--s-3) 0 0;
+  font-size: var(--text-sm);
+  line-height: var(--leading-body);
+  max-width: var(--measure-prose);
+}
+.panelBody + .panelBody { margin-top: var(--s-3); }
+
+/* The gate. Warning tint AND the word: an unapproved organisation is told in
+   writing, not by a colour. */
+.gate {
+  border-color: var(--tint-warning-ink);
+  background: var(--tint-warning);
+}
+.gate .panelBody { color: var(--ink); }
+
+.inlineLink { font-size: var(--text-sm); }
+
+/* -- two lists of sentences, side by side -------------------------------- */
+
+.twoCol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-4);
+  align-items: start;
+}
+@media (max-width: 60rem) {
+  .twoCol { grid-template-columns: 1fr; }
+}
+
+.points { margin: var(--s-3) 0 0; padding: 0 0 0 var(--s-4); }
+.points li {
+  font-size: var(--text-sm);
+  line-height: var(--leading-body);
+  margin-bottom: var(--s-2);
+  max-width: var(--measure-prose);
+}
+
+/* -- counts --------------------------------------------------------------- */
+
+.counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-4);
+  margin: var(--s-4) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.count {
+  flex: 1 1 12rem;
+  padding: var(--s-3) var(--s-4);
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius);
+}
+/* --text-lg, not --text-2xl: a row count is not a headline. */
+.countValue { display: block; font-size: var(--text-lg); font-variant-numeric: tabular-nums; }
+.countLabel { display: block; font-size: var(--text-xs); color: var(--ink-muted); margin-top: var(--s-1); }
+
+/* -- the section index on the overview ------------------------------------ */
+
+.routes { display: grid; gap: var(--s-3); margin: var(--s-4) 0 0; padding: 0; list-style: none; }
+.route {
+  padding: var(--s-3) var(--s-4);
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius);
+}
+.routeName { font-size: var(--text-base); font-weight: 500; }
+.routeNote {
+  display: block;
+  margin-top: var(--s-1);
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+/* -- one project seeking finance ----------------------------------------- */
+
+.project {
+  margin-top: var(--s-5);
+  padding: var(--s-5);
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius);
+}
+.projectHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding-bottom: var(--s-3);
+  border-bottom: var(--rule);
+}
+.projectTitle { font-size: var(--text-lg); margin: 0; }
+.projectMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-1) var(--s-4);
+  margin: var(--s-2) 0 0;
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+}
+
+.facts { margin: var(--s-4) 0 0; }
+.fact { padding: var(--s-3) 0; border-bottom: var(--rule); }
+.fact:last-child { border-bottom: none; }
+.factLabel {
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-muted);
+}
+.factValue {
+  margin: var(--s-1) 0 0;
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  max-width: var(--measure-prose);
+}
+/* A money figure sits at body size and in tabular numerals. It is somebody
+   else's stated need, not a price this platform is advertising. */
+.money { font-variant-numeric: tabular-nums; font-weight: 500; }
+.quiet { color: var(--ink-muted); }
+
+.projectActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3) var(--s-5);
+  margin: var(--s-4) 0 0;
+  padding-top: var(--s-4);
+  border-top: var(--rule);
+  font-size: var(--text-sm);
+}
+
+.stampRow { margin-top: var(--s-3); }
+
+/* -- tables --------------------------------------------------------------- */
+
+.table { margin-top: var(--s-4); }
+.mono { font-family: var(--font-mono); font-size: var(--text-xs); }
+.caption { caption-side: top; }
+
+/* -- the organisation record --------------------------------------------- */
+
+.record { margin: var(--s-4) 0 0; }
+.recordRow {
+  display: grid;
+  grid-template-columns: 14rem minmax(0, 1fr);
+  gap: var(--s-3) var(--s-4);
+  padding: var(--s-3) 0;
+  border-bottom: var(--rule);
+}
+.recordRow:last-child { border-bottom: none; }
+.recordLabel { font-size: var(--text-sm); color: var(--ink-muted); margin: 0; }
+.recordValue { font-size: var(--text-sm); margin: 0; }
+
+@media (max-width: 40rem) {
+  .lead { font-size: var(--text-base); }
+  .section { margin-top: var(--s-6); }
+  .project { padding: var(--s-4); }
+  .projectTitle { font-size: var(--text-base); }
+  .recordRow { grid-template-columns: 1fr; gap: var(--s-1); }
+}

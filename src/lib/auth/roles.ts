@@ -62,14 +62,20 @@ export function actorFromSession(session: ResolvedSession): Actor {
  */
 export function homePathFor(roles: readonly string[]): string {
   switch (primaryRole(roles)) {
-    case 'operator':      return '/admin/vetting';
+    // /admin, not /admin/vetting: vetting is one of six duties, and an operator
+    // who landed on it could not see that a question had gone unanswered for a
+    // week. The overview is the work queue for all six.
+    case 'operator':      return '/admin';
     // /auditor, not /record: the public record is a strict subset of what an
     // auditor is there to read, and sending the role to it would look like the
     // whole of its access.
     case 'auditor':       return '/auditor';
     case 'project_owner': return '/owner';
     case 'buyer':         return '/dashboard';
-    case 'investor':      return '/dashboard';
+    // An investor used to land on /dashboard, which is the BUYER's workspace -
+    // it greeted them with "Buyer dashboard" and offered site registration,
+    // which is not an investor's feature. They have their own area now.
+    case 'investor':      return '/investor';
     default:              return '/projects';
   }
 }

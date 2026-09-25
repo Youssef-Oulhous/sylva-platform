@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1524" height="1419" viewBox="30 0 1524 1419">
+<rect x="30" y="0" width="1524" height="1419" fill="#fff"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#868e96"/></marker></defs>
+<text x="70" y="70.0" font-family="Helvetica,Arial,sans-serif" font-size="30" fill="#1e1e1e" font-weight="600">Sylva - who can do what</text>
+<text x="70" y="95.0" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#868e96">Every line verified on the running platform, 24 September 2026, by signing in as that account and trying it.</text>
+<text x="70" y="116.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1b5a78">+ built and seen working        ~ partly built        - refused, by the database and not by the interface</text>
+<rect x="70" y="138" width="250" height="26" rx="5" fill="#e8f0ec" stroke="#1f4d3a" stroke-width="1"/>
+<text x="82" y="155.0" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1f4d3a">BRINGS SOMETHING TO THE PLATFORM</text>
+<rect x="335" y="138" width="200" height="26" rx="5" fill="#e1f3fe" stroke="#1b5a78" stroke-width="1"/>
+<text x="347" y="155.0" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#1b5a78">RUNS / CHECKS THE PLATFORM</text>
+<rect x="550" y="138" width="175" height="26" rx="5" fill="#faf7f0" stroke="#8a5a00" stroke-width="1"/>
+<text x="562" y="155.0" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#8a5a00">NO LOGIN ACCOUNT</text>
+<text x="70" y="194.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1f4d3a">THE THREE WHO BRING SOMETHING</text>
+<rect x="70" y="200" width="452" height="382" rx="5" fill="#e8f0ec" stroke="#1f4d3a" stroke-width="1"/>
+<rect x="70" y="200" width="452" height="34" rx="5" fill="#1f4d3a" stroke="#1f4d3a" stroke-width="1"/>
+<text x="86" y="224.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#ffffff" font-weight="600">1   PROJECT OWNER</text>
+<text x="86" y="253.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#1f4d3a">owner.a@demo.sylva.example</text>
+<text x="86" y="274.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">Runs the restoration. Needs buyers and financing.</text>
+<text x="86" y="294.0" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#1f4d3a">CAN</text>
+<text x="86" y="312.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Create a project: name, location, boundary, catchment</text>
+<text x="86" y="329.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Outcomes: baseline, verifier, stated uncertainty</text>
+<text x="86" y="346.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Claim rights, with the exclusions</text>
+<text x="86" y="363.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Partners: developer, land owner, verifier</text>
+<text x="86" y="380.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Availability: periods, expected, BUFFER, unit type</text>
+<text x="86" y="397.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Upload documents (idea note, design document)</text>
+<text x="86" y="414.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Every figure paired with its source + as-of date</text>
+<text x="86" y="431.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Answer buyers&#x27; private questions</text>
+<text x="86" y="448.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  See what is still blocking publication</text>
+<text x="86" y="465.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#8a5a00">~  Durability section, submit-for-review button</text>
+<text x="86" y="486.0" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#9f2f2d">CANNOT</text>
+<text x="86" y="504.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#868e96">-  Publish its own project - only Sylva can</text>
+<text x="86" y="521.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#868e96">-  Touch another owner&#x27;s project</text>
+<text x="86" y="538.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#868e96">-  Edit anything: append-only, an edit is version + 1</text>
+<polyline points="86,551 506.0,551" fill="none" stroke="#868e96" stroke-width="1"/>
+<text x="86" y="569.0" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#8a5a00">13 forms, 120 inputs at /owner/projects/[slug]</text>
+<rect x="566" y="200" width="452" height="365" rx="5" fill="#e8f0ec" stroke="#1f4d3a" stroke-width="1"/>
+<rect x="566" y="200" width="452" height="34" rx="5" fill="#1f4d3a" stroke="#1f4d3a" stroke-width="1"/>
+<text x="582" y="224.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#ffffff" font-weight="600">2   BUYER / COMPANY</text>
+<text x="582" y="253.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#1f4d3a">buyer.a@demo.sylva.example</text>
+<text x="582" y="274.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">Wants units, or the benefit. Asks: is this relevant to me?</text>
+<text x="582" y="294.0" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#1f4d3a">CAN</text>
+<text x="582" y="312.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Register its own sites (factory, brewery, plant)</text>
+<text x="582" y="329.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  DISTANCE from its sites to each project</text>
+<text x="582" y="346.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Same-catchment yes/no answer</text>
+<text x="582" y="363.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Read claim rights and what is EXCLUDED</text>
+<text x="582" y="380.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Availability per period, with the unit named</text>
+<text x="582" y="397.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Verifier, monitoring plan, documents</text>
+<text x="582" y="414.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Ask a PRIVATE question (no public comments exist)</text>
+<text x="582" y="431.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Express interest -&gt; deal + permanent record entry</text>
+<text x="582" y="448.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Complete vetting, track its status</text>
+<text x="582" y="469.0" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#9f2f2d">CANNOT</text>
+<text x="582" y="487.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#868e96">-  See another buyer&#x27;s sites, deals, terms or identity</text>
+<text x="582" y="504.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#868e96">-  See investor financials - shows WITHHELD</text>
+<text x="582" y="521.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#868e96">-  Reach the owner, admin or auditor areas</text>
+<polyline points="582,534 1002.0,534" fill="none" stroke="#868e96" stroke-width="1"/>
+<text x="582" y="552.0" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#8a5a00">Verified: 23 km and 241 km to the Havel project</text>
+<rect x="1062" y="200" width="452" height="314" rx="5" fill="#e8f0ec" stroke="#1f4d3a" stroke-width="1"/>
+<rect x="1062" y="200" width="452" height="34" rx="5" fill="#1f4d3a" stroke="#1f4d3a" stroke-width="1"/>
+<text x="1078" y="224.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#ffffff" font-weight="600">3   INVESTOR</text>
+<text x="1078" y="253.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#1f4d3a">investor.a@demo.sylva.example</text>
+<text x="1078" y="274.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">A bank or fund. Finances the project, repaid from revenue.</text>
+<text x="1078" y="294.0" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#1f4d3a">CAN</text>
+<text x="1078" y="312.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Everything the public can see</text>
+<text x="1078" y="329.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  FINANCING NEED - nobody else sees this</text>
+<text x="1078" y="346.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Revenue streams the project expects</text>
+<text x="1078" y="363.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Download the financial model</text>
+<text x="1078" y="380.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Ask a private question</text>
+<text x="1078" y="397.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Complete vetting</text>
+<text x="1078" y="418.0" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#9f2f2d">CANNOT</text>
+<text x="1078" y="436.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#868e96">-  Register sites - that is a buyer&#x27;s feature</text>
+<text x="1078" y="453.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#868e96">-  EXPRESS INTEREST - only buyers can create a deal</text>
+<text x="1078" y="470.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#868e96">-  Reach the owner, admin or auditor areas</text>
+<polyline points="1078,483 1498.0,483" fill="none" stroke="#868e96" stroke-width="1"/>
+<text x="1078" y="501.0" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#8a5a00">No return, yield or IRR anywhere - not ours to state</text>
+<text x="70" y="634.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1b5a78">RUNS THE PLATFORM, AND CHECKS IT</text>
+<rect x="70" y="640" width="452" height="297" rx="5" fill="#e1f3fe" stroke="#1b5a78" stroke-width="1"/>
+<rect x="70" y="640" width="452" height="34" rx="5" fill="#1b5a78" stroke="#1b5a78" stroke-width="1"/>
+<text x="86" y="664.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#ffffff" font-weight="600">4   SYLVA OPERATOR</text>
+<text x="86" y="693.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#1b5a78">operator@demo.sylva.example</text>
+<text x="86" y="714.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">Sylva itself. Decides who may transact, and what goes public.</text>
+<text x="86" y="734.0" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#1f4d3a">CAN</text>
+<text x="86" y="752.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Vetting queue: approve / decline / suspend</text>
+<text x="86" y="769.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Every decision needs a written reason</text>
+<text x="86" y="786.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Approval is DERIVED from the decision by trigger</text>
+<text x="86" y="803.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Publish a project, once the gate passes</text>
+<text x="86" y="820.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  See real identities behind a pseudonym</text>
+<text x="86" y="837.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#8a5a00">~  Confirm and correct transaction records</text>
+<text x="86" y="858.0" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#9f2f2d">CANNOT</text>
+<text x="86" y="876.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#868e96">-  Force publication past the gate - the DB refuses</text>
+<text x="86" y="893.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#868e96">-  Edit or delete a record entry - corrections are NEW rows</text>
+<polyline points="86,906 506.0,906" fill="none" stroke="#868e96" stroke-width="1"/>
+<text x="86" y="924.0" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#8a5a00">/admin/record is a 404 - not built yet</text>
+<rect x="566" y="640" width="452" height="278" rx="5" fill="#e1f3fe" stroke="#1b5a78" stroke-width="1"/>
+<rect x="566" y="640" width="452" height="34" rx="5" fill="#1b5a78" stroke="#1b5a78" stroke-width="1"/>
+<text x="582" y="664.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#ffffff" font-weight="600">5   AUDITOR</text>
+<text x="582" y="693.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#1b5a78">auditor@demo.sylva.example</text>
+<text x="582" y="714.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">For the funder and external audit. Inspects, changes nothing.</text>
+<text x="582" y="734.0" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#1f4d3a">CAN</text>
+<text x="582" y="752.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Read EVERYTHING, including drafts</text>
+<text x="582" y="769.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Non-public record entries</text>
+<text x="582" y="786.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Organisation names, always</text>
+<text x="582" y="803.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Documents, registry references, verification</text>
+<text x="582" y="824.0" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#9f2f2d">CANNOT</text>
+<text x="582" y="842.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#868e96">-  Write anything, anywhere, ever</text>
+<text x="582" y="859.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#868e96">-  Create a deal or buy a unit</text>
+<polyline points="582,872 1002.0,872" fill="none" stroke="#868e96" stroke-width="1"/>
+<text x="582" y="890.0" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#8a5a00">Only button on the page is Sign out. A guard walks every</text>
+<text x="582" y="903.8" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#8a5a00">table and fails if the auditor holds any write privilege.</text>
+<rect x="1062" y="640" width="452" height="279" rx="5" fill="#f5f5f3" stroke="#868e96" stroke-width="1"/>
+<rect x="1062" y="640" width="452" height="34" rx="5" fill="#868e96" stroke="#868e96" stroke-width="1"/>
+<text x="1078" y="664.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#ffffff" font-weight="600">6   ANONYMOUS VISITOR</text>
+<text x="1078" y="693.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#868e96">no account needed</text>
+<text x="1078" y="714.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">Discovers projects. The page is shareable and indexable.</text>
+<text x="1078" y="734.0" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#1f4d3a">CAN</text>
+<text x="1078" y="752.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Browse the projects index</text>
+<text x="1078" y="769.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Read a full project page, all 11 sections</text>
+<text x="1078" y="786.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Download the boundary GeoJSON</text>
+<text x="1078" y="803.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Read the public transaction record</text>
+<text x="1078" y="820.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  See a buyer as &#x27;Buyer 014&#x27;, with sector and country</text>
+<text x="1078" y="841.0" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#9f2f2d">CANNOT</text>
+<text x="1078" y="859.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#868e96">-  See an unpublished project - returns nothing, not a 403</text>
+<text x="1078" y="876.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#868e96">-  See any buyer&#x27;s site locations</text>
+<text x="1078" y="893.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#868e96">-  See investor financials</text>
+<text x="1078" y="910.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#868e96">-  See a buyer&#x27;s real name unless THAT deal was disclosed</text>
+<text x="70" y="989.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#8a5a00">NAMED ON THE PLATFORM, BUT NOT USERS OF IT</text>
+<rect x="70" y="995" width="452" height="246" rx="5" fill="#faf7f0" stroke="#8a5a00" stroke-width="1"/>
+<rect x="70" y="995" width="452" height="34" rx="5" fill="#8a5a00" stroke="#8a5a00" stroke-width="1"/>
+<text x="86" y="1019.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#ffffff" font-weight="600">7   INDEPENDENT VERIFIER</text>
+<text x="86" y="1048.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a5a00">no account - information only</text>
+<text x="86" y="1069.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">Checks whether the ecological result meets the scheme&#x27;s rules.</text>
+<text x="86" y="1089.0" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#1f4d3a">CAN</text>
+<text x="86" y="1107.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Named on every project page</text>
+<text x="86" y="1124.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Their monitoring plan is shown</text>
+<text x="86" y="1141.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Baseline and stated uncertainty shown</text>
+<text x="86" y="1162.0" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#9f2f2d">CANNOT</text>
+<text x="86" y="1180.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#868e96">-  Log in - there is no verifier account</text>
+<text x="86" y="1197.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#868e96">-  Act on the platform at all</text>
+<polyline points="86,1210 506.0,1210" fill="none" stroke="#868e96" stroke-width="1"/>
+<text x="86" y="1228.0" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#8a5a00">The note defines no verifier workflow, so we invented none</text>
+<rect x="566" y="995" width="452" height="244" rx="5" fill="#faf7f0" stroke="#8a5a00" stroke-width="1"/>
+<rect x="566" y="995" width="452" height="34" rx="5" fill="#8a5a00" stroke="#8a5a00" stroke-width="1"/>
+<text x="582" y="1019.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#ffffff" font-weight="600">8   LANDOWNER</text>
+<text x="582" y="1048.0" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#8a5a00">no account - information only</text>
+<text x="582" y="1069.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">Owns the land. NOT necessarily the one running the project.</text>
+<text x="582" y="1089.0" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#1f4d3a">CAN</text>
+<text x="582" y="1107.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  Named on the project page, separately from the developer</text>
+<text x="582" y="1124.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">+  A buyer can see who controls the land, and for how long</text>
+<text x="582" y="1145.0" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#9f2f2d">CANNOT</text>
+<text x="582" y="1163.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#868e96">-  Log in - there is no landowner account</text>
+<text x="582" y="1180.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#868e96">-  Act on the platform at all</text>
+<polyline points="582,1193 1002.0,1193" fill="none" stroke="#868e96" stroke-width="1"/>
+<text x="582" y="1211.0" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#8a5a00">The landowner may be the project owner, or may not be -</text>
+<text x="582" y="1224.8" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#8a5a00">the project page names both, separately</text>
+<rect x="1062" y="995" width="452" height="232" rx="5" fill="#ffffff" stroke="#868e96" stroke-width="1"/>
+<text x="1078" y="1024.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#1e1e1e" font-weight="600">HOW THEY MEET</text>
+<text x="1078" y="1051.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1f4d3a">Owner</text>
+<text x="1160" y="1051.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">puts the project up</text>
+<text x="1078" y="1076.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1f4d3a">Sylva</text>
+<text x="1160" y="1076.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">vets the organisations, publishes</text>
+<text x="1078" y="1101.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1f4d3a">Buyer</text>
+<text x="1160" y="1101.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">reads the evidence, expresses interest</text>
+<text x="1078" y="1126.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1f4d3a">Investor</text>
+<text x="1160" y="1126.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">reads the financing, may fund it</text>
+<text x="1078" y="1151.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1f4d3a">Verifier</text>
+<text x="1160" y="1151.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">checks the result on the ground</text>
+<text x="1078" y="1176.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1f4d3a">Units</text>
+<text x="1160" y="1176.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">the scheme issues them, in ITS registry</text>
+<text x="1078" y="1201.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1f4d3a">Auditor</text>
+<text x="1160" y="1201.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">reads the whole trail afterwards</text>
+<rect x="70" y="1287" width="1444" height="92" rx="5" fill="#e1f3fe" stroke="#1b5a78" stroke-width="1"/>
+<text x="88" y="1316.0" font-family="Helvetica,Arial,sans-serif" font-size="15" fill="#1b5a78" font-weight="600">THE SAME RULE UNDER ALL EIGHT</text>
+<text x="88" y="1339.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">Role comes from the PostgreSQL role and cannot be forged. Organisation comes from an HMAC-signed context and cannot be forged.</text>
+<text x="88" y="1354.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">So the screen never decides who sees what - it asks, and the database answers. A buyer asking Postgres directly for another buyer&#x27;s</text>
+<text x="88" y="1369.0" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#1e1e1e">sites gets zero rows; for a pseudonym&#x27;s organisation, &quot;permission denied&quot;. Tested as each role, not assumed.</text>
+</svg>

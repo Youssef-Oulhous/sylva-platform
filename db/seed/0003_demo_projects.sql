@@ -97,8 +97,29 @@ SELECT
   ('b1000000-0000-0000-0000-00000000000' || n)::uuid,
   1, 'eu-central-1', 'sylva-demo-documents',
   'demo/' || n || '.pdf',
-  public.digest('DEMO placeholder document ' || n, 'sha256'),
-  120000 + n * 1000, 'application/pdf', 'en',
+  -- The sha256 of the ACTUAL bytes scripts/make-demo-documents.ts writes for
+  -- this key. It used to be the hash of a sentence, which meant the recorded
+  -- hash matched nothing on disk: the document route verifies content_sha256
+  -- before serving, so every seeded document failed with "stored copy could
+  -- not be confirmed". The generator is deterministic, so these literals are
+  -- stable; ci.assert_demo_documents_match() fails if they ever drift.
+  (ARRAY[
+    decode('0be5d4466abe3d8ebdaa13dc6d5ce1b045425e4576576f3462f6ba4d451b9ae8','hex'),
+    decode('09bf35e8cd12bfe270871a47a7afb89b0ffbbc5f689c7a8ce4e300cefb67692c','hex'),
+    decode('37e9b191dbb7a81a66c21091d952b8686f5427c34f7590b14c821db97e1b7969','hex'),
+    decode('3858472cd835d9171cceafbecdbc72e743f6d27a2e266852427047ebc7dca1e2','hex'),
+    decode('640f9f792b40124043ad33768e2abf7fa890a16b0e65a5066f38910d6d0ccf18','hex'),
+    decode('1099d0d2d6055d3e0ef8288045535c8441bff2d2ca99e74ff33b41869f88e7e6','hex'),
+    decode('7fcecbbb587b57e4b00267c0e4f75a954c3de11d1c27c47f0f3dfb276e3e723d','hex'),
+    decode('6e9be6798e92c824ac4630e3736bd46c3228ba37722e88f07ec8dcd5e364a64b','hex')
+  ])[n],
+  -- The ACTUAL byte size of the placeholder, for the same reason as the
+  -- hash above: the single-document route verifies size AND hash before
+  -- serving, so an invented number meant every document failed with
+  -- "size disagrees with record". The zip route checked only the hash,
+  -- which is why the bundle downloaded while its own contents would not.
+  (ARRAY[1451,1457,1449,1449,1447,1453,1445,1445])[n],
+  'application/pdf', 'en',
   CASE WHEN n <= 4 THEN '0a000000-0000-0000-0000-00000000000a'::uuid
                    ELSE '0b000000-0000-0000-0000-00000000000b'::uuid END,
   CASE WHEN n <= 4 THEN 'b0000000-0000-0000-0000-0000000000b1'::uuid

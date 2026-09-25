@@ -4,7 +4,6 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { routing } from '@/lib/i18n/routing';
 import { isLocale } from '@/lib/i18n/config';
-import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import styles from '@/components/SiteChrome.module.css';
 import '@/styles/globals.css';
@@ -45,6 +44,11 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <body>
         <NextIntlClientProvider>
+          {/* No header here any more. There are two shells and the root does
+              not know which one applies: (public) renders the marketing header,
+              (workspace) renders the signed-in bar with that role's sections.
+              The demo notice and the EU funding footer are common to both and
+              stay here, because the note requires them on EVERY page. */}
           <a href="#main" className="skip-link">{t('site.skipToContent')}</a>
 
           {/* Demo data is stated at the top of every page. The brief requires
@@ -57,7 +61,6 @@ export default async function LocaleLayout({
             </div>
           </div>
 
-          <SiteHeader />
           <main id="main" className={styles.main}>{children}</main>
           <SiteFooter locale={locale} />
         </NextIntlClientProvider>

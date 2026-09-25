@@ -8,6 +8,7 @@ import { getViewer } from '@/lib/auth/session';
 import { primaryRole } from '@/lib/auth/roles';
 import { logAuthFailure } from '@/lib/auth/errors';
 import { codeForAdminError, missingFromGateError, type AdminErrorCode } from './errors';
+import type { CorrectionErrorCode } from './labels';
 import {
   AlreadyPublishedError,
   UnknownApplicationError,
@@ -15,6 +16,7 @@ import {
   publishProject,
   recordDecision,
 } from './queries';
+import { correctionErrorCode, isRecordScope, recordCorrection } from './record';
 import { ADMIN_DECISION_CHOICES } from './types';
 
 /**
@@ -60,6 +62,19 @@ const PublishForm = z.object({
   projectId: z.string().uuid(),
 });
 
+/**
+ * A correcting entry on the transaction record.
+ *
+ * `entry` is the public_id of the entry being corrected - a uuid, so a slug or
+ * an entry_no is rejected before it reaches a statement. Ten characters of
+ * reason for the same reason a decision needs one: the record is append-only,
+ * so an entry recorded without an explanation can never be edited to add one.
+ */
+const CorrectionForm = z.object({
+  entry: z.string().uuid(),
+  reason: z.string().trim().min(10).max(4000),
+});
+
 interface Operator {
   readonly locale: string;
   readonly actor: Actor;
@@ -94,8 +109,8 @@ async function requireOperator(returnTo: string): Promise<Operator> {
 
 function fail(
   locale: string,
-  pathname: '/admin/vetting' | '/admin/projects',
-  error: AdminErrorCode,
+  pathname: '/admin/vetting' | '/admin/projects' | '/admin/record',
+  error: AdminErrorCode | CorrectionErrorCode,
   extra: Record<string, string> = {},
 ): never {
   redirectTo({ href: { pathname, query: { error, ...extra } }, locale });
@@ -220,4 +235,89 @@ function isRedirectError(err: unknown): boolean {
     && typeof (err as { digest: unknown }).digest === 'string'
     && (err as { digest: string }).digest.startsWith('NEXT_REDIRECT')
   );
+}
+
+/* --------------------------------------------------------- THE RECORD ----- */
+
+/**
+ * A correcting entry on the transaction record.
+ *
+ * R4: the record is append-only. Nothing is edited and nothing is deleted; a
+ * mistake is corrected by a new entry that points at the wrong one, and the
+ * wrong one stays visible. That is not a convention this action follows - three
+ * ALWAYS triggers on record.entry refuse UPDATE, DELETE and TRUNCATE, so it is
+ * the only thing this action COULD do.
+ *
+ * The form contributes two values: which entry, and why. Everything else -
+ * which project, which deal, which counterparties, the operator's organisation
+ * and the non-personal label the entry is signed with - is copied from the row
+ * being corrected or read from the session inside one statement. So a crafted
+ * post cannot attach a correction to a project it was not sent from, and cannot
+ * sign it as somebody else.
+ *
+ * The reason is NOT carried back in the query string on failure. A recorded
+ * reason is somebody's words about a transaction and must not end up in a
+ * server log; the person retypes it, which is the cheaper mistake.
+ */
+export async function recordCorrectionAction(formData: FormData): Promise<void> {
+  const op = await requireOperator('/admin/record');
+
+  const parsed = CorrectionForm.safeParse({
+    entry: formData.get('entry'),
+    reason: formData.get('reason'),
+  });
+
+  // The filter the form was sent from, so the redirect lands on the same view
+  // the operator was looking at rather than resetting it.
+  const view = readView(formData);
+
+  if (!parsed.success) {
+    const reasonFailed = parsed.error.issues.some((i) => i.path[0] === 'reason');
+    fail(
+      op.locale,
+      '/admin/record',
+      reasonFailed ? 'reason_required' : 'invalid_input',
+      view,
+    );
+  }
+
+  let corrected: string;
+  try {
+    const result = await recordCorrection(op.actor, {
+      targetPublicId: parsed.data.entry,
+      reason: parsed.data.reason,
+    });
+    corrected = result.shortRef;
+  } catch (err) {
+    if (isRedirectError(err)) throw err;
+    logAuthFailure('admin.recordCorrection', err);
+    fail(op.locale, '/admin/record', correctionErrorCode(err), view);
+  }
+
+  redirectTo({
+    href: { pathname: '/admin/record', query: { ...view, corrected } },
+    locale: op.locale,
+  });
+}
+
+/**
+ * The filter fields the correction form carries so the redirect returns to the
+ * same view. Each is re-validated on the way out: a scope that is not one of
+ * the three is dropped rather than echoed back into a URL.
+ */
+function readView(formData: FormData): Record<string, string> {
+  const out: Record<string, string> = {};
+  const project = formData.get('project');
+  const event = formData.get('event');
+  const scope = formData.get('scope');
+  const page = formData.get('page');
+  if (typeof project === 'string' && project.length > 0 && project.length <= 120) {
+    out.project = project;
+  }
+  if (typeof event === 'string' && event.length > 0 && event.length <= 64) {
+    out.event = event;
+  }
+  if (isRecordScope(scope)) out.scope = scope;
+  if (typeof page === 'string' && /^[1-9][0-9]{0,3}$/.test(page)) out.page = page;
+  return out;
 }

@@ -156,8 +156,16 @@ export interface VettingStatus {
  * on the previous day, and a vetting decision dated one day early is a fact
  * about the record that we would have invented.
  */
-export function dateOf(ts: string | null | undefined): string | null {
+export function dateOf(ts: string | Date | null | undefined): string | null {
   if (!ts) return null;
+  // A query that forgets ::text hands us a Date, not a string. That cost this
+  // platform a permanent 500 on /vetting for any organisation that had saved a
+  // draft, because the row type claimed `string` and pg cannot contradict a
+  // type annotation. Accept both rather than trust the annotation.
+  if (ts instanceof Date) {
+    return Number.isNaN(ts.getTime()) ? null : ts.toISOString().slice(0, 10);
+  }
+  if (typeof ts !== 'string') return null;
   const d = ts.slice(0, 10);
   return /^\d{4}-\d{2}-\d{2}$/.test(d) ? d : null;
 }

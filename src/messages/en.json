@@ -472,7 +472,7 @@
       "appendOnlyTitle": "Nothing is edited and nothing is deleted",
       "appendOnlyBody": "A mistake is corrected by a new entry that points at the entry it corrects. The corrected entry stays visible, in date order, marked as superseded. A superseded entry is still part of the record.",
       "labelTitle": "Counterparties are labelled, not named",
-      "labelBody": "A buyer appears as a label such as “Buyer 014”, together with its sector, country and size band. Labels are allocated per project and per deal: the same label on two projects is not the same organisation, and two deals by one organisation on one project carry different labels.",
+      "labelBody": "A buyer appears as a label such as “Buyer 014”, together with its sector, country and size band. Labels are allocated per project and per deal. Two deals by one organisation on the same project carry different labels, so naming one deal does not name the other. Numbering restarts on each project, so a label carries no meaning across projects: the same label on two projects may or may not be the same organisation, and nothing here tells you which.",
       "disclosureTitle": "Being named is the counterparty's choice, deal by deal",
       "disclosureBody": "Where a counterparty has chosen to be named for a deal, the organisation is named on that deal's entries from the date of that choice onward. Entries published before that date keep the label they were published with, because nothing already published is rewritten.",
       "ownerTitle": "Project owners are named",
@@ -2224,7 +2224,7 @@
       "privateTitle": "There is no public comment thread",
       "privateBody": "Questions and replies stay between the buyer, you and Sylva. Nothing on this page appears on the project page or in the public transaction record.",
       "identityTitle": "How the buyer appears",
-      "identityBody": "A buyer appears under the label it has for that deal, such as Buyer 003, unless it has chosen to be named for that deal. Labels start again at 001 on each project, so the same label on two projects is not the same organisation."
+      "identityBody": "A buyer appears under the label it has for that deal, such as Buyer 003, unless it has chosen to be named for that deal. Numbering restarts on each project, so a label carries no meaning across projects — it may or may not be the same organisation. Use the reconciliation below rather than the labels to follow one organisation."
     },
     "inbox": {
       "title": "Inbox",
@@ -2771,6 +2771,7 @@
     }
   },
   "owner": {
+    "overviewTitle": "What your projects need",
     "title": "Your projects",
     "metaDescription": "The projects you run on the platform: what each still needs before publication, the questions buyers are waiting on, and the interest awaiting a response.",
     "lead": "What each project still needs before it can be published, what buyers are waiting for an answer to, and what interest is waiting for a response.",
@@ -3631,5 +3632,57 @@
   "adminUi.error.gateBlocked": "The database refused to publish this project because the publication gate is not complete. The items still missing are listed below. Recording them happens on the project’s own screens.",
   "adminUi.error.alreadyPublished": "This project is already on the public index, so nothing was changed. Reload the page to see its current state.",
   "adminUi.error.reasonRequired": "A decision needs a reason of at least ten characters. The record is append-only, so an entry recorded without one can never be edited to explain itself.",
-  "adminUi.error.unknownApplication": "That application is not one this queue holds. It may have been replaced by a newer application from the same organisation."
+  "adminUi.error.unknownApplication": "That application is not one this queue holds. It may have been replaced by a newer application from the same organisation.",
+  "workspace": {
+    "backToSite": "Public site",
+    "actingFor": "Acting for",
+    "role": {
+      "buyer": "Buyer",
+      "project_owner": "Project owner",
+      "investor": "Investor",
+      "operator": "Operator",
+      "auditor": "Auditor"
+    },
+    "buyer": {
+      "title": "Buyer workspace",
+      "overview": "Overview",
+      "interests": "My interests",
+      "sites": "My sites",
+      "documents": "Documents",
+      "organisation": "Organisation"
+    },
+    "owner": {
+      "title": "Project owner workspace",
+      "overview": "Overview",
+      "projects": "My projects",
+      "questions": "Questions",
+      "interest": "Interest received",
+      "organisation": "Organisation"
+    },
+    "investor": {
+      "title": "Investor workspace",
+      "overview": "Overview",
+      "projects": "Projects seeking finance",
+      "interests": "My interests",
+      "organisation": "Organisation"
+    },
+    "operator": {
+      "title": "Sylva operations",
+      "overview": "Overview",
+      "vetting": "Vetting queue",
+      "projects": "Projects",
+      "record": "Transaction record",
+      "questions": "Questions",
+      "organisations": "Organisations"
+    },
+    "auditor": {
+      "title": "Auditor workspace",
+      "overview": "Overview",
+      "record": "Transaction record",
+      "projects": "Projects",
+      "deals": "Deals",
+      "organisations": "Organisations",
+      "accessLog": "Access log"
+    }
+  }
 }

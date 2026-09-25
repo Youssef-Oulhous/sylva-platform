@@ -126,3 +126,136 @@ export interface BuyerDashboard {
   sites: BuyerSite[];
   documents: DashboardDocument[];
 }
+
+/* -- The deal an interest opened ------------------------------------------- */
+
+/**
+ * The deal that followed one expressed interest, as the buyer may read it.
+ *
+ * SEPARATE FROM THE INTEREST, and nullable, because the two are separate facts.
+ * An interest is an entry on the append-only record; a deal is a private room
+ * Sylva opens between the buyer and the project owner, and most interests do
+ * not have one. A shape of `null` is a deal whose shape has not been stated
+ * yet, which is not the same thing as a deal that is a spot purchase.
+ *
+ * RULE 7 AGAIN. There is no volume field here, and there must not be one. This
+ * shape is rendered in a list spanning several projects - exactly the list the
+ * rule is about. deal.interest_volume exists and is read one project at a time,
+ * on the project's own page, never here.
+ *
+ * `pseudonym` is the label the PUBLIC record carries for this organisation on
+ * this deal, from deal.deal_pseudonym. It is allocated per deal, a second time
+ * over the per-project label, so that two of an organisation's deals cannot be
+ * linked to each other through it either. No public-facing role holds a column
+ * grant on deal.deal_pseudonym.org_id, so the row is reached by joining through
+ * deal.deal, whose policy admits the two parties and nobody else.
+ */
+export interface InterestDeal {
+  /** deal.deal_shape.code, or null where the shape has not been stated. */
+  shapeCode: string | null;
+  /** deal.deal_shape.label_en. A FALLBACK: that table has no German label. */
+  shapeLabelEn: string | null;
+  /** deal.deal_stage.code. */
+  stageCode: string;
+  /** deal.deal_stage.label_en. A FALLBACK, for the same reason. */
+  stageLabelEn: string | null;
+  /** True where the stage ends the deal, whichever way it ended. */
+  stageIsTerminal: boolean;
+  /** True where this organisation chose to be NAMED on this deal. */
+  disclosed: boolean;
+  openedOn: string;
+  /** deal.deal_pseudonym.label, allocated per deal. */
+  pseudonym: string | null;
+}
+
+/** One expressed interest, with the deal it opened where there is one. */
+export interface BuyerInterest extends ExpressedInterest {
+  /**
+   * The per-PROJECT label from org.own_public_labels(). What the public record
+   * carries for the interest entry itself, which is a different allocation from
+   * the deal pseudonym above.
+   */
+  projectLabel: string | null;
+  deal: InterestDeal | null;
+}
+
+/* -- Project documents a buyer can reach ----------------------------------- */
+
+/**
+ * A document of a project this organisation has expressed interest in.
+ *
+ * WHICH ROWS COME BACK IS THE DATABASE'S ANSWER, not this application's. There
+ * is no `visibility = 'public'` filter in the query behind this shape, and
+ * there must never be one: the six visibility classes are row-level policies on
+ * doc.document (migrations 0017 and 0056), so an approved buyer is shown the
+ * public documents and the vetted-buyer documents because the policy says so.
+ * The class is carried here and printed, so a reader can see on what footing
+ * each file is offered rather than having to assume.
+ */
+export interface ProjectDocument {
+  id: string;
+  projectSlug: string;
+  projectTitle: string;
+  /** doc.document_kind.code. */
+  kind: string;
+  /** doc.document_kind.label_en. A fallback; that table holds no German. */
+  kindLabel: string;
+  /** doc.visibility_class, as text. Printed, never used to decide anything. */
+  visibility: string;
+  versionNo: number | null;
+  uploadedOn: string | null;
+  mediaType: string | null;
+  byteSize: number | null;
+  /** False where the row exists but no version is readable and un-withdrawn. */
+  available: boolean;
+}
+
+/** Everything the Documents page shows, in the two groups it shows it in. */
+export interface BuyerDocuments {
+  /** Lodged by or with this organisation: vetting, deal rooms, agreements. */
+  own: DashboardDocument[];
+  /** Belonging to the projects this organisation expressed interest in. */
+  projects: ProjectDocument[];
+}
+
+/** Everything the Organisation page shows. */
+export interface BuyerOrganisationRecord {
+  organisation: DashboardOrganisation | null;
+  vetting: VettingRecord[];
+  publicLabels: PublicLabel[];
+}
+
+/* -- The overview ---------------------------------------------------------- */
+
+/**
+ * What the overview needs, and nothing else.
+ *
+ * COUNTS, NOT ROWS. The overview prints four figures and a status; reading the
+ * whole record to do it meant six statements and several hundred rows for four
+ * integers. Every figure here is a count of ROWS on this organisation's own
+ * record - never a unit volume, and never anything added across projects.
+ *
+ * `sitesVisible` is the honest version of a site count. geo.buyer_site is
+ * granted to the buyer, the operator and the auditor and to nobody else, so a
+ * viewer who holds no grant gets false rather than a zero that would read as
+ * "you have registered no sites".
+ */
+export interface BuyerOverview {
+  organisation: DashboardOrganisation | null;
+  /** The decision governing the buyer role, where the organisation has one. */
+  vetting: VettingRecord | null;
+  interests: number;
+  publicLabels: number;
+  sites: number;
+  sitesVisible: boolean;
+  documents: number;
+  /**
+   * Deals that have moved past the stage an expressed interest opens them at,
+   * and have not ended. This is the one that means "somebody is waiting for
+   * you": a deal sitting at interest_expressed was created BY the interest and
+   * is not news.
+   */
+  dealsAdvanced: number;
+  /** False where the viewer holds no grant on deal.deal - never "no deals". */
+  dealsVisible: boolean;
+}

@@ -466,6 +466,7 @@ const RECORD_CLAIMS_SQL = `
          c.benefit_key AS key, c.version_no,
          coalesce(ct_loc.benefit_label, ct_en.benefit_label, c.benefit_key) AS label,
          coalesce(ct_loc.exclusions, ct_en.exclusions, '') AS detail,
+         coalesce(ct_loc.status, ct_en.status)::text AS public_status,
          s.label AS src_label, s.locator AS src_locator,
          s.as_of_date::text AS src_as_of, s.kind::text AS src_kind
     FROM proj.claim_right c
@@ -484,6 +485,7 @@ const RECORD_OUTCOMES_SQL = `
          oi.indicator_code AS key, oi.version_no,
          coalesce(ot_loc.what_is_measured, ot_en.what_is_measured, oi.indicator_code) AS label,
          oi.domain || ' · ' || oi.measure_unit AS detail,
+         coalesce(ot_loc.status, ot_en.status)::text AS public_status,
          s.label AS src_label, s.locator AS src_locator,
          s.as_of_date::text AS src_as_of, s.kind::text AS src_kind
     FROM proj.outcome_indicator oi
@@ -502,6 +504,7 @@ const RECORD_DURABILITY_SQL = `
          d.commitment_key AS key, d.version_no,
          coalesce(dt_loc.statement, dt_en.statement, d.commitment_key) AS label,
          coalesce(d.ends_on::text, d.horizon_years::text || ' y', '') AS detail,
+         coalesce(dt_loc.status, dt_en.status)::text AS public_status,
          s.label AS src_label, s.locator AS src_locator,
          s.as_of_date::text AS src_as_of, s.kind::text AS src_kind
     FROM proj.durability_commitment d
@@ -519,6 +522,7 @@ const RECORD_PARTIES_SQL = `
   SELECT pp.party_role || ':' || pp.party_org_id::text AS key, 1 AS version_no,
          coalesce(vp.legal_name, pp.party_org_id::text) AS label,
          coalesce(pr.label_en, pp.party_role) AS detail,
+         NULL::text AS public_status,
          s.label AS src_label, s.locator AS src_locator,
          s.as_of_date::text AS src_as_of, s.kind::text AS src_kind
     FROM proj.project_party pp
@@ -530,6 +534,8 @@ const RECORD_PARTIES_SQL = `
 
 interface EntryRow extends Record<string, unknown> {
   key: string; version_no: number; label: string; detail: string;
+  /** i18n.translation_status of the latest version's text, null for a party. */
+  public_status: string | null;
   src_label: string; src_locator: string | null; src_as_of: string; src_kind: string;
 }
 
@@ -539,6 +545,7 @@ function toEntry(r: EntryRow): RecordEntryView {
     versionNo: Number(r.version_no),
     label: r.label,
     detail: r.detail,
+    publicStatus: r.public_status,
     source: {
       label: r.src_label, locator: r.src_locator,
       asOfDate: r.src_as_of, kind: r.src_kind,

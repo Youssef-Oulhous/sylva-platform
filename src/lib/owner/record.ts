@@ -200,6 +200,24 @@ export async function declareUnitType(
   );
 }
 
+/**
+ * The translation status a recorded entry's text goes in at.
+ *
+ * It is a parameter rather than the column default because the column default is
+ * 'human_draft' and the PUBLIC project page admits only 'published' and
+ * 'reviewed'. Every claim right, outcome detail and durability statement
+ * recorded before this existed went in invisible: the owner's form said "Already
+ * recorded" and the published page showed the raw benefit key and three dashes.
+ * The forms now ask, and this is where the answer lands.
+ *
+ * These tables are append-only - sylva.deny_mutation() fires BEFORE UPDATE on
+ * every one of them - so there is no "mark it ready" that edits a row. Marking a
+ * section ready is recording it again at a ready status, which appends
+ * version_no + 1 and leaves the draft on the record. That is R4, not a
+ * limitation worked around.
+ */
+export type TextStatus = 'machine_draft' | 'human_draft' | 'reviewed' | 'published';
+
 /* ----------------------------------------------------------- CLAIM RIGHTS */
 
 export interface ClaimRightInput {
@@ -211,6 +229,8 @@ export interface ClaimRightInput {
   /** NOT NULL and non-blank in the schema: a blank exclusions field is the
    *  failure the interviewed buyers described, so it cannot be left out. */
   readonly exclusions: string;
+  /** Whether a buyer will see it. See TextStatus above. */
+  readonly status: TextStatus;
 }
 
 export async function addClaimRight(
@@ -230,10 +250,10 @@ export async function addClaimRight(
   await tx.query(
     `INSERT INTO proj.claim_right_text
        (project_id, benefit_key, version_no, locale,
-        benefit_label, who_may_claim, for_what, exclusions)
-     VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
+        benefit_label, who_may_claim, for_what, exclusions, status)
+     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9::i18n.translation_status)`,
     [projectId, c.benefitKey, row.version_no, c.locale,
-     c.benefitLabel, c.whoMayClaim, c.forWhat, c.exclusions],
+     c.benefitLabel, c.whoMayClaim, c.forWhat, c.exclusions, c.status],
   );
   return Number(row.version_no);
 }
@@ -252,6 +272,8 @@ export interface OutcomeInput {
   /** The baseline. proj.publication_gaps() will not pass without one. */
   readonly baselineValue: string | null;
   readonly baselineAsOf: string | null;
+  /** Whether a buyer will see the detail. See TextStatus above. */
+  readonly status: TextStatus;
 }
 
 export async function addOutcome(
@@ -273,9 +295,11 @@ export async function addOutcome(
   );
   await tx.query(
     `INSERT INTO proj.outcome_indicator_text
-       (project_id, indicator_code, version_no, locale, what_is_measured, method_note)
-     VALUES ($1, $2, $3, $4, $5, $6)`,
-    [projectId, o.indicatorCode, row.version_no, o.locale, o.whatIsMeasured, o.methodNote],
+       (project_id, indicator_code, version_no, locale,
+        what_is_measured, method_note, status)
+     VALUES ($1, $2, $3, $4, $5, $6, $7::i18n.translation_status)`,
+    [projectId, o.indicatorCode, row.version_no, o.locale,
+     o.whatIsMeasured, o.methodNote, o.status],
   );
   if (o.baselineValue !== null && o.baselineAsOf !== null) {
     // An indicator carries no unit_type_id, so a hydrology figure can never
@@ -304,6 +328,8 @@ export interface DurabilityInput {
   readonly locale: string;
   readonly statement: string;
   readonly landControlNote: string;
+  /** Whether a buyer will see it. See TextStatus above. */
+  readonly status: TextStatus;
 }
 
 export async function addDurability(
@@ -326,9 +352,11 @@ export async function addDurability(
   );
   await tx.query(
     `INSERT INTO proj.durability_commitment_text
-       (project_id, commitment_key, version_no, locale, statement, land_control_note)
-     VALUES ($1, $2, $3, $4, $5, $6)`,
-    [projectId, d.commitmentKey, row.version_no, d.locale, d.statement, d.landControlNote],
+       (project_id, commitment_key, version_no, locale,
+        statement, land_control_note, status)
+     VALUES ($1, $2, $3, $4, $5, $6, $7::i18n.translation_status)`,
+    [projectId, d.commitmentKey, row.version_no, d.locale,
+     d.statement, d.landControlNote, d.status],
   );
   return Number(row.version_no);
 }

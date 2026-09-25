@@ -1,0 +1,57 @@
+/* The list of this organisation's projects. The page width and the side gutters
+   come from .main in SiteChrome, which every page shares. */
+
+.page {
+  display: block;
+}
+
+.head {
+  padding-bottom: var(--s-6);
+  border-bottom: 1px solid var(--border-strong);
+}
+
+.counts {
+  margin: var(--s-4) 0 var(--s-3);
+  font-size: var(--text-md);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+/* The Rule 7 statement, stated visibly, once, near the first figures. */
+.countNote {
+  margin: var(--s-4) 0 0;
+  padding: var(--s-3) var(--s-4);
+  max-width: var(--measure-prose);
+  background: var(--tint-neutral);
+  border-left: 2px solid var(--water);
+  font-size: var(--text-sm);
+  color: var(--ink);
+}
+
+.sectionFoot {
+  margin: var(--s-5) 0 0;
+  font-size: var(--text-sm);
+}
+.sectionFoot a {
+  font-weight: 500;
+  text-decoration: none;
+}
+.sectionFoot a:hover {
+  text-decoration: underline;
+}
+
+.projects {
+  display: grid;
+  gap: var(--s-4);
+  margin-top: var(--s-6);
+}
+
+.empty {
+  margin: var(--s-6) 0 0;
+  padding: var(--s-7);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius);
+  text-align: center;
+  color: var(--ink-muted);
+}

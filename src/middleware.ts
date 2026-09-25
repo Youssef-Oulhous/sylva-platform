@@ -63,5 +63,11 @@ export default function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!_next|_vercel|fonts|eu|.*\\..*).*)'],
+  // `api` is load-bearing. Without it every /api/... request goes through the
+  // locale middleware, which tries to prefix it and 404s. The two routes whose
+  // names contain a dot - documents.zip, boundary.geojson - survived by
+  // accident via the `.*\..*` clause, which is why the breakage looked
+  // partial: the project's document bundle downloaded while every individual
+  // document link on the same page returned 404.
+  matcher: ['/((?!api|_next|_vercel|fonts|eu|.*\\..*).*)'],
 };

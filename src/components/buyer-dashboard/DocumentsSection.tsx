@@ -1,5 +1,7 @@
 import { getFormatter, getTranslations } from 'next-intl/server';
 import EmptyState from './EmptyState';
+import { buyerText } from '@/lib/dashboard/messages';
+import { docText } from '@/lib/documents/messages';
 import type { DashboardDocument, DocumentGroupId } from '@/lib/dashboard/types';
 import styles from './DocumentsSection.module.css';
 
@@ -18,11 +20,14 @@ import styles from './DocumentsSection.module.css';
  * nothing - a buyer holds no column grant on another organisation's legal name
  * and this section does not work around that.
  *
- * There is no download control. Document storage is not built (README §9.5):
- * a file is served from EU object storage through a short-lived signed URL
- * issued after a server-side authorization check, and a button that did
- * anything less than that would be the wrong button. The version and the date
- * are real; the bytes are not reachable yet, and the row says so.
+ * THE DOWNLOAD IS REAL NOW, and it carries no storage key. Every link points at
+ * /api/documents/<document id>, which resolves the document as the reader's own
+ * PostgreSQL role under the policies on doc.document and doc.document_version
+ * before a byte moves - the bucket, the region and the key never reach this
+ * page. A row whose only version has been withdrawn is still listed, because the
+ * row is evidence that the document existed, and it is offered no link: see the
+ * NOT EXISTS against doc.document_withdrawal in src/lib/dashboard/queries.ts,
+ * which is what makes `available` agree with what the serving route will do.
  *
  * THE KIND OF DOCUMENT IS TRANSLATED HERE. doc.document_kind carries label_en
  * and no label_de - unlike platform.sector, which carries both - so rendering
@@ -88,6 +93,7 @@ export default async function DocumentsSection({
                       <th scope="col">{tRoot('project.documentDate')}</th>
                       <th scope="col">{t('documents.col.lodgedBy')}</th>
                       <th scope="col">{tRoot('project.status')}</th>
+                      <th scope="col">{t('documents.col.actions')}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -137,6 +143,28 @@ export default async function DocumentsSection({
                             ? t('documents.status.current')
                             : t('documents.status.notAvailable')}
                         </td>
+
+                        {/* No link carries a storage key. The route checks, for
+                            this reader, that they may have the file. */}
+                        <td className={styles.actionsCell}>
+                          {doc.available ? (
+                            <>
+                              <a href={`/api/documents/${doc.id}`} className={styles.action}>
+                                {docText(tRoot, 'openAction')}
+                              </a>
+                              <a
+                                href={`/api/documents/${doc.id}?download`}
+                                className={styles.action}
+                              >
+                                {docText(tRoot, 'downloadAction')}
+                              </a>
+                            </>
+                          ) : (
+                            <span className={styles.statusNote}>
+                              {docText(tRoot, 'notAvailable')}
+                            </span>
+                          )}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -148,7 +176,9 @@ export default async function DocumentsSection({
       })}
 
       <p className={styles.attribution}>{t('documents.attributionNote')}</p>
-      <p className={styles.attribution}>{t('documents.storageNote')}</p>
+      {/* Not documents.storageNote, which said the file itself was not yet
+          reachable. It is: the note now describes how it is served. */}
+      <p className={styles.attribution}>{buyerText(tRoot, 'serveNote')}</p>
     </div>
   );
 }

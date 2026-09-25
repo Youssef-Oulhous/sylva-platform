@@ -1,0 +1,217 @@
+.head { padding-bottom: var(--s-6); border-bottom: var(--rule); }
+
+.lead {
+  margin-top: var(--s-4);
+  font-size: var(--text-md);
+  color: var(--ink);
+}
+
+/* The organisation line: who this dashboard belongs to, and the two
+   identifiers it is known by. */
+.identity {
+  margin-top: var(--s-5);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-3) var(--s-6);
+}
+
+.orgName { font-size: var(--text-base); font-weight: 600; }
+
+.identityItem { display: inline-flex; align-items: baseline; gap: var(--s-2); }
+
+.identityLabel {
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-muted);
+}
+
+/* Identifiers take the mono face. */
+.identityValue {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--ink);
+}
+
+.inert {
+  margin: var(--s-4) 0 0;
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+.section {
+  margin-top: var(--s-7);
+  padding-bottom: var(--s-7);
+  border-bottom: var(--rule);
+}
+.sectionLast { margin-top: var(--s-7); }
+
+.sectionHead { margin-bottom: var(--s-5); }
+
+.sectionIntro {
+  margin: var(--s-3) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+/* Two panels of equal weight: the organisation record and its vetting status.
+   Neither is a headline figure, so neither is larger than the other. */
+.panels {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-4);
+  align-items: start;
+}
+
+/* Deals are cards in a column, never rows in a shared table: a column of
+   volumes from two schemes would read as comparable, and it is not. */
+.deals { display: grid; gap: var(--s-5); }
+
+.emptyLink { font-size: var(--text-sm); font-weight: 500; }
+
+@media (max-width: 60rem) {
+  .panels { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 40rem) {
+  .lead { font-size: var(--text-base); }
+  .identity { gap: var(--s-2) var(--s-4); }
+}
+
+/* --------------------------------------------------------------------------
+   The overview, since it stopped being the whole area.
+
+   Three blocks, in the order a person needs them: what is waiting, how much
+   the record holds, and the way in to each section. Nothing here is a tile
+   with a trend in it - the figures are counts of rows.
+   -------------------------------------------------------------------------- */
+
+/* What needs attention. A list of sentences, each with one place to go. An
+   empty list is a good answer, so it gets a sentence rather than a blank. */
+.attention {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--s-3);
+}
+.attentionItem {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-3) var(--s-5);
+  padding: var(--s-4);
+  background: var(--tint-warning);
+  color: var(--tint-warning-ink);
+  border: 1px solid #f0e2bd;
+  border-radius: var(--radius);
+}
+.attentionBody {
+  font-size: var(--text-sm);
+  max-width: var(--measure-prose);
+}
+.attentionAction {
+  flex: 0 0 auto;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--tint-warning-ink);
+}
+.settled {
+  margin: 0;
+  padding: var(--s-4);
+  background: var(--tint-neutral);
+  color: var(--tint-neutral-ink);
+  border: var(--rule);
+  border-radius: var(--radius);
+  font-size: var(--text-sm);
+  max-width: var(--measure-prose);
+}
+
+/* Counts of rows. Four of them, each a way into the page that holds the rows.
+   The figure is large because it is short, not because it is important. */
+.counts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--s-4);
+}
+.count {
+  border: var(--rule);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.countLink {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  padding: var(--s-4);
+  text-decoration: none;
+  color: inherit;
+}
+.countLink:hover .countLabel { color: var(--ink); }
+.countLink:hover { text-decoration: none; }
+.countValue {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+.countLabel {
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+}
+
+/* The way in to each section. Prose, not icons: the sentence is what tells a
+   reader whether this is the page they want. */
+.cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-4);
+}
+.card {
+  padding: var(--s-5);
+  border: var(--rule);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.cardTitle {
+  margin: 0;
+  font-size: var(--text-base);
+}
+.cardBody {
+  margin: var(--s-3) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}
+
+@media (max-width: 60rem) {
+  .counts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cards { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 30rem) {
+  .counts { grid-template-columns: 1fr; }
+  .attentionItem { padding: var(--s-3); }
+  .card { padding: var(--s-4); }
+}
+
+/* Something the page could not read. A sentence, never a stack trace. */
+.failure {
+  margin: var(--s-6) 0 0;
+  padding: var(--s-3) var(--s-4);
+  background: var(--tint-error);
+  border: 1px solid var(--tint-error-ink);
+  border-radius: var(--radius);
+  color: var(--tint-error-ink);
+  font-size: var(--text-sm);
+  max-width: var(--measure-prose);
+}

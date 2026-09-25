@@ -105,6 +105,24 @@ function sourceInput(d: SourceFields) {
 
 const TRANSLATION_STATUS = ['machine_draft', 'human_draft', 'reviewed', 'published'] as const;
 
+/**
+ * WHY THE DEFAULT IS 'published' ON THE ENTRY SECTIONS.
+ *
+ * The column default is 'human_draft' and the public project page admits only
+ * 'published' and 'reviewed' (src/lib/projects/queries.ts, eleven places). So
+ * every claim right, outcome detail and durability statement recorded before
+ * this went in invisible: this form said "Already recorded" and the published
+ * page showed the raw benefit key and three dashes - under the heading that
+ * tells a buyer to read the exclusions column first.
+ *
+ * An owner recording a claim right is stating it for the page. Filing that
+ * statement as a draft nobody can read is the wrong default, so the forms ask
+ * and the answer starts at "Ready for the page". An owner who is not ready can
+ * still choose Draft, and the record then says, in words, that a buyer cannot
+ * see it.
+ */
+const ENTRY_TEXT_DEFAULT: (typeof TRANSLATION_STATUS)[number] = 'published';
+
 /* ------------------------------------------------------------ NAVIGATION */
 
 type Section =
@@ -112,7 +130,34 @@ type Section =
   | 'durability' | 'party' | 'period' | 'submit' | 'answer';
 
 /**
- * Back to the record with the outcome in the query string.
+ * Which page of the record each section's form now lives on.
+ *
+ * The record used to be one page, so every save came back to the same URL and
+ * an anchor was the best it could do. It is nine pages now, so a save comes back
+ * to the page the form is on - otherwise recording an outcome would throw the
+ * owner out to the project overview and they would have to find their way back
+ * in to record the next one.
+ *
+ * `unit` maps to the periods page because the scheme and unit type are declared
+ * there: a volume means nothing without the unit it is measured in, so the two
+ * belong on one page. `submit` maps to the project overview, which is where
+ * sending the record to Sylva is done.
+ */
+const SECTION_PAGE: Record<Section, string> = {
+  text: 'text',
+  unit: 'periods',
+  boundary: 'location',
+  claim: 'claim-rights',
+  outcome: 'outcomes',
+  durability: 'durability',
+  party: 'partners',
+  period: 'periods',
+  submit: '',
+  answer: '',
+};
+
+/**
+ * Back to the section's own page with the outcome in the query string.
  *
  * Synchronous and annotated `never` on purpose. TypeScript narrows control flow
  * on a call to a function whose return type is `never`, but not on `await` of a
@@ -129,7 +174,11 @@ function back(
   const query = 'error' in outcome
     ? { error: outcome.error, section }
     : { saved: section };
-  redirectTo({ href: { pathname: `/owner/projects/${slug}`, query }, locale });
+  const page = SECTION_PAGE[section];
+  const pathname = page === ''
+    ? `/owner/projects/${slug}`
+    : `/owner/projects/${slug}/${page}`;
+  redirectTo({ href: { pathname, query }, locale });
 }
 
 function backToNew(locale: string, error: OwnerErrorCode, field?: string): never {
@@ -203,20 +252,26 @@ export async function createProjectAction(formData: FormData): Promise<void> {
         slug: d.slug,
         countryCode: d.country,
       });
+      // Recorded ready for the page, not as a draft. proj.publication_gaps()
+      // reports 'english_page_text' until the English required fields are at
+      // 'published', so creating a project at 'human_draft' left a gate item
+      // open that nothing on this form mentioned - and the owner had typed the
+      // title and the summary FOR the page. The record page can still put any
+      // of them back to a draft.
       await saveText(tx, projectId,
-        { fieldCode: 'title', locale: 'en', body: d.title_en, status: 'human_draft' },
+        { fieldCode: 'title', locale: 'en', body: d.title_en, status: ENTRY_TEXT_DEFAULT },
         sourceRefId);
       await saveText(tx, projectId,
-        { fieldCode: 'summary', locale: 'en', body: d.summary_en, status: 'human_draft' },
+        { fieldCode: 'summary', locale: 'en', body: d.summary_en, status: ENTRY_TEXT_DEFAULT },
         sourceRefId);
       if (d.title_de) {
         await saveText(tx, projectId,
-          { fieldCode: 'title', locale: 'de', body: d.title_de, status: 'human_draft' },
+          { fieldCode: 'title', locale: 'de', body: d.title_de, status: ENTRY_TEXT_DEFAULT },
           sourceRefId);
       }
       if (d.summary_de) {
         await saveText(tx, projectId,
-          { fieldCode: 'summary', locale: 'de', body: d.summary_de, status: 'human_draft' },
+          { fieldCode: 'summary', locale: 'de', body: d.summary_de, status: ENTRY_TEXT_DEFAULT },
           sourceRefId);
       }
     });
@@ -395,6 +450,7 @@ const ClaimSection = Source.extend({
   who_may_claim: line(2000),
   for_what: line(2000),
   exclusions: line(2000),
+  status: z.enum(TRANSLATION_STATUS).default(ENTRY_TEXT_DEFAULT),
 });
 
 /**
@@ -425,6 +481,7 @@ export async function addClaimRightAction(formData: FormData): Promise<void> {
         whoMayClaim: d.who_may_claim,
         forWhat: d.for_what,
         exclusions: d.exclusions,
+        status: d.status,
       }, sourceRefId);
     });
   } catch (err) {
@@ -452,6 +509,7 @@ const OutcomeSection = Source.extend({
     .transform((s) => (s ? String(s) : null)),
   baseline_as_of: z.string().trim().regex(ISO_DATE).optional().or(z.literal(''))
     .transform((s) => (s ? s : null)),
+  status: z.enum(TRANSLATION_STATUS).default(ENTRY_TEXT_DEFAULT),
 });
 
 /**
@@ -494,6 +552,7 @@ export async function addOutcomeAction(formData: FormData): Promise<void> {
         methodNote: d.method_note,
         baselineValue,
         baselineAsOf,
+        status: d.status,
       }, sourceRefId);
     });
   } catch (err) {
@@ -520,6 +579,7 @@ const DurabilitySection = Source.extend({
   locale: z.enum(['en', 'de']).default('en'),
   statement: line(2000),
   land_control_note: line(2000),
+  status: z.enum(TRANSLATION_STATUS).default(ENTRY_TEXT_DEFAULT),
 });
 
 /**
@@ -555,6 +615,7 @@ export async function addDurabilityAction(formData: FormData): Promise<void> {
         locale: d.locale,
         statement: d.statement,
         landControlNote: d.land_control_note,
+        status: d.status,
       }, sourceRefId);
     });
   } catch (err) {

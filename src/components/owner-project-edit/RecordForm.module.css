@@ -97,3 +97,17 @@
   font-style: italic;
   color: var(--ink-muted);
 }
+
+/* An entry is on the record but a buyer cannot read it: the public project page
+   admits 'published' and 'reviewed' and nothing else. Amber because it is a
+   thing to act on, and the sentence inside says what to do - the tint never
+   carries the meaning on its own. */
+.notReadable {
+  margin: var(--s-4) 0 0;
+  padding: var(--s-3) var(--s-4);
+  max-width: var(--measure-prose);
+  border-left: 2px solid var(--warning);
+  background: var(--tint-warning);
+  color: var(--tint-warning-ink);
+  font-size: var(--text-sm);
+}

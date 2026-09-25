@@ -40,6 +40,12 @@ interface SectionProps {
   record: OwnerProjectRecord;
   reference: OwnerReference;
   locale: string;
+  /**
+   * True when this section IS the page - which it now is everywhere but the
+   * project overview. The section then renders no heading of its own, because
+   * the page's h1 already names it.
+   */
+  bare?: boolean;
 }
 
 /** Today, as the default as-of date. A source without a date is half a fact. */
@@ -57,28 +63,69 @@ async function SubmitButton({ label }: { label: string }) {
   );
 }
 
+
+/**
+ * The four states a piece of recorded text can be in, as the database holds
+ * them (i18n.translation_status).
+ *
+ * "Ready for the page" is first because it is the default, and the default is
+ * what it is for a reason worth stating here as well as in the action: the
+ * public project page admits 'published' and 'reviewed' and nothing else, so an
+ * entry recorded as a draft is on the record for ever and invisible to the
+ * buyer it was written for. That is how claim rights, outcome detail and
+ * durability came to be missing from published pages while this form said
+ * "Already recorded".
+ */
+async function publishStateOptions() {
+  const t = await getTranslations();
+  return [
+    { value: 'published', label: ownerText(t, 'statusPublished') },
+    { value: 'reviewed', label: ownerText(t, 'statusReviewed') },
+    { value: 'human_draft', label: ownerText(t, 'statusHumanDraft') },
+    { value: 'machine_draft', label: ownerText(t, 'statusMachineDraft') },
+  ];
+}
+
+/** The control that decides whether a buyer will ever read this entry. */
+async function PublishStateField({ prefix }: { prefix: string }) {
+  const t = await getTranslations();
+  return (
+    <FieldRow>
+      <SelectField
+        id={`${prefix}-status`}
+        name="status"
+        label={ownerText(t, 'translationStatus')}
+        hint={ownerText(t, 'publicStateHint')}
+        defaultValue="published"
+        options={await publishStateOptions()}
+        required
+      />
+    </FieldRow>
+  );
+}
+
 /* ------------------------------------------------------ 01  IDENTITY + TEXT */
 
-export async function TextSection({ record, locale }: SectionProps) {
+export async function TextSection({ record, locale, bare }: SectionProps) {
   const t = await getTranslations();
   const tf = await getTranslations('ownerProjectForm');
   const prefix = 'text';
 
-  const statusOptions = [
-    { value: 'human_draft', label: ownerText(t, 'statusHumanDraft') },
-    { value: 'machine_draft', label: ownerText(t, 'statusMachineDraft') },
-    { value: 'reviewed', label: ownerText(t, 'statusReviewed') },
-    { value: 'published', label: ownerText(t, 'statusPublished') },
-  ];
+  const statusOptions = await publishStateOptions();
 
+  // Whatever is already recorded, and "ready for the page" where nothing is.
+  // The old fallback was 'human_draft', which is the column default and the one
+  // status proj.publication_gaps() will not accept for the English title and
+  // summary - so a new project was blocked by a control nobody had touched.
   const statusOf = (fieldCode: string, loc: string) =>
     record.text.find((x) => x.fieldCode === fieldCode && x.locale === loc)?.status
-    ?? 'human_draft';
+    ?? 'published';
 
   return (
     <FormSection
       id="record-text"
-      n={1}
+      n={bare ? undefined : 1}
+      bare={bare}
       title={tf('section.summary.title')}
       lead={tf('section.summary.lead')}
     >
@@ -189,7 +236,7 @@ export async function TextSection({ record, locale }: SectionProps) {
 
 /* --------------------------------------------------- 02  SCHEME + UNIT TYPE */
 
-export async function UnitTypeSection({ record, reference }: SectionProps) {
+export async function UnitTypeSection({ record, reference, bare }: SectionProps) {
   const t = await getTranslations();
   const tf = await getTranslations('ownerProjectForm');
   const prefix = 'unit';
@@ -200,7 +247,7 @@ export async function UnitTypeSection({ record, reference }: SectionProps) {
   if (record.unitTypeId !== null) {
     return (
       <FormSection
-        id="record-unit" n={2}
+        id="record-unit" n={bare ? undefined : 2} bare={bare}
         title={ownerText(t, 'unitSectionTitle')}
         lead={ownerText(t, 'unitSectionLead')}
       >
@@ -215,7 +262,7 @@ export async function UnitTypeSection({ record, reference }: SectionProps) {
 
   return (
     <FormSection
-      id="record-unit" n={2}
+      id="record-unit" n={bare ? undefined : 2} bare={bare}
       title={ownerText(t, 'unitSectionTitle')}
       lead={ownerText(t, 'unitSectionLead')}
     >
@@ -246,14 +293,14 @@ export async function UnitTypeSection({ record, reference }: SectionProps) {
 
 /* --------------------------------------------------------------- 03  PLACE */
 
-export async function BoundarySection({ record }: SectionProps) {
+export async function BoundarySection({ record, bare }: SectionProps) {
   const t = await getTranslations();
   const tf = await getTranslations('ownerProjectForm');
   const prefix = 'geo';
 
   return (
     <FormSection
-      id="record-boundary" n={3}
+      id="record-boundary" n={bare ? undefined : 3} bare={bare}
       title={ownerText(t, 'boundaryTitle')}
       lead={ownerText(t, 'boundaryLead')}
     >
@@ -319,14 +366,14 @@ export async function BoundarySection({ record }: SectionProps) {
 
 /* -------------------------------------------------------- 04  CLAIM RIGHTS */
 
-export async function ClaimRightsSection({ record }: SectionProps) {
+export async function ClaimRightsSection({ record, bare }: SectionProps) {
   const t = await getTranslations();
   const tf = await getTranslations('ownerProjectForm');
   const prefix = 'claim';
 
   return (
     <FormSection
-      id="record-claims" n={4}
+      id="record-claims" n={bare ? undefined : 4} bare={bare}
       title={t('project.claimRights')}
       lead={tf('section.claims.lead')}
     >
@@ -382,6 +429,8 @@ export async function ClaimRightsSection({ record }: SectionProps) {
           />
         </FieldRow>
 
+        <PublishStateField prefix={prefix} />
+
         <Note tone="rule">{tf('field.claimsRule')}</Note>
 
         <SourceFields prefix={prefix} defaultAsOf={today()} />
@@ -393,14 +442,14 @@ export async function ClaimRightsSection({ record }: SectionProps) {
 
 /* ------------------------------------------------------------- 05 OUTCOMES */
 
-export async function OutcomesSection({ record, reference }: SectionProps) {
+export async function OutcomesSection({ record, reference, bare }: SectionProps) {
   const t = await getTranslations();
   const tf = await getTranslations('ownerProjectForm');
   const prefix = 'outcome';
 
   return (
     <FormSection
-      id="record-outcomes" n={5}
+      id="record-outcomes" n={bare ? undefined : 5} bare={bare}
       title={t('project.outcomes')}
       lead={tf('section.outcomes.lead')}
     >
@@ -483,6 +532,8 @@ export async function OutcomesSection({ record, reference }: SectionProps) {
           />
         </FieldRow>
 
+        <PublishStateField prefix={prefix} />
+
         <Note tone="rule">{tf('field.outcomesRule')}</Note>
 
         <SourceFields prefix={prefix} defaultAsOf={today()} />
@@ -494,14 +545,14 @@ export async function OutcomesSection({ record, reference }: SectionProps) {
 
 /* ----------------------------------------------------------- 06 DURABILITY */
 
-export async function DurabilitySection({ record, reference }: SectionProps) {
+export async function DurabilitySection({ record, reference, bare }: SectionProps) {
   const t = await getTranslations();
   const tf = await getTranslations('ownerProjectForm');
   const prefix = 'dur';
 
   return (
     <FormSection
-      id="record-durability" n={6}
+      id="record-durability" n={bare ? undefined : 6} bare={bare}
       title={t('project.durability')}
       lead={tf('section.durability.lead')}
     >
@@ -570,6 +621,8 @@ export async function DurabilitySection({ record, reference }: SectionProps) {
           />
         </FieldRow>
 
+        <PublishStateField prefix={prefix} />
+
         <SourceFields prefix={prefix} defaultAsOf={today()} />
         <SubmitButton label={ownerText(t, 'recordThis')} />
       </form>
@@ -579,14 +632,14 @@ export async function DurabilitySection({ record, reference }: SectionProps) {
 
 /* ------------------------------------------------------------- 07 PARTNERS */
 
-export async function PartnersSection({ record, reference }: SectionProps) {
+export async function PartnersSection({ record, reference, bare }: SectionProps) {
   const t = await getTranslations();
   const tf = await getTranslations('ownerProjectForm');
   const prefix = 'party';
 
   return (
     <FormSection
-      id="record-partners" n={7}
+      id="record-partners" n={bare ? undefined : 7} bare={bare}
       title={t('project.partners')}
       lead={tf('section.partners.lead')}
     >
@@ -633,14 +686,14 @@ export async function PartnersSection({ record, reference }: SectionProps) {
 
 /* -------------------------------------------------------------- 08 PERIODS */
 
-export async function PeriodsSection({ record, locale }: SectionProps) {
+export async function PeriodsSection({ record, locale, bare }: SectionProps) {
   const t = await getTranslations();
   const tf = await getTranslations('ownerProjectForm');
   const prefix = 'period';
 
   return (
     <FormSection
-      id="record-periods" n={8}
+      id="record-periods" n={bare ? undefined : 8} bare={bare}
       title={t('project.availability')}
       lead={tf('section.periods.lead')}
     >
@@ -738,7 +791,7 @@ export async function PeriodsSection({ record, locale }: SectionProps) {
 
 /* ------------------------------------------------------------ 09 DOCUMENTS */
 
-export async function DocumentsSection({ record }: SectionProps) {
+export async function DocumentsSection({ record, bare }: SectionProps) {
   const t = await getTranslations();
   const tf = await getTranslations('ownerProjectForm');
 
@@ -749,7 +802,7 @@ export async function DocumentsSection({ record }: SectionProps) {
 
   return (
     <FormSection
-      id="record-documents" n={9}
+      id="record-documents" n={bare ? undefined : 9} bare={bare}
       title={t('project.documents')}
       lead={tf('section.documents.lead')}
     >
@@ -770,7 +823,7 @@ export async function DocumentsSection({ record }: SectionProps) {
 
 /* --------------------------------------------------- 10 SUBMIT FOR REVIEW */
 
-export async function SubmitSection({ record }: SectionProps) {
+export async function SubmitSection({ record, bare }: SectionProps) {
   const t = await getTranslations();
   const tf = await getTranslations('ownerProjectForm');
 
@@ -778,7 +831,7 @@ export async function SubmitSection({ record }: SectionProps) {
 
   return (
     <FormSection
-      id="record-submit" n={10}
+      id="record-submit" n={bare ? undefined : 10} bare={bare}
       title={ownerText(t, 'submitTitle')}
       lead={ownerText(t, 'submitLead')}
     >

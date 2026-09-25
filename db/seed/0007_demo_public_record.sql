@@ -71,6 +71,37 @@ SELECT 'ea000000-0000-0000-0000-0000000000c1'::uuid,
  WHERE NOT EXISTS (SELECT 1 FROM deal.deal d
                     WHERE d.id = 'ea000000-0000-0000-0000-0000000000c1'::uuid);
 
+-- The two deals the entries below actually hang on. Both were referenced
+-- throughout this file but never created, so on a database built from nothing
+-- the disclosure event failed on its foreign key and the whole public record
+-- came out empty. It only looked fine because the database it was written
+-- against already had them.
+--
+--   a1  Nordbraeu on Untere Havel. The deal that is later NAMED, on 13 September.
+--   b1  Verdant Foods on Briere. Never named - it is what a pseudonymous
+--       counterparty looks like beside a named one.
+--
+-- Each buyer has at most one live deal per project (ux_one_live_deal_per_buyer_
+-- project), and these three pairs are distinct, so all three can be open at once.
+
+INSERT INTO deal.deal (id, project_id, owner_org_id, buyer_org_id, intended_shape)
+SELECT 'ea000000-0000-0000-0000-0000000000a1'::uuid,
+       'a1000000-0000-0000-0000-000000000001'::uuid,
+       '0a000000-0000-0000-0000-00000000000a'::uuid,
+       '0c000000-0000-0000-0000-00000000000c'::uuid,
+       'forward'
+ WHERE NOT EXISTS (SELECT 1 FROM deal.deal d
+                    WHERE d.id = 'ea000000-0000-0000-0000-0000000000a1'::uuid);
+
+INSERT INTO deal.deal (id, project_id, owner_org_id, buyer_org_id, intended_shape)
+SELECT 'ea000000-0000-0000-0000-0000000000b1'::uuid,
+       'a1000000-0000-0000-0000-000000000002'::uuid,
+       '0b000000-0000-0000-0000-00000000000b'::uuid,
+       '0d000000-0000-0000-0000-00000000000d'::uuid,
+       'forward'
+ WHERE NOT EXISTS (SELECT 1 FROM deal.deal d
+                    WHERE d.id = 'ea000000-0000-0000-0000-0000000000b1'::uuid);
+
 -- --------------------------------------------------------------------------
 -- The disclosure decision. Made by the buyer, for ONE deal, on a stated date.
 --

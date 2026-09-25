@@ -13,6 +13,7 @@ import {
 } from '@/lib/owner/record';
 import { IncomparableUnitsError, sumSameUnit } from '@/lib/units/qty';
 import { ownerCodeForDatabaseError } from '@/lib/owner/errors';
+import { reachesTheBuyer } from '@/lib/owner/steps';
 
 /**
  * The owner's flows, against the real database, as the real role.
@@ -295,6 +296,7 @@ describe('an owner writing its own project', () => {
         whoMayClaim: 'TEST: the buyer named on the deal.',
         forWhat: 'TEST: reporting against its own water target.',
         exclusions: 'TEST: not transferable, not usable as a carbon claim.',
+        status: 'published',
       }, src);
     });
     expect(version).toBe(1);
@@ -306,6 +308,53 @@ describe('an owner writing its own project', () => {
     // not representable. This asserts it arrives on screen too.
     expect(entry!.source.label).toBe('TEST claim right statement');
     expect(entry!.source.asOfDate).toBe(today);
+  });
+
+  /**
+   * The defect this asserts against.
+   *
+   * proj.claim_right_text.status defaults to 'human_draft' and the public project
+   * page admits 'published' and 'reviewed' only. So an owner could record all
+   * four claim-right statements, see "Already recorded", and have the published
+   * page carry the raw benefit key and three dashes. The status is now a
+   * parameter, and the owner's own record reports it - which is what lets the
+   * form say, in words, that a buyer cannot see the entry.
+   */
+  it('records the status that decides whether a buyer sees a claim right', async () => {
+    const stamp = Date.now().toString(36);
+    const readable = `test-visible-${stamp}`;
+    const hidden = `test-hidden-${stamp}`;
+
+    await withActor(ownerA, async (tx) => {
+      const src = await insertSource(tx, source('TEST claim right visibility'));
+      await addClaimRight(tx, fixtureId, {
+        benefitKey: readable,
+        locale: 'en',
+        benefitLabel: 'TEST readable benefit',
+        whoMayClaim: 'TEST: the buyer named on the deal.',
+        forWhat: 'TEST: reporting against its own water target.',
+        exclusions: 'TEST: not transferable.',
+        status: 'published',
+      }, src);
+      await addClaimRight(tx, fixtureId, {
+        benefitKey: hidden,
+        locale: 'en',
+        benefitLabel: 'TEST draft benefit',
+        whoMayClaim: 'TEST: the buyer named on the deal.',
+        forWhat: 'TEST: reporting against its own water target.',
+        exclusions: 'TEST: not transferable.',
+        status: 'human_draft',
+      }, src);
+    });
+
+    const record = await getOwnerProjectRecord(ownerA, FIXTURE_SLUG, 'en');
+    const shown = record!.claimRights.find((c) => c.key === readable);
+    const draft = record!.claimRights.find((c) => c.key === hidden);
+
+    expect(shown!.publicStatus).toBe('published');
+    expect(draft!.publicStatus).toBe('human_draft');
+    expect(reachesTheBuyer(shown!.publicStatus)).toBe(true);
+    expect(reachesTheBuyer(draft!.publicStatus)).toBe(false);
   });
 });
 

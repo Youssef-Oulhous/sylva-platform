@@ -248,6 +248,99 @@ const TEXT = {
   },
   createAction: { key: 'ownerUi.create.action', en: 'Create the draft' },
   countryField: { key: 'ownerUi.create.country', en: 'Country' },
+
+  /* --------------------------------------- the record, as navigable sections */
+  // The record used to be one page of thirteen forms. It is now one page per
+  // section, so these are the labels of the section navigation and the words a
+  // step page uses to say where it sits in the whole.
+  stepNavLabel: {
+    key: 'ownerUi.step.navLabel',
+    en: 'Sections of this project record',
+  },
+  stepOverview: { key: 'ownerUi.step.overview', en: 'Overview' },
+  stepTextTitle: { key: 'ownerUi.step.textTitle', en: 'Name and summary' },
+  stepIntro: {
+    key: 'ownerUi.step.intro',
+    en: 'One section of the record, with its own source and its own save. The '
+      + 'publication list on the project overview shows how the whole record '
+      + 'stands.',
+  },
+  stepOpen: { key: 'ownerUi.step.open', en: 'Open this section' },
+  stepPrevious: { key: 'ownerUi.step.previous', en: 'Previous section' },
+  stepNext: { key: 'ownerUi.step.next', en: 'Next section' },
+  backToProject: { key: 'ownerUi.backToProject', en: 'Back to this project' },
+  backToProjects: { key: 'ownerUi.backToProjects', en: 'Back to your projects' },
+  recordSectionsTitle: {
+    key: 'ownerUi.record.sectionsTitle',
+    en: 'The record, section by section',
+  },
+  recordSectionsLead: {
+    key: 'ownerUi.record.sectionsLead',
+    en: 'Each section is recorded on its own page, with its own source and its '
+      + 'own date. Nothing is overwritten: a save appends a version and the '
+      + 'previous one stays on the record.',
+  },
+
+  /* ------------------------------------------- what actually reaches a buyer */
+  // The defect this fixes: an owner recorded claim rights, outcome detail and
+  // durability, the rows went in at 'human_draft', and the public project page
+  // only shows 'published' or 'reviewed' - so the published page carried a raw
+  // key and three dashes while the owner had every reason to think the section
+  // was done. The forms now ask, and the record says which answer it got.
+  publicStateOn: { key: 'ownerUi.publicState.on', en: 'On the public page' },
+  publicStateOff: { key: 'ownerUi.publicState.off', en: 'Not on the public page' },
+  publicStateOffNote: {
+    key: 'ownerUi.publicState.offNote',
+    en: 'This is on the record but a buyer does not see it. Only an entry '
+      + 'marked ready for the page, or reviewed, reaches the public project '
+      + 'page. Record it again with "Ready for the page" chosen.',
+  },
+  publicStateHint: {
+    key: 'ownerUi.publicState.hint',
+    en: 'Choose "Ready for the page" when this entry is final. An entry left as '
+      + 'a draft is kept on the record for ever but is never shown to a buyer.',
+  },
+  publicStateCount: {
+    key: 'ownerUi.publicState.count',
+    en: 'Entries on this page that a buyer cannot see yet',
+  },
+
+  /* ------------------------------------------------------- the organisation */
+  orgTitle: { key: 'ownerUi.org.title', en: 'Your organisation' },
+  orgLead: {
+    key: 'ownerUi.org.lead',
+    en: 'The organisation record Sylva holds for you, and where its vetting for '
+      + 'the project owner role stands. Sylva vets an organisation before it '
+      + 'can transact.',
+  },
+  orgRecordTitle: { key: 'ownerUi.org.recordTitle', en: 'The organisation record' },
+  orgNoRecord: {
+    key: 'ownerUi.org.noRecord',
+    en: 'No organisation record can be read for this account.',
+  },
+  orgCountry: { key: 'ownerUi.org.country', en: 'Country' },
+  orgSector: { key: 'ownerUi.org.sector', en: 'Sector' },
+  orgSizeBand: { key: 'ownerUi.org.sizeBand', en: 'Size' },
+  orgRegistered: { key: 'ownerUi.org.registered', en: 'On the platform since' },
+  orgSource: { key: 'ownerUi.org.source', en: 'Your organisation record' },
+  orgOnlyDate: {
+    key: 'ownerUi.org.onlyDate',
+    en: 'The organisation record carries one date - when it was created. There '
+      + 'is no "last updated", so none is shown.',
+  },
+
+  /* ------------------------------------------------------------- the overview */
+  overviewNeedsYou: { key: 'ownerUi.overview.needsYou', en: 'What needs you' },
+  overviewClear: {
+    key: 'ownerUi.overview.clear',
+    en: 'Nothing is waiting on you right now.',
+  },
+  overviewGoTo: { key: 'ownerUi.overview.goTo', en: 'Go there' },
+  overviewProjectsNote: {
+    key: 'ownerUi.overview.projectsNote',
+    en: 'Each project is recorded section by section. Open a project to see '
+      + 'which sections are still missing.',
+  },
 } as const;
 
 export function ownerText(

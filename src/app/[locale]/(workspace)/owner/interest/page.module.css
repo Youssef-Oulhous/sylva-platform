@@ -1,0 +1,26 @@
+/* Interest received. Page width and side gutters come from .main in SiteChrome. */
+
+.page {
+  display: block;
+}
+
+.head {
+  padding-bottom: var(--s-6);
+  margin-bottom: var(--s-6);
+  border-bottom: 1px solid var(--border-strong);
+}
+
+.counts {
+  margin: var(--s-4) 0 var(--s-3);
+  font-size: var(--text-md);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+.lead {
+  margin: var(--s-3) 0;
+  max-width: var(--measure-prose);
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+}

@@ -1,0 +1,87 @@
+/* --------------------------------------------------------------------------
+   The signed-in shell.
+
+   Deliberately not the public header. A visitor is being persuaded; somebody
+   signed in is working, and the two should not look the same. The workspace
+   bar is darker, states whose organisation you are acting for, and carries
+   only that role's sections.
+   -------------------------------------------------------------------------- */
+
+.bar {
+  background: var(--forest);
+  color: var(--forest-on);
+  border-bottom: 1px solid var(--forest-hover);
+}
+.barInner {
+  max-width: var(--measure-page);
+  margin: 0 auto;
+  padding: var(--s-3) var(--s-5);
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-4);
+  flex-wrap: wrap;
+}
+.home { color: var(--forest-on); text-decoration: none; font-weight: 600; letter-spacing: -0.01em; }
+.home:hover { color: var(--forest-on); text-decoration: underline; }
+
+.areaName { font-size: var(--text-md); font-weight: 600; }
+
+/* Who you are acting as. A person may hold more than one role, and the record
+   attributes everything to the ORGANISATION, so both are stated. */
+.actingAs {
+  margin-left: auto;
+  display: flex; align-items: baseline; gap: var(--s-3);
+  font-size: var(--text-xs);
+  color: #d8e4dd;
+}
+.org { font-weight: 500; color: var(--forest-on); }
+.roleTag {
+  text-transform: uppercase; letter-spacing: 0.06em;
+  font-size: var(--text-2xs);
+  border: 1px solid #5b7a6b; border-radius: 9999px;
+  padding: 0.1em 0.6em;
+}
+.publicLink { color: #d8e4dd; text-decoration: underline; }
+.publicLink:hover { color: var(--forest-on); }
+
+.signOut {
+  background: none; border: 1px solid #5b7a6b; color: var(--forest-on);
+  font: inherit; font-size: var(--text-xs);
+  border-radius: var(--radius-sm); padding: 0.15em 0.7em; cursor: pointer;
+}
+.signOut:hover { border-color: var(--forest-on); }
+
+/* --- section navigation --------------------------------------------------- */
+.nav { border-bottom: var(--rule); background: var(--surface); }
+.navList {
+  list-style: none; margin: 0 auto; padding: 0 var(--s-5);
+  max-width: var(--measure-page);
+  display: flex; gap: var(--s-5); flex-wrap: nowrap;
+  overflow-x: auto; scrollbar-width: thin;
+  min-width: 0; max-width: 100%;
+}
+.navList > li { flex: 0 0 auto; }
+.navLink {
+  display: block; padding: var(--s-3) 0;
+  font-size: var(--text-sm); color: var(--ink-muted);
+  text-decoration: none; white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color var(--motion-fast), border-color var(--motion-fast);
+}
+.navLink:hover { color: var(--ink); }
+.navLinkHere { color: var(--forest); border-bottom-color: var(--forest); font-weight: 500; }
+
+/* --- the not-yet-approved notice ------------------------------------------ */
+.pending {
+  max-width: var(--measure-page); margin: 0 auto;
+  padding: var(--s-3) var(--s-5);
+  background: var(--tint-warning); color: var(--tint-warning-ink);
+  border-bottom: 1px solid #f0e2bd;
+  font-size: var(--text-sm);
+}
+.pending a { color: var(--tint-warning-ink); }
+
+@media (max-width: 52rem) {
+  .barInner { gap: var(--s-2); }
+  .actingAs { margin-left: 0; flex-basis: 100%; }
+}

@@ -9,3 +9,14 @@ coverage/
 tsconfig.tsbuildinfo
 *.tsbuildinfo
 .storage-test/
+.local-run.log
+
+# Throwaway probe scripts: a browser or database check written to answer one
+# question during development, kept out of the repository so the next person
+# does not mistake them for part of the application.
+tmp-*
+dbg-*
+verify-*.mjs
+probe-*
+sim-*/
+inv-*.mjs

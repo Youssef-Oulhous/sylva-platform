@@ -1,0 +1,91 @@
+/* --------------------------------------------------------------------------
+   The frame every page in the buyer workspace shares.
+
+   One file rather than four near-identical page.module.css files, so the five
+   sections of one area cannot drift apart from each other: the same heading
+   size, the same lead, the same rule under the header.
+
+   Document width, one column, strong left alignment. Nothing in this area is
+   centred, and the h1 is smaller than a project title - the largest thing on
+   this platform is a project, not one of a buyer's own screens.
+   -------------------------------------------------------------------------- */
+
+.page { max-width: 68rem; }
+
+.head {
+  padding-bottom: var(--s-5);
+  border-bottom: var(--rule);
+}
+.head h1 { font-size: var(--text-xl); }
+
+.lead {
+  margin: var(--s-3) 0 0;
+  font-size: var(--text-md);
+  color: var(--ink);
+  max-width: var(--measure-prose);
+}
+
+/* Whose record this is. Stated on every page in the area, not only on the
+   overview: a reader who arrives at a deep link should not have to go looking
+   for it. */
+.org {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-2) var(--s-5);
+  margin: var(--s-4) 0 0;
+}
+.orgLabel {
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-muted);
+}
+.orgName { font-size: var(--text-sm); font-weight: 500; }
+
+.section { margin-top: var(--s-7); }
+.sectionHead { margin-bottom: var(--s-4); }
+.sectionIntro {
+  margin: var(--s-3) 0 0;
+  font-size: var(--text-sm);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+/* A statement about the page, in the flow of the document. */
+.note {
+  margin: var(--s-4) 0 0;
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  max-width: var(--measure-prose);
+}
+
+/* Something the page could not read. A sentence, never a stack trace. */
+.failure {
+  margin: var(--s-5) 0 0;
+  padding: var(--s-3) var(--s-4);
+  background: var(--tint-error);
+  border: 1px solid var(--tint-error-ink);
+  border-radius: var(--radius);
+  color: var(--tint-error-ink);
+  font-size: var(--text-sm);
+  max-width: var(--measure-prose);
+}
+
+/* Two panels of equal weight. Neither is a headline figure, so neither is
+   larger than the other. */
+.panels {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-4);
+  align-items: start;
+}
+
+@media (max-width: 60rem) {
+  .panels { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 40rem) {
+  .lead { font-size: var(--text-base); }
+  .section { margin-top: var(--s-6); }
+}

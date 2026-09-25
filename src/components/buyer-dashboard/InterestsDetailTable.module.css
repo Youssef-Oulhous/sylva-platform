@@ -1,0 +1,84 @@
+/* The interests table, now that it has a page of its own.
+
+   Seven columns, so it is wider than the viewport on a phone and sits inside
+   .table-scroll. The project name is the row header and the widest column,
+   because it is what a reader scans for. */
+
+.table {
+  background: var(--surface);
+  border: var(--rule);
+  border-radius: var(--radius);
+}
+
+.caption { color: var(--ink-muted); }
+
+.rowHead {
+  background: transparent;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ink);
+  white-space: normal;
+  padding: var(--s-3);
+  border-bottom: var(--rule);
+  vertical-align: top;
+  min-width: 15rem;
+}
+
+.dateCell { color: var(--ink-muted); white-space: nowrap; vertical-align: top; }
+
+.unitsCell { min-width: 12rem; vertical-align: top; }
+.scheme { display: block; }
+/* The unit label is the fact that makes two rows incomparable, so it is set
+   apart from the scheme name rather than run together with it. */
+.unit {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--ink-muted);
+}
+
+.shapeCell { white-space: nowrap; vertical-align: top; }
+
+.stageCell { min-width: 10rem; vertical-align: top; }
+.stage { display: block; }
+.since {
+  display: block;
+  font-size: var(--text-2xs);
+  color: var(--ink-muted);
+}
+
+.pseudonymCell { min-width: 9rem; vertical-align: top; }
+/* The label the public record carries. Mono, because it is an identifier. */
+.label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 600;
+}
+.scopeNote {
+  display: block;
+  font-size: var(--text-2xs);
+  color: var(--ink-muted);
+}
+.named { font-size: var(--text-sm); font-weight: 500; }
+
+.refCell { white-space: nowrap; vertical-align: top; }
+.mono { font-family: var(--font-mono); font-size: var(--text-xs); }
+
+/* Absence, said quietly but said. Never an empty cell: an empty cell reads as
+   a rendering fault. */
+.quiet { color: var(--ink-muted); font-size: var(--text-sm); }
+
+.note {
+  margin: var(--s-4) 0 0;
+  padding: var(--s-3) var(--s-4);
+  background: var(--tint-neutral);
+  border-left: 2px solid var(--water);
+  font-size: var(--text-sm);
+  color: var(--ink);
+  max-width: var(--measure-prose);
+}
+
+.emptyLink { font-size: var(--text-sm); font-weight: 500; }

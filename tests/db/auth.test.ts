@@ -347,7 +347,10 @@ describe('a session becomes an Actor', () => {
     const cases: [string, string, string][] = [
       [BUYER, 'buyer', '/dashboard'],
       ['owner.a@demo.sylva.example', 'project_owner', '/owner'],
-      ['investor.a@demo.sylva.example', 'investor', '/dashboard'],
+      // /investor, not /dashboard. Sign-in used to send an investor to the
+      // BUYER's workspace, which greeted them with "Buyer dashboard" and offered
+      // site registration - a buyer's feature. The investor area exists now.
+      ['investor.a@demo.sylva.example', 'investor', '/investor'],
       [OPERATOR, 'operator', '/admin/vetting'],
       // /auditor since the auditor's own area exists. The public record is a
       // strict subset of what that role is there to read.

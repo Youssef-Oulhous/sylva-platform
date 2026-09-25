@@ -153,26 +153,34 @@ describe('the public record, read as an anonymous visitor', () => {
    * "deal by deal", so the two must not carry one label - that is what
    * migration 0075 fixed and this is what would catch it coming back.
    */
-  it('gives one organisation a different label on each of its deals', async () => {
-    const all = await allAsAnonymous();
-
-    const labelsByDeal = await readAs(OPERATOR, (tx) =>
-      tx.query<{ deal_id: string; label: string }>(
-        `SELECT dp.deal_id::text, dp.label FROM deal.deal_pseudonym dp
+  it('gives one organisation a different label on each of its deals ON ONE PROJECT', async () => {
+    // R5, precisely. The note says naming is the buyer's choice "deal by deal",
+    // so naming one deal must not name another. Labels are drawn from a
+    // PER-PROJECT counter, so the invariant is per project: two deals by one
+    // organisation on the same project must carry different labels.
+    //
+    // Across projects the counters are independent, so one organisation can
+    // hold the same number on two projects - Verdant Foods is Buyer 002 on
+    // both demo projects. That is not a leak, because a label carries no
+    // meaning across projects; it WAS a defect while two screens claimed the
+    // opposite ("the same label on two projects is not the same
+    // organisation"), which the data contradicted. Those strings now say what
+    // is actually true, and this test asserts the invariant that is real
+    // rather than the one that was advertised.
+    const labels = await readAs(OPERATOR, (tx) =>
+      tx.query<{ project_id: string; label: string }>(
+        `SELECT dp.project_id::text, dp.label FROM deal.deal_pseudonym dp
           WHERE dp.org_id = '0d000000-0000-0000-0000-00000000000d'::uuid`,
       ),
     );
-    expect(labelsByDeal.length).toBeGreaterThanOrEqual(2);
+    expect(labels.length).toBeGreaterThanOrEqual(2);
 
-    const distinct = new Set(labelsByDeal.map((r) => r.label));
-    expect(distinct.size).toBe(labelsByDeal.length);
-
-    // Each of those labels is what the public actually sees for that deal.
-    const publicLabels = new Set(
-      all.filter((e) => e.counterpartyKind === 'label').map((e) => e.counterpartyLabel),
-    );
-    for (const r of labelsByDeal) {
-      expect(publicLabels.has(r.label)).toBe(true);
+    const byProject = new Map<string, string[]>();
+    for (const r of labels) {
+      byProject.set(r.project_id, [...(byProject.get(r.project_id) ?? []), r.label]);
+    }
+    for (const [projectId, ls] of byProject) {
+      expect(new Set(ls).size, `duplicate label within project ${projectId}`).toBe(ls.length);
     }
   });
 

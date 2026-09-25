@@ -76,6 +76,15 @@
   font-family: var(--font-mono);
   font-size: var(--text-sm);
   white-space: nowrap;
+
+  /* position: relative for the two .visually-hidden labels inside this cell.
+     They are position: absolute, this cell was the only ancestor between them
+     and the document that could have been their containing block, and nothing
+     was - so they were laid out against the initial containing block, escaped
+     the .table-scroll wrapper that clips the rest of the table, and left the
+     page 25px wider than a 375px viewport with a real horizontal scrollbar.
+     A screen reader still reads them; they are now clipped with the table. */
+  position: relative;
 }
 
 .panelFoot {

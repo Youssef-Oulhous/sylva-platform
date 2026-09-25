@@ -3,10 +3,16 @@ import type { Actor } from '@/lib/db/actor';
 import type { BuyerSite } from '@/lib/sites/types';
 import type {
   BuyerDashboard,
+  BuyerDocuments,
+  BuyerInterest,
+  BuyerOverview,
+  BuyerOrganisationRecord,
   DashboardDocument,
   DashboardOrganisation,
   DocumentGroupId,
   ExpressedInterest,
+  InterestDeal,
+  ProjectDocument,
   PublicLabel,
   VettingRecord,
   VettingState,
@@ -268,6 +274,15 @@ const DOCUMENTS_SQL = `
       SELECT dv.version_no, dv.uploaded_at, dv.uploaded_by_org_id
         FROM doc.document_version dv
        WHERE dv.document_id = d.id
+         -- A withdrawn version is not offered for download, so it must not be
+         -- counted as the current one either. The policy on
+         -- doc.document_version already hides it from a buyer, an owner and an
+         -- investor, but NOT from the operator or the auditor, who must still
+         -- see that it existed. Without this the page showed such a row as
+         -- "Current" with a download link that the serving route then 404s -
+         -- see the same NOT EXISTS in src/lib/documents/queries.ts.
+         AND NOT EXISTS (SELECT 1 FROM doc.document_withdrawal w
+                          WHERE w.document_version_id = dv.id)
        ORDER BY dv.version_no DESC LIMIT 1) v ON true
     LEFT JOIN LATERAL (
       SELECT body FROM proj.project_text x
@@ -476,5 +491,467 @@ export async function buyerDashboard(
     }));
 
     return { organisation, publicLabels, vetting, interests, sites, documents };
+  });
+}
+
+/* ========================================================================== *
+ *  The buyer workspace, one page at a time
+ * ========================================================================== *
+ *
+ * buyerDashboard() above reads the whole record in one transaction, which is
+ * what the overview wants: it prints counts, and counts that disagreed with
+ * each other would be worse than slow. The three functions below read one
+ * page's worth each, so a deep link to /dashboard/interests does not go and
+ * read the site register and the document library to render a table of
+ * interests.
+ *
+ * Every one of them is the same two rules as everything above:
+ *
+ *   - readAs(), never a raw pool, so the statements run as the viewer's own
+ *     PostgreSQL role under the signed organisation context.
+ *   - scoped by sylva.actor_org_id() IN THE QUERY as well as in the policy,
+ *     because these pages are headed "your organisation" and the policies on
+ *     several of these tables say USING (true) for the operator and the
+ *     auditor. The scope is what the page MEANS, so it is written where the
+ *     page can be read.
+ */
+
+/* -- Interests, with the deal each one opened ------------------------------ */
+
+interface DealRow extends Record<string, unknown> {
+  project_id: string;
+  intended_shape: string | null;
+  shape_label_en: string | null;
+  stage: string;
+  stage_label_en: string | null;
+  stage_is_terminal: boolean;
+  disclosed: boolean;
+  opened_on: string;
+  pseudonym: string | null;
+}
+
+/**
+ * The deals this organisation is the buyer of, with the pseudonym each one
+ * carries on the public record.
+ *
+ * deal.deal_pseudonym.org_id is granted to the operator and the auditor and to
+ * nobody else - it is the label -> organisation map a reader of the public
+ * record must not hold (the same reasoning as migration 0075 for the
+ * per-project label). So the row is NOT reached by org_id; it is reached by
+ * joining through deal.deal, whose policy for a buyer reads
+ * `buyer_org_id = sylva.actor_org_id() OR owner_org_id = sylva.actor_org_id()`.
+ * The WHERE below narrows that to the buyer side, because this is the buyer's
+ * own workspace and an organisation that is both a buyer and a project owner
+ * must not find its projects' incoming deals listed under "my interests".
+ *
+ * One row per deal, and the unique index ux_one_live_deal_per_buyer_project
+ * means at most one of them per project is live. A project whose deal has
+ * ended and been re-opened would produce two, so the caller takes the newest.
+ */
+const DEALS_SQL = `
+  SELECT d.project_id,
+         d.intended_shape,
+         sh.label_en            AS shape_label_en,
+         d.stage,
+         st.label_en            AS stage_label_en,
+         d.stage_is_terminal,
+         d.disclosed,
+         d.opened_at::date::text AS opened_on,
+         dp.label               AS pseudonym
+    FROM deal.deal d
+    LEFT JOIN deal.deal_shape sh ON sh.code = d.intended_shape
+    LEFT JOIN deal.deal_stage st ON st.code = d.stage
+    LEFT JOIN deal.deal_pseudonym dp ON dp.deal_id = d.id
+   WHERE d.buyer_org_id = sylva.actor_org_id()
+   ORDER BY d.opened_at DESC`;
+
+/**
+ * Every interest this organisation has expressed, with the deal it opened.
+ *
+ * RULE 7. Still no volume column, and now for a second reason as well as the
+ * first. The first is the one in INTERESTS_SQL: this is the one list on the
+ * platform spanning several projects, so a column of figures here would be read
+ * as a ranking of things that are not comparable. The second is that a deal
+ * DOES carry volumes - deal.interest_volume - and it would have been the
+ * obvious thing to join in here. It is deliberately not joined: a volume is
+ * read one project at a time, on that project's own page, where the unit label
+ * can stand beside it.
+ */
+export async function buyerInterests(
+  actor: Actor,
+  locale: string,
+): Promise<BuyerInterest[]> {
+  return readAs(actor, async (tx) => {
+    const interestRows = await tx.query<InterestRow>(INTERESTS_SQL, [locale]);
+    if (interestRows.length === 0) return [];
+
+    const labelRows = await tx.query<{ project_id: string; label: string }>(
+      LABELS_SQL, [locale],
+    );
+    const labels = new Map(labelRows.map((r) => [r.project_id, r.label]));
+
+    // deal.deal is granted to the buyer, the owner, the operator and the
+    // auditor, and NOT to the investor. This page is a buyer page, but a guard
+    // is not a security boundary: asked inside a SAVEPOINT, a viewer who holds
+    // no grant gets a table of interests with no deal column filled in, rather
+    // than a 500.
+    const dealRows = await ifPermitted<DealRow>(tx, 'sp_deals', DEALS_SQL);
+    const deals = new Map<string, InterestDeal>();
+    for (const r of dealRows) {
+      // ORDER BY opened_at DESC, so the first one seen for a project is the
+      // newest. A second, older deal on the same project is not overwritten in.
+      if (deals.has(r.project_id)) continue;
+      deals.set(r.project_id, {
+        shapeCode: r.intended_shape,
+        shapeLabelEn: r.shape_label_en,
+        stageCode: r.stage,
+        stageLabelEn: r.stage_label_en,
+        stageIsTerminal: r.stage_is_terminal === true,
+        disclosed: r.disclosed === true,
+        openedOn: r.opened_on,
+        pseudonym: r.pseudonym,
+      });
+    }
+
+    return interestRows.map((r) => {
+      const deal = deals.get(r.project_id) ?? null;
+      return {
+        publicId: r.public_id,
+        entryNo: r.entry_no,
+        projectId: r.project_id,
+        slug: r.slug,
+        projectTitle: r.project_title,
+        schemeName: r.scheme_name,
+        unitLabel: r.unit_label,
+        expressedOn: r.expressed_on,
+        dealOpen: deal !== null && !deal.stageIsTerminal,
+        projectLabel: labels.get(r.project_id) ?? null,
+        deal,
+      };
+    });
+  });
+}
+
+/* -- Documents ------------------------------------------------------------- */
+
+interface ProjectDocumentRow extends Record<string, unknown> {
+  id: string;
+  project_slug: string;
+  project_title: string;
+  kind: string;
+  kind_label: string;
+  visibility: string;
+  version_no: number | null;
+  uploaded_on: string | null;
+  media_type: string | null;
+  byte_size: string | null;
+}
+
+/**
+ * The documents of the projects this organisation has expressed interest in.
+ *
+ * THERE IS NO VISIBILITY TEST IN THIS QUERY, and there must never be one. The
+ * six visibility classes are row-level policies on doc.document and
+ * doc.document_version (migrations 0017 and 0056). This statement asks for the
+ * documents of a set of projects; the policies decide which of them come back,
+ * so an approved buyer is shown the public documents and the vetted-buyer
+ * documents, an unapproved one is shown the public documents alone, and neither
+ * outcome is a decision this file makes. The class is selected so the page can
+ * PRINT the footing each file is offered on - printed, never branched on.
+ *
+ * The project set is the interests this organisation expressed, scoped by
+ * sylva.actor_org_id() for the usual reason: record.entry is world-readable on
+ * this platform, so without that line an operator opening this page would be
+ * offered the documents of every project anybody has ever been interested in,
+ * under a heading saying they were the projects it had expressed interest in.
+ */
+const PROJECT_DOCUMENTS_SQL = `
+  SELECT d.id,
+         p.slug                          AS project_slug,
+         COALESCE(t_loc.body, t_en.body) AS project_title,
+         d.kind,
+         dk.label_en                     AS kind_label,
+         d.visibility::text              AS visibility,
+         v.version_no,
+         v.uploaded_at::date::text       AS uploaded_on,
+         v.media_type,
+         v.byte_size::text               AS byte_size
+    FROM doc.document d
+    JOIN doc.document_kind dk ON dk.code = d.kind
+    JOIN proj.project p ON p.id = d.project_id
+    LEFT JOIN LATERAL (
+      SELECT dv.version_no, dv.uploaded_at, dv.media_type, dv.byte_size
+        FROM doc.document_version dv
+       WHERE dv.document_id = d.id
+         AND NOT EXISTS (SELECT 1 FROM doc.document_withdrawal w
+                          WHERE w.document_version_id = dv.id)
+       ORDER BY dv.version_no DESC LIMIT 1) v ON true
+    JOIN LATERAL (
+      SELECT body FROM proj.project_text x
+       WHERE x.project_id = p.id AND x.field_code = 'title'
+         AND x.locale = 'en' AND x.status IN ('published','reviewed')
+       ORDER BY x.version_no DESC LIMIT 1) t_en ON true
+    LEFT JOIN LATERAL (
+      SELECT body FROM proj.project_text x
+       WHERE x.project_id = p.id AND x.field_code = 'title'
+         AND x.locale = $1 AND x.status IN ('published','reviewed')
+       ORDER BY x.version_no DESC LIMIT 1) t_loc ON true
+   WHERE d.scope = 'project'
+     AND d.project_id IN (
+       SELECT e.project_id
+         FROM record.entry e
+        WHERE e.entry_type = 'interest_expressed'
+          AND e.actor_org_id = sylva.actor_org_id())
+   ORDER BY COALESCE(t_loc.body, t_en.body), dk.label_en`;
+
+/** Both halves of the Documents page, in one transaction. */
+export async function buyerDocuments(
+  actor: Actor,
+  locale: string,
+): Promise<BuyerDocuments> {
+  return readAs(actor, async (tx) => {
+    const ownRows = await tx.query<DocumentRow>(DOCUMENTS_SQL, [locale]);
+    const own: DashboardDocument[] = ownRows.map((r) => ({
+      id: r.id,
+      kind: r.kind,
+      kindLabel: r.kind_label,
+      group: groupFor(r),
+      scopeName: r.scope === 'organisation' ? null : r.scope_name,
+      versionNo: r.version_no,
+      uploadedOn: r.uploaded_on,
+      lodgedByYou: r.lodged_by_you === true,
+      available: r.version_no !== null,
+    }));
+
+    const projectRows = await tx.query<ProjectDocumentRow>(
+      PROJECT_DOCUMENTS_SQL, [locale],
+    );
+    const projects: ProjectDocument[] = projectRows.map((r) => ({
+      id: r.id,
+      projectSlug: r.project_slug,
+      projectTitle: r.project_title,
+      kind: r.kind,
+      kindLabel: r.kind_label,
+      visibility: r.visibility,
+      versionNo: r.version_no,
+      uploadedOn: r.uploaded_on,
+      mediaType: r.media_type,
+      // bigint arrives as text; Number is exact to 2^53 and a document is not.
+      byteSize: r.byte_size === null ? null : Number(r.byte_size),
+      available: r.version_no !== null,
+    }));
+
+    return { own, projects };
+  });
+}
+
+/* -- The organisation record ----------------------------------------------- */
+
+/**
+ * The organisation's own row, its vetting chain and its public labels.
+ *
+ * org.own_organisation() is the only way a buyer may read its own row: no
+ * public-facing role holds a column grant on org.organisation.legal_name,
+ * registration_number or registered_address, and the SECURITY DEFINER function
+ * is scoped to sylva.actor_org_id(), so it can only ever answer for the caller.
+ * See db/migrations/0080.
+ */
+export async function buyerOrganisation(
+  actor: Actor,
+  locale: string,
+): Promise<BuyerOrganisationRecord> {
+  return readAs(actor, async (tx) => {
+    const orgRow = await tx.maybe<OrgRow>(ORG_SQL);
+    const de = locale === 'de';
+
+    const organisation: DashboardOrganisation | null = orgRow
+      ? {
+          orgId: orgRow.org_id,
+          legalName: orgRow.legal_name,
+          registrationNumber: orgRow.registration_number,
+          registeredAddress: orgRow.registered_address,
+          countryCode: orgRow.country_code,
+          sectorCode: orgRow.sector_code,
+          sectorLabel:
+            (de ? orgRow.sector_label_de : null)
+            ?? orgRow.sector_label_en
+            ?? orgRow.sector_code,
+          sizeBandCode: orgRow.size_band_code,
+          sizeBandLabel:
+            (de ? orgRow.size_band_label_de : null)
+            ?? orgRow.size_band_label_en
+            ?? orgRow.size_band_code,
+          recordedOn: orgRow.recorded_on,
+        }
+      : null;
+
+    // An account with no organisation context should not reach this page, but a
+    // guard is not a security boundary: it gets the empty record and a sentence
+    // rather than three failing statements.
+    if (organisation === null) {
+      return { organisation: null, vetting: [], publicLabels: [] };
+    }
+
+    const vettingRows = await tx.query<VettingRow>(VETTING_SQL);
+    const vetting: VettingRecord[] = vettingRows.map((r) => ({
+      roleCode: r.role_code,
+      state: vettingState(r),
+      submittedOn: r.submitted_on,
+      decidedOn: r.decided_on,
+      decision: r.decision,
+      reason: r.reason,
+      questionnaireVersion: r.questionnaire_version,
+      approvedNow: r.approved_now,
+    }));
+
+    const labelRows = await tx.query<{
+      project_id: string; label: string; allocated_on: string; project_title: string;
+    }>(LABELS_SQL, [locale]);
+    const publicLabels: PublicLabel[] = labelRows.map((r) => ({
+      projectId: r.project_id,
+      projectTitle: r.project_title,
+      label: r.label,
+      allocatedOn: r.allocated_on,
+    }));
+
+    return { organisation, vetting, publicLabels };
+  });
+}
+
+/* -- The overview ---------------------------------------------------------- */
+
+/**
+ * Four counts, a status, and whether anything is waiting. One transaction.
+ *
+ * COUNTS RATHER THAN ROWS. The overview used to be the whole buyer area and
+ * read the whole record; now it prints four integers, so it asks for four
+ * integers. Each one is a count of ROWS on this organisation's own record -
+ * Rule 7 is not so much obeyed here as inapplicable, and the page says so
+ * under the figures rather than leaving a reader to assume it.
+ *
+ * DEALS: the count is of deals that have MOVED. A deal row is created when the
+ * buyer expresses interest - deal.p_deal_open grants that INSERT to
+ * sylva_buyer - so a deal sitting at stage `interest_expressed` is not news and
+ * telling a buyer that "a project owner has opened a deal room with you" on the
+ * strength of it would be untrue. What is news is a deal that has reached a
+ * later stage and not ended, which is what this counts.
+ *
+ * Two of these statements are asked inside a SAVEPOINT: geo.buyer_site is not
+ * granted to an investor or a project owner, and deal.deal is not granted to an
+ * investor. A missing grant renders as "not visible to you" - the flags say
+ * which - never as a zero.
+ */
+export async function buyerOverview(
+  actor: Actor,
+  locale: string,
+): Promise<BuyerOverview> {
+  return readAs(actor, async (tx) => {
+    const orgRow = await tx.maybe<OrgRow>(ORG_SQL);
+    const de = locale === 'de';
+
+    const organisation: DashboardOrganisation | null = orgRow
+      ? {
+          orgId: orgRow.org_id,
+          legalName: orgRow.legal_name,
+          registrationNumber: orgRow.registration_number,
+          registeredAddress: orgRow.registered_address,
+          countryCode: orgRow.country_code,
+          sectorCode: orgRow.sector_code,
+          sectorLabel:
+            (de ? orgRow.sector_label_de : null)
+            ?? orgRow.sector_label_en
+            ?? orgRow.sector_code,
+          sizeBandCode: orgRow.size_band_code,
+          sizeBandLabel:
+            (de ? orgRow.size_band_label_de : null)
+            ?? orgRow.size_band_label_en
+            ?? orgRow.size_band_code,
+          recordedOn: orgRow.recorded_on,
+        }
+      : null;
+
+    if (organisation === null) {
+      return {
+        organisation: null, vetting: null, interests: 0, publicLabels: 0,
+        sites: 0, sitesVisible: false, documents: 0,
+        dealsAdvanced: 0, dealsVisible: false,
+      };
+    }
+
+    // The decision governing the BUYER role. An organisation may hold more than
+    // one submission - one as a buyer, one as a project owner - and they can
+    // differ, so the buyer's is the one this area reports on.
+    const vettingRows = await tx.query<VettingRow>(VETTING_SQL);
+    const chosen =
+      vettingRows.find((r) => r.role_code === 'buyer') ?? vettingRows[0] ?? null;
+    const vetting: VettingRecord | null = chosen
+      ? {
+          roleCode: chosen.role_code,
+          state: vettingState(chosen),
+          submittedOn: chosen.submitted_on,
+          decidedOn: chosen.decided_on,
+          decision: chosen.decision,
+          reason: chosen.reason,
+          questionnaireVersion: chosen.questionnaire_version,
+          approvedNow: chosen.approved_now,
+        }
+      : null;
+
+    const n = (row: { c: string } | null) => (row === null ? 0 : Number(row.c));
+
+    const interests = n(await tx.maybe<{ c: string }>(`
+      SELECT count(*)::text AS c
+        FROM record.entry e
+       WHERE e.entry_type = 'interest_expressed'
+         AND e.actor_org_id = sylva.actor_org_id()`));
+
+    const publicLabels = n(await tx.maybe<{ c: string }>(
+      'SELECT count(*)::text AS c FROM org.own_public_labels()'));
+
+    // Its own documents plus the documents of the projects it has expressed
+    // interest in - the same two sets the Documents page lists, so the figure
+    // on the overview and the rows on that page cannot disagree. UNION ALL over
+    // the ids rather than two counts added together: a document that is both is
+    // impossible (one is scope 'project', the other never is) and a count is
+    // cheaper to read than two.
+    const documents = n(await tx.maybe<{ c: string }>(`
+      SELECT count(*)::text AS c FROM (
+        SELECT d.id
+          FROM doc.document d
+         WHERE d.scope IN ('organisation', 'deal')
+           AND (d.org_id = sylva.actor_org_id()
+                OR d.deal_buyer_org_id = sylva.actor_org_id()
+                OR d.deal_owner_org_id = sylva.actor_org_id())
+        UNION ALL
+        SELECT d.id
+          FROM doc.document d
+         WHERE d.scope = 'project'
+           AND d.project_id IN (
+             SELECT e.project_id
+               FROM record.entry e
+              WHERE e.entry_type = 'interest_expressed'
+                AND e.actor_org_id = sylva.actor_org_id())
+      ) reachable`));
+
+    const siteRows = await ifPermitted<{ c: string }>(tx, 'sp_sites', `
+      SELECT count(*)::text AS c
+        FROM geo.buyer_site s
+       WHERE s.org_id = sylva.actor_org_id()`);
+    const sitesVisible = siteRows.length > 0;
+    const sites = sitesVisible ? Number(siteRows[0]!.c) : 0;
+
+    const dealRows = await ifPermitted<{ c: string }>(tx, 'sp_deals', `
+      SELECT count(*)::text AS c
+        FROM deal.deal d
+       WHERE d.buyer_org_id = sylva.actor_org_id()
+         AND d.stage <> 'interest_expressed'
+         AND NOT d.stage_is_terminal`);
+    const dealsVisible = dealRows.length > 0;
+    const dealsAdvanced = dealsVisible ? Number(dealRows[0]!.c) : 0;
+
+    return {
+      organisation, vetting, interests, publicLabels,
+      sites, sitesVisible, documents, dealsAdvanced, dealsVisible,
+    };
   });
 }

@@ -472,7 +472,7 @@
       "appendOnlyTitle": "Nichts wird bearbeitet und nichts gelöscht",
       "appendOnlyBody": "Ein Fehler wird durch einen neuen Eintrag korrigiert, der auf den fehlerhaften Eintrag verweist. Der korrigierte Eintrag bleibt sichtbar, in zeitlicher Reihenfolge, als überholt gekennzeichnet. Ein überholter Eintrag bleibt Teil des Verzeichnisses.",
       "labelTitle": "Gegenparteien werden gekennzeichnet, nicht genannt",
-      "labelBody": "Ein Käufer erscheint als Kennung wie „Buyer 014“, zusammen mit Branche, Land und Größenklasse. Kennungen werden je Projekt und je Transaktion vergeben: dieselbe Kennung auf zwei Projekten ist nicht dieselbe Organisation, und zwei Transaktionen derselben Organisation in einem Projekt tragen unterschiedliche Kennungen.",
+      "labelBody": "Ein Käufer erscheint als Kennung wie „Buyer 014“, zusammen mit Branche, Land und Größenklasse. Kennungen werden je Projekt und je Transaktion vergeben. Zwei Transaktionen derselben Organisation im selben Projekt tragen unterschiedliche Kennungen; die Nennung der einen nennt die andere also nicht. Die Nummerierung beginnt in jedem Projekt neu, eine Kennung hat daher über Projekte hinweg keine Bedeutung: dieselbe Kennung in zwei Projekten kann dieselbe Organisation sein oder auch nicht, und nichts hier sagt Ihnen, welches von beidem zutrifft.",
       "disclosureTitle": "Über die Namensnennung entscheidet die Gegenpartei, Transaktion für Transaktion",
       "disclosureBody": "Hat sich eine Gegenpartei für eine Transaktion zur Namensnennung entschieden, wird die Organisation ab dem Datum dieser Entscheidung in den Einträgen dieser Transaktion genannt. Zuvor veröffentlichte Einträge behalten die Kennung, mit der sie veröffentlicht wurden, denn bereits Veröffentlichtes wird nicht nachträglich geändert.",
       "ownerTitle": "Projektträger werden genannt",
@@ -2224,7 +2224,7 @@
       "privateTitle": "Es gibt keinen öffentlichen Kommentarbereich",
       "privateBody": "Fragen und Antworten bleiben zwischen dem Käufer, Ihnen und Sylva. Nichts auf dieser Seite erscheint auf der Projektseite oder im öffentlichen Transaktionsverzeichnis.",
       "identityTitle": "Wie der Käufer erscheint",
-      "identityBody": "Ein Käufer erscheint unter der Kennung, die er für diese Transaktion hat, etwa Buyer 003, sofern er sich nicht für diese Transaktion namentlich nennen lässt. Die Kennungen beginnen bei jedem Projekt wieder bei 001; dieselbe Kennung bei zwei Projekten ist daher nicht dieselbe Organisation."
+      "identityBody": "Ein Käufer erscheint unter der Kennung, die er für diese Transaktion hat, etwa Buyer 003, sofern er sich nicht für diese Transaktion namentlich zu erkennen gegeben hat. Die Nummerierung beginnt in jedem Projekt neu, eine Kennung hat daher über Projekte hinweg keine Bedeutung — sie kann dieselbe Organisation sein oder auch nicht."
     },
     "inbox": {
       "title": "Posteingang",
@@ -2771,6 +2771,7 @@
     }
   },
   "owner": {
+    "overviewTitle": "Was Ihre Projekte benötigen",
     "title": "Ihre Projekte",
     "metaDescription": "Die Projekte, die Sie auf der Plattform betreiben: was jedem vor der Veröffentlichung noch fehlt, welche Fragen von Käufern offen sind und welches Interesse auf eine Reaktion wartet.",
     "lead": "Was jedem Projekt noch fehlt, bevor es veröffentlicht werden kann, worauf Käufer eine Antwort erwarten und welche Interessensbekundungen auf eine Reaktion warten.",
@@ -3631,5 +3632,57 @@
   "adminUi.error.gateBlocked": "Die Datenbank hat die Veröffentlichung dieses Projekts abgelehnt, weil die Veröffentlichungsprüfung nicht vollständig ist. Die noch fehlenden Punkte sind unten aufgeführt. Erfasst werden sie auf den eigenen Seiten des Projekts.",
   "adminUi.error.alreadyPublished": "Dieses Projekt steht bereits im öffentlichen Verzeichnis; es wurde nichts geändert. Laden Sie die Seite neu, um den aktuellen Stand zu sehen.",
   "adminUi.error.reasonRequired": "Eine Entscheidung braucht eine Begründung von mindestens zehn Zeichen. Der Datensatz ist ausschließlich anfügend, daher kann ein ohne Begründung erfasster Eintrag später nie bearbeitet werden, um sich zu erklären.",
-  "adminUi.error.unknownApplication": "Dieser Antrag ist keiner, den diese Liste führt. Möglicherweise wurde er durch einen neueren Antrag derselben Organisation ersetzt."
+  "adminUi.error.unknownApplication": "Dieser Antrag ist keiner, den diese Liste führt. Möglicherweise wurde er durch einen neueren Antrag derselben Organisation ersetzt.",
+  "workspace": {
+    "backToSite": "Öffentliche Website",
+    "actingFor": "Handelnd für",
+    "role": {
+      "buyer": "Käufer",
+      "project_owner": "Projektträger",
+      "investor": "Investor",
+      "operator": "Betreiber",
+      "auditor": "Prüfer"
+    },
+    "buyer": {
+      "title": "Käuferbereich",
+      "overview": "Übersicht",
+      "interests": "Meine Interessenbekundungen",
+      "sites": "Meine Standorte",
+      "documents": "Dokumente",
+      "organisation": "Organisation"
+    },
+    "owner": {
+      "title": "Projektträgerbereich",
+      "overview": "Übersicht",
+      "projects": "Meine Projekte",
+      "questions": "Fragen",
+      "interest": "Eingegangenes Interesse",
+      "organisation": "Organisation"
+    },
+    "investor": {
+      "title": "Investorenbereich",
+      "overview": "Übersicht",
+      "projects": "Projekte mit Finanzierungsbedarf",
+      "interests": "Meine Interessenbekundungen",
+      "organisation": "Organisation"
+    },
+    "operator": {
+      "title": "Sylva-Betrieb",
+      "overview": "Übersicht",
+      "vetting": "Prüfungswarteschlange",
+      "projects": "Projekte",
+      "record": "Transaktionsverzeichnis",
+      "questions": "Fragen",
+      "organisations": "Organisationen"
+    },
+    "auditor": {
+      "title": "Prüferbereich",
+      "overview": "Übersicht",
+      "record": "Transaktionsverzeichnis",
+      "projects": "Projekte",
+      "deals": "Transaktionen",
+      "organisations": "Organisationen",
+      "accessLog": "Zugriffsprotokoll"
+    }
+  }
 }
