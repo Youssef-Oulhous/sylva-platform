@@ -18,5 +18,5 @@ tmp-*
 dbg-*
 verify-*.mjs
 probe-*
-sim-*/
+sim-*
 inv-*.mjs

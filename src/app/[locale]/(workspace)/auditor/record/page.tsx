@@ -5,7 +5,7 @@ import RecordFilters from '@/components/auditor/RecordFilters';
 import RecordTable from '@/components/auditor/RecordTable';
 import { getActor } from '@/lib/auth/session';
 import { auditorErrorLabel, label, labelWith, RECORD } from '@/lib/auditor/labels';
-import { parseAuditParams } from '@/lib/auditor/params';
+import { parseAuditParams, auditRecordHref } from '@/lib/auditor/params';
 import {
   logAuditorAccess, readAuditorFilterOptions, readAuditorRecord,
 } from '@/lib/auditor/queries';
@@ -118,9 +118,18 @@ export default async function AuditorRecordPage({
           <RecordTable entries={extract.entries} />
 
           <Pager
-            extract={extract}
-            projectSlug={parsed.projectSlug}
-            entryType={parsed.entryType}
+            page={extract.page}
+            pageCount={extract.pageCount}
+            from={extract.from}
+            to={extract.to}
+            count={extract.entryCount}
+            hrefFor={(page) =>
+              auditRecordHref({
+                projectSlug: parsed.projectSlug,
+                entryType: parsed.entryType,
+                page,
+              })
+            }
           />
         </>
       )}

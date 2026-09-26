@@ -3634,6 +3634,9 @@
   "adminUi.error.reasonRequired": "Eine Entscheidung braucht eine Begründung von mindestens zehn Zeichen. Der Datensatz ist ausschließlich anfügend, daher kann ein ohne Begründung erfasster Eintrag später nie bearbeitet werden, um sich zu erklären.",
   "adminUi.error.unknownApplication": "Dieser Antrag ist keiner, den diese Liste führt. Möglicherweise wurde er durch einen neueren Antrag derselben Organisation ersetzt.",
   "workspace": {
+    "common": {
+      "browse": "Projekte durchsuchen"
+    },
     "backToSite": "Öffentliche Website",
     "actingFor": "Handelnd für",
     "role": {

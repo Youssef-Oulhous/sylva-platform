@@ -424,11 +424,41 @@ describe('an auditor read is itself recorded', () => {
   });
 
   it('reads the log back, newest first', async () => {
-    const rows = await readAuditorAccessLog(AUDITOR, 10);
-    expect(Array.isArray(rows)).toBe(true);
-    for (let i = 1; i < rows.length; i += 1) {
-      expect(new Date(rows[i - 1]!.at).getTime())
-        .toBeGreaterThanOrEqual(new Date(rows[i]!.at).getTime());
+    const first = await readAuditorAccessLog(AUDITOR, 1, 10);
+    expect(Array.isArray(first.rows)).toBe(true);
+    for (let i = 1; i < first.rows.length; i += 1) {
+      expect(new Date(first.rows[i - 1]!.at).getTime())
+        .toBeGreaterThanOrEqual(new Date(first.rows[i]!.at).getTime());
     }
+  });
+
+  it('pages the log rather than truncating it', async () => {
+    const size = 5;
+    const first = await readAuditorAccessLog(AUDITOR, 1, size);
+
+    // The count is of the whole log, not of the page, so the view can say how
+    // much it is NOT showing. The old signature returned neither.
+    expect(first.total).toBeGreaterThanOrEqual(first.rows.length);
+    expect(first.pageCount).toBe(Math.max(1, Math.ceil(first.total / size)));
+    expect(first.from).toBe(first.total === 0 ? 0 : 1);
+    expect(first.to).toBe(first.rows.length);
+
+    if (first.pageCount > 1) {
+      const second = await readAuditorAccessLog(AUDITOR, 2, size);
+      expect(second.page).toBe(2);
+      expect(second.from).toBe(size + 1);
+
+      // The second page must be different rows, not the same ones again -
+      // which is what an OFFSET that was never applied would give.
+      const seen = new Set(first.rows.map((r) => r.entryNo));
+      for (const r of second.rows) expect(seen.has(r.entryNo)).toBe(false);
+    }
+
+    // A page past the end is clamped to the last page, so a stale link shows
+    // the oldest entries rather than an empty table that reads as "nothing was
+    // ever read".
+    const far = await readAuditorAccessLog(AUDITOR, 9_999, size);
+    expect(far.page).toBe(far.pageCount);
+    if (far.total > 0) expect(far.rows.length).toBeGreaterThan(0);
   });
 });

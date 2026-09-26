@@ -56,6 +56,7 @@ export const AREAS: Record<WorkspaceRole, RoleArea> = {
     titleKey: 'workspace.buyer.title',
     sections: [
       { href: '/dashboard', key: 'workspace.buyer.overview' },
+      { href: '/projects', key: 'workspace.common.browse', covers: ['/projects'] },
       { href: '/dashboard/interests', key: 'workspace.buyer.interests' },
       { href: '/dashboard/sites', key: 'workspace.buyer.sites' },
       { href: '/dashboard/documents', key: 'workspace.buyer.documents' },
@@ -72,6 +73,7 @@ export const AREAS: Record<WorkspaceRole, RoleArea> = {
       { href: '/owner/questions', key: 'workspace.owner.questions' },
       { href: '/owner/interest', key: 'workspace.owner.interest' },
       { href: '/owner/organisation', key: 'workspace.owner.organisation', covers: ['/vetting'] },
+      { href: '/projects', key: 'workspace.common.browse', covers: ['/projects'] },
     ],
   },
   investor: {
@@ -83,6 +85,7 @@ export const AREAS: Record<WorkspaceRole, RoleArea> = {
       { href: '/investor/projects', key: 'workspace.investor.projects', match: '/investor/projects' },
       { href: '/investor/interests', key: 'workspace.investor.interests' },
       { href: '/investor/organisation', key: 'workspace.investor.organisation', covers: ['/vetting'] },
+      { href: '/projects', key: 'workspace.common.browse', covers: ['/projects'] },
     ],
   },
   operator: {
@@ -96,6 +99,7 @@ export const AREAS: Record<WorkspaceRole, RoleArea> = {
       { href: '/admin/record', key: 'workspace.operator.record' },
       { href: '/admin/questions', key: 'workspace.operator.questions' },
       { href: '/admin/organisations', key: 'workspace.operator.organisations' },
+      { href: '/projects', key: 'workspace.common.browse', covers: ['/projects'] },
     ],
   },
   auditor: {
@@ -109,6 +113,7 @@ export const AREAS: Record<WorkspaceRole, RoleArea> = {
       { href: '/auditor/deals', key: 'workspace.auditor.deals' },
       { href: '/auditor/organisations', key: 'workspace.auditor.organisations' },
       { href: '/auditor/access-log', key: 'workspace.auditor.accessLog' },
+      { href: '/projects', key: 'workspace.common.browse', covers: ['/projects'] },
     ],
   },
 };

@@ -3,6 +3,7 @@ import type { Actor } from '@/lib/db/actor';
 import { qtyFromRow } from '@/lib/units/qty';
 import { shortRef } from './people';
 import type {
+  AuditAccessLogPage,
   AuditAccessLogRow,
   AuditActor,
   AuditAvailabilityRow,
@@ -988,29 +989,65 @@ const ACCESS_LOG_SQL = `
     LEFT JOIN org.organisation o      ON o.id = al.actor_org_id
     LEFT JOIN identity.user_account u ON u.person_ref = al.actor_person_ref
    ORDER BY al.at DESC, al.entry_no DESC
-   LIMIT $1::int`;
+   LIMIT $1::int OFFSET $2::int`;
 
+const ACCESS_LOG_COUNT_SQL = `SELECT count(*)::text AS n FROM record.access_log`;
+
+export const ACCESS_LOG_PAGE_SIZE = 25;
+
+/**
+ * One page of the access log, newest first.
+ *
+ * It used to take a `limit` and return that many rows with no count and no
+ * second page - 200 of them on one screen, and, once the log passed 200
+ * entries, the older ones simply were not there. An access log that quietly
+ * drops its own history is worse than a slow one: the page gave no sign that
+ * anything was missing. The count comes back with the rows so the view can say
+ * which entries of how many it is showing, and reach the rest.
+ *
+ * The log only grows - it is append-only and every auditor read adds to it, so
+ * this is the one table on the platform guaranteed to outgrow any fixed cap.
+ */
 export async function readAuditorAccessLog(
   actor: Actor,
-  limit = 100,
-): Promise<AuditAccessLogRow[]> {
-  const n = Math.min(Math.max(1, Math.trunc(limit)), 500);
+  page = 1,
+  pageSize = ACCESS_LOG_PAGE_SIZE,
+): Promise<AuditAccessLogPage> {
+  const size = Math.min(Math.max(1, Math.trunc(pageSize)), 200);
   return readAs(actor, async (tx) => {
+    const total = Number(
+      (await tx.maybe<{ n: string }>(ACCESS_LOG_COUNT_SQL))?.n ?? '0',
+    );
+    const pageCount = Math.max(1, Math.ceil(total / size));
+    // Clamped, so ?page=9999 shows the last page rather than an empty table
+    // that reads like "nothing was ever read".
+    const current = Math.min(Math.max(1, Math.trunc(page)), pageCount);
+    const offset = (current - 1) * size;
+
     const rows = await tx.query<Record<string, unknown> & ActorCols & {
       entry_no: string; at: Date; actor_db_role: string; action: string;
       caller_role: string | null;
       object_kind: string | null; object_id: string | null;
-    }>(ACCESS_LOG_SQL, [n]);
-    return rows.map((r) => ({
-      entryNo: r.entry_no,
-      at: isoInstant(r.at),
-      dbRole: r.actor_db_role,
-      callerRole: r.caller_role,
-      action: r.action,
-      objectKind: r.object_kind,
-      objectId: r.object_id,
-      actor: toActor(r),
-    }));
+    }>(ACCESS_LOG_SQL, [size, offset]);
+
+    return {
+      rows: rows.map((r) => ({
+        entryNo: r.entry_no,
+        at: isoInstant(r.at),
+        dbRole: r.actor_db_role,
+        callerRole: r.caller_role,
+        action: r.action,
+        objectKind: r.object_kind,
+        objectId: r.object_id,
+        actor: toActor(r),
+      })),
+      page: current,
+      pageCount,
+      pageSize: size,
+      total,
+      from: total === 0 ? 0 : offset + 1,
+      to: Math.min(offset + rows.length, total),
+    };
   });
 }
 

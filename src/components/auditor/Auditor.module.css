@@ -272,6 +272,32 @@
 }
 .pagerPosition { color: var(--ink-muted); font-variant-numeric: tabular-nums; }
 
+/* The numbered pages. Tabular figures so the row does not jog sideways as the
+   digits change, and a touch target big enough to hit on a phone. */
+.pagerPages {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2);
+  font-variant-numeric: tabular-nums;
+}
+.pageLink,
+.pageCurrent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  min-height: 2.25rem;
+  padding: 0 var(--s-2);
+  border-radius: var(--radius-sm, 4px);
+}
+.pageCurrent {
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--surface-sunken, rgba(0, 0, 0, 0.06));
+}
+.pageLink:hover { background: var(--surface-sunken, rgba(0, 0, 0, 0.06)); }
+
 /* ------------------------------------------------------------ definition */
 
 .pairs {

@@ -250,6 +250,21 @@ export interface AuditOrganisation {
   erasureCount: number;
 }
 
+/**
+ * One page of the access log, with the position needed to describe it: an
+ * auditor citing "entries 26 to 50 of 312" in a report needs the numbers, not
+ * only the arrows.
+ */
+export interface AuditAccessLogPage {
+  rows: AuditAccessLogRow[];
+  page: number;
+  pageCount: number;
+  pageSize: number;
+  total: number;
+  from: number;
+  to: number;
+}
+
 export interface AuditAccessLogRow {
   entryNo: string;
   at: string;

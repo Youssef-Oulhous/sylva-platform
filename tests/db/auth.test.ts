@@ -351,7 +351,12 @@ describe('a session becomes an Actor', () => {
       // BUYER's workspace, which greeted them with "Buyer dashboard" and offered
       // site registration - a buyer's feature. The investor area exists now.
       ['investor.a@demo.sylva.example', 'investor', '/investor'],
-      [OPERATOR, 'operator', '/admin/vetting'],
+      // /admin, not /admin/vetting. Vetting is one of six duties an operator
+      // owes somebody else, and landing on it hid the other five: an operator
+      // sent straight to the queue could not see that a buyer's question had
+      // gone a week without an answer. The overview is the work queue for all
+      // six, and it is where sign-in now lands.
+      [OPERATOR, 'operator', '/admin'],
       // /auditor since the auditor's own area exists. The public record is a
       // strict subset of what that role is there to read.
       ['auditor@demo.sylva.example', 'auditor', '/auditor'],

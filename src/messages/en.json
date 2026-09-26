@@ -3634,6 +3634,9 @@
   "adminUi.error.reasonRequired": "A decision needs a reason of at least ten characters. The record is append-only, so an entry recorded without one can never be edited to explain itself.",
   "adminUi.error.unknownApplication": "That application is not one this queue holds. It may have been replaced by a newer application from the same organisation.",
   "workspace": {
+    "common": {
+      "browse": "Browse projects"
+    },
     "backToSite": "Public site",
     "actingFor": "Acting for",
     "role": {

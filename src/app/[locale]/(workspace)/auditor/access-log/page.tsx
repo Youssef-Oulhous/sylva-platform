@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import { getFormatter, getTranslations, setRequestLocale } from 'next-intl/server';
 import ActorCell from '@/components/auditor/ActorCell';
+import Pager from '@/components/auditor/Pager';
 import { getActor } from '@/lib/auth/session';
 import { ACCESS, auditorErrorLabel, label } from '@/lib/auditor/labels';
 import { logAuditorAccess, readAuditorAccessLog } from '@/lib/auditor/queries';
-import type { AuditAccessLogRow } from '@/lib/auditor/types';
+import type { AuditAccessLogPage } from '@/lib/auditor/types';
 import styles from '@/components/auditor/Auditor.module.css';
 
 export async function generateMetadata({
@@ -39,10 +40,13 @@ export async function generateMetadata({
  */
 export default async function AuditorAccessLogPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { locale } = await params;
+  const sp = await searchParams;
   setRequestLocale(locale);
   const t = await getTranslations();
   const format = await getFormatter();
@@ -51,10 +55,19 @@ export default async function AuditorAccessLogPage({
   // Logged BEFORE the read, so this visit appears in the table it renders.
   await logAuditorAccess(actor, 'auditor.accessLog');
 
-  let rows: AuditAccessLogRow[] = [];
+  // The page number is untrusted input, so it is parsed here rather than
+  // passed through: anything that is not a positive integer is page 1, and the
+  // query clamps a number past the end to the last page.
+  const rawPage = Array.isArray(sp.page) ? sp.page[0] : sp.page;
+  const wanted = Number.parseInt(rawPage ?? '1', 10);
+  const wantedPage = Number.isFinite(wanted) && wanted > 0 ? wanted : 1;
+
+  let log: AuditAccessLogPage = {
+    rows: [], page: 1, pageCount: 1, pageSize: 0, total: 0, from: 0, to: 0,
+  };
   let failure: unknown = null;
   try {
-    rows = await readAuditorAccessLog(actor, 200);
+    log = await readAuditorAccessLog(actor, wantedPage);
   } catch (err) {
     console.error('[auditor] could not read the access log:', err);
     failure = err;
@@ -69,7 +82,7 @@ export default async function AuditorAccessLogPage({
         <p className={styles.failure} role="alert">
           {label(t, auditorErrorLabel(failure))}
         </p>
-      ) : rows.length === 0 ? (
+      ) : log.rows.length === 0 ? (
         <p className={styles.empty}>{label(t, ACCESS.empty)}</p>
       ) : (
         <div className="table-scroll">
@@ -84,7 +97,7 @@ export default async function AuditorAccessLogPage({
               </tr>
             </thead>
             <tbody>
-              {rows.map((r) => (
+              {log.rows.map((r) => (
                 <tr key={r.entryNo}>
                   <td className={styles.nowrap}>
                     <time dateTime={r.at}>
@@ -112,6 +125,19 @@ export default async function AuditorAccessLogPage({
             </tbody>
           </table>
         </div>
+      )}
+
+      {failure === null && log.rows.length > 0 && (
+        <Pager
+          page={log.page}
+          pageCount={log.pageCount}
+          from={log.from}
+          to={log.to}
+          count={log.total}
+          hrefFor={(page) =>
+            page > 1 ? `/auditor/access-log?page=${page}` : '/auditor/access-log'
+          }
+        />
       )}
     </section>
   );
